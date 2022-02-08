@@ -14,8 +14,11 @@ public class Entanglable : MonoBehaviour
         Active,
         Passive
     }
-    // basic rigidbody data
-    private Rigidbody2D rb;
+    // basic object physics data
+    private Rigidbody2D rb; // rigidbody
+    public Transform isGroundedChecker; // to check if the object is grounded
+    public float checkGroundRadius; // radius around the bottom of the object to check for the ground
+    public LayerMask groundLayer;   // the layer type of the ground
 
     // entanglement data
     private bool entangled, active, passive;
@@ -29,9 +32,9 @@ public class Entanglable : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         // new object is not entangled
-        entangled = false;
+        entangled = true;
         active = false;
-        passive = false;
+        passive = true;
 
         // object starts with no queued forces
         forces = new ArrayList();
@@ -41,10 +44,27 @@ public class Entanglable : MonoBehaviour
         // apply each queued force
         if (forces.Count != 0) {
             foreach (Vector2 force in forces) {
+                Debug.Log("Applying force");
                 rb.AddForce(force, ForceMode2D.Impulse);
             }
             // all forces applied, clear the queue
             forces.Clear();
+        }
+
+        applyDrag();
+
+        // testing
+        if (Input.GetKeyDown(KeyCode.W)) {
+            applyForce(transform.up * 5f);
+        }
+        if (Input.GetKeyDown(KeyCode.A)) {
+            applyForce(transform.right * -5f);
+        }
+        if (Input.GetKeyDown(KeyCode.D)) {
+            applyForce(transform.right * 5f);
+        }
+        if (Input.GetKeyDown(KeyCode.S)) {
+            applyForce(transform.up * -5f);
         }
     }
 
@@ -56,6 +76,7 @@ public class Entanglable : MonoBehaviour
     public void applyForce(Vector2 force) {
         // add force to queued forces list
         if (entangled && passive) {
+            Debug.Log("Queuing force");
             forces.Add(force);
         }
     }
@@ -82,5 +103,26 @@ public class Entanglable : MonoBehaviour
     /// <returns>true if object is entangled and is a passive object.</returns>
     public bool isPassive() {
         return (entangled && passive);
+    }
+
+    /// <summary>
+    /// Applies drag to the object if it is grounded
+    /// </summary>
+    private void applyDrag() {
+        if (isGrounded()) {
+            if (Input.GetAxisRaw("Horizontal") == 0) {
+                Debug.Log(rb.velocity.magnitude);
+                rb.AddForce(rb.velocity * -1);
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Checks if the object is in contact with a ground
+    /// </summary>
+    /// <returns>true if the object is on the ground</returns>
+    public bool isGrounded() {
+        Collider2D collider = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);
+        return (collider != null);
     }
 }
