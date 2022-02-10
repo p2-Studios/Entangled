@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// tutorials used: https://youtu.be/-VkezxxjsSE
+
+// Player movement state (for left and right inputs)
 public class MoveState : BaseState {
 
-    private MovementStateMachine sm;
+    private PlayerStateMachine sm;
     private float horzInput;
 
-    public MoveState(MovementStateMachine stateMachine) : base("Moving", stateMachine){
-        sm = (MovementStateMachine)stateMachine;
+    public MoveState(PlayerStateMachine stateMachine) : base("Moving", stateMachine){
+        sm = (PlayerStateMachine)stateMachine;
     }
 
     public override void Enter(){

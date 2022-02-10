@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// tutorials used: https://youtu.be/-VkezxxjsSE
+
+// Player Idle state (no input at all)
 public class IdleState : BaseState {
 
-    private MovementStateMachine sm;
+    private PlayerStateMachine sm;
     private float horzInput;
 
-    public IdleState(MovementStateMachine stateMachine) : base("Idle", stateMachine){
-        sm = (MovementStateMachine)stateMachine;
+    public IdleState(PlayerStateMachine stateMachine) : base("Idle", stateMachine){
+        sm = (PlayerStateMachine)stateMachine;
     }
 
     public override void Enter(){

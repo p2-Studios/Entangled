@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// tutorial used for statemachine: https://youtu.be/-VkezxxjsSE
+// tutorials used: https://youtu.be/-VkezxxjsSE
 
-public class StateMachine : MonoBehaviour
-{
+// StateMachine Parent Class
+public class StateMachine : MonoBehaviour{
+
     BaseState currentState;
 
     void Start(){
@@ -19,7 +20,7 @@ public class StateMachine : MonoBehaviour
             currentState.UpdateLogic();
     }
 
-    void LateUpdate(){
+    void FixedUpdate(){
         if(currentState != null)
             currentState.UpdatePhysics();
     }
@@ -34,11 +35,11 @@ public class StateMachine : MonoBehaviour
         return null;
     }
 
+    // For testing purposes (displays current state name when running game)
     private void OnGUI(){
         GUILayout.BeginArea(new Rect(10f, 10f, 200f, 100f));
         string content = currentState != null ? currentState.name : "(no current state)";
         GUILayout.Label($"<color='black'><size=40>{content}</size></color>");
         GUILayout.EndArea();
     }
-
 }

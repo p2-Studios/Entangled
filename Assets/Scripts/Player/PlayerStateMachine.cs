@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementStateMachine : StateMachine
-{
+// tutorials used: https://youtu.be/-VkezxxjsSE
 
-    public Rigidbody2D rigidbody;
+// Player Specific state machine
+// inherents StateMachine properties
+// Contains Player specific variables and states
+public class PlayerStateMachine : StateMachine{
+
+    public new Rigidbody2D rigidbody;
     public float speed = 6f;
     public SpriteRenderer spriteRenderer;
 
