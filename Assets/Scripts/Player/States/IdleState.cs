@@ -4,24 +4,24 @@ using UnityEngine;
 
 // tutorials used: https://youtu.be/-VkezxxjsSE
 
-// Player Idle state (no input at all)
-public class IdleState : BaseState {
+// Player Idle state
+// Inherits Grounded state
+public class IdleState : Grounded {
 
-    private PlayerStateMachine sm;
     private float horzInput;
 
-    public IdleState(PlayerStateMachine stateMachine) : base("Idle", stateMachine){
-        sm = (PlayerStateMachine)stateMachine;
-    }
+    // Constructor
+    public IdleState(PlayerStateMachine stateMachine) : base("Idle", stateMachine){}
 
     public override void Enter(){
         base.Enter();
         horzInput = 0f;
-        sm.spriteRenderer.color = Color.black;
+        sm.spriteRenderer.color = Color.black;  // For testing purposes, will be used later for player animations
     }
 
+    // Detect if horizontal input more than Epsilon (switch to move if true)
     public override void UpdateLogic(){
-        base.UpdateLogic();
+        base.UpdateLogic();    
         horzInput = Input.GetAxis("Horizontal");
         if (Mathf.Abs(horzInput) > Mathf.Epsilon)
             stateMachine.ChangeState(sm.moveState);

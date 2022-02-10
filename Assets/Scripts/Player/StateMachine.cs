@@ -9,28 +9,33 @@ public class StateMachine : MonoBehaviour{
 
     BaseState currentState;
 
+    // Initalize states
     void Start(){
         currentState = GetInitialState();
         if (currentState != null)
             currentState.Enter();
     }
 
+    // Calculate transition logic (state change)
     void Update(){
         if(currentState != null)
             currentState.UpdateLogic();
     }
 
-    void FixedUpdate(){
+    // Calculate Physics logic (movement)
+    void LateUpdate(){
         if(currentState != null)
             currentState.UpdatePhysics();
     }
 
+    // When changing states, call exit method for current state, change state, them call enter method for new state
     public void ChangeState(BaseState newState){
         currentState.Exit();
         currentState = newState;
         currentState.Enter();
     }
 
+    // Implemented by children 
     protected virtual BaseState GetInitialState(){
         return null;
     }
