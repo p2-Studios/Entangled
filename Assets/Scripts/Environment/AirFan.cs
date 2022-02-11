@@ -29,10 +29,6 @@ public class AirFan : MonoBehaviour {
         airVisual.parent = null;
         Vector3 scale = airVisual.localScale;
         airVisual.localScale = new Vector3(scale.x, range, scale.z);
-        Vector3 pos = airVisual.position;
-        Debug.Log(range/2);
-        airVisual.position = new Vector3(pos.x, transform.position.y + (range / 2), pos.z);
-        Debug.Log(airVisual.position);
         airVisual.SetParent(oldParent);
         // move the visual
     }
@@ -44,6 +40,7 @@ public class AirFan : MonoBehaviour {
     public void SetPower(float p) {
         power = p;
     }
+
 
     // if the fan is pointing straight upward (no rotation), then apply a force equal to the object's y velocity when
     // it leaves the trigger area. This makes it stay at the top of the fan's reach without bouncing a few times 
