@@ -6,20 +6,42 @@ using UnityEngine;
 public class AirFan : MonoBehaviour {
 
     public float power = 0.25f; // the power of the fan pushing objects upward
+    public float range = 5.0f;
     
+    private BoxCollider2D airCollider;
+    private Transform airVisual;
     void Start() {
+        airCollider = GetComponent<BoxCollider2D>();
+        airVisual = transform.GetChild(1).GetComponent<Transform>();
+        airCollider.size = new Vector2(airCollider.size.x, range);
+        airCollider.offset = new Vector2(airCollider.offset.x, (range / 2));
         
+        RescaleAirVisual();
     }
 
     void Update() {
-        
+        Debug.Log(airVisual.position);
     }
 
-    public float getPower() {
+    private void RescaleAirVisual() {
+        // rescale the visual (temporarily unlinks from parent to avoid scaling parent)
+        Transform oldParent = airVisual.parent;
+        airVisual.parent = null;
+        Vector3 scale = airVisual.localScale;
+        airVisual.localScale = new Vector3(scale.x, range, scale.z);
+        Vector3 pos = airVisual.position;
+        Debug.Log(range/2);
+        airVisual.position = new Vector3(pos.x, transform.position.y + (range / 2), pos.z);
+        Debug.Log(airVisual.position);
+        airVisual.SetParent(oldParent);
+        // move the visual
+    }
+
+    public float GetPower() {
         return power;
     }
 
-    public void setPower(float p) {
+    public void SetPower(float p) {
         power = p;
     }
 
@@ -27,12 +49,11 @@ public class AirFan : MonoBehaviour {
     // it leaves the trigger area. This makes it stay at the top of the fan's reach without bouncing a few times 
     // before coming to an equilibrium
     private void OnTriggerExit2D(Collider2D other) {
-        if (transform.rotation.Equals(Quaternion.identity)) {
-            Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
-            if (!rb.Equals(null)) {
-                rb.AddForce((transform.up * (rb.velocity.y * -1)), ForceMode2D.Impulse);
-            }  
-        }
+        if (!transform.rotation.Equals(Quaternion.identity)) return;
+        Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
+        if (rb.Equals(null)) return;
+        rb.AddForce((transform.up * (rb.velocity.y * -1)), ForceMode2D.Impulse);
+        rb.velocity = new Vector2(rb.velocity.x, 0);
     }
 
     // apply a force equal to the object's mass when it enters the collider
