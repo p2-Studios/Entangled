@@ -28,7 +28,7 @@ public class AirFan : MonoBehaviour {
         Transform oldParent = airVisual.parent;
         airVisual.parent = null;
         Vector3 scale = airVisual.localScale;
-        airVisual.localScale = new Vector3(scale.x, range, scale.z);
+        airVisual.localScale = new Vector3(scale.x, range/2, scale.z);
         airVisual.SetParent(oldParent);
         // move the visual
     }
