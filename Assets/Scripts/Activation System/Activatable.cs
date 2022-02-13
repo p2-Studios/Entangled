@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Activation_System
 {
-    public class Activatable
+    public class Activatable : MonoBehaviour
     {
         [SerializeField] private ArrayList activators; // this is only required if we choose to keep 'requireAllActivators'
         private bool activated;
