@@ -62,6 +62,7 @@ public class Entanglable : MonoBehaviour
         if (entangled && passive) {         // add force to queued forces list
             forces.Add(force);
         }
+        ForceManager.TriggerEvent("Force", this);
     }
 
     /// <summary>
