@@ -53,44 +53,26 @@ public class Entanglable : MonoBehaviour
             forces.Clear();                             // all forces applied, clear the queue
         }
         
-        // Mouse Controls for Entangling Objects
-        // (Hit detector- https://stackoverflow.com/a/61659152. I have modified this a bit to suit our needs)
-        
-        // TODO: add more possibilities
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-            if (hit.collider.gameObject == gameObject)      // If one object is clicked, all objects get the click input. This is to prevent multiple selection
-            {
-                Debug.Log("Selected " + hit.collider.gameObject.name + " as active");
-                entangled = active = true;
-                passive = false;
-                // TODO: clear all passives
-            }
+        if (active)
+            GetComponent<Renderer>().material.SetColor("_Color", new Color(255f/255f, 136f/255f, 220f/255f));
+        if (passive)
+            GetComponent<Renderer>().material.SetColor("_Color", new Color(250f/255f, 255f/255f, 127f/255f));
+        if (!entangled)
+            GetComponent<Renderer>().material.SetColor("_Color", Color.white);
 
-            if (hit.collider == null && active && passive) // clicking on background deselects everything
-            {
-                if (active)
-                    Debug.Log(gameObject.name + " deselected as active");
-                if (passive)
-                    Debug.Log(gameObject.name + " deselected as passive");
-                // TODO: clear all actives and passives
-            }
-        }
-
-        if( Input.GetMouseButtonDown(1) )
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-            if (hit.collider.gameObject == gameObject && !active)   // if an object is active, it cannot be passive unless deselected
-            {
-                Debug.Log("Selected " + hit.collider.gameObject.name + " as passive");
-                entangled = passive = true;
-                // TODO: add this object to list of passives
-            }
-        }
+    }
+    
+    /// <summary>
+    /// Modifies entanglement states of the object
+    /// </summary>
+    /// <param name="isActive"> (bool) Is it active?</param>
+    /// <param name="isPassive"> (bool) Is it passive?</param>
+    public void SetEntanglementStates(bool isActive, bool isPassive)
+    {
+        active = isActive;
+        passive = isPassive;
+        entangled = active || passive;
     }
 
     /// <summary>

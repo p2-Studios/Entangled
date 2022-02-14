@@ -8,14 +8,17 @@ namespace Object_Movement
         [SerializeField] float acceleration = 0.03f;
         void Update()
         {
-            if (Input.GetKey(KeyCode.RightArrow) && GetComponent<Rigidbody2D>().angularVelocity < maxSpeed)
+            if (GetComponent<Entanglable>().IsEntangled())  // Moves only if object is Entangled
             {
-                GetComponent<Rigidbody2D>().velocity += new Vector2(acceleration, 0.0f);
-            }
+                if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && GetComponent<Rigidbody2D>().angularVelocity < maxSpeed)
+                {
+                    GetComponent<Rigidbody2D>().velocity += new Vector2(acceleration, 0.0f);
+                }
 
-            else if (Input.GetKey(KeyCode.LeftArrow) && GetComponent<Rigidbody2D>().angularVelocity > -maxSpeed)
-            {
-                GetComponent<Rigidbody2D>().velocity -= new Vector2(acceleration, 0.0f);
+                else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && GetComponent<Rigidbody2D>().angularVelocity > -maxSpeed)
+                {
+                    GetComponent<Rigidbody2D>().velocity -= new Vector2(acceleration, 0.0f);
+                }
             }
         }
     }

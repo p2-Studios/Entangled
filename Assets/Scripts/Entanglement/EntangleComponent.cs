@@ -13,14 +13,153 @@ public class EntangleComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         passives = new List <Entanglable>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Mouse Controls for Entangling Objects
+        // (Hit detector- https://stackoverflow.com/a/61659152. I have modified this a bit to suit our needs)
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+            if (hit.collider != null)      // If one object is clicked, all objects get the click input. This is to prevent multiple selection
+            {
+                if (active == hit.collider.gameObject.GetComponent<Entanglable>())
+                {
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        Debug.Log("Removed the active object");
+                        active.SetEntanglementStates(false, false);
+                        UnsetActive();
+                        if (passives != null)
+                        {
+                            foreach (Entanglable passive in passives)
+                            {
+                                passive.SetEntanglementStates(false, false);
+                            }
+                        }
+                        ClearPassives();
+                        passives = new List<Entanglable>();
+                    }
+                    else
+                        Debug.Log("This is already active");
+                }
+                else
+                {
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        Debug.Log("Cannot remove a non-active object");
+                    }
+                    else
+                    {
+                        if (active != null)
+                            active.SetEntanglementStates(false, false);
+                        active = hit.collider.gameObject.GetComponent<Entanglable>();
 
+                        if (passives != null)
+                        {
+                            foreach (Entanglable passive in passives)
+                            {
+                                passive.SetEntanglementStates(false, false);
+                            }
+                        }
+                        
+                        ClearPassives();
+                        active.SetEntanglementStates(true, false);
+                        passives = new List<Entanglable>();
+                        Debug.Log("Selected " + hit.collider.gameObject.name + " as active");
+                    }
+                }
+            }
+            else
+            {
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    Debug.Log("Deselected active and all passive objects");
+
+                    if (active != null)
+                        active.SetEntanglementStates(false, false);
+                    UnsetActive();
+
+                    if (passives != null)
+                    {
+                        foreach (Entanglable passive in passives)
+                        {
+                            passive.SetEntanglementStates(false, false);
+                        }
+                    }
+
+                    ClearPassives();
+                    passives = new List<Entanglable>();
+                }
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1))    // When right click is pressed
+        {
+            if (active == null)
+            {
+                Debug.Log("No active object found");
+            }
+            else
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+                if (hit.collider !=
+                    null) // If one object is clicked, all objects get the click input. This is to prevent multiple selection
+                {
+                    if (active == hit.collider.gameObject.GetComponent<Entanglable>())
+                    {
+                        if (Input.GetKey(KeyCode.LeftControl))
+                            Debug.Log("Cannot remove an active object from list of passives");
+                        else
+                            Debug.Log("This object cannot be used as a passive object as it is currently active");
+                    }
+                    else
+                    {
+                        if (passives.Contains(hit.collider.gameObject.GetComponent<Entanglable>()))
+                        {
+                            if (Input.GetKey(KeyCode.LeftControl))
+                            {
+                                Debug.Log("Removed the object from the list of passives");
+                                hit.collider.gameObject.GetComponent<Entanglable>().SetEntanglementStates(false, false);
+                                passives.Remove(hit.collider.gameObject.GetComponent<Entanglable>());
+                            }
+                            else
+                                Debug.Log("Object is already passive");
+                        }
+                        else
+                        {
+                            if (Input.GetKey(KeyCode.LeftControl))
+                            {
+                                Debug.Log("Cannot remove a non-passive object");
+                            }
+                            else
+                            {
+                                Debug.Log("Added " + hit.collider.gameObject.name +
+                                          " to passive objects. Currently active- " +
+                                          active.name);
+                                hit.collider.gameObject.GetComponent<Entanglable>().SetEntanglementStates(false, true);
+                                passives.Add(hit.collider.gameObject.GetComponent<Entanglable>());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Q))        // Debugging
+        {
+            Debug.Log("Active- " + active);
+            foreach (Entanglable e in passives)
+            {
+                Debug.Log("Passive- " + e);
+            }
+        }
     }
 
 
