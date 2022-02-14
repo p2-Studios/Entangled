@@ -12,13 +12,12 @@ public class EntangleComponent : MonoBehaviour
     public Entanglable active;
     public List <Entanglable> passives;
 
-    private UnityAction onForce;
 
     // Start is called before the first frame update
     void Start()
     {
         passives = new List <Entanglable>();
-        onForce = new UnityAction(OnForce);
+        ForceManager.current.onActiveForced += OnActive;
     }
 
     // Update is called once per frame
@@ -43,7 +42,6 @@ public class EntangleComponent : MonoBehaviour
     /// <param name="newPassive">An Entanglable object to add to empty passive list.</param>
     public void SetPassive(Entanglable newPassive) {
         passives = new List<Entanglable> { newPassive };
-        ForceManager.StartListening("Force", onForce);
     }
 
 
@@ -53,7 +51,6 @@ public class EntangleComponent : MonoBehaviour
     /// <param name="newPassives">A list of Entanglable objects to add.</param>
     public void AddPassives(Entanglable[] newPassives) {
         passives.AddRange(newPassives);
-        ForceManager.StartListening("Force", onForce);
     }
 
 
@@ -85,11 +82,10 @@ public class EntangleComponent : MonoBehaviour
     /// <summary>
     /// Loops through passive objects and applies force (if force is applied to current active object).
     /// </summary>
-    private void OnForce(object data) {
-        Entanglable obj = (Entanglable)data;
-        if (obj == active) {
+    private void OnActive(Entanglable e, Vector2 force) {
+        if (e == active) {
             foreach (Entanglable passive in passives) {  // Loop through passive objects and apply force
-                passive.ApplyForce(obj.forces);
+                passive.ApplyForce(force);
             }
         }
     }
