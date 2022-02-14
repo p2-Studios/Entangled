@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// EntangleComponent - Keeps track of the Entanglable objects that a player currently has entangled.
@@ -10,10 +11,12 @@ public class EntangleComponent : MonoBehaviour
     public Entanglable active;
     public List <Entanglable> passives;
 
+
     // Start is called before the first frame update
     void Start()
     {
         passives = new List <Entanglable>();
+        ForceManager.current.onActiveForced += OnActive;
     }
 
     // Update is called once per frame
@@ -178,7 +181,6 @@ public class EntangleComponent : MonoBehaviour
     /// <param name="newPassive">An Entanglable object to add to empty passive list.</param>
     public void SetPassive(Entanglable newPassive) {
         passives = new List<Entanglable> { newPassive };
-
     }
 
 
@@ -213,5 +215,17 @@ public class EntangleComponent : MonoBehaviour
     /// </summary>
     public void ClearPassives() {
         passives = null;
+    }
+
+
+    /// <summary>
+    /// Loops through passive objects and applies force (if force is applied to current active object).
+    /// </summary>
+    private void OnActive(Entanglable e, Vector2 force) {
+        if (e == active) {
+            foreach (Entanglable passive in passives) {  // Loop through passive objects and apply force
+                passive.ApplyForce(force);
+            }
+        }
     }
 }
