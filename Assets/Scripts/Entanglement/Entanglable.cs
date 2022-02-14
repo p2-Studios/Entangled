@@ -42,6 +42,7 @@ public class Entanglable : MonoBehaviour
             = destroyed = respawning = false;   // new object is not entangled, destroyed, or respawning
 
         forces = new ArrayList();               // object starts with no queued forces
+        
     }
 
     void Update() {
@@ -51,6 +52,27 @@ public class Entanglable : MonoBehaviour
             }
             forces.Clear();                             // all forces applied, clear the queue
         }
+        
+
+        if (active)
+            GetComponent<Renderer>().material.SetColor("_Color", new Color(255f/255f, 136f/255f, 220f/255f));
+        if (passive)
+            GetComponent<Renderer>().material.SetColor("_Color", new Color(250f/255f, 255f/255f, 127f/255f));
+        if (!entangled)
+            GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+
+    }
+    
+    /// <summary>
+    /// Modifies entanglement states of the object
+    /// </summary>
+    /// <param name="isActive"> (bool) Is it active?</param>
+    /// <param name="isPassive"> (bool) Is it passive?</param>
+    public void SetEntanglementStates(bool isActive, bool isPassive)
+    {
+        active = isActive;
+        passive = isPassive;
+        entangled = active || passive;
     }
 
     /// <summary>
