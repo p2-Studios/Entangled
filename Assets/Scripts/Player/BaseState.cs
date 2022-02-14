@@ -9,12 +9,12 @@ using UnityEngine;
 public class BaseState {
 
     public string name;
-    protected StateMachine stateMachine;
+    protected Player playerStateMachine;
 
     //Constructor, sets name and statemachine
-    public BaseState(string name, StateMachine stateMachine){
+    public BaseState(string name, Player player){
         this.name = name;
-        this.stateMachine = stateMachine;
+        this.playerStateMachine = player;
     }
 
     // methods to be used by children state classes

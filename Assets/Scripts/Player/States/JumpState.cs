@@ -10,36 +10,36 @@ using UnityEngine;
 // This helps in State change detection
 public class JumpState : BaseState {
 
-    private PlayerStateMachine sm;
+    private Player player;
     
     private bool grounded;
     private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
  
-    public JumpState(PlayerStateMachine stateMachine) : base("Jumping", stateMachine){
-        sm = (PlayerStateMachine)stateMachine;
+    public JumpState(Player playerStateMachine) : base("Jumping", playerStateMachine){
+        player = (Player)playerStateMachine;
     }
 
     // upon entering state, apply upward velocity to achieve jump
     public override void Enter(){
         base.Enter();
-        sm.spriteRenderer.color = Color.cyan;   // For testing purposes, will be used later for player animations
+        player.spriteRenderer.color = Color.cyan;   // For testing purposes, will be used later for player animations
 
-        Vector2 velocity = sm.rigidbody.velocity;
-        velocity.y += sm.jumpForce;
-        sm.rigidbody.velocity = velocity;
+        Vector2 velocity = player.rigidbody.velocity;
+        velocity.y += player.jumpForce;
+        player.rigidbody.velocity = velocity;
     }
 
     // Switch states if grounded
     public override void UpdateLogic(){
         base.UpdateLogic();
         if(grounded)
-            stateMachine.ChangeState(sm.idleState);
+            playerStateMachine.ChangeState(player.idleState);
     }
 
     // Check if player velocity is less than epsilon and rigidbody is touching a ground layer
     public override void UpdatePhysics(){
         base.UpdatePhysics();
-        grounded = sm.rigidbody.velocity.y < Mathf.Epsilon && sm.rigidbody.IsTouchingLayers(groundLayer);
+        grounded = player.rigidbody.velocity.y < Mathf.Epsilon && player.rigidbody.IsTouchingLayers(groundLayer);
     }
 
 }

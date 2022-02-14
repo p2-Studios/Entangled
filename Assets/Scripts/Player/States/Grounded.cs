@@ -9,17 +9,17 @@ using UnityEngine;
 // Used to abstract transition to jump state away from idle and move (since both use it)
 public class Grounded : BaseState {
 
-    protected private PlayerStateMachine sm;   
+    protected private Player player;   
 
     // Constructor, sets sm to active stateMachine
-    public Grounded(string name, PlayerStateMachine stateMachine) : base(name, stateMachine){
-        sm = (PlayerStateMachine)stateMachine;
+    public Grounded(string name, Player playerStateMachine) : base(name, playerStateMachine){
+        player = (Player)playerStateMachine;
     }
 
     // Detect any Space input, transition to jumpstate
     public override void UpdateLogic(){
         base.UpdateLogic();
         if(Input.GetKeyDown(KeyCode.Space))
-            stateMachine.ChangeState(sm.jumpState);
+            playerStateMachine.ChangeState(player.jumpState);
     }
 }
