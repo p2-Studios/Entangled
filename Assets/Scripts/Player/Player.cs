@@ -9,11 +9,30 @@ public class Player : MonoBehaviour {
     public float jumpForce = 12f;
     public SpriteRenderer spriteRenderer;
 
+    PlayerStateMachine stateMachine;
 
-    // create states
+    private float horzInput;
+
     private void Start(){
-        PlayerStateMachine psm = gameObject.AddComponent<PlayerStateMachine>() as PlayerStateMachine;
-        psm.Initialize(this);
+        // Add and initialize PlayerStateMachine
+        stateMachine = gameObject.AddComponent<PlayerStateMachine>() as PlayerStateMachine;
+        stateMachine.Initialize(this);
+    }
+
+    private void Update(){
+
+        // Having input here causes issues with state transitions
+
+        /*horzInput = Input.GetAxis("Horizontal");
+        if (Mathf.Abs(horzInput) > Mathf.Epsilon)
+            stateMachine.ChangeState(stateMachine.moveState);
+
+        if (Mathf.Abs(horzInput) < Mathf.Epsilon)
+            stateMachine.ChangeState(stateMachine.idleState);
+
+        if(Input.GetKeyDown(KeyCode.Space))
+            stateMachine.ChangeState(stateMachine.jumpState);
+        */
     }
 
 }

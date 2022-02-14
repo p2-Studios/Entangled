@@ -12,8 +12,6 @@ public class PlayerStateMachine : MonoBehaviour{
     BaseState currentState;
 
 
-    Player Player;
-
     // States
     public IdleState idleState;
     public MoveState moveState;
@@ -21,20 +19,19 @@ public class PlayerStateMachine : MonoBehaviour{
 
 
     public void Initialize(Player player){
-        this.Player = player;
 
-        idleState = new IdleState(this,Player);
-        moveState = new MoveState(this,Player);
-        jumpState = new JumpState(this,Player);
 
-        Debug.Log(player);
+        idleState = new IdleState(this,player);
+        moveState = new MoveState(this,player);
+        jumpState = new JumpState(this,player);
+
         currentState = idleState;   
         if (currentState != null)
             currentState.Enter();
     }    
 
 
-    // Calculate transition logic (state change)
+    // Calculate transition logic for states
     void Update(){
         if(currentState != null)
             currentState.UpdateLogic();
@@ -44,6 +41,7 @@ public class PlayerStateMachine : MonoBehaviour{
     void LateUpdate(){
         if(currentState != null)
             currentState.UpdatePhysics();
+            Debug.Log(currentState.name);
     }
 
     // When changing states, call exit method for current state, change state, them call enter method for new state

@@ -15,6 +15,8 @@ public class JumpState : BaseState {
     private bool grounded;
     private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
  
+    private float horzInput;
+
     public JumpState(PlayerStateMachine playerStateMachine,Player player) : base("Jumping", playerStateMachine,player){
         playerSM = (PlayerStateMachine)playerStateMachine;
     }
@@ -22,8 +24,10 @@ public class JumpState : BaseState {
     // upon entering state, apply upward velocity to achieve jump
     public override void Enter(){
         base.Enter();
+
         Player.spriteRenderer.color = Color.cyan;   // For testing purposes, will be used later for player animations
 
+        horzInput = 0f;
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.y += Player.jumpForce;
         Player.rigidbody.velocity = velocity;
@@ -32,6 +36,7 @@ public class JumpState : BaseState {
     // Switch states if grounded
     public override void UpdateLogic(){
         base.UpdateLogic();
+        horzInput = Input.GetAxis("Horizontal");
         if(grounded)
             playerSM.ChangeState(playerSM.idleState);
     }
@@ -40,6 +45,9 @@ public class JumpState : BaseState {
     public override void UpdatePhysics(){
         base.UpdatePhysics();
         grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && Player.rigidbody.IsTouchingLayers(groundLayer);
+        Vector2 velocity = Player.rigidbody.velocity;
+        velocity.x = horzInput * Player.speed;
+        Player.rigidbody.velocity = velocity;
     }
 
 }

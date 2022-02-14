@@ -25,5 +25,6 @@ public class IdleState : Grounded {
         horzInput = Input.GetAxis("Horizontal");
         if (Mathf.Abs(horzInput) > Mathf.Epsilon)
             playerSM.ChangeState(playerSM.moveState);
+      
     }
 }

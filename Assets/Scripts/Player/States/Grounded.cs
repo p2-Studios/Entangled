@@ -22,5 +22,6 @@ public class Grounded : BaseState {
         base.UpdateLogic();
         if(Input.GetKeyDown(KeyCode.Space))
             playerSM.ChangeState(playerSM.jumpState);
+            
     }
 }
