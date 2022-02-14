@@ -10,12 +10,12 @@ public class MoveState : Grounded {
     private float horzInput;
 
     // Constructor
-    public MoveState(PlayerStateMachine stateMachine) : base("Moving", stateMachine){}
+    public MoveState(PlayerStateMachine playerSM,Player player) : base("Moving", playerSM, player){}
 
     public override void Enter(){
         base.Enter();
         horzInput = 0f;
-        sm.spriteRenderer.color = Color.green;  // For testing purposes, will be used later for player animations
+        Player.spriteRenderer.color = Color.green;  // For testing purposes, will be used later for player animations
     }
 
     // Detect if horizontal input less than Epsilon (switch to idle if true)
@@ -23,14 +23,15 @@ public class MoveState : Grounded {
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
         if (Mathf.Abs(horzInput) < Mathf.Epsilon)
-            stateMachine.ChangeState(sm.idleState);
+            playerStateMachine.ChangeState(playerSM.idleState);
+        
     }
 
     // Apply velocity to player for movement
     public override void UpdatePhysics(){
         base.UpdatePhysics();
-        Vector2 velocity = sm.rigidbody.velocity;
-        velocity.x = horzInput * sm.speed;
-        sm.rigidbody.velocity = velocity;
+        Vector2 velocity = Player.rigidbody.velocity;
+        velocity.x = horzInput * Player.speed;
+        Player.rigidbody.velocity = velocity;
     }
 }
