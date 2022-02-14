@@ -7,20 +7,20 @@ using UnityEngine;
 /// </summary>
 public class EntangleComponent : MonoBehaviour
 {
-
     public Entanglable active;
     public List <Entanglable> passives;
 
     // Start is called before the first frame update
     void Start()
     {
+
         passives = new List <Entanglable>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
