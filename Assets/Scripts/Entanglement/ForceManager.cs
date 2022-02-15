@@ -5,12 +5,17 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class ForceManager : MonoBehaviour
+public class ForceManager
 {
-    public static ForceManager current;
+    public static ForceManager instance;
 
-    private void Awake() {
-        current = this;
+    private ForceManager() {}
+
+    public static ForceManager GetInstance() {
+        if (instance == null) {
+            instance = new ForceManager();
+        }
+        return instance;
     }
 
     public event Action<Entanglable, Vector2> onActiveForced;

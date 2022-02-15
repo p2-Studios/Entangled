@@ -7,7 +7,7 @@ using UnityEngine;
 // Player Specific state machine
 // inherents StateMachine properties
 // Contains Player's variables and states
-public class PlayerStateMachine : MonoBehaviour{
+public class PlayerStateMachine : MonoBehaviour {
 
     BaseState currentState;
 
@@ -41,7 +41,6 @@ public class PlayerStateMachine : MonoBehaviour{
     void LateUpdate(){
         if(currentState != null)
             currentState.UpdatePhysics();
-            Debug.Log(currentState.name);
     }
 
     // When changing states, call exit method for current state, change state, them call enter method for new state

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,20 +7,12 @@ using UnityEngine;
 /// Entanglable type - represents objects that can be entangled and have forces applied to them.
 /// Can be active, passive, or neither (not entangled)
 /// </summary>
-public class Entanglable : MonoBehaviour
-{
-    // enum flags for entanglement mode (Active and Passive)
-    enum entanglement
-    {
-        Active,
-        Passive
-    }
-
+public class Entanglable : MonoBehaviour {
     // basic object physics data
     private Rigidbody2D rb;             // rigidbody
-    public Transform isGroundedChecker; // to check if the object is grounded
+    //public Transform isGroundedChecker; // to check if the object is grounded
     public Transform respawnLocation;   // location that the object should respawn at when necessary
-    public float checkGroundRadius;     // radius around the bottom of the object to check for the ground
+    public float checkGroundRadius = 0.05f;     // radius around the bottom of the object to check for the ground
     public LayerMask groundLayer;       // the layer type of the ground
 
     // object states
@@ -30,9 +23,10 @@ public class Entanglable : MonoBehaviour
 
     // entanglement states
     private bool entangled, active, passive;
-
+    
     // force data
     ArrayList forces;                   // list of queued forces
+
 
 
     void Start() {
@@ -45,6 +39,7 @@ public class Entanglable : MonoBehaviour
         
     }
 
+
     void Update() {
         if (forces.Count != 0) {                        // apply each queued force
             foreach (Vector2 force in forces) {
@@ -55,11 +50,11 @@ public class Entanglable : MonoBehaviour
         
 
         if (active)
-            GetComponent<Renderer>().material.SetColor("_Color", new Color(255f/255f, 136f/255f, 220f/255f));
+            GetComponent<SpriteRenderer>().material.SetColor("_Color", new Color(255f/255f, 136f/255f, 220f/255f));
         if (passive)
-            GetComponent<Renderer>().material.SetColor("_Color", new Color(250f/255f, 255f/255f, 127f/255f));
+            GetComponent<SpriteRenderer>().material.SetColor("_Color", new Color(250f/255f, 255f/255f, 127f/255f));
         if (!entangled)
-            GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+            GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.white);
 
     }
     
@@ -68,8 +63,7 @@ public class Entanglable : MonoBehaviour
     /// </summary>
     /// <param name="isActive"> (bool) Is it active?</param>
     /// <param name="isPassive"> (bool) Is it passive?</param>
-    public void SetEntanglementStates(bool isActive, bool isPassive)
-    {
+    public void SetEntanglementStates(bool isActive, bool isPassive) {
         active = isActive;
         passive = isPassive;
         entangled = active || passive;
@@ -81,10 +75,10 @@ public class Entanglable : MonoBehaviour
     /// </summary>
     /// <param name="force">A Vector2 force to apply.</param>
     public void ApplyForce(Vector2 force) {
-        if (entangled && passive) {         // add force to queued forces list
-            forces.Add(force);
+        forces.Add(force);
+        if (active) {
+            ForceManager.GetInstance().ActiveForced(this, force);      
         }
-        ForceManager.current.ActiveForced(this, force);
     }
 
     /// <summary>
@@ -116,8 +110,9 @@ public class Entanglable : MonoBehaviour
     /// </summary>
     /// <returns>true if the object is on the ground</returns>
     public bool IsGrounded() {
-        Collider2D collider = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);  // check for contact with ground layer
-        return (collider != null);
+        //Collider2D collider = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);  // check for contact with ground layer
+        //return (collider != null);
+        return true;
     }
 
     /// <summary>
@@ -126,7 +121,7 @@ public class Entanglable : MonoBehaviour
     public void Destroy() {
         destroyed = true;                                    // flag as destroyed
         gameObject.SetActive(false);                         // disable the object
-        if (respawnable) Invoke("Respawn", respawnTime);     // respawn after respawnTime delay
+        if (respawnable) Invoke(nameof (Respawn), respawnTime);     // respawn after respawnTime delay
     }
 
     /// <summary>
@@ -136,5 +131,41 @@ public class Entanglable : MonoBehaviour
         destroyed = false;
         gameObject.SetActive(true);                                         // re-enable the object
         gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.gameObject.layer != LayerMask.NameToLayer("Ground")) {
+            if (entangled && active) {
+                ApplyForce(ComputeTotalImpulse(collision));
+            }
+        }
+    }
+    
+    private void OnCollisionStay2D(Collision2D collision) {
+        if (collision.collider.gameObject.layer != LayerMask.NameToLayer("Ground")) {
+            if (entangled && active) {
+                ApplyForce(ComputeTotalImpulse(collision));
+            }
+        }
+    }
+
+    // from https://gamedev.stackexchange.com/questions/174710/unity2d-force-of-an-impact
+    /// <summary>
+    /// Calculate the total impulse force from a 2D collision
+    /// </summary>
+    /// <param name="collision"></param>
+    /// <returns></returns>
+    static Vector2 ComputeTotalImpulse(Collision2D collision) {
+        Vector2 impulse = Vector2.zero;
+
+        int contactCount = collision.contactCount;
+        for(int i = 0; i < contactCount; i++) {
+            var contact = collision.GetContact(0);
+            impulse += contact.normal * contact.normalImpulse;
+            impulse.x += contact.tangentImpulse * contact.normal.y;
+            impulse.y -= contact.tangentImpulse * contact.normal.x;
+        }
+
+        return impulse;
     }
 }

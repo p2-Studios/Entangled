@@ -16,7 +16,7 @@ public class EntangleComponent : MonoBehaviour
     void Start()
     {
         passives = new List <Entanglable>();
-        ForceManager.current.onActiveForced += OnActive;
+        ForceManager.GetInstance().onActiveForced += OnActive;
     }
 
     // Update is called once per frame
