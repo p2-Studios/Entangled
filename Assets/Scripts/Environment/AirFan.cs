@@ -91,9 +91,16 @@ namespace Environment {
             if (!IsActivated()) return;
             if (!transform.rotation.Equals(Quaternion.identity)) return;
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
-            if (rb.Equals(null)) return;
-            rb.AddForce((transform.up * (rb.velocity.y * -1)), ForceMode2D.Impulse);
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+            if (!rb.Equals(null)) {
+                Entanglable e = other.gameObject.GetComponent<Entanglable>();
+                if (e != null) {
+                    e.ApplyForce(transform.up * (rb.velocity.y * -1));
+                } else {
+                    rb.AddForce((transform.up * (rb.velocity.y * -1)), ForceMode2D.Impulse);
+                }
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+            }
+
         }
 
         // apply a force equal to the object's mass when it enters the collider
@@ -102,7 +109,12 @@ namespace Environment {
             if (!IsActivated()) return;
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
             if (!rb.Equals(null)) {
-                rb.AddForce((transform.up * rb.mass), ForceMode2D.Impulse);
+                Entanglable e = other.gameObject.GetComponent<Entanglable>();
+                if (e != null) {
+                    e.ApplyForce(transform.up * rb.mass);
+                } else {
+                    rb.AddForce(transform.up * rb.mass, ForceMode2D.Impulse);
+                }
             }
         }
 
@@ -111,7 +123,12 @@ namespace Environment {
             if (!IsActivated()) return;
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
             if (!rb.Equals(null)) {
-                rb.AddForce(transform.up * power, ForceMode2D.Impulse);
+                Entanglable e = other.gameObject.GetComponent<Entanglable>();
+                if (e != null) {
+                    e.ApplyForce(transform.up * power);
+                } else {
+                    rb.AddForce(transform.up * power, ForceMode2D.Impulse);
+                }
             }
         }
 
