@@ -50,6 +50,11 @@ public class PlayerStateMachine : MonoBehaviour {
     // Detect collisions with objects
     void OnCollisionEnter2D(Collision2D collision){
         if(currentState != null)
+            currentState.EnterCollision(collision);
+    }
+
+    void OnCollisionStay2D(Collision2D collision){
+        if(currentState != null)
             currentState.UpdateCollision(collision);
     }
 

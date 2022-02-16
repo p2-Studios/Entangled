@@ -5,6 +5,7 @@ using UnityEngine;
 public class PushState : Grounded{
 
     private float horzInput;
+    private Entanglable obj; 
 
     // Constructor
     public PushState(PlayerStateMachine playerSM,Player player) : base("Pushing", playerSM, player){}
@@ -24,7 +25,13 @@ public class PushState : Grounded{
         if (Input.GetKeyDown(KeyCode.E)){
             playerStateMachine.ChangeState(playerSM.pullState);
         }
-        
+    }
+
+    // Detect if player is colliding with objects
+    public override void UpdateCollision(Collision2D collision){
+        if (collision.gameObject.tag == "Pushable"){
+            obj = collision.gameObject.GetComponent<Entanglable>();
+        }
     }
 
     // Apply velocity to player for movement

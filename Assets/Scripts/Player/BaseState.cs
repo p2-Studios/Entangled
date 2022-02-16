@@ -23,7 +23,8 @@ public class BaseState {
     public virtual void Enter(){}                                // Runs when first entering a state
     public virtual void UpdateLogic(){}                          // Runs in Update()
     public virtual void UpdatePhysics(){}                        // Runs in lateUpdate()
-    public virtual void UpdateCollision(Collision2D collision){} // Runs in collision events
+    public virtual void EnterCollision(Collision2D collision){} // Runs in collision events
+    public virtual void UpdateCollision(Collision2D collision){}
     public virtual void ExitCollision(Collider2D collider){}     // Runs when OnTriggerExit2D event occurs
     public virtual void Exit(){}                                 // Run when Exiting a state
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : Entanglable {
     // Player Object Components/Variables
     public new Rigidbody2D rigidbody;
     public float speed = 6f;
