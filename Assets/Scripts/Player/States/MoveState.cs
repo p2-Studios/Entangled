@@ -29,7 +29,6 @@ public class MoveState : Grounded {
 
     // Detect if player is colliding with objects
     public override void UpdateCollision(Collision2D collision){
-        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Pushable"){
             playerStateMachine.ChangeState(playerSM.pushState);
         }

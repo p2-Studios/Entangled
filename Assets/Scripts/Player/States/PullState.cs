@@ -2,29 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushState : Grounded{
+public class PullState : Grounded{
 
     private float horzInput;
+    private bool pulling;
 
     // Constructor
-    public PushState(PlayerStateMachine playerSM,Player player) : base("Pushing", playerSM, player){}
+    public PullState(PlayerStateMachine playerSM,Player player) : base("Pulling", playerSM, player){}
 
     public override void Enter(){
         base.Enter();
+        pulling = true;
         horzInput = 0f;
-        Player.spriteRenderer.color = Color.blue;  // For testing purposes, will be used later for player animations
+        Player.spriteRenderer.color = Color.red;  // For testing purposes, will be used later for player animations
     }
 
     // Detect if horizontal input less than Epsilon (switch to idle if true)
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
-        if (Mathf.Abs(horzInput) < Mathf.Epsilon)
-            playerStateMachine.ChangeState(playerSM.idleState);
         if (Input.GetKeyDown(KeyCode.E)){
-            playerStateMachine.ChangeState(playerSM.pullState);
+            pulling = false;
         }
+        if (!pulling)
+            playerStateMachine.ChangeState(playerSM.idleState);
         
+    }
+    
+    // Detect if player is disconected for triggercollider
+    public override void ExitCollision(Collider2D collider){
+        if (collider.gameObject.tag == "Pushable"){
+            pulling = false;
+        }
     }
 
     // Apply velocity to player for movement
@@ -34,4 +43,13 @@ public class PushState : Grounded{
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
     }
+
+
+    public override void Exit()
+    {
+        pulling = false;
+        base.Exit();
+    }
 }
+
+

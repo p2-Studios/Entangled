@@ -20,7 +20,7 @@ public class Grounded : BaseState {
     // Detect any Space input, transition to jumpstate
     public override void UpdateLogic(){
         base.UpdateLogic();
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
             playerSM.ChangeState(playerSM.jumpState);
             
     }

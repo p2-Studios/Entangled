@@ -17,6 +17,7 @@ public class PlayerStateMachine : MonoBehaviour {
     public MoveState moveState;
     public JumpState jumpState;
     public PushState pushState;
+    public PullState pullState;
 
 
     public void Initialize(Player player){
@@ -26,6 +27,7 @@ public class PlayerStateMachine : MonoBehaviour {
         moveState = new MoveState(this,player);
         jumpState = new JumpState(this,player);
         pushState = new PushState(this,player);
+        pullState = new PullState(this,player);
 
         currentState = idleState;   
         if (currentState != null)
@@ -45,10 +47,18 @@ public class PlayerStateMachine : MonoBehaviour {
             currentState.UpdatePhysics();
     }
 
+    // Detect collisions with objects
     void OnCollisionEnter2D(Collision2D collision){
         if(currentState != null)
             currentState.UpdateCollision(collision);
     }
+
+    // Detect when collisions with trigger colliders ends
+    void OnTriggerExit2D(Collider2D collider){
+        if(currentState != null)
+            currentState.ExitCollision(collider);
+    }
+
 
     // When changing states, call exit method for current state, change state, them call enter method for new state
     public void ChangeState(BaseState newState){
