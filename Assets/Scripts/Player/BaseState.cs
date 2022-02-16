@@ -20,8 +20,9 @@ public class BaseState {
     }
 
     // methods to be used by children state classes
-    public virtual void Enter(){}           // Runs when first entering a state
-    public virtual void UpdateLogic(){}     // Runs in Update()
-    public virtual void UpdatePhysics(){}   // Runs in lateUpdate()
-    public virtual void Exit(){}            // Run when Exiting a state
+    public virtual void Enter(){}                               // Runs when first entering a state
+    public virtual void UpdateLogic(){}                         // Runs in Update()
+    public virtual void UpdatePhysics(){}                       // Runs in lateUpdate()
+    public virtual void UpdateCollision(Collision2D collision){}// Runs in collision events
+    public virtual void Exit(){}                                // Run when Exiting a state
 }

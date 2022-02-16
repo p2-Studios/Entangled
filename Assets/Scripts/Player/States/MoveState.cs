@@ -8,6 +8,7 @@ using UnityEngine;
 public class MoveState : Grounded {
 
     private float horzInput;
+    private int pushLayer = 1 << 7; 
 
     // Constructor
     public MoveState(PlayerStateMachine playerSM,Player player) : base("Moving", playerSM, player){}
@@ -23,8 +24,15 @@ public class MoveState : Grounded {
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
         if (Mathf.Abs(horzInput) < Mathf.Epsilon)
-            playerStateMachine.ChangeState(playerSM.idleState);
-        
+            playerStateMachine.ChangeState(playerSM.idleState);  
+    }
+
+    // Detect if player is colliding with objects
+    public override void UpdateCollision(Collision2D collision){
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Pushable"){
+            playerStateMachine.ChangeState(playerSM.pushState);
+        }
     }
 
     // Apply velocity to player for movement

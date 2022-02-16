@@ -16,6 +16,7 @@ public class PlayerStateMachine : MonoBehaviour {
     public IdleState idleState;
     public MoveState moveState;
     public JumpState jumpState;
+    public PushState pushState;
 
 
     public void Initialize(Player player){
@@ -24,6 +25,7 @@ public class PlayerStateMachine : MonoBehaviour {
         idleState = new IdleState(this,player);
         moveState = new MoveState(this,player);
         jumpState = new JumpState(this,player);
+        pushState = new PushState(this,player);
 
         currentState = idleState;   
         if (currentState != null)
@@ -41,6 +43,11 @@ public class PlayerStateMachine : MonoBehaviour {
     void LateUpdate(){
         if(currentState != null)
             currentState.UpdatePhysics();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        if(currentState != null)
+            currentState.UpdateCollision(collision);
     }
 
     // When changing states, call exit method for current state, change state, them call enter method for new state
