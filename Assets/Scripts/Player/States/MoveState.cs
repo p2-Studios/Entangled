@@ -27,18 +27,22 @@ public class MoveState : Grounded {
             playerStateMachine.ChangeState(playerSM.idleState);  
     }
 
-    // Detect if player is colliding with objects
-    public override void EnterCollision(Collision2D collision){
-        if (collision.gameObject.tag == "Pushable"){
-            playerStateMachine.ChangeState(playerSM.pushState);
-        }
-    }
-
     // Apply velocity to player for movement
     public override void UpdatePhysics(){
         base.UpdatePhysics();
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
+    }
+
+    public override void UpdateCollision(Collider2D collider){
+        base.UpdateCollision(collider);
+        if (collider.gameObject.tag == "Pushable"){
+            playerSM.ChangeState(playerSM.pushState);
+        }
+        else{
+            playerSM.ChangeState(playerSM.idleState);
+
+        }
     }
 }

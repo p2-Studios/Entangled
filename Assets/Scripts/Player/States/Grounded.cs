@@ -24,4 +24,20 @@ public class Grounded : BaseState {
             playerSM.ChangeState(playerSM.jumpState);
             
     }
+
+    // Detect if player is colliding with objects
+    public override void EnterCollision(Collider2D collider){
+        if (collider.gameObject.tag == "Pushable"){
+            playerSM.ChangeState(playerSM.pushState);
+        }
+    }
+
+
+    public override void ExitCollision(Collider2D collider)
+    {
+        base.ExitCollision(collider);
+        if (collider.gameObject.tag == "Pushable"){
+            playerSM.ChangeState(playerSM.idleState);
+        }
+    }
 }

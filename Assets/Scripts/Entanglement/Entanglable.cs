@@ -43,7 +43,8 @@ public class Entanglable : MonoBehaviour {
     void Update() {
         if (forces.Count != 0) {                        // apply each queued force
             foreach (Vector2 force in forces) {
-                rb.AddForce(force, ForceMode2D.Impulse);
+                //rb.AddForce(force, ForceMode2D.Impulse);
+                rb.velocity = force;
             }
             forces.Clear();                             // all forces applied, clear the queue
         }

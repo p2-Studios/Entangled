@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PullState : Grounded{
+public class PullState : ApplyingForce {
 
     private float horzInput;
     private bool pulling;
+    
 
     // Constructor
-    public PullState(PlayerStateMachine playerSM,Player player) : base("Pulling", playerSM, player){}
+    public PullState(PlayerStateMachine playerStateMachine,Player player) : base("Pulling", playerStateMachine, player){}
 
     public override void Enter(){
         base.Enter();
@@ -25,15 +26,8 @@ public class PullState : Grounded{
             pulling = false;
         }
         if (!pulling)
-            playerStateMachine.ChangeState(playerSM.idleState);
+            playerSM.ChangeState(playerSM.idleState);
         
-    }
-    
-    // Detect if player is disconected for triggercollider
-    public override void ExitCollision(Collider2D collider){
-        if (collider.gameObject.tag == "Pushable"){
-            pulling = false;
-        }
     }
 
     // Apply velocity to player for movement
@@ -42,6 +36,13 @@ public class PullState : Grounded{
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
+    }
+    
+    // Detect if player is disconected for triggercollider
+    public override void ExitCollision(Collider2D collider){
+        if (collider.gameObject.tag == "Pushable"){
+            pulling = false;
+        }
     }
 
 

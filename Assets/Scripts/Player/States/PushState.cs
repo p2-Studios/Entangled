@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushState : Grounded{
+public class PushState : ApplyingForce {
 
     private float horzInput;
-    private Entanglable obj; 
+    private Entanglable obj;
+    private bool pushing;
+    
 
     // Constructor
-    public PushState(PlayerStateMachine playerSM,Player player) : base("Pushing", playerSM, player){}
+    public PushState(PlayerStateMachine playerStateMachine,Player player) : base("Pushing", playerStateMachine, player){}
 
     public override void Enter(){
         base.Enter();
+        pushing = true;
         horzInput = 0f;
         Player.spriteRenderer.color = Color.blue;  // For testing purposes, will be used later for player animations
     }
@@ -20,17 +23,10 @@ public class PushState : Grounded{
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
-        if (Mathf.Abs(horzInput) < Mathf.Epsilon)
-            playerStateMachine.ChangeState(playerSM.idleState);
+        if (!pushing || Mathf.Abs(horzInput) < Mathf.Epsilon)
+            playerSM.ChangeState(playerSM.idleState);
         if (Input.GetKeyDown(KeyCode.E)){
-            playerStateMachine.ChangeState(playerSM.pullState);
-        }
-    }
-
-    // Detect if player is colliding with objects
-    public override void UpdateCollision(Collision2D collision){
-        if (collision.gameObject.tag == "Pushable"){
-            obj = collision.gameObject.GetComponent<Entanglable>();
+            playerSM.ChangeState(playerSM.pullState);
         }
     }
 
@@ -40,5 +36,32 @@ public class PushState : Grounded{
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
+        if(obj != null){
+            Vector2 pushForce = new Vector2(velocity.x,0f);
+            obj.ApplyForce(pushForce*.01f);
+        }
     }
+
+    // Detect if player is colliding with objects
+    public override void UpdateCollision(Collider2D collider){
+        base.UpdateCollision(collider);
+        if (collider.gameObject.tag == "Pushable"){
+            obj = collider.gameObject.GetComponent<Entanglable>();
+        }
+    }
+
+    // Detect if player is disconected for triggercollider
+    public override void ExitCollision(Collider2D collider){
+        base.ExitCollision(collider);
+        if (collider.gameObject.tag == "Pushable"){
+            pushing = false;
+        }
+    }
+
+    public override void Exit()
+    {
+        pushing = false;
+        base.Exit();
+    }
+
 }

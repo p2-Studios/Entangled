@@ -27,4 +27,6 @@ public class IdleState : Grounded {
             playerSM.ChangeState(playerSM.moveState);
       
     }
+
+
 }
