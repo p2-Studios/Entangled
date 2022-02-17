@@ -12,6 +12,7 @@ namespace Activation_System
         public Activator()
         {
             activated = false;
+			activatables = new ArrayList();
             activationManager = ActivationManager.GetInstance();
         }
 
