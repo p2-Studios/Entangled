@@ -5,6 +5,7 @@ using UnityEngine;
 public class PullState : ApplyingForce {
 
     private float horzInput;
+    private Entanglable obj;
     private bool pulling;
     
 
@@ -36,10 +37,22 @@ public class PullState : ApplyingForce {
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
+        if(obj != null){
+            Vector2 pushForce = new Vector2(velocity.x,0f);
+            obj.ApplyForce(pushForce);
+        }
     }
     
+    // Detect if player is colliding with objects
+    public override void UpdateTrigger(Collider2D collider){
+        base.UpdateTrigger(collider);
+        if (collider.gameObject.tag == "Pushable"){
+            obj = collider.gameObject.GetComponent<Entanglable>();
+        }
+    }
+
     // Detect if player is disconected for triggercollider
-    public override void ExitCollision(Collider2D collider){
+    public override void ExitTrigger(Collider2D collider){
         if (collider.gameObject.tag == "Pushable"){
             pulling = false;
         }

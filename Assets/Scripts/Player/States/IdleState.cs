@@ -25,8 +25,10 @@ public class IdleState : Grounded {
         horzInput = Input.GetAxis("Horizontal");
         if (Mathf.Abs(horzInput) > Mathf.Epsilon)
             playerSM.ChangeState(playerSM.moveState);
+        if (Input.GetKeyDown(KeyCode.E) && triggerRange){
+            playerSM.ChangeState(playerSM.pullState);
+        }
       
     }
-
 
 }

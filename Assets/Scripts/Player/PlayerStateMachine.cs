@@ -48,20 +48,37 @@ public class PlayerStateMachine : MonoBehaviour {
     }
 
     // Detect collisions with objects
+    void OnCollisionEnter2D(Collision2D collision){
+        if(currentState != null)
+            currentState.EnterCollision(collision);
+    }
+
+    // Detect collisions with objects
     void OnTriggerEnter2D(Collider2D collider){
         if(currentState != null)
-            currentState.EnterCollision(collider);
+            currentState.EnterTrigger(collider);
+    }
+
+    void OnCollisionStay2D(Collision2D collision){
+        if(currentState != null)
+            currentState.UpdateCollision(collision);
     }
 
     void OnTriggerStay2D(Collider2D collider){
         if(currentState != null)
-            currentState.UpdateCollision(collider);
+            currentState.UpdateTrigger(collider);
+    }
+
+    // Detect when collisions with trigger colliders ends
+    void OnCollisionExit2D(Collision2D collision){
+        if(currentState != null)
+            currentState.ExitCollision(collision);
     }
 
     // Detect when collisions with trigger colliders ends
     void OnTriggerExit2D(Collider2D collider){
         if(currentState != null)
-            currentState.ExitCollision(collider);
+            currentState.ExitTrigger(collider);
     }
 
 

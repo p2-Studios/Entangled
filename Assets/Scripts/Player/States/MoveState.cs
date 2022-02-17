@@ -8,7 +8,8 @@ using UnityEngine;
 public class MoveState : Grounded {
 
     private float horzInput;
-    private int pushLayer = 1 << 7; 
+    private bool pushRange;
+
 
     // Constructor
     public MoveState(PlayerStateMachine playerSM,Player player) : base("Moving", playerSM, player){}
@@ -35,14 +36,6 @@ public class MoveState : Grounded {
         Player.rigidbody.velocity = velocity;
     }
 
-    public override void UpdateCollision(Collider2D collider){
-        base.UpdateCollision(collider);
-        if (collider.gameObject.tag == "Pushable"){
-            playerSM.ChangeState(playerSM.pushState);
-        }
-        else{
-            playerSM.ChangeState(playerSM.idleState);
 
-        }
-    }
+    
 }
