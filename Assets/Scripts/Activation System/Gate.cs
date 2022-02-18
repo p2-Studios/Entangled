@@ -11,13 +11,14 @@ namespace Activation_System
 		
 		// Animation variables
 		private Animator gateAnimator;
-		private float timer = 1.0f;
+		private float timer = 0.1f;				// timer when gate moves
 		
 		// Gate collider
-		BoxCollider2D gate;
+		BoxCollider2D gate;						// Blocks rigidbodies and other colliders from passing
 		
 		// Boolean state
-		private bool active = false;
+		private bool active = false;			// check when the gate is activated or not
+		private int state = 1;					// the current state of the gate, used for animators
 		
 		void Start() {
 			
@@ -29,33 +30,24 @@ namespace Activation_System
 			foreach (Activator a in activators) {
 				AddActivator(a);
 			}
-			
 		}
 		
 		bool isOpened() {
-			return !gate.enabled;
+			return active;
 		}
 		
 		bool isClosed() {
-			return gate.enabled;
+			return !active;
 		}
 		
 		void setOpen() {
 			active = true;
 			gate.enabled = false;
-			
-			gateAnimator.SetBool("open",true);
-			gateAnimator.SetBool("toggleAnim", true);
-			
 		}
 		
 		void setClose() {
 			active = false;
 			gate.enabled = true;
-			
-			gateAnimator.SetBool("open",false);
-			gateAnimator.SetBool("toggleAnim", true);
-			
 		}
 
 		void FixedUpdate() {							// NOTE: OnTrigger event is timed on FixedUpdate
@@ -66,11 +58,21 @@ namespace Activation_System
 				setClose();
 			}
 			
-			if (gateAnimator.GetBool("toggleAnim")) {
+			// Play's animation
+			if (isOpened() && state != 11) {
 				timer -= Time.deltaTime;
 				if (timer <= 0) {
-					gateAnimator.SetBool("toggleAnim",false);
-					timer = 1.0f;
+					state += 1;
+					gateAnimator.SetInteger("state",state);
+					timer = 0.1f;
+				}
+			}
+			else if (isClosed() && state != 1) {
+				timer -= Time.deltaTime;
+				if (timer <= 0) {
+					state -= 1;
+					gateAnimator.SetInteger("state",state);
+					timer = 0.1f;
 				}
 			}
 			

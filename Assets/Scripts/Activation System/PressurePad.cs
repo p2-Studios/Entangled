@@ -15,9 +15,8 @@ namespace Activation_System
 		
 		private BoxCollider2D padCollider;
 		
-		// Animation variables
-		private Animator pressurePadAnimator;
-		private float animationSpeed = 0.0f;
+		private Animator pressurePadAnimator;							// For animations
+		private float animationSpeed = 0.0f;							// This has no use currently
 		
 		void Start() {
 			padCollider = GetComponent<BoxCollider2D>();				// fetch collider
@@ -25,7 +24,6 @@ namespace Activation_System
 			obj_mass = new Dictionary<Collider2D,float>();
 			
 			pressurePadAnimator = GetComponent<Animator>();
-			//animationSpeed = pressurePadAnimator.speed;
 			
 			foreach (Activatable a in activatables) {
 				AddActivatable(a);
@@ -48,8 +46,6 @@ namespace Activation_System
 					 pressurePadAnimator.SetBool("active",true);
 				}
 			}
-			
-			// --Add Activate Animation--
 		}
 		
 		
