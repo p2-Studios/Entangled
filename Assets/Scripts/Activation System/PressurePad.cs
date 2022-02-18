@@ -63,7 +63,6 @@ namespace Activation_System
 			
 			foreach (GameObject go in obj_stacked[col]) {
 				Rigidbody2D rb = go.GetComponent<Rigidbody2D>();
-				print(go.name);
 				if (rb != null)
 					sumOfMass += rb.mass;
 			}
@@ -130,7 +129,7 @@ namespace Activation_System
 				
 				foreach (ContactPoint2D cp in contacts) {
 					if (cp.collider != null) {
-						if (cp.normal.y < 0.0f)
+						if (cp.normal.y < -0.3f)
 							get_objects(obj_array, cp.collider.gameObject);
 					}
 				}
