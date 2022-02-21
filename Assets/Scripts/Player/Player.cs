@@ -24,18 +24,6 @@ public class Player : MonoBehaviour {
 
     private void Update(){
 
-        // Having input here causes issues with state transitions
-
-        /*horzInput = Input.GetAxis("Horizontal");
-        if (Mathf.Abs(horzInput) > Mathf.Epsilon)
-            stateMachine.ChangeState(stateMachine.moveState);
-
-        if (Mathf.Abs(horzInput) < Mathf.Epsilon)
-            stateMachine.ChangeState(stateMachine.idleState);
-
-        if(Input.GetKeyDown(KeyCode.Space))
-            stateMachine.ChangeState(stateMachine.jumpState);
-        */
     }
 
 }

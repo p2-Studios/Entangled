@@ -8,6 +8,8 @@ using UnityEngine;
 public class MoveState : Grounded {
 
     private float horzInput;
+    private bool pushRange;
+
 
     // Constructor
     public MoveState(PlayerStateMachine playerSM,Player player) : base("Moving", playerSM, player){}
@@ -23,8 +25,7 @@ public class MoveState : Grounded {
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
         if (Mathf.Abs(horzInput) < Mathf.Epsilon)
-            playerStateMachine.ChangeState(playerSM.idleState);
-        
+            playerStateMachine.ChangeState(playerSM.idleState);  
     }
 
     // Apply velocity to player for movement
@@ -34,4 +35,7 @@ public class MoveState : Grounded {
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
     }
+
+
+    
 }
