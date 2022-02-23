@@ -30,7 +30,7 @@ public class Entanglable : MonoBehaviour {
     private Boolean velocityUpdate;
 
     // VelocityManager instance
-    //private VelocityManager velocityManager;
+    private VelocityManager velocityManager;
     
 
     void Start() {
@@ -41,6 +41,8 @@ public class Entanglable : MonoBehaviour {
 
         velocity = Vector2.zero;
         velocityUpdate = false;
+
+        velocityManager = VelocityManager.GetInstance();
 
     }
 
@@ -54,13 +56,12 @@ public class Entanglable : MonoBehaviour {
             velocityUpdate = false; // unflag velocity change
         }
         
-        if (active) {
+        if (active) {   // if active and moving, mirror velocity
             Vector2 vel = rb.velocity;
             if (!(vel.Equals(Vector2.zero))) {
-                VelocityManager.GetInstance().ActiveMoved(this, vel);
+                velocityManager.ActiveMoved(this, vel);
             }
         }
-        
 
         if (active)
             GetComponent<SpriteRenderer>().material.SetColor("_Color", new Color(255f/255f, 136f/255f, 220f/255f));
@@ -90,6 +91,7 @@ public class Entanglable : MonoBehaviour {
     public void ApplyVelocity(Vector2 vel) {
         velocity = vel;
         velocityUpdate = true;
+        Debug.Log("Applying velocity to " + name);
     }
 
     /// <summary>
