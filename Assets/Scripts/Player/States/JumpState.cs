@@ -37,6 +37,7 @@ public class JumpState : BaseState {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
+        Debug.Log("HERE");
         if(grounded)
             playerSM.ChangeState(playerSM.idleState);
     }
@@ -45,6 +46,7 @@ public class JumpState : BaseState {
     public override void UpdatePhysics(){
         base.UpdatePhysics();
         grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && Player.rigidbody.IsTouchingLayers(groundLayer);
+        
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;

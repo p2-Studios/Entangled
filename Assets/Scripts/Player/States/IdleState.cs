@@ -15,6 +15,7 @@ public class IdleState : Grounded {
 
     public override void Enter(){
         base.Enter();
+        triggerRange = false;
         horzInput = 0f;
         Player.spriteRenderer.color = Color.black;  // For testing purposes, will be used later for player animations
     }
@@ -24,11 +25,7 @@ public class IdleState : Grounded {
         base.UpdateLogic();    
         horzInput = Input.GetAxis("Horizontal");
         if (Mathf.Abs(horzInput) > Mathf.Epsilon)
-            playerSM.ChangeState(playerSM.moveState);
-        if (Input.GetKeyDown(KeyCode.E) && triggerRange){
-            playerSM.ChangeState(playerSM.pullState);
-        }
-      
+            playerSM.ChangeState(playerSM.moveState);   
     }
 
 }

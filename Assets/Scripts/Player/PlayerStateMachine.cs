@@ -11,14 +11,11 @@ public class PlayerStateMachine : MonoBehaviour {
 
     BaseState currentState;
 
-
     // States
     public IdleState idleState;
     public MoveState moveState;
     public JumpState jumpState;
-    public PushState pushState;
-    public PullState pullState;
-
+    public PushPullState pushpullState;
 
     public void Initialize(Player player){
 
@@ -26,14 +23,12 @@ public class PlayerStateMachine : MonoBehaviour {
         idleState = new IdleState(this,player);
         moveState = new MoveState(this,player);
         jumpState = new JumpState(this,player);
-        pushState = new PushState(this,player);
-        pullState = new PullState(this,player);
+        pushpullState = new PushPullState(this,player);
 
         currentState = idleState;   
         if (currentState != null)
             currentState.Enter();
     }    
-
 
     // Calculate transition logic for states
     void Update(){
@@ -47,23 +42,25 @@ public class PlayerStateMachine : MonoBehaviour {
             currentState.UpdatePhysics();
     }
 
-    // Detect collisions with objects
+    // Detect start of collider collisions with objects
     void OnCollisionEnter2D(Collision2D collision){
         if(currentState != null)
             currentState.EnterCollision(collision);
     }
 
-    // Detect collisions with objects
+    // Detect start of trigger collisions with objects
     void OnTriggerEnter2D(Collider2D collider){
         if(currentState != null)
             currentState.EnterTrigger(collider);
     }
 
+    // Updates contact with collider
     void OnCollisionStay2D(Collision2D collision){
         if(currentState != null)
             currentState.UpdateCollision(collision);
     }
 
+    // Updates contact with trigger
     void OnTriggerStay2D(Collider2D collider){
         if(currentState != null)
             currentState.UpdateTrigger(collider);
@@ -80,7 +77,6 @@ public class PlayerStateMachine : MonoBehaviour {
         if(currentState != null)
             currentState.ExitTrigger(collider);
     }
-
 
     // When changing states, call exit method for current state, change state, them call enter method for new state
     public void ChangeState(BaseState newState){

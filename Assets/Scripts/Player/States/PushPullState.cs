@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PullState : ApplyingForce {
+public class PushPullState : BaseState {
 
+    protected private PlayerStateMachine playerSM;
     private float horzInput;
     private Entanglable obj;
     private bool pulling;
     
 
     // Constructor
-    public PullState(PlayerStateMachine playerStateMachine,Player player) : base("Pulling", playerStateMachine, player){}
+    public PushPullState(PlayerStateMachine playerStateMachine,Player player) : base("Pulling", playerStateMachine, player){
+        playerSM = (PlayerStateMachine)playerStateMachine;
+        Player = player;
+    }
 
+    // Enter calls
     public override void Enter(){
         base.Enter();
         pulling = true;
@@ -23,12 +28,16 @@ public class PullState : ApplyingForce {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(KeyCode.E)){
-            pulling = false;
+        // Jump while push/pull
+        if (Input.GetKeyDown(KeyCode.Space)){
+            playerSM.ChangeState(playerSM.jumpState);
         }
+        // Let go of object
+        if (Input.GetKeyDown(KeyCode.E))
+            pulling = false;
+        // return to idle
         if (!pulling)
             playerSM.ChangeState(playerSM.idleState);
-        
     }
 
     // Apply velocity to player for movement
@@ -49,6 +58,9 @@ public class PullState : ApplyingForce {
         if (collider.gameObject.tag == "Pushable"){
             obj = collider.gameObject.GetComponent<Entanglable>();
         }
+        else{
+            obj = null;
+        }
     }
 
     // Detect if player is disconected for triggercollider
@@ -58,10 +70,10 @@ public class PullState : ApplyingForce {
         }
     }
 
-
+    // Exit calls (make sure variables don't remain)
     public override void Exit()
     {
-        pulling = false;
+        obj = null;
         base.Exit();
     }
 }
