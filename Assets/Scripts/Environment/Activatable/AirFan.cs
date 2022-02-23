@@ -89,46 +89,36 @@ namespace Environment {
         // before coming to an equilibrium
         private void OnTriggerExit2D(Collider2D other) {
             if (!IsActivated()) return;
-            if (!transform.rotation.Equals(Quaternion.identity)) return;
+            if (!transform.rotation.Equals(Quaternion.identity)) return;    // only when fan is vertical
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
-            if (!rb.Equals(null)) {
-                Entanglable e = other.gameObject.GetComponent<Entanglable>();
-                if (e != null) {
-                    e.ApplyForce(transform.up * (rb.velocity.y * -1));
-                } else {
-                    rb.AddForce((transform.up * (rb.velocity.y * -1)), ForceMode2D.Impulse);
-                }
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-            }
-
+            if (rb.Equals(null)) return;
+            ApplyFanVelocity(other, rb,transform.up * (rb.velocity.y * -1));
+            rb.velocity = new Vector2(rb.velocity.x, 0);
         }
-
+        
         // apply a force equal to the object's mass when it enters the collider
         // this balances the force of gravity and keeps it floating on top of the fan
         private void OnTriggerEnter2D(Collider2D other) {
             if (!IsActivated()) return;
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
-            if (!rb.Equals(null)) {
-                Entanglable e = other.gameObject.GetComponent<Entanglable>();
-                if (e != null) {
-                    e.ApplyForce(transform.up * rb.mass);
-                } else {
-                    rb.AddForce(transform.up * rb.mass, ForceMode2D.Impulse);
-                }
-            }
+            if (rb.Equals(null)) return;
+            ApplyFanVelocity(other, rb,(transform.up * rb.mass));
         }
 
         // while the object is in the fan collider, apply a force to raise it
         private void OnTriggerStay2D(Collider2D other) {
             if (!IsActivated()) return;
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
-            if (!rb.Equals(null)) {
-                Entanglable e = other.gameObject.GetComponent<Entanglable>();
-                if (e != null) {
-                    e.ApplyForce(transform.up * power);
-                } else {
-                    rb.AddForce(transform.up * power, ForceMode2D.Impulse);
-                }
+            if (rb.Equals(null)) return;
+            ApplyFanVelocity(other, rb,(transform.up * power));
+        }
+
+        private void ApplyFanVelocity(Collider2D other, Rigidbody2D rb, Vector2 velocity) {
+            Entanglable e = other.gameObject.GetComponent<Entanglable>();
+            if (e != null) {    // entanglable
+                e.ApplyForce(velocity);
+            } else {            // non-entanglable (including player)
+                rb.velocity = velocity;
             }
         }
 
