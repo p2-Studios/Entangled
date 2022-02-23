@@ -3,17 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Activation_System;
 using UnityEngine;
+using Activator = Activation_System.Activator;
 
 namespace Environment {
     public class AirFan : Activatable {
-
-        public float power = 0.25f; // the power of the fan pushing objects upward
-        public float range = 5.0f;
+        public float power = 5.0f; // the power of the fan pushing objects upward
+        public float range = 3.0f;
+        
+        public Activator[] activators;			// -- array of activators, REQUIRED to set the activators manually! --
 
         private BoxCollider2D airCollider;
         private Transform airVisualTransform;
         private GameObject fanBase, airVisual;
         private Animator fanBaseAnimator, airVisualAnimator;
+
+        public Boolean startEnabled = true;
 
         private float fanBaseAnimatorSpeed, airVisualAnimatorSpeed;
         
@@ -30,19 +34,24 @@ namespace Environment {
             airVisual = transform.GetChild(1).gameObject;                // air visual components
             airVisualTransform = airVisual.GetComponent<Transform>();
             airVisualAnimator = transform.GetChild(1).GetChild(0).GetComponent<Animator>(); 
-            airVisualAnimatorSpeed = power * 3.0f;                      // animation speed based on power 
-
+            airVisualAnimatorSpeed = power / 2;                          // animation speed based on power 
 
             RescaleAirCollider();                                        // set air collider scale to match range
+
+            // add manually set activators
+            foreach (Activator a in activators) {
+                AddActivator(a);
+            }
             
-            Activate();                                                  // fan activated by default
+            if (startEnabled) { Activate(); } else { Deactivate();}
         }
 
         /// <summary>
         /// Activates the fan, enabling the wind animation and fan turning
         /// </summary>
-        public new void Activate() {
+        public override void Activate() {
             base.Activate();            // call the parent activate function to handle general activation stuff
+            Debug.Log("Activating");
             fanBaseAnimator.speed = fanBaseAnimatorSpeed;
             airVisualAnimator.speed = airVisualAnimatorSpeed;
             airVisual.SetActive(true);  // enable visual effect
@@ -51,13 +60,14 @@ namespace Environment {
         /// <summary>
         /// Deactivates the fan, disabling the wind animation and fan turning
         /// </summary>
-        public new void Deactivate() {
+        public override void Deactivate() {
             base.Deactivate();          // call the parent deactivate function to handle general deactivation stuff
+            Debug.Log("Deactivating");
             fanBaseAnimator.speed = 0;  // stop fan animation
             airVisual.SetActive(false); // disable visual effect
         }
 
-        public new void ToggleState() {
+        public override void ToggleState() {
             if (IsActivated()) Deactivate();
             else Activate();
         }
@@ -128,6 +138,7 @@ namespace Environment {
 
         public void SetPower(float p) {
             power = p;
+            airVisualAnimatorSpeed = power / 2; 
         }
         
     }

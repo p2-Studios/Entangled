@@ -17,22 +17,22 @@ namespace Activation_System
             requireAllActivators = false;
         }
 
-        public void AddActivator(Activator activator)
+        public virtual void AddActivator(Activator activator)
         {
             activators.Add(activator);
         }
 
-        public void RemoveActivator(Activator activator)
+        public virtual void RemoveActivator(Activator activator)
         {
             activators.Remove(activator);
         }
 
-        public ArrayList GetActivators()
+        public virtual ArrayList GetActivators()
         {
             return activators;
         }
 
-        public void Activate()
+        public virtual void Activate()
         {
             if (requireAllActivators)
             {
@@ -44,13 +44,13 @@ namespace Activation_System
                 
         }
 
-        public void Activate(float timer)
+        public virtual void Activate(float timer)
         {
             // TODO: Wait for timer
             Activate();
         }
 
-        public void Deactivate()
+        public virtual void Deactivate()
         {
             if (requireAllActivators)
             {
@@ -61,13 +61,13 @@ namespace Activation_System
                 activated = false;
         }
 
-        public void Deactivate(float timer)
+        public virtual void Deactivate(float timer)
         {
             // TODO: Wait for timer
             Deactivate();
         }
 
-        public void ToggleState()
+        public virtual void ToggleState()
         {
             if (activated)
                 Deactivate();
@@ -75,18 +75,18 @@ namespace Activation_System
                 Activate();
         }
         
-        public void ToggleState(float timer)
+        public virtual void ToggleState(float timer)
         {
             // TODO: Wait for timer
             ToggleState();
         }
 
-        public bool IsActivated()
+        public virtual bool IsActivated()
         {
             return activated;
         }
 
-        public bool AreAllActivatorsActivated()
+        public virtual bool AreAllActivatorsActivated()
         {
             foreach (Activator activator in activators)
             {
@@ -96,7 +96,7 @@ namespace Activation_System
             return true;
         }
         
-        public bool AreAllActivatorsDeactivated()
+        public virtual bool AreAllActivatorsDeactivated()
         {
             foreach (Activator activator in activators)
             {
