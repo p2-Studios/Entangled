@@ -17,7 +17,7 @@ public class EntangleComponent : MonoBehaviour
     void Start()
     {
         passives = new List <Entanglable>();
-        VelocityManager.GetInstance().onActiveMoved += OnActive;
+        VelocityManager.GetInstance().onActiveMoved += OnActiveMoved;
     }
 
     // Update is called once per frame
@@ -222,9 +222,10 @@ public class EntangleComponent : MonoBehaviour
     /// <summary>
     /// Loops through passive objects and applies force (if force is applied to current active object).
     /// </summary>
-    private void OnActive(Entanglable e, Vector2 force) {
+    private void OnActiveMoved(Entanglable e, Vector2 force) {
         if (e == active) {
             foreach (Entanglable passive in passives) {  // Loop through passive objects and apply force
+                Debug.Log("OnActiveMoved applying velocity to " + passive.name);
                 passive.ApplyVelocity(force);
             }
         }

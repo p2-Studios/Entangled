@@ -27,6 +27,7 @@ public class Entanglable : MonoBehaviour {
     
     // force data
     private Vector2 velocity;                   // list of queued forces
+    public float maxVelocity = 20.0f;
     private Boolean velocityUpdate;
 
     // VelocityManager instance
@@ -55,6 +56,12 @@ public class Entanglable : MonoBehaviour {
             rb.velocity = velocity;
             velocityUpdate = false; // unflag velocity change
         }
+
+        /*
+        // if velocity > max velocity, set velocity to max velocity
+        if (rb.velocity.magnitude > maxVelocity) {
+            rb.velocity = Vector2.zero;
+        }*/
         
         if (active) {   // if active and moving, mirror velocity
             Vector2 vel = rb.velocity;
@@ -91,7 +98,6 @@ public class Entanglable : MonoBehaviour {
     public void ApplyVelocity(Vector2 vel) {
         velocity = vel;
         velocityUpdate = true;
-        Debug.Log("Applying velocity to " + name);
     }
 
     /// <summary>

@@ -38,10 +38,12 @@ public class PushState : ApplyingForce {
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
+        /*
         if(obj != null){
             Vector2 pushForce = new Vector2(velocity.x,0f);
             obj.ApplyVelocity(pushForce);
         }
+        */
     }
 
     // Detect if player is colliding with objects
