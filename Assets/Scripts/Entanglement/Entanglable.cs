@@ -66,7 +66,7 @@ public class Entanglable : MonoBehaviour {
         if (active) {   // if active and moving, mirror velocity
             Vector2 vel = rb.velocity;
             if (!(vel.Equals(Vector2.zero))) {
-                velocityManager.ActiveMoved(this, vel);
+                velocityManager.ActiveMoved(this, vel * rb.mass);
             }
         }
 
@@ -96,7 +96,7 @@ public class Entanglable : MonoBehaviour {
     /// </summary>
     /// <param name="vel">A Vector2 of the velocity to mirror.</param>
     public void ApplyVelocity(Vector2 vel) {
-        velocity = vel;
+        velocity = vel / rb.mass;
         velocityUpdate = true;
     }
 
