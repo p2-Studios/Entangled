@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Entanglement;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,7 +17,7 @@ public class EntangleComponent : MonoBehaviour
     void Start()
     {
         passives = new List <Entanglable>();
-        ForceManager.GetInstance().onActiveForced += OnActive;
+        VelocityManager.GetInstance().onActiveMoved += OnActive;
     }
 
     // Update is called once per frame
@@ -224,7 +225,7 @@ public class EntangleComponent : MonoBehaviour
     private void OnActive(Entanglable e, Vector2 force) {
         if (e == active) {
             foreach (Entanglable passive in passives) {  // Loop through passive objects and apply force
-                passive.ApplyForce(force);
+                passive.ApplyVelocity(force);
             }
         }
     }

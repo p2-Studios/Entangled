@@ -40,7 +40,7 @@ public class PushState : ApplyingForce {
         Player.rigidbody.velocity = velocity;
         if(obj != null){
             Vector2 pushForce = new Vector2(velocity.x,0f);
-            obj.ApplyForce(pushForce);
+            obj.ApplyVelocity(pushForce);
         }
     }
 

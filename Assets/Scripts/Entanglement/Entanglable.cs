@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Entanglement;
 using UnityEngine;
 
 /// <summary>
@@ -28,8 +29,8 @@ public class Entanglable : MonoBehaviour {
     private Vector2 velocity;                   // list of queued forces
     private Boolean velocityUpdate;
 
-    // ForceManager instance
-    private ForceManager forceManager;
+    // VelocityManager instance
+    //private VelocityManager velocityManager;
     
 
     void Start() {
@@ -56,7 +57,7 @@ public class Entanglable : MonoBehaviour {
         if (active) {
             Vector2 vel = rb.velocity;
             if (!(vel.Equals(Vector2.zero))) {
-                ForceManager.GetInstance().ActiveForced(this, vel);
+                VelocityManager.GetInstance().ActiveMoved(this, vel);
             }
         }
         
@@ -82,11 +83,11 @@ public class Entanglable : MonoBehaviour {
     }
 
     /// <summary>
-    /// Apply a force to the entanglable. Force will be added to the force queue and
+    /// Apply a velocity to the entanglable.
     /// applied to the entanglable on the next frame. 
     /// </summary>
     /// <param name="vel">A Vector2 of the velocity to mirror.</param>
-    public void ApplyForce(Vector2 vel) {
+    public void ApplyVelocity(Vector2 vel) {
         velocity = vel;
         velocityUpdate = true;
     }
@@ -146,7 +147,7 @@ public class Entanglable : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.gameObject.layer != LayerMask.NameToLayer("Ground")) {
             if (entangled && active) {
-                ApplyForce(ComputeTotalImpulse(collision));
+                ApplyVelocity(ComputeTotalImpulse(collision));
             }
         }
     }
@@ -154,7 +155,7 @@ public class Entanglable : MonoBehaviour {
     private void OnCollisionStay2D(Collision2D collision) {
         if (collision.collider.gameObject.layer != LayerMask.NameToLayer("Ground")) {
             if (entangled && active) {
-                ApplyForce(ComputeTotalImpulse(collision));
+                ApplyVelocity(ComputeTotalImpulse(collision));
             }
         }
     }

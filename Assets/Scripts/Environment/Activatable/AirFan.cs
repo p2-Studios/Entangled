@@ -116,7 +116,7 @@ namespace Environment {
         private void ApplyFanVelocity(Collider2D other, Rigidbody2D rb, Vector2 velocity) {
             Entanglable e = other.gameObject.GetComponent<Entanglable>();
             if (e != null) {    // entanglable
-                e.ApplyForce(velocity);
+                e.ApplyVelocity(velocity);
             } else {            // non-entanglable (including player)
                 rb.velocity = velocity;
             }
