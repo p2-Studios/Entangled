@@ -25,9 +25,12 @@ public class Entanglable : MonoBehaviour {
     private bool entangled, active, passive;
     
     // force data
-    ArrayList forces;                   // list of queued forces
+    private Vector2 velocity;                   // list of queued forces
+    private Boolean velocityUpdate;
 
-
+    // ForceManager instance
+    private ForceManager forceManager;
+    
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();       // get the Rigidbody2D component of the object
@@ -35,18 +38,26 @@ public class Entanglable : MonoBehaviour {
         entangled = passive = active 
             = destroyed = respawning = false;   // new object is not entangled, destroyed, or respawning
 
-        forces = new ArrayList();               // object starts with no queued forces
-        
+        velocity = Vector2.zero;
+        velocityUpdate = false;
+
     }
 
 
     void Update() {
-        if (forces.Count != 0) {                        // apply each queued force
-            foreach (Vector2 force in forces) {
-                //rb.AddForce(force, ForceMode2D.Impulse);
-                rb.velocity = force;
+        if (velocityUpdate) {       // mirror active object velocity
+            Vector2 vel = rb.velocity;
+            if (vel.x == 0) velocity.x += vel.x;
+            if (vel.y == 0) velocity.y += vel.y;
+            rb.velocity = velocity;
+            velocityUpdate = false; // unflag velocity change
+        }
+        
+        if (active) {
+            Vector2 vel = rb.velocity;
+            if (!(vel.Equals(Vector2.zero))) {
+                ForceManager.GetInstance().ActiveForced(this, vel);
             }
-            forces.Clear();                             // all forces applied, clear the queue
         }
         
 
@@ -74,12 +85,10 @@ public class Entanglable : MonoBehaviour {
     /// Apply a force to the entanglable. Force will be added to the force queue and
     /// applied to the entanglable on the next frame. 
     /// </summary>
-    /// <param name="force">A Vector2 force to apply.</param>
-    public void ApplyForce(Vector2 force) {
-        forces.Add(force);
-        if (active) {
-            ForceManager.GetInstance().ActiveForced(this, force);      
-        }
+    /// <param name="vel">A Vector2 of the velocity to mirror.</param>
+    public void ApplyForce(Vector2 vel) {
+        velocity = vel;
+        velocityUpdate = true;
     }
 
     /// <summary>
