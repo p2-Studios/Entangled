@@ -7,9 +7,7 @@ using UnityEngine;
 // Player movement state (for left and right inputs)
 public class MoveState : Grounded {
 
-    private float horzInput;
     private bool pushRange;
-
 
     // Constructor
     public MoveState(PlayerStateMachine playerSM,Player player) : base("Moving", playerSM, player){}

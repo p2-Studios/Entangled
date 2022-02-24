@@ -8,8 +8,6 @@ using UnityEngine;
 // Inherits Grounded state
 public class IdleState : Grounded {
 
-    private float horzInput;
-
     // Constructor
     public IdleState(PlayerStateMachine playerSM,Player player) : base("Idle", playerSM, player){}
 

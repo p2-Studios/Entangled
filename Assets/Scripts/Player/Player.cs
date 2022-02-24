@@ -10,12 +10,21 @@ public class Player : MonoBehaviour {
     public new Rigidbody2D rigidbody;
     public float speed = 6f;
     public float jumpForce = 12f;
+    public float grabDistance = 0.5f;
     public SpriteRenderer spriteRenderer;
+
+    [HideInInspector]
+    public GameObject box;
+    [HideInInspector]
+    public bool facingRight = true;
+    [HideInInspector]
+    public RaycastHit2D hit;
 
     private EntangleComponent entangleComponent;
     PlayerStateMachine stateMachine;
 
     private float horzInput;
+    
 
     private void Start(){
         // Initialize entangleComponent
@@ -26,7 +35,16 @@ public class Player : MonoBehaviour {
     }
 
     private void Update(){
+        horzInput = Input.GetAxisRaw("Horizontal");
+        if (horzInput > 0f)
+            facingRight = true;
+        else if (horzInput < 0f)
+            facingRight = false;
 
+        if(facingRight)
+            hit = Physics2D.Raycast(transform.position, Vector2.right, grabDistance);
+        else
+            hit = Physics2D.Raycast(transform.position, Vector2.left, grabDistance);
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
@@ -40,4 +58,13 @@ public class Player : MonoBehaviour {
             transform.parent = null;
         }
     }
+
+    void OnDrawGizmos(){
+		Gizmos.color = Color.yellow;
+        if (facingRight)
+            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.right *  grabDistance);
+        else
+            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.left * grabDistance);
+	}
+           
 }

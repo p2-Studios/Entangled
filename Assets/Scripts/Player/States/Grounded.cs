@@ -11,6 +11,9 @@ public class Grounded : BaseState {
 
     protected private PlayerStateMachine playerSM;
     protected private bool triggerRange;
+    protected private float horzInput;
+
+
 
     // Constructor, sets sm to active stateMachine
     public Grounded(string name, PlayerStateMachine playerStateMachine, Player player) : base(name, playerStateMachine, player){
@@ -22,11 +25,18 @@ public class Grounded : BaseState {
     // Update Logic changes (key pressses)
     public override void UpdateLogic(){
         base.UpdateLogic();
-        if (Input.GetKeyDown(KeyCode.Space))
-            playerSM.ChangeState(playerSM.jumpState);
-        if (triggerRange && Input.GetKeyDown(KeyCode.E)){
+
+
+        Physics2D.queriesStartInColliders = false;        
+        if (Player.hit.collider != null && Player.hit.collider.gameObject.tag == "Pushable" && Input.GetKeyDown(KeyCode.E)){
+            Player.box = Player.hit.collider.gameObject;
             playerSM.ChangeState(playerSM.pushpullState);
         }
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            playerSM.ChangeState(playerSM.jumpState);
+        
     }
 
     // Checks when player enters trigger collider
@@ -51,5 +61,11 @@ public class Grounded : BaseState {
         if(collider.tag == "Pushable")
             triggerRange = false;
     }
+
+    /*void OnDrawGizmos(){
+        horzInput = Input.GetAxis("Horizontal");
+		Gizmos.color = Color.yellow;
+		Gizmos.DrawLine(Player.transform.position, (Vector2)Player.transform.position + Vector2.right * Player.transform.localScale.x * Player.grabDistance);
+	}*/
 
 }
