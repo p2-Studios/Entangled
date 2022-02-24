@@ -25,4 +25,12 @@ public class IdleState : Grounded {
             playerSM.ChangeState(playerSM.moveState);   
     }
 
+    // Updates while player remains within trigger collider
+    public override void UpdateTrigger(Collider2D collider){
+        base.UpdateTrigger(collider);
+        if(collider.gameObject.tag == "Pushable"){
+            touchingBox = true;
+        }
+    }
+
 }

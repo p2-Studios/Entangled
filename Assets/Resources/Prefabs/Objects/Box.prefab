@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -4089886756227155985}
   - component: {fileID: 7226651018923950940}
   - component: {fileID: 6214380915014417968}
+  - component: {fileID: 337587139332161162}
   - component: {fileID: 860720563158253895}
   - component: {fileID: 110078431754699557}
   - component: {fileID: 4003671286207081375}
@@ -103,6 +104,32 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!61 &337587139332161162
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658916900905061304}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.35}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1, y: 0.35}
   m_EdgeRadius: 0
 --- !u!212 &860720563158253895
 SpriteRenderer:
@@ -196,7 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3703792065115831476}
   - component: {fileID: 4543347856570728976}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}

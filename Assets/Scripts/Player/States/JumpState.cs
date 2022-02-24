@@ -8,14 +8,14 @@ using UnityEngine;
 // Currently there is no air pivoting, player remains on trajectory when jumping
 // Jump relies on ground layer, meaning that the floor they jump off has to have their layer as ground.
 // This helps in State change detection
-public class JumpState : BaseState {
+public class JumpState : Grounded {
 
-    private PlayerStateMachine playerSM;
+    //private PlayerStateMachine playerSM;
     
     private bool grounded;
     private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
  
-    private float horzInput;
+    //private float horzInput;
 
     public JumpState(PlayerStateMachine playerStateMachine,Player player) : base("Jumping", playerStateMachine,player){
         playerSM = (PlayerStateMachine)playerStateMachine;
@@ -30,6 +30,7 @@ public class JumpState : BaseState {
         horzInput = 0f;
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.y += Player.jumpForce;
+        velocity.x = 0;
         Player.rigidbody.velocity = velocity;
     }
 
@@ -46,9 +47,11 @@ public class JumpState : BaseState {
         base.UpdatePhysics();
         grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && Player.rigidbody.IsTouchingLayers(groundLayer);
         
-        Vector2 velocity = Player.rigidbody.velocity;
-        velocity.x = horzInput * Player.speed;
-        Player.rigidbody.velocity = velocity;
+        if(!haltMovement){
+            Vector2 velocity = Player.rigidbody.velocity;
+            velocity.x = horzInput * Player.speed;
+            Player.rigidbody.velocity = velocity;
+        }
     }
 
 }

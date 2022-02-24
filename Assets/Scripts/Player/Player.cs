@@ -49,7 +49,6 @@ public class Player : MonoBehaviour {
 
     public void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Platform")) {
-            stateMachine.ChangeState(stateMachine.idleState);   // set state to idle
             transform.parent = other.gameObject.transform;      // set parent of player to platform so player doesn't slide
         }
     }
