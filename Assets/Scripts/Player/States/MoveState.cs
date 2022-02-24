@@ -25,7 +25,7 @@ public class MoveState : Grounded {
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
         if (Mathf.Abs(horzInput) < Mathf.Epsilon)
-            playerStateMachine.ChangeState(playerSM.idleState);  
+            playerStateMachine.ChangeState(playerSM.idleState); 
     }
 
     // Apply velocity to player for movement
