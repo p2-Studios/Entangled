@@ -123,16 +123,6 @@ public class Entanglable : MonoBehaviour {
     public bool IsPassive() {
         return (entangled && passive);
     }
-    
-    /// <summary>
-    /// Checks if the object is in contact with a ground
-    /// </summary>
-    /// <returns>true if the object is on the ground</returns>
-    public bool IsGrounded() {
-        //Collider2D collider = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);  // check for contact with ground layer
-        //return (collider != null);
-        return true;
-    }
 
     /// <summary>
     /// Destroys the object (currently, destroyed = set as inactive)
@@ -152,19 +142,15 @@ public class Entanglable : MonoBehaviour {
         gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
     }
     
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.collider.gameObject.layer != LayerMask.NameToLayer("Ground")) {
-            if (entangled && active) {
-                ApplyVelocity(ComputeTotalImpulse(collision));
-            }
+    private void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.CompareTag("Platform")) {    // object on platform
+                transform.parent = col.gameObject.transform;      // set parent to platform so object doesn't slide
         }
     }
     
-    private void OnCollisionStay2D(Collision2D collision) {
-        if (collision.collider.gameObject.layer != LayerMask.NameToLayer("Ground")) {
-            if (entangled && active) {
-                ApplyVelocity(ComputeTotalImpulse(collision));
-            }
+    private void OnTriggerExit2D(Collider2D col) {
+        if (col.gameObject.CompareTag("Platform")) {    // object leaving platform
+            transform.parent = null;
         }
     }
 
