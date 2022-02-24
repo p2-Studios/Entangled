@@ -12,6 +12,8 @@ namespace Environment {
         
         public Activator[] activators;			// -- array of activators, REQUIRED to set the activators manually! --
 
+        private ArrayList inRange;           // array of gameobjects within the fan's range
+        
         private BoxCollider2D airCollider;
         private Transform airVisualTransform;
         private GameObject fanBase, airVisual;
@@ -42,6 +44,8 @@ namespace Environment {
             foreach (Activator a in activators) {
                 AddActivator(a);
             }
+
+            inRange = new ArrayList();
             
             if (startEnabled) { Activate(); } else { Deactivate();}
         }
@@ -55,6 +59,12 @@ namespace Environment {
             fanBaseAnimator.speed = fanBaseAnimatorSpeed;
             airVisualAnimator.speed = airVisualAnimatorSpeed;
             airVisual.SetActive(true);  // enable visual effect
+
+            // nudge any objects that are on the fan, so they trigger the collider events
+            foreach (GameObject obj in inRange) {
+                Rigidbody2D rb = obj.GetComponent <Rigidbody2D>();
+                if (!rb.Equals(null)) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 0.1f);
+            }
         }
 
         /// <summary>
@@ -98,6 +108,7 @@ namespace Environment {
         // it leaves the trigger area. This makes it stay at the top of the fan's reach without bouncing a few times 
         // before coming to an equilibrium
         private void OnTriggerExit2D(Collider2D other) {
+            inRange.Remove(other.gameObject);
             if (!IsActivated()) return;
             if (!transform.rotation.Equals(Quaternion.identity)) return;    // only when fan is vertical
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
@@ -109,6 +120,7 @@ namespace Environment {
         // apply a force equal to the object's mass when it enters the collider
         // this balances the force of gravity and keeps it floating on top of the fan
         private void OnTriggerEnter2D(Collider2D other) {
+            inRange.Add(other.gameObject);
             if (!IsActivated()) return;
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
             if (rb.Equals(null)) return;
