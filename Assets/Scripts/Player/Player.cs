@@ -15,6 +15,8 @@ public class Player : MonoBehaviour {
     private EntangleComponent entangleComponent;
     PlayerStateMachine stateMachine;
 
+    private Vector2 position, previousPosition, worldVelocity;  // worldVelocity information
+    
     private float horzInput;
 
     private void Start(){
@@ -25,8 +27,12 @@ public class Player : MonoBehaviour {
         stateMachine.Initialize(this);
     }
 
-    private void Update(){
-
+    private void Update() {
+        if (gameObject.transform.parent != null) {  // update world velocity while attached to a parent object
+            position = transform.position;
+            worldVelocity = (position - previousPosition) / Time.deltaTime;
+            previousPosition = position;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
@@ -38,6 +44,7 @@ public class Player : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Platform")) {
             transform.parent = null;
+            rigidbody.velocity += worldVelocity;    // add the velocity of the parent when leaving
         }
     }
 }

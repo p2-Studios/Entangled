@@ -29,8 +29,8 @@ public class JumpState : BaseState {
 
         horzInput = 0f;
         Vector2 velocity = Player.rigidbody.velocity;
-        velocity.y += Player.jumpForce;
-        Player.rigidbody.velocity = velocity;
+        velocity.y = Player.jumpForce;
+        Player.rigidbody.velocity += velocity;
     }
 
     // Switch states if grounded

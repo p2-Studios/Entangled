@@ -27,7 +27,7 @@ public class Entanglable : MonoBehaviour {
     
     // force data
     private Vector2 velocity;                   // list of queued forces
-    private Vector3 previousPosition;
+    private Vector3 position, previousPosition;
     public float maxVelocity = 20.0f;
     private Boolean velocityUpdate;
 
@@ -71,9 +71,9 @@ public class Entanglable : MonoBehaviour {
             } else { // check if the object has a parent object that's moving
                 var parent = rb.transform.parent;
                 if (!(parent == null)) {    // has a parent object, so calculate the object's absolute velocity
-                    var pos = transform.position;
-                    Vector3 worldVelocity = (pos - previousPosition) / Time.deltaTime;
-                    previousPosition = pos;
+                    position = transform.position;
+                    Vector3 worldVelocity = (position - previousPosition) / Time.deltaTime;
+                    previousPosition = position;
                     if (!(worldVelocity.Equals(Vector2.zero))) {    // if absolute velocity > 0, apply
                         velocityManager.ActiveMoved(this, worldVelocity * rb.mass);
                     }
