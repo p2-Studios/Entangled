@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2395512945159371215}
   - component: {fileID: 1179570672933547168}
   - component: {fileID: 2929565098432119083}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boulder
   m_TagString: Pushable
   m_Icon: {fileID: 0}
@@ -105,6 +105,7 @@ MonoBehaviour:
     m_Bits: 0
   respawnable: 1
   respawnTime: 3
+  maxVelocity: 20
 --- !u!50 &2395512945159371215
 Rigidbody2D:
   serializedVersion: 4

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6214380915014417968}
   - component: {fileID: 860720563158253895}
   - component: {fileID: 5681962272437823888}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Box
   m_TagString: Pushable
   m_Icon: {fileID: 0}
@@ -76,6 +76,7 @@ MonoBehaviour:
     m_Bits: 64
   respawnable: 1
   respawnTime: 3
+  maxVelocity: 20
 --- !u!61 &6214380915014417968
 BoxCollider2D:
   m_ObjectHideFlags: 0

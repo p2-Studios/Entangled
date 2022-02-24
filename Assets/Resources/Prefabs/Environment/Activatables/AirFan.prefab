@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 5
   range: 4
+  activators: []
+  startEnabled: 1
 --- !u!61 &1296416925560699591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -159,7 +161,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1296416925560699590}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b54e2551c4b738f46a1fbf0b1f0a27bd, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
