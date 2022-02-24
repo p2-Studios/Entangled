@@ -9,7 +9,7 @@ using UnityEngine;
 // Contains Player's variables and states
 public class PlayerStateMachine : MonoBehaviour {
 
-    BaseState currentState;
+    public BaseState currentState;
 
     // States
     public IdleState idleState;

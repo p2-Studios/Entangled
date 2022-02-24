@@ -37,7 +37,6 @@ public class JumpState : BaseState {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
-        Debug.Log("HERE");
         if(grounded)
             playerSM.ChangeState(playerSM.idleState);
     }
