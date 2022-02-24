@@ -13,7 +13,6 @@ public class IdleState : Grounded {
 
     public override void Enter(){
         base.Enter();
-        triggerRange = false;
         horzInput = 0f;
         Player.spriteRenderer.color = Color.black;  // For testing purposes, will be used later for player animations
     }

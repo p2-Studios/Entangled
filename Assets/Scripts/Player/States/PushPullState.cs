@@ -16,9 +16,9 @@ public class PushPullState : BaseState {
     // Enter calls
     public override void Enter(){
         base.Enter();
-        Player.box.GetComponent<FixedJoint2D>().enabled = true;
-        Player.box.GetComponent<FixedJoint2D>().connectedBody = Player.rigidbody;
-        Player.box.GetComponent<BoxPull>().beingPushed = true;
+        Player.pushedObject.GetComponent<FixedJoint2D>().enabled = true;
+        Player.pushedObject.GetComponent<FixedJoint2D>().connectedBody = Player.rigidbody;
+        Player.pushedObject.GetComponent<BoxPull>().beingPushed = true;
 
         horzInput = 0f;
         Player.spriteRenderer.color = Color.red;  // For testing purposes, will be used later for player animations
@@ -31,8 +31,8 @@ public class PushPullState : BaseState {
 
         // Let go of object
         if (Input.GetKeyDown(KeyCode.E)){
-            Player.box.GetComponent<FixedJoint2D>().enabled = false;
-			Player.box.GetComponent<BoxPull>().beingPushed = false;
+            Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
+			Player.pushedObject.GetComponent<BoxPull>().beingPushed = false;
             playerSM.ChangeState(playerSM.idleState);
         }
     }

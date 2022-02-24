@@ -12,19 +12,19 @@ public class Player : MonoBehaviour {
     public float jumpForce = 12f;
     public float grabDistance = 0.5f;
     public SpriteRenderer spriteRenderer;
+    public LayerMask pushMask;
+
+    private EntangleComponent entangleComponent;
+    PlayerStateMachine stateMachine;
 
     [HideInInspector]
-    public GameObject box;
+    public Entanglable pushedObject;
     [HideInInspector]
     public bool facingRight = true;
     [HideInInspector]
     public RaycastHit2D hit;
 
-    private EntangleComponent entangleComponent;
-    PlayerStateMachine stateMachine;
-
     private float horzInput;
-    
 
     private void Start(){
         // Initialize entangleComponent
@@ -42,9 +42,9 @@ public class Player : MonoBehaviour {
             facingRight = false;
 
         if(facingRight)
-            hit = Physics2D.Raycast(transform.position, Vector2.right, grabDistance);
+            hit = Physics2D.Raycast(transform.position, Vector2.right, grabDistance, pushMask);
         else
-            hit = Physics2D.Raycast(transform.position, Vector2.left, grabDistance);
+            hit = Physics2D.Raycast(transform.position, Vector2.left, grabDistance, pushMask);
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
