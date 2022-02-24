@@ -27,6 +27,7 @@ public class Entanglable : MonoBehaviour {
     
     // force data
     private Vector2 velocity;                   // list of queued forces
+    private Vector3 previousPosition;
     public float maxVelocity = 20.0f;
     private Boolean velocityUpdate;
 
@@ -67,6 +68,16 @@ public class Entanglable : MonoBehaviour {
             Vector2 vel = rb.velocity;
             if (!(vel.Equals(Vector2.zero))) {
                 velocityManager.ActiveMoved(this, vel * rb.mass);
+            } else { // check if the object has a parent object that's moving
+                var parent = rb.transform.parent;
+                if (!(parent == null)) {    // has a parent object, so calculate the object's absolute velocity
+                    var pos = transform.position;
+                    Vector3 worldVelocity = (pos - previousPosition) / Time.deltaTime;
+                    previousPosition = pos;
+                    if (!(worldVelocity.Equals(Vector2.zero))) {    // if absolute velocity > 0, apply
+                        velocityManager.ActiveMoved(this, worldVelocity * rb.mass);
+                    }
+                }
             }
         }
 
@@ -152,25 +163,5 @@ public class Entanglable : MonoBehaviour {
         if (col.gameObject.CompareTag("Platform")) {    // object leaving platform
             transform.parent = null;
         }
-    }
-
-    // from https://gamedev.stackexchange.com/questions/174710/unity2d-force-of-an-impact
-    /// <summary>
-    /// Calculate the total impulse force from a 2D collision
-    /// </summary>
-    /// <param name="collision"></param>
-    /// <returns></returns>
-    static Vector2 ComputeTotalImpulse(Collision2D collision) {
-        Vector2 impulse = Vector2.zero;
-
-        int contactCount = collision.contactCount;
-        for(int i = 0; i < contactCount; i++) {
-            var contact = collision.GetContact(0);
-            impulse += contact.normal * contact.normalImpulse;
-            impulse.x += contact.tangentImpulse * contact.normal.y;
-            impulse.y -= contact.tangentImpulse * contact.normal.x;
-        }
-
-        return impulse;
     }
 }
