@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Activation_System
@@ -6,15 +7,16 @@ namespace Activation_System
     public class Activatable : MonoBehaviour
     {
         [SerializeField] private ArrayList activators; // this is only required if we choose to keep 'requireAllActivators'
-        private bool activated;
+        protected bool activated;
         private bool requireAllActivators; // TODO: Keep 'requireAllActivators'? 
-        
+        public bool activateByDefault;
 
         public Activatable()
         {
             activators = new ArrayList();
-            activated = false;
+            activated = activateByDefault;
             requireAllActivators = false;
+            if (activated) Activate();
         }
 
         public virtual void AddActivator(Activator activator)

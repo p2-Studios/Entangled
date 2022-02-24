@@ -55,7 +55,6 @@ namespace Environment {
         /// </summary>
         public override void Activate() {
             base.Activate();            // call the parent activate function to handle general activation stuff
-            Debug.Log("Activating");
             fanBaseAnimator.speed = fanBaseAnimatorSpeed;
             airVisualAnimator.speed = airVisualAnimatorSpeed;
             airVisual.SetActive(true);  // enable visual effect
@@ -72,7 +71,6 @@ namespace Environment {
         /// </summary>
         public override void Deactivate() {
             base.Deactivate();          // call the parent deactivate function to handle general deactivation stuff
-            Debug.Log("Deactivating");
             fanBaseAnimator.speed = 0;  // stop fan animation
             airVisual.SetActive(false); // disable visual effect
         }
