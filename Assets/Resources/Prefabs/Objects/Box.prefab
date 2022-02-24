@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6214380915014417968}
   - component: {fileID: 860720563158253895}
   - component: {fileID: 110078431754699557}
+  - component: {fileID: 4003671286207081375}
   m_Layer: 6
   m_Name: Box
   m_TagString: Pushable
@@ -172,6 +173,19 @@ FixedJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_DampingRatio: 0
   m_Frequency: 0
+--- !u!114 &4003671286207081375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658916900905061304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bde751ad56010f44ba07f48c51149b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beingPushed: 0
 --- !u!1 &8040473390515467866
 GameObject:
   m_ObjectHideFlags: 0
