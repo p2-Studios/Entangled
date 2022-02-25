@@ -13,26 +13,39 @@ public class DialogueManager : MonoBehaviour {
     
     public Animator animator;   // animator for text box animation
 
-    private Boolean inDialogue, typing; // state booleans
+    public Boolean starting, inDialogue, typing; // state booleans
     
     private Queue<string> sentences;    // queue of sentences to display, one at a time
     private string currentSentence;
     
     void Start() {
         sentences = new Queue<string>();
-        inDialogue = typing = false;
+        starting = inDialogue = typing = false;
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.F)) {
+            if (inDialogue) {
+                DisplayNextSentence();
+            }
+        }
     }
 
     public void StartDialogue(Dialogue dialogue) {
+        starting = true;
         animator.SetBool("IsOpen", true);   // set animator flag to show box
         
         sentences.Clear();  // clear sentences possibly left over from previous dialogue
 
-        foreach (string sentence in dialogue.sentences) {   // load each sentences from the dialogue
+        foreach (string sentence in dialogue.sentences) {
+            // load each sentences from the dialogue
             sentences.Enqueue(sentence);
         }
-        nameText.text = "> " + dialogue.name; // set dialogue name
 
+        StartCoroutine(TypeTitle(dialogue.name)); // type out the dialogue title/program name
+        
+        starting = false;
+        
         inDialogue = true;
         DisplayNextSentence();  // display first sentence
     }
@@ -42,7 +55,9 @@ public class DialogueManager : MonoBehaviour {
         inDialogue = false;
     }
     
+    // displays the next sentence, or skips typing the current sentence
     public void DisplayNextSentence() {
+        if (starting) return;
         if (typing) {   // next sentence triggered before typing finished, display full line
             StopAllCoroutines();
             dialogueText.text = "> " + currentSentence;
@@ -60,13 +75,23 @@ public class DialogueManager : MonoBehaviour {
         StartCoroutine(TypeSentence(currentSentence));
     }
 
+    // Types the body of a sentence onto the screen
     IEnumerator TypeSentence(string sentence) {
         typing = true;
         dialogueText.text = "> "; // start with no text
-        foreach (char letter in sentence.ToCharArray()) { // type each letter one-by-one
+        foreach (char letter in sentence) { // type each letter one-by-one
             dialogueText.text += letter;
             yield return new WaitForSecondsRealtime(typingSpeed);
         }
         typing = false;
+    }
+    
+    // Types the title/program name
+    IEnumerator TypeTitle(string name) {
+        nameText.text = "> "; // start with no text
+        foreach (char letter in name) { // type each letter one-by-one
+            nameText.text += letter;
+            yield return new WaitForSecondsRealtime(typingSpeed/2);
+        }
     }
 }
