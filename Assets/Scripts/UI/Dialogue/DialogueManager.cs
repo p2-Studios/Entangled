@@ -41,15 +41,27 @@ public class DialogueManager : MonoBehaviour {
             // load each sentences from the dialogue
             sentences.Enqueue(sentence);
         }
-
-        StartCoroutine(TypeTitle(dialogue.name)); // type out the dialogue title/program name
-        
-        starting = false;
         
         inDialogue = true;
-        DisplayNextSentence();  // display first sentence
+        dialogueText.text = ""; // clear old dialogue text
+        StartCoroutine(TypeTitle(dialogue.name)); // type out the dialogue title/program name
     }
 
+    // Types the title/program name
+    IEnumerator TypeTitle(string name) {
+        nameText.text = "> "; // start with no text
+        foreach (char letter in name) { // type each letter one-by-one
+            nameText.text += letter;
+            yield return new WaitForSecondsRealtime(typingSpeed);
+        }
+
+        yield return new WaitForSecondsRealtime(0.3f);  // slight delay after title is typed
+        
+        starting = false;       // starting setup is finished
+        DisplayNextSentence();  // display first sentence
+    }
+    
+    // ends the dialogue, removing it from the screen and setting flags appropriately
     public void EndDialogue() {
         animator.SetBool("IsOpen", false);  // set animator flag to hide text box
         inDialogue = false;
@@ -84,14 +96,5 @@ public class DialogueManager : MonoBehaviour {
             yield return new WaitForSecondsRealtime(typingSpeed);
         }
         typing = false;
-    }
-    
-    // Types the title/program name
-    IEnumerator TypeTitle(string name) {
-        nameText.text = "> "; // start with no text
-        foreach (char letter in name) { // type each letter one-by-one
-            nameText.text += letter;
-            yield return new WaitForSecondsRealtime(typingSpeed/2);
-        }
     }
 }
