@@ -71,6 +71,7 @@ namespace Environment {
             base.Deactivate();          // call the parent deactivate function to handle general deactivation stuff
             fanBaseAnimator.speed = 0;  // stop fan animation
             airVisual.SetActive(false); // disable visual effect
+            inRange.Clear();            // clear all in range objects
         }
 
         public override void ToggleState() {
