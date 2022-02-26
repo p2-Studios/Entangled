@@ -54,6 +54,11 @@ MonoBehaviour:
     source: {fileID: 0}
     volume: 0.695
     pitch: 0.1
+  - name: toggleswitch_toggle
+    clip: {fileID: 8300000, guid: 4ed234b6384acc7469d1cf998e6cc75b, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 1
   - name: text_scroll
     clip: {fileID: 8300000, guid: 4e0dae3d124e1b747a41201544923f8e, type: 3}
     source: {fileID: 0}

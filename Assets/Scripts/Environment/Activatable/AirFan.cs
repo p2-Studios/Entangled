@@ -19,8 +19,6 @@ namespace Environment {
         private GameObject fanBase, airVisual;
         private Animator fanBaseAnimator, airVisualAnimator;
 
-        public Boolean startEnabled = true;
-
         private float fanBaseAnimatorSpeed, airVisualAnimatorSpeed;
         
         /// <summary>
@@ -46,8 +44,8 @@ namespace Environment {
             }
 
             inRange = new ArrayList();
-            
-            if (startEnabled) { Activate(); } else { Deactivate();}
+
+            if (activateByDefault) { Activate(); } else { Deactivate();}
         }
 
         /// <summary>

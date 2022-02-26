@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
+    public string triggerSound = "";    // optional sound to play when interacting
+    
     private Boolean inRange;
     private Transform indicator;
     void Start() {
@@ -36,5 +38,9 @@ public class Interactable : MonoBehaviour {
             inRange = false;
             indicator.gameObject.SetActive(false);
         }
+    }
+
+    protected void PlayInteractionSound() {
+        if (triggerSound.Length != 0) FindObjectOfType<AudioManager>().Play(triggerSound); // play trigger sound
     }
 }
