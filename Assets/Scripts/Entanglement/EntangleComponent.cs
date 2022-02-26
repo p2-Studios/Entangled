@@ -225,7 +225,6 @@ public class EntangleComponent : MonoBehaviour
     private void OnActiveMoved(Entanglable e, Vector2 force) {
         if (e == active) {
             foreach (Entanglable passive in passives) {  // Loop through passive objects and apply force
-                Debug.Log("OnActiveMoved applying velocity to " + passive.name);
                 passive.ApplyVelocity(force);
             }
         }
