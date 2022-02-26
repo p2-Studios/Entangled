@@ -189,8 +189,8 @@ GameObject:
   - component: {fileID: 5880884689359741017}
   - component: {fileID: 5880884689359741016}
   - component: {fileID: 5880884689359741022}
-  - component: {fileID: 5880884689359741023}
   - component: {fileID: 5880884689359741018}
+  - component: {fileID: 8682474248818682218}
   m_Layer: 0
   m_Name: Terminal
   m_TagString: Interactable
@@ -280,24 +280,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
---- !u!114 &5880884689359741023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5880884689359741021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c23d959f835ecc44badc1ff7160d7012, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: ./initialization.exe
-    sentences:
-    - This is a computer terminal that can display any amount of custom text.
-    - "Simply place this object somewhere and add lines of text to the array in Dialogue.\t\t"
-    - Your lines will show on the screen one at a time.
 --- !u!50 &5880884689359741018
 Rigidbody2D:
   serializedVersion: 4
@@ -319,3 +301,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &8682474248818682218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5880884689359741021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23d959f835ecc44badc1ff7160d7012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: ./initialization.exe
+    sentences:
+    - This is a computer terminal that can display any amount of custom text.
+    - "Simply place this object somewhere and add lines of text to the array in Dialogue.\t\t"
+    - Your lines will show on the screen one at a time.
+  triggerSound: 
