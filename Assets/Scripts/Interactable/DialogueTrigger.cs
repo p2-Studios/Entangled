@@ -13,6 +13,6 @@ public class DialogueTrigger : Interactable {
     protected override void Interact() {
         base.Interact();
         if (dialogueManager == null) dialogueManager = FindObjectOfType<DialogueManager>();
-        if (!dialogueManager.inDialogue) Trigger();
+        if (!dialogueManager.inDialogue && !dialogueManager.closing) Trigger();
     }
 }

@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour {
     
     public Animator animator;   // animator for text box animation
 
-    public Boolean starting, inDialogue, typing; // state booleans
+    public Boolean starting, inDialogue, typing, closing; // state booleans
     
     private Queue<string> sentences;    // queue of sentences to display, one at a time
     private string currentSentence;
@@ -65,6 +65,13 @@ public class DialogueManager : MonoBehaviour {
     public void EndDialogue() {
         animator.SetBool("IsOpen", false);  // set animator flag to hide text box
         inDialogue = false;
+        closing = true;
+        StartCoroutine(CloseDialogue());
+    }
+    
+    IEnumerator CloseDialogue() {
+        yield return new WaitForEndOfFrame();
+        closing = false;
     }
     
     // displays the next sentence, or skips typing the current sentence
