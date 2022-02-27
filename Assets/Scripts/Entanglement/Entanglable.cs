@@ -115,4 +115,18 @@ public class Entanglable : MonoBehaviour
         gameObject.SetActive(true);                                         // re-enable the object
         gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
     }
+
+    /// <summary>
+    /// When the mouse hovers over an Entanglable, changes cursor texture (calls MouseHover class)
+    /// </summary>
+    public void OnMouseEnter() {
+        MouseHover.instance.Clickable();
+    }
+
+    /// <summary>
+    /// When the mouse leaves an Entanglable, changes cursor texture (calls MouseHover class)
+    /// </summary>
+    public void OnMouseExit() {
+        MouseHover.instance.Default();
+    }
 }
