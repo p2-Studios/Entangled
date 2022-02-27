@@ -35,6 +35,7 @@ namespace Activation_System
 		}
 		
 		void OnTriggerEnter2D(Collider2D col) {
+			if (col.gameObject.CompareTag("Terrain")) return;
 			obj_mass.Add(col,col.gameObject.GetComponent<Rigidbody2D>().mass);				// The sum of all mass on the pressure pad
 			
 			obj_stacked.Add(col,null);
@@ -55,6 +56,7 @@ namespace Activation_System
 		
 		
 		void OnTriggerStay2D(Collider2D col) {
+			if (col.gameObject.CompareTag("Terrain")) return;
 			float sumOfMass = 0.0f;
 			
 			obj_stacked[col] = new ArrayList();
@@ -89,6 +91,7 @@ namespace Activation_System
 		}
 		
 		void OnTriggerExit2D(Collider2D col) {
+			if (col.gameObject.CompareTag("Terrain")) return;
 			obj_mass.Remove(col);															// Remove from dictionary since no longer on pad
 			obj_stacked.Remove(col);
 			
