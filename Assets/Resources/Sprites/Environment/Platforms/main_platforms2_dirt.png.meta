@@ -1,7 +1,502 @@
 fileFormatVersion: 2
 guid: f0d1f2495c251324db637739fa7c3d61
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2865602853479095408
+    second: main_platforms2_dirt_0
+  - first:
+      213: 8937928772605961056
+    second: main_platforms2_dirt_1
+  - first:
+      213: -4063537538984711064
+    second: main_platforms2_dirt_2
+  - first:
+      213: 598743309501317576
+    second: main_platforms2_dirt_3
+  - first:
+      213: -6697347929449696885
+    second: main_platforms2_dirt_4
+  - first:
+      213: 1435448682483530762
+    second: main_platforms2_dirt_5
+  - first:
+      213: -1886918707568251531
+    second: main_platforms2_dirt_6
+  - first:
+      213: 5978333839056962979
+    second: main_platforms2_dirt_7
+  - first:
+      213: -8122919319314436226
+    second: main_platforms2_dirt_8
+  - first:
+      213: -3128390672816772066
+    second: main_platforms2_dirt_9
+  - first:
+      213: 4762254724201536123
+    second: main_platforms2_dirt_10
+  - first:
+      213: -3899411564645778941
+    second: main_platforms2_dirt_11
+  - first:
+      213: -7062427647035049319
+    second: main_platforms2_dirt_12
+  - first:
+      213: -8044840283976746114
+    second: main_platforms2_dirt_13
+  - first:
+      213: 7536028619336832918
+    second: main_platforms2_dirt_14
+  - first:
+      213: -5360657386070065624
+    second: main_platforms2_dirt_15
+  - first:
+      213: 715068099234548300
+    second: main_platforms2_dirt_16
+  - first:
+      213: -3792531910874531675
+    second: main_platforms2_dirt_17
+  - first:
+      213: -7215020353604502056
+    second: main_platforms2_dirt_18
+  - first:
+      213: 8221233616141543718
+    second: main_platforms2_dirt_19
+  - first:
+      213: 4025646341710404956
+    second: main_platforms2_dirt_20
+  - first:
+      213: 7817328056145573581
+    second: main_platforms2_dirt_21
+  - first:
+      213: 2794533201647710474
+    second: main_platforms2_dirt_22
+  - first:
+      213: 7302910558777949293
+    second: main_platforms2_dirt_23
+  - first:
+      213: -2919702666792461373
+    second: main_platforms2_dirt_24
+  - first:
+      213: -2684914533810693350
+    second: main_platforms2_dirt_25
+  - first:
+      213: 8424897111865083856
+    second: main_platforms2_dirt_26
+  - first:
+      213: -6225428937726810221
+    second: main_platforms2_dirt_27
+  - first:
+      213: 2808385112700398094
+    second: main_platforms2_dirt_28
+  - first:
+      213: -228030684542872412
+    second: main_platforms2_dirt_29
+  - first:
+      213: -2346351129698925434
+    second: main_platforms2_dirt_30
+  - first:
+      213: 2495351666454494593
+    second: main_platforms2_dirt_31
+  - first:
+      213: -1300646881557646154
+    second: main_platforms2_dirt_32
+  - first:
+      213: -8428227165947991853
+    second: main_platforms2_dirt_33
+  - first:
+      213: 9221704760715607666
+    second: main_platforms2_dirt_34
+  - first:
+      213: -8968400647500664506
+    second: main_platforms2_dirt_35
+  - first:
+      213: -1808441744279334951
+    second: main_platforms2_dirt_36
+  - first:
+      213: 280073036162885986
+    second: main_platforms2_dirt_37
+  - first:
+      213: 2354577610687198871
+    second: main_platforms2_dirt_38
+  - first:
+      213: -999659186400919198
+    second: main_platforms2_dirt_39
+  - first:
+      213: 2726968022534791654
+    second: main_platforms2_dirt_40
+  - first:
+      213: 111209074156370820
+    second: main_platforms2_dirt_41
+  - first:
+      213: 1917218544239956663
+    second: main_platforms2_dirt_42
+  - first:
+      213: 2283881057508770498
+    second: main_platforms2_dirt_43
+  - first:
+      213: -5216418113007987780
+    second: main_platforms2_dirt_44
+  - first:
+      213: 89851619055827341
+    second: main_platforms2_dirt_45
+  - first:
+      213: -2852769835334282224
+    second: main_platforms2_dirt_46
+  - first:
+      213: -1334119871921487686
+    second: main_platforms2_dirt_47
+  - first:
+      213: -4363677545835670301
+    second: main_platforms2_dirt_48
+  - first:
+      213: -58602023429130642
+    second: main_platforms2_dirt_49
+  - first:
+      213: 2032387726514971796
+    second: main_platforms2_dirt_50
+  - first:
+      213: 2558456547351393875
+    second: main_platforms2_dirt_51
+  - first:
+      213: -5810696117800360899
+    second: main_platforms2_dirt_52
+  - first:
+      213: 413659206927774237
+    second: main_platforms2_dirt_53
+  - first:
+      213: 6111074564960701819
+    second: main_platforms2_dirt_54
+  - first:
+      213: -2022937654951310858
+    second: main_platforms2_dirt_55
+  - first:
+      213: 8481320283579535927
+    second: main_platforms2_dirt_56
+  - first:
+      213: 551513817078050056
+    second: main_platforms2_dirt_57
+  - first:
+      213: -662271688474762869
+    second: main_platforms2_dirt_58
+  - first:
+      213: 5096253204413886532
+    second: main_platforms2_dirt_59
+  - first:
+      213: 612963609469270226
+    second: main_platforms2_dirt_60
+  - first:
+      213: -7430032240421814572
+    second: main_platforms2_dirt_61
+  - first:
+      213: 6039123413604227097
+    second: main_platforms2_dirt_62
+  - first:
+      213: 8087234428440642995
+    second: main_platforms2_dirt_63
+  - first:
+      213: -7189788626278238503
+    second: main_platforms2_dirt_64
+  - first:
+      213: 7373367201702979882
+    second: main_platforms2_dirt_65
+  - first:
+      213: -6512590710302342834
+    second: main_platforms2_dirt_66
+  - first:
+      213: -7699948384909616510
+    second: main_platforms2_dirt_67
+  - first:
+      213: -1178725658631536319
+    second: main_platforms2_dirt_68
+  - first:
+      213: -1284347244589118839
+    second: main_platforms2_dirt_69
+  - first:
+      213: 3063765439032699037
+    second: main_platforms2_dirt_70
+  - first:
+      213: 6791034080703029723
+    second: main_platforms2_dirt_71
+  - first:
+      213: -339375615515014305
+    second: main_platforms2_dirt_72
+  - first:
+      213: -7140163053795088671
+    second: main_platforms2_dirt_73
+  - first:
+      213: -1363932262202481781
+    second: main_platforms2_dirt_74
+  - first:
+      213: -1476352594967565243
+    second: main_platforms2_dirt_75
+  - first:
+      213: -6012745224158412474
+    second: main_platforms2_dirt_76
+  - first:
+      213: 4281801434326600610
+    second: main_platforms2_dirt_77
+  - first:
+      213: -805647030554295167
+    second: main_platforms2_dirt_78
+  - first:
+      213: 1179888193699735793
+    second: main_platforms2_dirt_79
+  - first:
+      213: 5551383653512379480
+    second: main_platforms2_dirt_80
+  - first:
+      213: -3081499509840905201
+    second: main_platforms2_dirt_81
+  - first:
+      213: 1862859552373163604
+    second: main_platforms2_dirt_82
+  - first:
+      213: -3846260716609067392
+    second: main_platforms2_dirt_83
+  - first:
+      213: 5500247760047626311
+    second: main_platforms2_dirt_84
+  - first:
+      213: -5923477811974363961
+    second: main_platforms2_dirt_85
+  - first:
+      213: 2131812463624681673
+    second: main_platforms2_dirt_86
+  - first:
+      213: 2175800796413243346
+    second: main_platforms2_dirt_87
+  - first:
+      213: -7354839223090219608
+    second: main_platforms2_dirt_88
+  - first:
+      213: -6525222006858028524
+    second: main_platforms2_dirt_89
+  - first:
+      213: -7642308508423476005
+    second: main_platforms2_dirt_90
+  - first:
+      213: 5844518259368551053
+    second: main_platforms2_dirt_91
+  - first:
+      213: 2173770796520326964
+    second: main_platforms2_dirt_92
+  - first:
+      213: 1920234044737963505
+    second: main_platforms2_dirt_93
+  - first:
+      213: 2267046520265774541
+    second: main_platforms2_dirt_94
+  - first:
+      213: 1371076990851793417
+    second: main_platforms2_dirt_95
+  - first:
+      213: 3430873705150266826
+    second: main_platforms2_dirt_96
+  - first:
+      213: 1496889148825366283
+    second: main_platforms2_dirt_97
+  - first:
+      213: 56006117379041629
+    second: main_platforms2_dirt_98
+  - first:
+      213: -3986589861001171689
+    second: main_platforms2_dirt_99
+  - first:
+      213: 7446717575094152926
+    second: main_platforms2_dirt_100
+  - first:
+      213: 4481999572498745337
+    second: main_platforms2_dirt_101
+  - first:
+      213: 3451054315839272881
+    second: main_platforms2_dirt_102
+  - first:
+      213: 1564914796993048889
+    second: main_platforms2_dirt_103
+  - first:
+      213: 2842415788031971050
+    second: main_platforms2_dirt_104
+  - first:
+      213: -202833419526771887
+    second: main_platforms2_dirt_105
+  - first:
+      213: -9187364440781806380
+    second: main_platforms2_dirt_106
+  - first:
+      213: 2872122304741654754
+    second: main_platforms2_dirt_107
+  - first:
+      213: 6574806709060145786
+    second: main_platforms2_dirt_108
+  - first:
+      213: -2397091997595590211
+    second: main_platforms2_dirt_109
+  - first:
+      213: 8887867302980106131
+    second: main_platforms2_dirt_110
+  - first:
+      213: -2661200809711608951
+    second: main_platforms2_dirt_111
+  - first:
+      213: -3994029780593515301
+    second: main_platforms2_dirt_112
+  - first:
+      213: 7435520455680697083
+    second: main_platforms2_dirt_113
+  - first:
+      213: -7844782523435030172
+    second: main_platforms2_dirt_114
+  - first:
+      213: 6052119134603911945
+    second: main_platforms2_dirt_115
+  - first:
+      213: 8113424333201560378
+    second: main_platforms2_dirt_116
+  - first:
+      213: 546129579372829136
+    second: main_platforms2_dirt_117
+  - first:
+      213: -6122178649400600737
+    second: main_platforms2_dirt_118
+  - first:
+      213: 3140498522218638058
+    second: main_platforms2_dirt_119
+  - first:
+      213: 2309493864775333299
+    second: main_platforms2_dirt_120
+  - first:
+      213: 6110141246517033022
+    second: main_platforms2_dirt_121
+  - first:
+      213: 6483153899329901319
+    second: main_platforms2_dirt_122
+  - first:
+      213: -3883274644883410107
+    second: main_platforms2_dirt_123
+  - first:
+      213: 4366960447685919420
+    second: main_platforms2_dirt_124
+  - first:
+      213: -5030032159737691311
+    second: main_platforms2_dirt_125
+  - first:
+      213: 7318134935796514131
+    second: main_platforms2_dirt_126
+  - first:
+      213: 1490535409858344934
+    second: main_platforms2_dirt_127
+  - first:
+      213: 4231922873638143050
+    second: main_platforms2_dirt_128
+  - first:
+      213: 3049168401933223395
+    second: main_platforms2_dirt_129
+  - first:
+      213: -3699853432121635777
+    second: main_platforms2_dirt_130
+  - first:
+      213: 3008490890870230514
+    second: main_platforms2_dirt_131
+  - first:
+      213: -57401198077128246
+    second: main_platforms2_dirt_132
+  - first:
+      213: -3664621884869507077
+    second: main_platforms2_dirt_133
+  - first:
+      213: -6358939926486741998
+    second: main_platforms2_dirt_134
+  - first:
+      213: -3162581848101420699
+    second: main_platforms2_dirt_135
+  - first:
+      213: 6259093645647511488
+    second: main_platforms2_dirt_136
+  - first:
+      213: 470270044205595331
+    second: main_platforms2_dirt_137
+  - first:
+      213: -8514372518758268487
+    second: main_platforms2_dirt_138
+  - first:
+      213: -3291461685394607061
+    second: main_platforms2_dirt_139
+  - first:
+      213: -7975168870353486760
+    second: main_platforms2_dirt_140
+  - first:
+      213: -1991451993018994974
+    second: main_platforms2_dirt_141
+  - first:
+      213: 2210432023536460222
+    second: main_platforms2_dirt_142
+  - first:
+      213: 3677131909368481664
+    second: main_platforms2_dirt_143
+  - first:
+      213: -5292185951358116932
+    second: main_platforms2_dirt_144
+  - first:
+      213: 157926743545959304
+    second: main_platforms2_dirt_145
+  - first:
+      213: 6010380957019088564
+    second: main_platforms2_dirt_146
+  - first:
+      213: -6949582990731854439
+    second: main_platforms2_dirt_147
+  - first:
+      213: 2995496223419081162
+    second: main_platforms2_dirt_148
+  - first:
+      213: 5615303006909519705
+    second: main_platforms2_dirt_149
+  - first:
+      213: -4845460047817550349
+    second: main_platforms2_dirt_150
+  - first:
+      213: 8121061653811236002
+    second: main_platforms2_dirt_151
+  - first:
+      213: -2800816948742594811
+    second: main_platforms2_dirt_152
+  - first:
+      213: -118130504923985428
+    second: main_platforms2_dirt_153
+  - first:
+      213: -8966462191162342339
+    second: main_platforms2_dirt_154
+  - first:
+      213: -3985609420868169878
+    second: main_platforms2_dirt_155
+  - first:
+      213: 8230879601187964764
+    second: main_platforms2_dirt_156
+  - first:
+      213: 4094629594941784326
+    second: main_platforms2_dirt_157
+  - first:
+      213: 1331922979215657632
+    second: main_platforms2_dirt_158
+  - first:
+      213: 6085037710535812884
+    second: main_platforms2_dirt_159
+  - first:
+      213: 3199840492930033283
+    second: main_platforms2_dirt_160
+  - first:
+      213: 7661711291359683272
+    second: main_platforms2_dirt_161
+  - first:
+      213: -1705323029127418996
+    second: main_platforms2_dirt_162
+  - first:
+      213: -2508480769479648517
+    second: main_platforms2_dirt_163
+  - first:
+      213: -8362530199051866303
+    second: main_platforms2_dirt_164
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -46,7 +541,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 192
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -89,7 +584,931 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: main_platforms2_dirt_0
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 698
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 093680b23655b38d0800000000000000
+      internalID: -2865602853479095408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 698
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 063ebee0dd6e90c70800000000000000
+      internalID: 8937928772605961056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 698
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86ce959432a6b97c0800000000000000
+      internalID: -4063537538984711064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 698
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c1c7722ed92f4800800000000000000
+      internalID: 598743309501317576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_4
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 698
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b81f3ffca8d3e03a0800000000000000
+      internalID: -6697347929449696885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_5
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 698
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0cbbbca8fcbbe310800000000000000
+      internalID: 1435448682483530762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 602
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57dea5bce6150d5e0800000000000000
+      internalID: -1886918707568251531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 602
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a500b9b3fe47f250800000000000000
+      internalID: 5978333839056962979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_8
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 602
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7fea198ae7954f80800000000000000
+      internalID: -8122919319314436226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 602
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1c6c1c0249b594d0800000000000000
+      internalID: -3128390672816772066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_10
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 602
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7a55fda07de61240800000000000000
+      internalID: 4762254724201536123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_11
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 602
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30afc3887d182e9c0800000000000000
+      internalID: -3899411564645778941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_12
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 602
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99af39e29773dfd90800000000000000
+      internalID: -7062427647035049319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_13
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 602
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7b30d6926cfa5090800000000000000
+      internalID: -8044840283976746114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 602
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 697dfb80a1a559860800000000000000
+      internalID: 7536028619336832918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_15
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 602
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82e38b4628e1b95b0800000000000000
+      internalID: -5360657386070065624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 506
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4ac61dc5ae6ce900800000000000000
+      internalID: 715068099234548300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_17
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 506
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a87dfc12583e5bc0800000000000000
+      internalID: -3792531910874531675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_18
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 506
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ddb03817391fdb90800000000000000
+      internalID: -7215020353604502056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_19
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 506
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 629ed997a60b71270800000000000000
+      internalID: 8221233616141543718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_20
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 506
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5ddffcd408fdd730800000000000000
+      internalID: 4025646341710404956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_21
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 506
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc67047f27abc7c60800000000000000
+      internalID: 7817328056145573581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 410
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a013f3d042d28c620800000000000000
+      internalID: 2794533201647710474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_23
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 410
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6cb862f576295560800000000000000
+      internalID: 7302910558777949293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 410
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cb1310d4e12b77d0800000000000000
+      internalID: -2919702666792461373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_25
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 410
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1b1eefe4744dbad0800000000000000
+      internalID: -2684914533810693350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_26
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 410
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d7cee5494f3be470800000000000000
+      internalID: 8424897111865083856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 410
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3972b586d55da99a0800000000000000
+      internalID: -6225428937726810221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_28
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 314
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0aa00b616369f620800000000000000
+      internalID: 2808385112700398094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_29
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 314
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a4dee1fc4fd5dcf0800000000000000
+      internalID: -228030684542872412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_30
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 314
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68485fb3416107fd0800000000000000
+      internalID: -2346351129698925434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_31
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 314
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18df2b4ae1541a220800000000000000
+      internalID: 2495351666454494593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_32
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 314
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b479866d8c23fde0800000000000000
+      internalID: -1300646881557646154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_33
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 314
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d86f571c0ce80b80800000000000000
+      internalID: -8428227165947991853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_34
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 218
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27e7bf50f931aff70800000000000000
+      internalID: 9221704760715607666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_35
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 218
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 641f652b027d98380800000000000000
+      internalID: -8968400647500664506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_36
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 122
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9df0e3ba0df17e6e0800000000000000
+      internalID: -1808441744279334951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_37
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 122
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26967a741f403e300800000000000000
+      internalID: 280073036162885986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_38
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 122
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7963911acd32da020800000000000000
+      internalID: 2354577610687198871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_39
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 122
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2610e12344f7022f0800000000000000
+      internalID: -999659186400919198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_40
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 26
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e12909e7f228d520800000000000000
+      internalID: 2726968022534791654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_41
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 26
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48bf3e050181b8100800000000000000
+      internalID: 111209074156370820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_42
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 26
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b2d63eab145b9a10800000000000000
+      internalID: 1917218544239956663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: main_platforms2_dirt_43
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 26
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c2cd06a8b9f1bf10800000000000000
+      internalID: 2283881057508770498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
