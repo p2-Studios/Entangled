@@ -11,10 +11,10 @@ using UnityEngine;
 public class JumpState : BaseState {
 
     private PlayerStateMachine playerSM;
-    
+
     private bool grounded;
     private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
- 
+
     private float horzInput;
 
     public JumpState(PlayerStateMachine playerStateMachine,Player player) : base("Jumping", playerStateMachine,player){
@@ -29,8 +29,9 @@ public class JumpState : BaseState {
 
         horzInput = 0f;
         Vector2 velocity = Player.rigidbody.velocity;
-        velocity.y = Player.jumpForce;
-        Player.rigidbody.velocity += velocity;
+        velocity.y += Player.jumpForce;
+        velocity.x = 0;
+        Player.rigidbody.velocity = velocity;
     }
 
     // Switch states if grounded
@@ -45,10 +46,11 @@ public class JumpState : BaseState {
     public override void UpdatePhysics(){
         base.UpdatePhysics();
         grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && Player.rigidbody.IsTouchingLayers(groundLayer);
-        
+
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
+
     }
 
 }

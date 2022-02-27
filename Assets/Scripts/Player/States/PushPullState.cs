@@ -6,9 +6,7 @@ public class PushPullState : BaseState {
 
     protected private PlayerStateMachine playerSM;
     private float horzInput;
-    private Entanglable obj;
-    private bool pulling;
-    
+    private int groundLayer = 1 << 6;
 
     // Constructor
     public PushPullState(PlayerStateMachine playerStateMachine,Player player) : base("Pulling", playerStateMachine, player){
@@ -19,7 +17,9 @@ public class PushPullState : BaseState {
     // Enter calls
     public override void Enter(){
         base.Enter();
-        pulling = true;
+        Player.pushedObject.GetComponent<FixedJoint2D>().enabled = true;
+        Player.pushedObject.GetComponent<FixedJoint2D>().connectedBody = Player.rigidbody;
+
         horzInput = 0f;
         Player.spriteRenderer.color = Color.red;  // For testing purposes, will be used later for player animations
     }
@@ -28,53 +28,33 @@ public class PushPullState : BaseState {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
-        // Jump while push/pull
-        if (Input.GetKeyDown(KeyCode.Space)){
-            playerSM.ChangeState(playerSM.jumpState);
-        }
+
         // Let go of object
-        if (Input.GetKeyDown(KeyCode.E))
-            pulling = false;
-        // return to idle
-        if (!pulling)
+        if (Input.GetKeyDown(KeyCode.E)){
+            Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
             playerSM.ChangeState(playerSM.idleState);
+        }
     }
 
     // Apply velocity to player for movement
     public override void UpdatePhysics(){
         base.UpdatePhysics();
+        // if player ends up off ground while pull/pushing then break 
+        if(!Player.rigidbody.IsTouchingLayers(groundLayer)){
+            Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
+            playerSM.ChangeState(playerSM.idleState);
+        }
+
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
-        if(obj != null){
-            Vector2 pushForce = new Vector2(velocity.x,0f);
-            obj.ApplyVelocity(pushForce);
-        }
     }
     
-    // Detect if player is colliding with objects
-    public override void UpdateTrigger(Collider2D collider){
-        base.UpdateTrigger(collider);
-        if (collider.gameObject.tag == "Pushable"){
-            obj = collider.gameObject.GetComponent<Entanglable>();
-        }
-        else{
-            obj = null;
-        }
-    }
-
-    // Detect if player is disconected for triggercollider
-    public override void ExitTrigger(Collider2D collider){
-        if (collider.gameObject.tag == "Pushable"){
-            pulling = false;
-        }
-    }
 
     // Exit calls (make sure variables don't remain)
-    public override void Exit()
-    {
-        obj = null;
+    public override void Exit(){
         base.Exit();
+        Player.pushedObject = null;
     }
 }
 

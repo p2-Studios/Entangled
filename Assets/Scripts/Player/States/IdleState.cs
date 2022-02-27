@@ -8,14 +8,11 @@ using UnityEngine;
 // Inherits Grounded state
 public class IdleState : Grounded {
 
-    private float horzInput;
-
     // Constructor
     public IdleState(PlayerStateMachine playerSM,Player player) : base("Idle", playerSM, player){}
 
     public override void Enter(){
         base.Enter();
-        triggerRange = false;
         horzInput = 0f;
         Player.spriteRenderer.color = Color.black;  // For testing purposes, will be used later for player animations
     }
@@ -26,6 +23,14 @@ public class IdleState : Grounded {
         horzInput = Input.GetAxis("Horizontal");
         if (Mathf.Abs(horzInput) > Mathf.Epsilon)
             playerSM.ChangeState(playerSM.moveState);   
+    }
+
+    // Updates while player remains within trigger collider
+    public override void UpdateTrigger(Collider2D collider){
+        base.UpdateTrigger(collider);
+        if(collider.gameObject.tag == "Pushable"){
+            touchingBox = true;
+        }
     }
 
 }
