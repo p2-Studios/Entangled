@@ -26,17 +26,25 @@ public class Interactable : MonoBehaviour {
     protected virtual void Interact() {
     }
 
+    protected virtual void OnRangeEnter() {
+        inRange = true;
+        indicator.gameObject.SetActive(true);
+    }
+
+    protected virtual void OnRangeExit() {
+        inRange = false;
+        indicator.gameObject.SetActive(false);
+    }
+    
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
-            inRange = true;
-            indicator.gameObject.SetActive(true);
+            OnRangeEnter();
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
-            inRange = false;
-            indicator.gameObject.SetActive(false);
+            OnRangeExit();
         }
     }
 
