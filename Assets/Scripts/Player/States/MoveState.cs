@@ -7,15 +7,14 @@ using UnityEngine;
 // Player movement state (for left and right inputs)
 public class MoveState : Grounded {
 
-    private float horzInput;
     private bool pushRange;
-
 
     // Constructor
     public MoveState(PlayerStateMachine playerSM,Player player) : base("Moving", playerSM, player){}
 
     public override void Enter(){
         base.Enter();
+        touchingBox = false; 
         horzInput = 0f;
         Player.spriteRenderer.color = Color.green;  // For testing purposes, will be used later for player animations
     }
@@ -31,11 +30,20 @@ public class MoveState : Grounded {
     // Apply velocity to player for movement
     public override void UpdatePhysics(){
         base.UpdatePhysics();
-        Vector2 velocity = Player.rigidbody.velocity;
-        velocity.x = horzInput * Player.speed;
-        Player.rigidbody.velocity = velocity;
+        if(!haltMovement){
+            Vector2 velocity = Player.rigidbody.velocity;
+            velocity.x = horzInput * Player.speed;
+            Player.rigidbody.velocity = velocity;
+        }
     }
 
+    // Updates while player remains within trigger collider
+    public override void UpdateTrigger(Collider2D collider){
+        base.UpdateTrigger(collider);
+        if(collider.gameObject.tag == "Pushable"){
+            touchingBox = true;
+        }
+    }
 
     
 }

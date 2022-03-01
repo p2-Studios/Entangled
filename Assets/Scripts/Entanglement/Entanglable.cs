@@ -20,7 +20,7 @@ public class Entanglable : MonoBehaviour {
     public bool respawnable = true;     // object respawns after being destroyed, true by default
     public float respawnTime = 3.0f;    // how long it should take the object to respawn after being destroyed, 3.0s by default
     private bool destroyed;             // object is currently destroyed
-    private bool respawning;            // object is currently respawning
+    //private bool respawning;            // object is currently respawning
 
     // entanglement states
     private bool entangled, active, passive;
@@ -39,7 +39,7 @@ public class Entanglable : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();       // get the Rigidbody2D component of the object
 
         entangled = passive = active 
-            = destroyed = respawning = false;   // new object is not entangled, destroyed, or respawning
+            = destroyed = false;   // new object is not entangled, destroyed, or respawning
 
         velocity = Vector2.zero;
         velocityUpdate = false;
@@ -153,7 +153,7 @@ public class Entanglable : MonoBehaviour {
         gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
     }
     
-    private void OnCollisionEnter2D(Collision2D col) {
+    private void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Platform")) {    // object on platform
                 transform.parent = col.gameObject.transform;      // set parent to platform so object doesn't slide
         }

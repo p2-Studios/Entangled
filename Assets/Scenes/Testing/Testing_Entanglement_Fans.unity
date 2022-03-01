@@ -142,6 +142,14 @@ PrefabInstance:
       propertyPath: m_LinearDrag
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 110078431754699557, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -3.0920796
+      objectReference: {fileID: 0}
+    - target: {fileID: 110078431754699557, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -3.9514344
+      objectReference: {fileID: 0}
     - target: {fileID: 658916900905061304, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
       propertyPath: m_Name
       value: Unentangled
@@ -190,7 +198,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5681962272437823888, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5681962272437823888, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
 --- !u!1001 &465361726
 PrefabInstance:
@@ -287,6 +300,14 @@ PrefabInstance:
     - target: {fileID: -4089886756227155985, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 110078431754699557, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 5.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 110078431754699557, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -3.8968375
       objectReference: {fileID: 0}
     - target: {fileID: 658916900905061304, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
       propertyPath: m_Name
@@ -567,6 +588,14 @@ PrefabInstance:
       propertyPath: m_LinearDrag
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 110078431754699557, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 110078431754699557, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -3.9514344
+      objectReference: {fileID: 0}
     - target: {fileID: 658916900905061304, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
       propertyPath: m_Name
       value: Active
@@ -835,6 +864,14 @@ PrefabInstance:
     - target: {fileID: 7929462300034805085, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929462300034805086, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
+      propertyPath: grabDistance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929462300034805086, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
+      propertyPath: boxMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}

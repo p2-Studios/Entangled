@@ -10,14 +10,22 @@ public class Player : MonoBehaviour {
     public new Rigidbody2D rigidbody;
     public float speed = 6f;
     public float jumpForce = 12f;
+    public float grabDistance = 0.5f;
     public SpriteRenderer spriteRenderer;
+    public LayerMask pushMask;
 
     private EntangleComponent entangleComponent;
     PlayerStateMachine stateMachine;
 
     private Vector2 position, previousPosition;
     public Vector2 worldVelocity;  // worldVelocity information
-    
+
+    [HideInInspector]
+    public Entanglable pushedObject;
+    [HideInInspector]
+    public bool facingRight = true;
+    [HideInInspector]
+    public RaycastHit2D hit;
     private float horzInput;
 
     private void Start(){
@@ -28,7 +36,7 @@ public class Player : MonoBehaviour {
         stateMachine.Initialize(this);
     }
 
-    private void Update() {
+    private void Update(){
         if (gameObject.transform.parent != null) {  // update world velocity while attached to a parent object
             position = transform.position;
             worldVelocity = (position - previousPosition) / Time.deltaTime;
@@ -36,11 +44,21 @@ public class Player : MonoBehaviour {
         } else {
             worldVelocity = Vector2.zero;
         }
+
+        horzInput = Input.GetAxisRaw("Horizontal");
+        if (horzInput > 0f)
+            facingRight = true;
+        else if (horzInput < 0f)
+            facingRight = false;
+
+        if(facingRight)
+            hit = Physics2D.Raycast(transform.position, Vector2.right, grabDistance, pushMask);
+        else
+            hit = Physics2D.Raycast(transform.position, Vector2.left, grabDistance, pushMask);
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Platform")) {
-            stateMachine.ChangeState(stateMachine.idleState);   // set state to idle
             transform.parent = other.gameObject.transform;      // set parent of player to platform so player doesn't slide
         }
     }
@@ -49,4 +67,13 @@ public class Player : MonoBehaviour {
             transform.parent = null;
         }
     }
+
+    void OnDrawGizmos(){
+		Gizmos.color = Color.yellow;
+        if (facingRight)
+            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.right *  grabDistance);
+        else
+            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.left * grabDistance);
+	}
+
 }

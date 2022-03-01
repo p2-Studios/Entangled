@@ -16,31 +16,31 @@ namespace Activation_System
             activationManager = ActivationManager.GetInstance();
         }
 
-        public void Activate()
+        public virtual void Activate()
         {
             activated = true;
             activationManager.OnActivate(this);
         }
 
-        public void Activate(float timer)
+        public virtual void Activate(float timer)
         {
             // TODO: wait for timer
             Activate();
         }
 
-        public void Deactivate()
+        public virtual void Deactivate()
         {
             activated = false;
             activationManager.OnDeactivate(this);
         }
 
-        public void Deactivate(float timer)
+        public virtual void Deactivate(float timer)
         {
             // TODO: wait for timer
             Deactivate();
         }
         
-        public void ToggleState()
+        public virtual void ToggleState()
         {
             activated = !activated;
             if (activated)
@@ -49,7 +49,7 @@ namespace Activation_System
                 activationManager.OnDeactivate(this);
         }
         
-        public void ToggleState(float timer)
+        public virtual void ToggleState(float timer)
         {
             // TODO: Wait for timer
             ToggleState();

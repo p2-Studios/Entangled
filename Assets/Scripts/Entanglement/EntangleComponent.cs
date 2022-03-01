@@ -11,6 +11,7 @@ public class EntangleComponent : MonoBehaviour
 {
     public Entanglable active;
     public List <Entanglable> passives;
+    LayerMask entangleMask;
 
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class EntangleComponent : MonoBehaviour
     {
         passives = new List <Entanglable>();
         VelocityManager.GetInstance().onActiveMoved += OnActiveMoved;
+        entangleMask = LayerMask.GetMask("Ground");
     }
 
     // Update is called once per frame
@@ -29,7 +31,7 @@ public class EntangleComponent : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
             if (hit.collider != null)      // If one object is clicked, all objects get the click input. This is to prevent multiple selection
             {
                 if (active == hit.collider.gameObject.GetComponent<Entanglable>())
@@ -112,7 +114,7 @@ public class EntangleComponent : MonoBehaviour
             else
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
+                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
                 if (hit.collider !=
                     null) // If one object is clicked, all objects get the click input. This is to prevent multiple selection
                 {
@@ -225,7 +227,6 @@ public class EntangleComponent : MonoBehaviour
     private void OnActiveMoved(Entanglable e, Vector2 force) {
         if (e == active) {
             foreach (Entanglable passive in passives) {  // Loop through passive objects and apply force
-                Debug.Log("OnActiveMoved applying velocity to " + passive.name);
                 passive.ApplyVelocity(force);
             }
         }

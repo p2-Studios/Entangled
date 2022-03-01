@@ -17,10 +17,13 @@ public class DialogueManager : MonoBehaviour {
     
     private Queue<string> sentences;    // queue of sentences to display, one at a time
     private string currentSentence;
+
+    private AudioManager audioManager;
     
     void Start() {
         sentences = new Queue<string>();
         starting = inDialogue = typing = false;
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Update() {
@@ -52,6 +55,7 @@ public class DialogueManager : MonoBehaviour {
         nameText.text = "> "; // start with no text
         foreach (char letter in name) { // type each letter one-by-one
             nameText.text += letter;
+            audioManager.Play("text_scroll");
             yield return new WaitForSecondsRealtime(typingSpeed);
         }
 
@@ -100,6 +104,7 @@ public class DialogueManager : MonoBehaviour {
         dialogueText.text = "> "; // start with no text
         foreach (char letter in sentence) { // type each letter one-by-one
             dialogueText.text += letter;
+            audioManager.Play("text_scroll");
             yield return new WaitForSecondsRealtime(typingSpeed);
         }
         typing = false;
