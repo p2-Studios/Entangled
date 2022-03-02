@@ -23,7 +23,7 @@ public class MoveState : Grounded {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
-        if (Mathf.Abs(horzInput) < Mathf.Epsilon)
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
             playerStateMachine.ChangeState(playerSM.idleState); 
     }
 
