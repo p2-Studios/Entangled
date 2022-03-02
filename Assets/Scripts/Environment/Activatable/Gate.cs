@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Activation_System
-{
-    public class Gate : Activatable
-    {
+namespace Activation_System {
+    public class Gate : Activatable {
+
+	    public string openSound, closeSound;
+	    
         public Activator[] activators;			// -- array of activators, REQUIRED to set the activators manually! --
-		
+        
+        
 		// Animation variables
 		private Animator gateAnimator;
 		private float timer = 0.1f;				// timer when gate moves
@@ -43,11 +45,13 @@ namespace Activation_System
 		void setOpen() {
 			active = true;
 			gate.enabled = false;
+			if (openSound.Length != 0) FindObjectOfType<AudioManager>().Play(openSound); // play opening sound
 		}
 		
 		void setClose() {
 			active = false;
 			gate.enabled = true;
+			if (closeSound.Length != 0) FindObjectOfType<AudioManager>().Play(closeSound); // play closing sound
 		}
 
 		void FixedUpdate() {							// NOTE: OnTrigger event is timed on FixedUpdate

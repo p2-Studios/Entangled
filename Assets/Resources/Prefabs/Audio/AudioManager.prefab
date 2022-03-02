@@ -50,12 +50,37 @@ MonoBehaviour:
     volume: 0.695
     pitch: 0.1
   - name: toggleswitch_toggle
-    clip: {fileID: 8300000, guid: 4ed234b6384acc7469d1cf998e6cc75b, type: 3}
+    clip: {fileID: 8300000, guid: c3a814487bd279d4cb19fbf6d904661d, type: 3}
     source: {fileID: 0}
-    volume: 0.2
+    volume: 0.053
     pitch: 1
   - name: text_scroll
     clip: {fileID: 8300000, guid: 4e0dae3d124e1b747a41201544923f8e, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 1
+  - name: object_entangled
+    clip: {fileID: 8300000, guid: 62d2028050aef9a4fb79999da74a4087, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
+    pitch: 0.9
+  - name: gate_open
+    clip: {fileID: 8300000, guid: 8d10dce21ad257d488275c8e2db56cbb, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 1.2
+  - name: gate_close
+    clip: {fileID: 8300000, guid: 8d10dce21ad257d488275c8e2db56cbb, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 0.8
+  - name: movement_jump
+    clip: {fileID: 8300000, guid: 0ffa3ba7d88e0fd4fb941651f94267d5, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 1
+  - name: movement_run
+    clip: {fileID: 8300000, guid: 3c0e8755f13ff5f42b12fb9d6ba2f394, type: 3}
     source: {fileID: 0}
     volume: 0.2
     pitch: 1
