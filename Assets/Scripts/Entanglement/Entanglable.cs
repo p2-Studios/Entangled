@@ -181,4 +181,18 @@ public class Entanglable : MonoBehaviour {
             transform.parent = null;
         }
     }
+    
+    /// <summary>
+    /// When the mouse hovers over an Entanglable, changes cursor texture (calls MouseHover class)
+    /// </summary>
+    public void OnMouseEnter() {
+        MouseHover.instance.Clickable();
+    }
+
+    /// <summary>
+    /// When the mouse leaves an Entanglable, changes cursor texture (calls MouseHover class)
+    /// </summary>
+    public void OnMouseExit() {
+        MouseHover.instance.Default();
+    }
 }
