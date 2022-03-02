@@ -16,6 +16,10 @@ public class Entanglable : MonoBehaviour {
     public float checkGroundRadius = 0.05f;     // radius around the bottom of the object to check for the ground
     public LayerMask groundLayer;       // the layer type of the ground
 
+    // sprite stuff
+    public Sprite unentangledSprite, activeSprite, passiveSprite;
+    private SpriteRenderer spriteRenderer;
+    
     // object states
     public bool respawnable = true;     // object respawns after being destroyed, true by default
     public float respawnTime = 3.0f;    // how long it should take the object to respawn after being destroyed, 3.0s by default
@@ -24,7 +28,7 @@ public class Entanglable : MonoBehaviour {
 
     // entanglement states
     private bool entangled, active, passive;
-    
+
     // force data
     private Vector2 velocity;                   // list of queued forces
     private Vector3 position, previousPosition;
@@ -45,6 +49,8 @@ public class Entanglable : MonoBehaviour {
         velocityUpdate = false;
 
         velocityManager = VelocityManager.GetInstance();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
 
@@ -81,13 +87,14 @@ public class Entanglable : MonoBehaviour {
             }
         }
 
+        /*
         if (active)
             GetComponent<SpriteRenderer>().material.SetColor("_Color", new Color(255f/255f, 136f/255f, 220f/255f));
         if (passive)
             GetComponent<SpriteRenderer>().material.SetColor("_Color", new Color(250f/255f, 255f/255f, 127f/255f));
         if (!entangled)
             GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.white);
-
+        */
     }
     
     /// <summary>
@@ -99,6 +106,16 @@ public class Entanglable : MonoBehaviour {
         active = isActive;
         passive = isPassive;
         entangled = active || passive;
+
+        if (entangled) {
+            if (active) {
+                spriteRenderer.sprite = activeSprite;
+            } else {
+                spriteRenderer.sprite = passiveSprite;
+            }
+        } else {
+            spriteRenderer.sprite = unentangledSprite;
+        }
     }
 
     /// <summary>
