@@ -182,6 +182,7 @@ public class Entanglable : MonoBehaviour {
         }
     }
     
+    /*
     /// <summary>
     /// When the mouse hovers over an Entanglable, changes cursor texture (calls MouseHover class)
     /// </summary>
@@ -195,4 +196,5 @@ public class Entanglable : MonoBehaviour {
     public void OnMouseExit() {
         MouseHover.instance.Default();
     }
+    */
 }

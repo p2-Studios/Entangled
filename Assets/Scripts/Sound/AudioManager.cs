@@ -36,6 +36,7 @@ public class AudioManager : MonoBehaviour {
     public void Play(string soundName) {
         Sound s = FetchSound(soundName);
         if (s == null) return;
+        if (s.source == null) return;
         
         s.source.Play();
     }

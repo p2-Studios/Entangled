@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public void PlayGame() {
-        SceneManager.LoadScene("Testing_Level_Flow2");
+        SceneManager.LoadSceneAsync("Test_Puzzle_1");
     }
 
     public void QuitGame() {
-        Debug.Log("Quit)");
+        Debug.Log("Quit");
         Application.Quit();
     }
 }

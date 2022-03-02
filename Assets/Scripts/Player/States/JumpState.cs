@@ -30,7 +30,7 @@ public class JumpState : BaseState {
         base.Enter();
         
         playerSM.player.SetAnimatorState("jumping");
-        audioManager.Play("movement_jump");
+        //audioManager.Play("movement_jump");
 
         horzInput = 0f;
         Vector2 velocity = Player.rigidbody.velocity;
