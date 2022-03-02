@@ -11,6 +11,7 @@ public class BaseState {
     public string name;
     protected PlayerStateMachine playerStateMachine;
     protected Player Player;
+    protected private AudioManager audioManager;
 
     //Constructor, sets name and statemachine
     public BaseState(string name, PlayerStateMachine playerSM, Player player){

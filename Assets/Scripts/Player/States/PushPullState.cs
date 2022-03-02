@@ -9,8 +9,9 @@ public class PushPullState : BaseState {
     private int groundLayer = 1 << 6;
 
     // Constructor
-    public PushPullState(PlayerStateMachine playerStateMachine,Player player) : base("Pulling", playerStateMachine, player){
+    public PushPullState(PlayerStateMachine playerStateMachine,Player player,AudioManager audioManager) : base("Pulling", playerStateMachine, player){
         playerSM = (PlayerStateMachine)playerStateMachine;
+        this.audioManager = audioManager;
         Player = player;
     }
 
