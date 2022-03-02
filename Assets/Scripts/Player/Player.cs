@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
     PlayerStateMachine stateMachine;
 
     private Vector2 position, previousPosition;
+    [HideInInspector]
     public Vector2 worldVelocity;  // worldVelocity information
 
     [HideInInspector]
@@ -51,10 +52,14 @@ public class Player : MonoBehaviour {
         else if (horzInput < 0f)
             facingRight = false;
 
-        if(facingRight)
+        if (facingRight) {
             hit = Physics2D.Raycast(transform.position, Vector2.right, grabDistance, pushMask);
-        else
+            spriteRenderer.flipX = false;
+        }
+        else {
             hit = Physics2D.Raycast(transform.position, Vector2.left, grabDistance, pushMask);
+            spriteRenderer.flipX = true;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other) {

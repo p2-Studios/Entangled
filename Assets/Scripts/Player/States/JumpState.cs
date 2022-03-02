@@ -25,7 +25,7 @@ public class JumpState : BaseState {
     public override void Enter(){
         base.Enter();
 
-        Player.spriteRenderer.color = Color.cyan;   // For testing purposes, will be used later for player animations
+        //Player.spriteRenderer.color = Color.cyan;   // For testing purposes, will be used later for player animations
 
         horzInput = 0f;
         Vector2 velocity = Player.rigidbody.velocity;

@@ -14,7 +14,7 @@ public class IdleState : Grounded {
     public override void Enter(){
         base.Enter();
         horzInput = 0f;
-        Player.spriteRenderer.color = Color.black;  // For testing purposes, will be used later for player animations
+        //Player.spriteRenderer.color = Color.black;  // For testing purposes, will be used later for player animations
     }
 
     // Detect if horizontal input more than Epsilon (switch to move if true)
