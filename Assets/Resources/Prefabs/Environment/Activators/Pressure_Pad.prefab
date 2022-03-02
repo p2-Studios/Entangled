@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7028119987276673266}
   - component: {fileID: 5037080087348685282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: exterior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 9119957939663652726}
   - component: {fileID: 676457359787602008}
   - component: {fileID: 141605819340127873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pressure_Pad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
