@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Activation_System
@@ -13,6 +14,8 @@ namespace Activation_System
 		Dictionary<Collider2D, ArrayList> obj_stacked;					// store the object being stacked
 		
 		public Activatable[] activatables;								// -- array of activatables, REQUIRED to set the activatables manually! --
+		
+		public String[] triggerers;
 		
 		private BoxCollider2D padCollider;
 		
@@ -35,7 +38,7 @@ namespace Activation_System
 		}
 		
 		void OnTriggerEnter2D(Collider2D col) {
-			if (!col.gameObject.CompareTag("Pushable")) return;
+			if (!canTrigger(col.gameObject.tag)) return;
 			obj_mass.Add(col,col.gameObject.GetComponent<Rigidbody2D>().mass);				// The sum of all mass on the pressure pad
 			
 			obj_stacked.Add(col,null);
@@ -56,7 +59,7 @@ namespace Activation_System
 		
 		
 		void OnTriggerStay2D(Collider2D col) {
-			if (!col.gameObject.CompareTag("Pushable")) return;
+			if (!canTrigger(col.gameObject.tag)) return;
 			float sumOfMass = 0.0f;
 			
 			obj_stacked[col] = new ArrayList();
@@ -91,7 +94,7 @@ namespace Activation_System
 		}
 		
 		void OnTriggerExit2D(Collider2D col) {
-			if (!col.gameObject.CompareTag("Pushable")) return;
+			if (!canTrigger(col.gameObject.tag)) return;
 			obj_mass.Remove(col);															// Remove from dictionary since no longer on pad
 			obj_stacked.Remove(col);
 			
@@ -112,7 +115,6 @@ namespace Activation_System
 		
 		// Used to fetch list of stacking Game Objects
 		void get_objects(ArrayList obj_array, GameObject g) {
-			
 			foreach (KeyValuePair<Collider2D,ArrayList> kvp in obj_stacked) {
 				if (kvp.Value != null && kvp.Value.Contains(g)) {				// Excludes any object already seen
 					return;
@@ -138,6 +140,11 @@ namespace Activation_System
 				}
 			}
 		}
-		
+
+
+		// checks if the given tag is in the list of tags that can trigger the pressure pad
+		private Boolean canTrigger(String tag) {
+			return triggerers.Contains(tag);
+		}
     }
 }
