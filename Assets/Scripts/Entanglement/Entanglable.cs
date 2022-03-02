@@ -10,7 +10,7 @@ using UnityEngine;
 /// </summary>
 public class Entanglable : MonoBehaviour {
     // basic object physics data
-    private Rigidbody2D rb;             // rigidbody
+    protected Rigidbody2D rb;             // rigidbody
     //public Transform isGroundedChecker; // to check if the object is grounded
     public Transform respawnLocation;   // location that the object should respawn at when necessary
     public float checkGroundRadius = 0.05f;     // radius around the bottom of the object to check for the ground
@@ -18,25 +18,25 @@ public class Entanglable : MonoBehaviour {
 
     // sprite stuff
     public Sprite unentangledSprite, activeSprite, passiveSprite;
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
     
     // object states
     public bool respawnable = true;     // object respawns after being destroyed, true by default
     public float respawnTime = 3.0f;    // how long it should take the object to respawn after being destroyed, 3.0s by default
-    private bool destroyed;             // object is currently destroyed
+    protected bool destroyed;             // object is currently destroyed
     //private bool respawning;            // object is currently respawning
 
     // entanglement states
-    private bool entangled, active, passive;
+    protected bool entangled, active, passive;
 
     // force data
-    private Vector2 velocity;                   // list of queued forces
-    private Vector3 position, previousPosition;
+    protected Vector2 velocity;                   // list of queued forces
+    protected Vector3 position, previousPosition;
     public float maxVelocity = 20.0f;
-    private Boolean velocityUpdate;
+    protected Boolean velocityUpdate;
 
     // VelocityManager instance
-    private VelocityManager velocityManager;
+    protected VelocityManager velocityManager;
     
 
     void Start() {
@@ -123,7 +123,7 @@ public class Entanglable : MonoBehaviour {
     /// applied to the entanglable on the next frame. 
     /// </summary>
     /// <param name="vel">A Vector2 of the velocity to mirror.</param>
-    public void ApplyVelocity(Vector2 vel) {
+    public virtual void ApplyVelocity(Vector2 vel) {
         velocity = vel / rb.mass;
         velocityUpdate = true;
     }
