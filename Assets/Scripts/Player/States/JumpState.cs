@@ -62,7 +62,7 @@ public class JumpState : BaseState {
     {
         base.EnterCollision(collision);
         if(collision.gameObject.tag == "Pushable"){
-            Debug.Log("HEREREREREREREER");
+
         }
     }
 
@@ -70,7 +70,7 @@ public class JumpState : BaseState {
     {
         base.EnterCollision(collision);
         if(collision.gameObject.tag == "Pushable"){
-            Debug.Log("HEREREREREREREER");
+
         }
     }
 

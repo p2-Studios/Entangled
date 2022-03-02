@@ -23,9 +23,9 @@ public class IdleState : Grounded {
     // Detect if horizontal input more than Epsilon (switch to move if true)
     public override void UpdateLogic(){
         base.UpdateLogic();
-        horzInput = Input.GetAxis("Horizontal");    
-        if(Input.GetKeyDown(KeyCode.Space))
-            playerSM.ChangeState(playerSM.jumpState);
+        horzInput = Input.GetAxis("Horizontal");
+        if(haltMovement && Input.GetKeyDown(KeyCode.Space))
+            playerSM.ChangeState(playerSM.jumpState);    
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             playerSM.player.SetAnimatorState("running");
         if (Mathf.Abs(horzInput) > Mathf.Epsilon)
