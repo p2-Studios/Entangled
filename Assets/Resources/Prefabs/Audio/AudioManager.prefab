@@ -44,11 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    clip: {fileID: 0}
-    source: {fileID: 0}
-    volume: 0
-    pitch: 0
   - name: terminal_boot
     clip: {fileID: 8300000, guid: 4c257e2d20d02dd498e96922a059cf9b, type: 3}
     source: {fileID: 0}
