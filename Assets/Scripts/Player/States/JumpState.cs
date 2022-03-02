@@ -24,8 +24,8 @@ public class JumpState : BaseState {
     // upon entering state, apply upward velocity to achieve jump
     public override void Enter(){
         base.Enter();
-
-        //Player.spriteRenderer.color = Color.cyan;   // For testing purposes, will be used later for player animations
+        
+        playerSM.player.SetAnimatorState("jumping");
 
         horzInput = 0f;
         Vector2 velocity = Player.rigidbody.velocity;

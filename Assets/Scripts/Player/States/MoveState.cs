@@ -16,7 +16,7 @@ public class MoveState : Grounded {
         base.Enter();
         touchingBox = false; 
         horzInput = 0f;
-        //Player.spriteRenderer.color = Color.green;  // For testing purposes, will be used later for player animations
+        playerSM.player.SetAnimatorState("running");
     }
 
     // Detect if horizontal input less than Epsilon (switch to idle if true)
