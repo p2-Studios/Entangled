@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7028119987276673266}
   - component: {fileID: 5037080087348685282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: exterior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,11 +66,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7857249653893768226}
+  - component: {fileID: 2055432868760156917}
   - component: {fileID: 9119957939663652726}
   - component: {fileID: 676457359787602008}
   - component: {fileID: 141605819340127873}
-  - component: {fileID: 2055432868760156917}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Pressure_Pad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,6 +92,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2055432868760156917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8464821495594397937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d54f276fa14d28b24c94bfb2937cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredMass: 1
+  activatables: []
+  triggerers:
+  - Player
+  - Pushable
 --- !u!212 &9119957939663652726
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -188,17 +205,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.2}
   m_EdgeRadius: 0
---- !u!114 &2055432868760156917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8464821495594397937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70d54f276fa14d28b24c94bfb2937cef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  requiredMass: 1
-  activatables: []
