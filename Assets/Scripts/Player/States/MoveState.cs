@@ -19,6 +19,13 @@ public class MoveState : Grounded {
         touchingBox = false; 
         horzInput = 0f;
         playerSM.player.SetAnimatorState("running");
+        //if (!audioManager.IsLooping("movement_run"))    // don't start another loop if already looping sound
+        //    audioManager.StartLoopingSound("movement_run", 0.2f);
+    }
+
+    public override void Exit() {
+        base.Exit();
+        //audioManager.StopLoopingSound("movement_run");
     }
 
     // Detect if horizontal input less than Epsilon (switch to idle if true)
