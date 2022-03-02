@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c23d959f835ecc44badc1ff7160d7012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerSound: 
   dialogue:
     name: ./initialization.exe
     sentences:
@@ -233,7 +234,6 @@ MonoBehaviour:
     - "Simply place this object somewhere and add lines of text to the array in Dialogue.\t\t"
     - Your lines will show on the screen one at a time.
   animator: {fileID: 429289540591911158}
-  triggerSound: 
 --- !u!212 &5880884689359741016
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -271,8 +271,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 532046353
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 1152356169552002576, guid: f2e88dcf8cf846c4cb9d57098a16ec9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
