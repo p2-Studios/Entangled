@@ -14,6 +14,10 @@ public class MovingPlatform : Activatable {
     public Boolean stopAtEnd;                           // whether the platform should stop upon reaching posEnd, 
                                                         // or move back and forth
     private Vector2 nextPos;
+
+    private bool moving = true;
+    public float endDelay = 1.5f;
+    
     
     public Activator[] activators;			// -- array of activators, REQUIRED to set the activators manually! --
 
@@ -54,13 +58,17 @@ public class MovingPlatform : Activatable {
         if (activated) {    // only change nextPos while active
             if (transform.position == posStart.position) {
                 nextPos = posEnd.position;                   // start going to posEnd
+                if (moving) StartCoroutine(WaitAtDestination(endDelay));
+                transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
             } else if (transform.position == posEnd.position) {
                 if (!stopAtEnd) nextPos = posStart.position; // only go back to posStart if stopAtEnd is false
+                if (moving) StartCoroutine(WaitAtDestination(endDelay));
+                transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
             }
         }
 
         // move towards the next position, only move if activated or moving back to start
-        if (activated || stopAtEnd) {
+        if ((activated || stopAtEnd) && moving) {
             transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
         }
     }
@@ -68,5 +76,11 @@ public class MovingPlatform : Activatable {
     // draw lines between start and end in inspector
     private void OnDrawGizmos() {
         Gizmos.DrawLine(posStart.position, posEnd.position);
+    }
+
+    public IEnumerator WaitAtDestination(float time) {
+        moving = false;
+        yield return new WaitForSeconds(time);
+        moving = true;
     }
 }
