@@ -16,9 +16,12 @@ public class JumpState : BaseState {
     private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
 
     private float horzInput;
+    
+    protected private bool touchingBox;
 
     public JumpState(PlayerStateMachine playerStateMachine,Player player, AudioManager audioManager) : base("Jumping", playerStateMachine,player){
         playerSM = (PlayerStateMachine)playerStateMachine;
+        touchingBox = false;
         this.audioManager = audioManager;
     }
 
@@ -48,11 +51,27 @@ public class JumpState : BaseState {
     public override void UpdatePhysics(){
         base.UpdatePhysics();
         grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && Player.rigidbody.IsTouchingLayers(groundLayer);
-
+    
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
 
+    }
+
+    public override void EnterCollision(Collision2D collision)
+    {
+        base.EnterCollision(collision);
+        if(collision.gameObject.tag == "Pushable"){
+            Debug.Log("HEREREREREREREER");
+        }
+    }
+
+    public override void ExitCollision(Collision2D collision)
+    {
+        base.EnterCollision(collision);
+        if(collision.gameObject.tag == "Pushable"){
+            Debug.Log("HEREREREREREREER");
+        }
     }
 
 }

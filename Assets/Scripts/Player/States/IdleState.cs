@@ -22,9 +22,14 @@ public class IdleState : Grounded {
 
     // Detect if horizontal input more than Epsilon (switch to move if true)
     public override void UpdateLogic(){
-        base.UpdateLogic();    
+        base.UpdateLogic();
+        horzInput = Input.GetAxis("Horizontal");    
+        if(Input.GetKeyDown(KeyCode.Space))
+            playerSM.ChangeState(playerSM.jumpState);
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-            playerSM.ChangeState(playerSM.moveState);   
+            playerSM.player.SetAnimatorState("running");
+        if (Mathf.Abs(horzInput) > Mathf.Epsilon)
+            playerSM.ChangeState(playerSM.moveState);      
     }
 
     // Updates while player remains within trigger collider

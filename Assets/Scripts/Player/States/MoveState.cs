@@ -32,8 +32,12 @@ public class MoveState : Grounded {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-            playerStateMachine.ChangeState(playerSM.idleState); 
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D)){
+            playerSM.player.SetAnimatorState("idle");
+            //playerSM.ChangeState(playerSM.idleState);
+        }
+        if (Mathf.Abs(horzInput) < Mathf.Epsilon)
+            playerSM.ChangeState(playerSM.idleState);
     }
 
     // Apply velocity to player for movement

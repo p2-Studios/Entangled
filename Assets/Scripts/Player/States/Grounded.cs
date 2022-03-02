@@ -34,7 +34,7 @@ public class Grounded : BaseState {
             playerSM.ChangeState(playerSM.pushpullState);
         }
         // jump
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!haltMovement && Input.GetKeyDown(KeyCode.Space))
             playerSM.ChangeState(playerSM.jumpState);
     }
 
