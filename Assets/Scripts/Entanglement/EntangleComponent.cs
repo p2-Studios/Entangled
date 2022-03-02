@@ -151,6 +151,7 @@ public class EntangleComponent : MonoBehaviour
                                           active.name);
                                 hit.collider.gameObject.GetComponent<Entanglable>().SetEntanglementStates(false, true);
                                 passives.Add(hit.collider.gameObject.GetComponent<Entanglable>());
+                                FindObjectOfType<AudioManager>().Play("object_entangled");
                             }
                         }
                     }

@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 337587139332161162}
   - component: {fileID: 860720563158253895}
   - component: {fileID: 110078431754699557}
-  - component: {fileID: 4003671286207081375}
   m_Layer: 6
   m_Name: Box
   m_TagString: Pushable
@@ -76,6 +75,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  unentangledSprite: {fileID: 21300000, guid: b732c88b6c3986840b4cd5a80d17596e, type: 3}
+  activeSprite: {fileID: 21300000, guid: 6f04d53e9a89b924c8de6e3fb1ff5bd9, type: 3}
+  passiveSprite: {fileID: 21300000, guid: 4b2b845b744a24c45a826869cb00de1c, type: 3}
   respawnable: 1
   respawnTime: 3
   maxVelocity: 20
@@ -171,7 +173,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 79420a110ef703d4a802ef47c92c8329, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b732c88b6c3986840b4cd5a80d17596e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -197,22 +199,9 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -2.04, y: -0.06}
   m_DampingRatio: 0
   m_Frequency: 0
---- !u!114 &4003671286207081375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658916900905061304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bde751ad56010f44ba07f48c51149b51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beingPushed: 0
 --- !u!1 &8040473390515467866
 GameObject:
   m_ObjectHideFlags: 0

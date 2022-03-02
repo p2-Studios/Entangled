@@ -19,13 +19,14 @@ public class PlayerStateMachine : MonoBehaviour {
 
     public Player player;
 
-    public void Initialize(Player player){
+    public void Initialize(Player player) {
 
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
 
-        idleState = new IdleState(this,player);
-        moveState = new MoveState(this,player);
-        jumpState = new JumpState(this,player);
-        pushpullState = new PushPullState(this,player);
+        idleState = new IdleState(this,player,audioManager);
+        moveState = new MoveState(this,player,audioManager);
+        jumpState = new JumpState(this,player,audioManager);
+        pushpullState = new PushPullState(this,player,audioManager);
 
         this.player = player;
         

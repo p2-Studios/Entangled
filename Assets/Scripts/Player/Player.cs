@@ -91,7 +91,6 @@ public class Player : MonoBehaviour {
         // 2 = jumping
         // 3 = push/pull
         // 4 = destroyed
-        Debug.Log("setting user state to " + state);
         switch (state) {
             case "idle":
                 animator.SetInteger("State", 0);

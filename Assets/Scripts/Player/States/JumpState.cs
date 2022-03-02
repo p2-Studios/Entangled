@@ -17,8 +17,9 @@ public class JumpState : BaseState {
 
     private float horzInput;
 
-    public JumpState(PlayerStateMachine playerStateMachine,Player player) : base("Jumping", playerStateMachine,player){
+    public JumpState(PlayerStateMachine playerStateMachine,Player player, AudioManager audioManager) : base("Jumping", playerStateMachine,player){
         playerSM = (PlayerStateMachine)playerStateMachine;
+        this.audioManager = audioManager;
     }
 
     // upon entering state, apply upward velocity to achieve jump
@@ -26,6 +27,7 @@ public class JumpState : BaseState {
         base.Enter();
         
         playerSM.player.SetAnimatorState("jumping");
+        audioManager.Play("movement_jump");
 
         horzInput = 0f;
         Vector2 velocity = Player.rigidbody.velocity;

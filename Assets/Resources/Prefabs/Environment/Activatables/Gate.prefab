@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateByDefault: 0
+  openSound: gate_open
+  closeSound: gate_close
   activators: []
 --- !u!212 &3509673993890282041
 SpriteRenderer:

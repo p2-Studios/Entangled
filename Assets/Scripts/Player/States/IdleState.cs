@@ -9,7 +9,10 @@ using UnityEngine;
 public class IdleState : Grounded {
 
     // Constructor
-    public IdleState(PlayerStateMachine playerSM,Player player) : base("Idle", playerSM, player){}
+    public IdleState(PlayerStateMachine playerSM, Player player, AudioManager audioManager) : base("Idle", playerSM,
+        player) {
+        this.audioManager = audioManager;
+    }
 
     public override void Enter(){
         base.Enter();

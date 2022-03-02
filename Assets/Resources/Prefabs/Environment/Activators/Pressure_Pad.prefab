@@ -38,7 +38,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7782184891458434405}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: b54e2551c4b738f46a1fbf0b1f0a27bd, type: 2}
   m_IsTrigger: 0
@@ -55,8 +55,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.25}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.95, y: 0.25}
+  m_EdgeRadius: 0.02
 --- !u!1 &8464821495594397937
 GameObject:
   m_ObjectHideFlags: 0
