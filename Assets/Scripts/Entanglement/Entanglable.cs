@@ -55,7 +55,7 @@ public class Entanglable : MonoBehaviour {
     }
 
 
-    void Update() {
+    void FixedUpdate() {
         if (velocityUpdate) {       // mirror active object velocity
             Vector2 vel = rb.velocity;
             if (vel.x == 0) velocity.x += vel.x;

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
-{
+public class MainMenu : MonoBehaviour {
+
+    public string firstLevel;
     public void PlayGame() {
-        SceneManager.LoadSceneAsync("Test_Puzzle_1");
+        SceneManager.LoadSceneAsync(firstLevel);
     }
 
     public void QuitGame() {
