@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7929462300034805084}
   - component: {fileID: 7929462300034805080}
   - component: {fileID: 7411563505412239111}
-  - component: {fileID: 4582635569657728775}
+  - component: {fileID: 6269613174981301470}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -52,7 +52,7 @@ MonoBehaviour:
   jumpForce: 5
   grabDistance: 0.5
   spriteRenderer: {fileID: 7411563505412239111}
-  animator: {fileID: 4582635569657728775}
+  animator: {fileID: 6269613174981301470}
   pushMask:
     serializedVersion: 2
     m_Bits: 118
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &4582635569657728775
+--- !u!95 &6269613174981301470
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
