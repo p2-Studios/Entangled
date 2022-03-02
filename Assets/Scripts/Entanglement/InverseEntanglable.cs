@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class InverseEntanglable : Entanglable {
 
-    public override void ApplyVelocity(Vector2 vel) {
-        velocity = (-1 * vel) / rb.mass;
-        velocityUpdate = true;
+    public override void ApplyVelocity(Vector2 vel, bool fromActive) {
+        if (fromActive) {
+            velocity = (-1 * vel) / rb.mass;
+            velocityUpdate = true;
+        } else {
+            velocity = vel / rb.mass;
+            velocityUpdate = true;
+        }
     }
 }

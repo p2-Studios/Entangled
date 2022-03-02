@@ -118,12 +118,17 @@ public class Entanglable : MonoBehaviour {
         }
     }
 
+    public virtual void ApplyVelocity(Vector2 vel) {
+        ApplyVelocity(vel, true);
+    }
+    
     /// <summary>
     /// Apply a velocity to the entanglable.
     /// applied to the entanglable on the next frame. 
     /// </summary>
     /// <param name="vel">A Vector2 of the velocity to mirror.</param>
-    public virtual void ApplyVelocity(Vector2 vel) {
+    /// <param name="fromActive">Whether this velocity is being applied from an active object</param>
+    public virtual void ApplyVelocity(Vector2 vel, bool fromActive) {
         velocity = vel / rb.mass;
         velocityUpdate = true;
     }
