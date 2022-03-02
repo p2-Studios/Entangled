@@ -17,6 +17,8 @@ public class PlayerStateMachine : MonoBehaviour {
     public JumpState jumpState;
     public PushPullState pushpullState;
 
+    public Player player;
+
     public void Initialize(Player player){
 
 
@@ -25,6 +27,8 @@ public class PlayerStateMachine : MonoBehaviour {
         jumpState = new JumpState(this,player);
         pushpullState = new PushPullState(this,player);
 
+        this.player = player;
+        
         currentState = idleState;   
         if (currentState != null)
             currentState.Enter();

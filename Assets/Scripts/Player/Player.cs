@@ -12,12 +12,14 @@ public class Player : MonoBehaviour {
     public float jumpForce = 12f;
     public float grabDistance = 0.5f;
     public SpriteRenderer spriteRenderer;
+    public Animator animator;
     public LayerMask pushMask;
 
     private EntangleComponent entangleComponent;
     PlayerStateMachine stateMachine;
 
     private Vector2 position, previousPosition;
+    [HideInInspector]
     public Vector2 worldVelocity;  // worldVelocity information
 
     [HideInInspector]
@@ -51,10 +53,14 @@ public class Player : MonoBehaviour {
         else if (horzInput < 0f)
             facingRight = false;
 
-        if(facingRight)
+        if (facingRight) {
             hit = Physics2D.Raycast(transform.position, Vector2.right, grabDistance, pushMask);
-        else
+            spriteRenderer.flipX = false;
+        }
+        else {
             hit = Physics2D.Raycast(transform.position, Vector2.left, grabDistance, pushMask);
+            spriteRenderer.flipX = true;
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
@@ -76,4 +82,38 @@ public class Player : MonoBehaviour {
             Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.left * grabDistance);
 	}
 
+
+    // Sets the animator state (int) of the player's animator, to transition between animations
+    // author: Dakota
+    public void SetAnimatorState(String state) {
+        // 0 = idle
+        // 1 = running
+        // 2 = jumping
+        // 3 = push/pull
+        // 4 = destroyed
+        Debug.Log("setting user state to " + state);
+        switch (state) {
+            case "idle":
+                animator.SetInteger("State", 0);
+                break;
+            case "running":
+                animator.SetInteger("State", 1);
+                break;
+            case "jumping":
+                animator.SetInteger("State", 2);
+                break;
+            case "pushing":
+                animator.SetInteger("State", 3);
+                break;
+            case "pulling":
+                animator.SetInteger("State", 3);
+                break;
+            case "dying":
+                animator.SetInteger("State", 4);
+                break;
+            default:
+                Debug.LogWarning("Invalid player state set ('" + state + "')");
+                break;
+        }
+    }
 }
