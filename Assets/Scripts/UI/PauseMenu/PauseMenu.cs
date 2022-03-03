@@ -31,8 +31,14 @@ public class PauseMenu : MonoBehaviour
 	// Click Timer
 	private DateTime clickTime;
 	private bool buttonClick = false;
-	
-    // Start is called before the first frame update
+
+
+	private void Awake() {
+		// don't destroy pause menu when switching scenes
+		DontDestroyOnLoad(gameObject);
+	}
+
+	// Start is called before the first frame update
     void Start() {
         resume.onClick.AddListener(btnResume);
 		reset.onClick.AddListener(btnReset);
@@ -50,8 +56,11 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update() {
         if(Input.GetKeyDown(KeyCode.Escape)) {
-			menuState();
-		}
+	        if (SceneManager.GetActiveScene().buildIndex != 0) {
+		        // don't allow opening in main menu
+		        menuState();
+	        }
+        }
 		if (Input.GetMouseButton(0)) {
 			if (menu.activeSelf) {
 				// Fetch click location
@@ -102,12 +111,11 @@ public class PauseMenu : MonoBehaviour
 	// button reset.onclick function
 	void btnReset() {
 		// Check button is held on for atleast 2 seconds
-		if (System.DateTime.Now.Subtract(clickTime).TotalSeconds >= 2) {
-			Scene scene = SceneManager.GetActiveScene(); 
-			SceneManager.LoadScene(scene.name);
-			menuState();
-			buttonClick = false;
-		}
+		//if (System.DateTime.Now.Subtract(clickTime).TotalSeconds >= 2) {
+		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+		menuState();
+		buttonClick = false;
+		//}
 	}
 	
 	// button options.onclick function
@@ -132,7 +140,8 @@ public class PauseMenu : MonoBehaviour
 	// button yes.onclick function
 	void btnYes() {
 		// TODO : Set Main menu screen here when implemented
-		SceneManager.LoadScene("MainMenu",LoadSceneMode.Single);
+		Time.timeScale = timescale;
+		SceneManager.LoadSceneAsync("MainMenu",LoadSceneMode.Single);
 	}
 	
 	// button no.onclick function
