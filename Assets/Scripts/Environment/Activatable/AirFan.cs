@@ -77,6 +77,7 @@ namespace Environment {
         public override void ToggleState() {
             if (IsActivated()) Deactivate();
             else Activate();
+            Debug.Log("Fan " +  activated);
         }
 
         /// <summary>
