@@ -62,7 +62,7 @@ MonoBehaviour:
   - name: object_entangled
     clip: {fileID: 8300000, guid: 62d2028050aef9a4fb79999da74a4087, type: 3}
     source: {fileID: 0}
-    volume: 0.1
+    volume: 0.025
     pitch: 0.9
   - name: gate_open
     clip: {fileID: 8300000, guid: 8d10dce21ad257d488275c8e2db56cbb, type: 3}

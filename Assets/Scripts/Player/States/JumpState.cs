@@ -63,7 +63,6 @@ public class JumpState : BaseState {
     {
         base.EnterTrigger(collider);
         if(collider.gameObject.tag == "Pushable"){
-            Debug.Log("HERERERERE");
             touchingBox = true;
         }
     }

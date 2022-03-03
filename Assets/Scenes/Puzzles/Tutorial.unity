@@ -1394,11 +1394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8682474248818682218, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
-      value: Welcome, let's get started with some basic movements.
+      value: Welcome, let's get started with some basic controls.
       objectReference: {fileID: 0}
     - target: {fileID: 8682474248818682218, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: dialogue.sentences.Array.data[1]
-      value: Move left and right with A and D,or your arrow keys. Use space to jump.
+      value: Move left and right with A and D, or your arrow keys. Use SPACE to jump.
       objectReference: {fileID: 0}
     - target: {fileID: 8682474248818682218, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: dialogue.sentences.Array.data[2]

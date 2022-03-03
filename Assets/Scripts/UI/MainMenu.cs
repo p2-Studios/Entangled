@@ -9,8 +9,7 @@ public class MainMenu : MonoBehaviour {
     public string firstLevel;
 
     private void Awake() {
-        AudioManager am = FindObjectOfType<AudioManager>();
-        if (am != null) am.Play("music_main");
+        StartCoroutine(StartMusicWithDelay());
     }
 
     public void PlayGame() {
@@ -20,5 +19,12 @@ public class MainMenu : MonoBehaviour {
     public void QuitGame() {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+    IEnumerator StartMusicWithDelay() {
+        yield return new WaitForSeconds(1f);
+        
+        AudioManager am = FindObjectOfType<AudioManager>();
+        if (am != null) am.Play("music_main");
     }
 }
