@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Activation_System
 {
@@ -51,7 +52,7 @@ namespace Activation_System
 			
 			if (!IsActivated()) {
 				if (requiredMass <= sumOfMass) {											// When the required mass target is reached
-					 Activate(animationSpeed);
+					 ToggleState(animationSpeed);
 					 pressurePadAnimator.SetBool("active",true);
 				}
 			}
@@ -81,13 +82,13 @@ namespace Activation_System
 			
 			if (!IsActivated()) {
 				if (requiredMass <= sumOfMass) {											// When the required mass target is reached
-					 Activate(animationSpeed);
+					 ToggleState(animationSpeed);
 					 pressurePadAnimator.SetBool("active",true);
 				}
 			}
 			else {
 				if (requiredMass > sumOfMass) {												// When the required mass target is not reached
-					Deactivate(animationSpeed);
+					ToggleState(animationSpeed);
 					pressurePadAnimator.SetBool("active",false);
 				}
 			}
@@ -106,7 +107,7 @@ namespace Activation_System
 			
 			if (IsActivated()) {
 				if (requiredMass > sumOfMass) {
-					Deactivate(animationSpeed);
+					ToggleState(animationSpeed);
 					pressurePadAnimator.SetBool("active",false);
 				}
 			}
