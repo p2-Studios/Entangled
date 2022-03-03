@@ -32,10 +32,17 @@ public class PauseMenu : MonoBehaviour
 	private DateTime clickTime;
 	private bool buttonClick = false;
 
+	public static PauseMenu instance;
 
 	private void Awake() {
 		// don't destroy pause menu when switching scenes
 		DontDestroyOnLoad(gameObject);
+		
+		if (instance == null) {
+			instance = this;
+		} else {
+			DestroyObject(gameObject);
+		}
 	}
 
 	// Start is called before the first frame update
@@ -141,6 +148,8 @@ public class PauseMenu : MonoBehaviour
 	void btnYes() {
 		// TODO : Set Main menu screen here when implemented
 		Time.timeScale = timescale;
+		confirm.SetActive(false);
+		menu.SetActive(false);
 		SceneManager.LoadSceneAsync("MainMenu",LoadSceneMode.Single);
 	}
 	

@@ -57,7 +57,7 @@ MonoBehaviour:
   - name: text_scroll
     clip: {fileID: 8300000, guid: 4e0dae3d124e1b747a41201544923f8e, type: 3}
     source: {fileID: 0}
-    volume: 0.2
+    volume: 0.1
     pitch: 1
   - name: object_entangled
     clip: {fileID: 8300000, guid: 62d2028050aef9a4fb79999da74a4087, type: 3}

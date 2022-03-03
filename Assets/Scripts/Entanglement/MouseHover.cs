@@ -20,6 +20,7 @@ public class MouseHover : MonoBehaviour
         }
     }
 
+    /*
     public void Clickable() {
         Cursor.SetCursor(clickableCursor, Vector2.zero, CursorMode.Auto);
     }
@@ -27,4 +28,5 @@ public class MouseHover : MonoBehaviour
     public void Default() {
         Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
     }
+    */
 }
