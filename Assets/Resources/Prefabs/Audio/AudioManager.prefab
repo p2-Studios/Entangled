@@ -89,3 +89,8 @@ MonoBehaviour:
     source: {fileID: 0}
     volume: 0.05
     pitch: 1
+  - name: music_main
+    clip: {fileID: 8300000, guid: 322f0dfdde8ea9640a9d2db2d1cc4a66, type: 3}
+    source: {fileID: 0}
+    volume: 0.025
+    pitch: 1

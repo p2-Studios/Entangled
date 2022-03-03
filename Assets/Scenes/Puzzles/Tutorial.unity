@@ -729,6 +729,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elevator
       objectReference: {fileID: 0}
+    - target: {fileID: 6187091650804594609, guid: 6f84bfd3be7d3b84aa518f4da5b7125b, type: 3}
+      propertyPath: nextLevel
+      value: fanHall_puzzle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f84bfd3be7d3b84aa518f4da5b7125b, type: 3}
 --- !u!114 &339102328 stripped
@@ -1386,7 +1390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8682474248818682218, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: dialogue.sentences.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8682474248818682218, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: dialogue.sentences.Array.data[0]
@@ -1399,6 +1403,10 @@ PrefabInstance:
     - target: {fileID: 8682474248818682218, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: dialogue.sentences.Array.data[2]
       value: Use F to interact with terminals and other interactable objects.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682474248818682218, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: If you're ever stuck, hold R to restart the level.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,12 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour {
 
     public string firstLevel;
+
+    private void Awake() {
+        AudioManager am = FindObjectOfType<AudioManager>();
+        if (am != null) am.Play("music_main");
+    }
+
     public void PlayGame() {
         SceneManager.LoadSceneAsync(firstLevel);
     }
