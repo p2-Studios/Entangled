@@ -74,10 +74,9 @@ public class Player : MonoBehaviour {
         //Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Platform")) {
             transform.parent = other.gameObject.transform;      // set parent of player to platform so player doesn't slide
-        }
-        /*if (other.gameObject.CompareTag("Destroyer")) {
+        } else if (other.gameObject.CompareTag("Destroyer")) {
             Kill();
-        }*/
+        }
     }
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Platform")) {
@@ -133,10 +132,12 @@ public class Player : MonoBehaviour {
     /// Destroys the object (currently, destroyed = set as inactive)
     /// </summary>
     public void Kill() {
-        if (!gameObject.activeSelf) return;                  // cancel if already dead
-        gameObject.SetActive(false);                         // disable the object
-        audioManager.Play("player_death");
-        Invoke(nameof (Respawn), 3.0f);     // respawn after respawnTime delay
+        //if (!gameObject.activeSelf) return;                  // cancel if already dead
+        //gameObject.SetActive(false);                         // disable the object
+        //audioManager.Play("player_death");
+        //Invoke(nameof (Respawn), 3.0f);     // respawn after respawnTime delay
+        gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
+
     }
 
     /// <summary>
