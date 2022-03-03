@@ -42,15 +42,15 @@ public class PushPullState : BaseState {
         base.UpdatePhysics();
         // if player ends up off ground while pull/pushing then break 
         if(!Player.rigidbody.IsTouchingLayers(groundLayer)){
-            Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
-            playerSM.ChangeState(playerSM.idleState);
+            //Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
+            //playerSM.ChangeState(playerSM.idleState);
         }
 
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
     }
-    
+
 
     // Exit calls (make sure variables don't remain)
     public override void Exit(){
