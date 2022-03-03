@@ -60,8 +60,10 @@ namespace Activation_System {
         public virtual void ToggleState() {
             if (activated)
                 Deactivate();
-            else
+            else {
+                if (requireAllActivators && !AreAllActivatorsActivated()) return; 
                 Activate();
+            }
         }
 
         public virtual void ToggleState(float timer) {
