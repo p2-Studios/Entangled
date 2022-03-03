@@ -16,9 +16,11 @@ public class Player : MonoBehaviour {
     public LayerMask pushMask;
 
     private EntangleComponent entangleComponent;
+    private AudioManager audioManager;
     PlayerStateMachine stateMachine;
 
     private Vector2 position, previousPosition;
+    public Transform respawnLocation;   // location that the player should respawn at when necessary
     [HideInInspector]
     public Vector2 worldVelocity;  // worldVelocity information
 
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour {
         entangleComponent = gameObject.AddComponent<EntangleComponent>();
         // Add and initialize PlayerStateMachine
         stateMachine = gameObject.AddComponent<PlayerStateMachine>() as PlayerStateMachine;
+        audioManager = FindObjectOfType<AudioManager>();
         stateMachine.Initialize(this);
     }
 
@@ -64,9 +67,13 @@ public class Player : MonoBehaviour {
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
+        //Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Platform")) {
             transform.parent = other.gameObject.transform;      // set parent of player to platform so player doesn't slide
         }
+        /*if (other.gameObject.CompareTag("Destroyer")) {
+            Kill();
+        }*/
     }
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Platform")) {
@@ -114,5 +121,23 @@ public class Player : MonoBehaviour {
                 Debug.LogWarning("Invalid player state set ('" + state + "')");
                 break;
         }
+    }
+
+    /// <summary>
+    /// Destroys the object (currently, destroyed = set as inactive)
+    /// </summary>
+    public void Kill() {
+        if (!gameObject.activeSelf) return;                  // cancel if already dead
+        gameObject.SetActive(false);                         // disable the object
+        audioManager.Play("player_death");
+        Invoke(nameof (Respawn), 3.0f);     // respawn after respawnTime delay
+    }
+
+    /// <summary>
+    /// Respawns the object and moves it to the position of the respawnLocation transform
+    /// </summary>
+    void Respawn() {
+        gameObject.SetActive(true);                                         // re-enable the object
+        gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
     }
 }

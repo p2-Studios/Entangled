@@ -29,6 +29,7 @@ public class EntangleComponent : MonoBehaviour {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
             if (hit.collider != null) { // If one object is clicked, all objects get the click input. This is to prevent multiple selection
+                Debug.Log(hit.collider.gameObject.name);
                 Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
                 if (e == null) return;
                 if (active == e) {

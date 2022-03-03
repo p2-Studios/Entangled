@@ -18,7 +18,7 @@
         {
             foreach (Activatable activatable in a.GetActivatables())
             {
-                activatable.Activate();
+                activatable.ToggleState();
             }
         }
 
@@ -26,7 +26,7 @@
         {
             foreach (Activatable activatable in a.GetActivatables())
             {
-                activatable.Deactivate();
+                activatable.ToggleState();
             }
         }
     }

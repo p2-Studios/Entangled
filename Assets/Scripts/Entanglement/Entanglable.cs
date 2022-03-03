@@ -161,6 +161,7 @@ public class Entanglable : MonoBehaviour {
     /// Destroys the object (currently, destroyed = set as inactive)
     /// </summary>
     public void Destroy() {
+        if (!gameObject.activeSelf) return;                  // cancel if already destroyed
         destroyed = true;                                    // flag as destroyed
         gameObject.SetActive(false);                         // disable the object
         if (respawnable) Invoke(nameof (Respawn), respawnTime);     // respawn after respawnTime delay
@@ -170,6 +171,7 @@ public class Entanglable : MonoBehaviour {
     /// Respawns the object and moves it to the position of the respawnLocation transform
     /// </summary>
     void Respawn() {
+        if (gameObject.activeSelf) return;                                  // cancel if already active
         destroyed = false;
         gameObject.SetActive(true);                                         // re-enable the object
         gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
@@ -178,7 +180,9 @@ public class Entanglable : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Platform")) {    // object on platform
                 transform.parent = col.gameObject.transform;      // set parent to platform so object doesn't slide
-        }
+        } /* else if (col.gameObject.CompareTag("Destroyer")) {
+            Destroy();
+        } */
     }
     
     private void OnTriggerExit2D(Collider2D col) {

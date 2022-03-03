@@ -53,6 +53,7 @@ MonoBehaviour:
   startPos: {fileID: 3071143578638918668}
   speed: 1
   stopAtEnd: 0
+  endDelay: 1.5
   activators: []
 --- !u!61 &8767090045269995228
 BoxCollider2D:
