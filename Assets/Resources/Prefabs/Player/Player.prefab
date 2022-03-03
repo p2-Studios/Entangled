@@ -49,13 +49,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 7929462300034805080}
   speed: 6
-  jumpForce: 9
+  jumpForce: 5
   grabDistance: 0.5
   spriteRenderer: {fileID: 7411563505412239111}
   animator: {fileID: 6269613174981301470}
   pushMask:
     serializedVersion: 2
     m_Bits: 118
+  respawnLocation: {fileID: 0}
   worldVelocity: {x: 0, y: 0}
   pushedObject: {fileID: 0}
   facingRight: 1

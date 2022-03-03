@@ -818,7 +818,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1296416925560699586, guid: d6e6c54c67e270940b4fb0ef8a0779a6, type: 3}
       propertyPath: power
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1296416925560699586, guid: d6e6c54c67e270940b4fb0ef8a0779a6, type: 3}
       propertyPath: range
@@ -1412,10 +1412,6 @@ PrefabInstance:
     - target: {fileID: 7929462300034805085, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929462300034805086, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
-      propertyPath: jumpForce
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7929462300034805086, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
       propertyPath: respawnLocation
