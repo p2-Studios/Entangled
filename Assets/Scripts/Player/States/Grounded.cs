@@ -14,6 +14,8 @@ public class Grounded : BaseState {
     protected private bool touchingBox;
     protected private bool haltMovement;
 
+    protected private BoxInteractable lastTouchedBox;
+
     // Constructor, sets sm to active stateMachine
     public Grounded(string name, PlayerStateMachine playerStateMachine, Player player) : base(name, playerStateMachine, player){
         playerSM = (PlayerStateMachine)playerStateMachine;
@@ -29,13 +31,27 @@ public class Grounded : BaseState {
         checkNonPushingCollision();
 
         // check if player can latch onto object      
-        if (Player.hit.collider != null && Player.hit.collider.gameObject.tag == "Pushable" && Input.GetKeyDown(KeyCode.E)){
-            Player.pushedObject = Player.hit.collider.gameObject.GetComponent<Entanglable>();
-            playerSM.ChangeState(playerSM.pushpullState);
+        if (Player.hit.collider != null && Player.hit.collider.gameObject.tag == "Pushable" ){
+            lastTouchedBox = Player.hit.collider.gameObject.GetComponent<BoxInteractable>();
+            lastTouchedBox.toggleIndicator(true);
+            if(Input.GetKeyDown(KeyCode.E)){
+                lastTouchedBox.toggleSprite(true);
+                Player.pushedObject = Player.hit.collider.gameObject.GetComponent<Entanglable>();
+                playerSM.ChangeState(playerSM.pushpullState);
+            }
         }
+        else{
+            if(lastTouchedBox != null){
+                lastTouchedBox.toggleSprite(false);
+                lastTouchedBox.toggleIndicator(false);
+            }
+        }
+
         // jump
         if (!haltMovement && Input.GetKeyDown(KeyCode.Space))
             playerSM.ChangeState(playerSM.jumpState);
+
+        
     }
 
 
