@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4831530055940371197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4831530055940371195}
+  - component: {fileID: 4831530055940371196}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4831530055940371195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4831530055940371197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.42036438, y: -1.5005395, z: -14.037774}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4831530055940371196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4831530055940371197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57fd885470aa7841a85839b0ee6760e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: terminal_boot
+    clip: {fileID: 8300000, guid: 4c257e2d20d02dd498e96922a059cf9b, type: 3}
+    source: {fileID: 0}
+    volume: 0.695
+    pitch: 0.1
+  - name: toggleswitch_toggle
+    clip: {fileID: 8300000, guid: c3a814487bd279d4cb19fbf6d904661d, type: 3}
+    source: {fileID: 0}
+    volume: 0.053
+    pitch: 1
+  - name: text_scroll
+    clip: {fileID: 8300000, guid: 4e0dae3d124e1b747a41201544923f8e, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+  - name: object_entangled
+    clip: {fileID: 8300000, guid: 62d2028050aef9a4fb79999da74a4087, type: 3}
+    source: {fileID: 0}
+    volume: 0.025
+    pitch: 0.9
+  - name: gate_open
+    clip: {fileID: 8300000, guid: 8d10dce21ad257d488275c8e2db56cbb, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1.2
+  - name: gate_close
+    clip: {fileID: 8300000, guid: 8d10dce21ad257d488275c8e2db56cbb, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 0.8
+  - name: movement_jump
+    clip: {fileID: 8300000, guid: 0ffa3ba7d88e0fd4fb941651f94267d5, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 1
+  - name: movement_run
+    clip: {fileID: 8300000, guid: 3c0e8755f13ff5f42b12fb9d6ba2f394, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+  - name: player_death
+    clip: {fileID: 8300000, guid: fa17428a033834b42a0b0099a6b56fa2, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+  - name: music_main
+    clip: {fileID: 8300000, guid: 322f0dfdde8ea9640a9d2db2d1cc4a66, type: 3}
+    source: {fileID: 0}
+    volume: 0.025
+    pitch: 1

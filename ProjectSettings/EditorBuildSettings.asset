@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Menus/MainMenu.unity
+    guid: 571708a76f46f42f3b0cc2e908687d66
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Tutorial.unity
+    guid: 1dfa7057e0b5b7140b100a921e070569
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/fanHall_puzzle.unity
+    guid: d0edf555902d57d49820d58f5cc52f31
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Puzzle_FanMass.unity
+    guid: 5ef9dc87fe7afdf48845478966975f54
   m_configObjects: {}
