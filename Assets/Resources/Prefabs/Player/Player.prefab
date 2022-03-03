@@ -56,6 +56,7 @@ MonoBehaviour:
   pushMask:
     serializedVersion: 2
     m_Bits: 118
+  rayHeight: -0.4
   respawnLocation: {fileID: 0}
   worldVelocity: {x: 0, y: 0}
   pushedObject: {fileID: 0}

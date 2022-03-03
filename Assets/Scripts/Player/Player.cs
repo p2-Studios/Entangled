@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
     public SpriteRenderer spriteRenderer;
     public Animator animator;
     public LayerMask pushMask;
+    public float rayHeight = 0;
 
     private EntangleComponent entangleComponent;
     private AudioManager audioManager;
@@ -56,12 +57,15 @@ public class Player : MonoBehaviour {
         else if (horzInput < 0f)
             facingRight = false;
 
+        Vector3 ray = transform.position;
+        ray.y += rayHeight; 
+
         if (facingRight) {
-            hit = Physics2D.Raycast(transform.position, Vector2.right, grabDistance, pushMask);
+            hit = Physics2D.Raycast(ray, Vector2.right, grabDistance, pushMask);
             spriteRenderer.flipX = false;
         }
         else {
-            hit = Physics2D.Raycast(transform.position, Vector2.left, grabDistance, pushMask);
+            hit = Physics2D.Raycast(ray, Vector2.left, grabDistance, pushMask);
             spriteRenderer.flipX = true;
         }
     }
@@ -82,11 +86,13 @@ public class Player : MonoBehaviour {
     }
 
     void OnDrawGizmos(){
+        Vector3 ray = transform.position;
+        ray.y += rayHeight; 
 		Gizmos.color = Color.yellow;
         if (facingRight)
-            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.right *  grabDistance);
+            Gizmos.DrawLine(ray, (Vector2)ray + Vector2.right *  grabDistance);
         else
-            Gizmos.DrawLine(transform.position, (Vector2)transform.position + Vector2.left * grabDistance);
+            Gizmos.DrawLine(ray, (Vector2)ray + Vector2.left * grabDistance);
 	}
 
 

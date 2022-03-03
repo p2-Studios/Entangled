@@ -50,28 +50,29 @@ public class JumpState : BaseState {
     // Check if player velocity is less than epsilon and rigidbody is touching a ground layer
     public override void UpdatePhysics(){
         base.UpdatePhysics();
+        
         grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && Player.rigidbody.IsTouchingLayers(groundLayer);
-    
-        Vector2 velocity = Player.rigidbody.velocity;
-        velocity.x = horzInput * Player.speed;
-        Player.rigidbody.velocity = velocity;
-
-    }
-
-    public override void EnterCollision(Collision2D collision)
-    {
-        base.EnterCollision(collision);
-        if(collision.gameObject.tag == "Pushable"){
-
+        if(!touchingBox){
+            Vector2 velocity = Player.rigidbody.velocity;
+            velocity.x = horzInput * Player.speed;
+            Player.rigidbody.velocity = velocity;
         }
     }
 
-    public override void ExitCollision(Collision2D collision)
+    public override void EnterTrigger(Collider2D collider)
     {
-        base.EnterCollision(collision);
-        if(collision.gameObject.tag == "Pushable"){
-
+        base.EnterTrigger(collider);
+        if(collider.gameObject.tag == "Pushable"){
+            Debug.Log("HERERERERE");
+            touchingBox = true;
         }
+    }
+
+
+    public override void Exit()
+    {
+        base.Exit();
+        touchingBox = false;
     }
 
 }
