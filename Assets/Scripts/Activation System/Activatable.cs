@@ -8,7 +8,7 @@ namespace Activation_System {
         private ArrayList activators; // this is only required if we choose to keep 'requireAllActivators'
 
         protected bool activated;
-        private bool requireAllActivators; // TODO: Keep 'requireAllActivators'? 
+        public bool requireAllActivators = false; // TODO: Keep 'requireAllActivators'? 
         public bool activateByDefault;
         //public bool invertable; // if invertable, being activated will turn it off, and vice versa
 
