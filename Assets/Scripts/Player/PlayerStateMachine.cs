@@ -90,6 +90,7 @@ public class PlayerStateMachine : MonoBehaviour {
         currentState.Enter();
     }
 
+    /*
     // For testing purposes (displays current state name when running game)
     private void OnGUI(){
         GUILayout.BeginArea(new Rect(10f, 10f, 200f, 100f));
@@ -97,6 +98,7 @@ public class PlayerStateMachine : MonoBehaviour {
         GUILayout.Label($"<color='black'><size=40>{content}</size></color>");
         GUILayout.EndArea();
     }
+    */
 
 
 }
