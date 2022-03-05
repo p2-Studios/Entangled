@@ -5,7 +5,7 @@ using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour, IDestroyable {
     // Player Object Components/Variables
     public new Rigidbody2D rigidbody;
     public float speed = 6f;
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour {
 
     private Vector2 position, previousPosition;
     public Transform respawnLocation;   // location that the player should respawn at when necessary
+    public float respawnDelay = 2.0f;
     [HideInInspector]
     public Vector2 worldVelocity;  // worldVelocity information
 
@@ -128,23 +129,29 @@ public class Player : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Destroys the object (currently, destroyed = set as inactive)
-    /// </summary>
-    public void Kill() {
-        //if (!gameObject.activeSelf) return;                  // cancel if already dead
-        //gameObject.SetActive(false);                         // disable the object
-        //audioManager.Play("player_death");
-        //Invoke(nameof (Respawn), 3.0f);     // respawn after respawnTime delay
-        gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
-
+    public void ResetPlayer() {
+        stateMachine.ChangeState(stateMachine.idleState);
+        rigidbody.velocity = Vector2.zero;
     }
 
-    /// <summary>
-    /// Respawns the object and moves it to the position of the respawnLocation transform
-    /// </summary>
-    void Respawn() {
-        gameObject.SetActive(true);                                         // re-enable the object
+    public void Kill() {
+        DestructionManager dm = DestructionManager.instance;
+        if (dm != null) dm.Destroy(this, respawnDelay);
+    }
+    
+    public GameObject GetGameObject() {
+        return gameObject;
+    }
+
+    // do things that need to be done on destroying, before the gameobject is set to inactive
+    public void Destroy() {
+        Debug.Log("Destroying Player");
+    }
+    
+    // do things that need to be done on respawning, right after the game object is set as active again
+    public void Respawn() {
+        Debug.Log("Respawning Player");
         gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
+        ResetPlayer();
     }
 }
