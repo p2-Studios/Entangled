@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Unity.Mathematics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -13,8 +14,10 @@ public class Player : MonoBehaviour, IDestroyable {
     public float grabDistance = 0.5f;
     public SpriteRenderer spriteRenderer;
     public Animator animator;
+    public Transform deathAnimation;
     public LayerMask pushMask;
     public float rayHeight = 0;
+
 
     private EntangleComponent entangleComponent;
     private AudioManager audioManager;
@@ -146,6 +149,7 @@ public class Player : MonoBehaviour, IDestroyable {
     // do things that need to be done on destroying, before the gameobject is set to inactive
     public void Destroy() {
         Debug.Log("Destroying Player");
+        Instantiate(deathAnimation, transform.position, quaternion.identity);
     }
     
     // do things that need to be done on respawning, right after the game object is set as active again

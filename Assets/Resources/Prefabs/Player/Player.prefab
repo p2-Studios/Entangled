@@ -54,11 +54,13 @@ MonoBehaviour:
   grabDistance: 0.5
   spriteRenderer: {fileID: 7411563505412239111}
   animator: {fileID: 6269613174981301470}
+  deathAnimation: {fileID: 2282829766038112090, guid: 9185e0bafe8642845a04d0f5a23d5d6b, type: 3}
   pushMask:
     serializedVersion: 2
     m_Bits: 118
   rayHeight: -0.27
   respawnLocation: {fileID: 0}
+  respawnDelay: 2
   worldVelocity: {x: 0, y: 0}
   pushedObject: {fileID: 0}
   facingRight: 1

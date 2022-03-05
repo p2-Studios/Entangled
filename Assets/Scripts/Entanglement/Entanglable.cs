@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Entanglement;
+using Unity.Mathematics;
 using UnityEngine;
 
 /// <summary>
@@ -19,6 +20,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     // sprite stuff
     public Sprite unentangledSprite, activeSprite, passiveSprite;
     protected SpriteRenderer spriteRenderer;
+    public Transform deathAnimation;
     
     // object states
     public bool respawnable = true;     // object respawns after being destroyed, true by default
@@ -199,6 +201,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     // do things that need to be done on destroying, before the gameobject is set to inactive
     public void Destroy() {
         destroyed = true;
+        Instantiate(deathAnimation, transform.position, quaternion.identity);
     }
     
     // do things that need to be done on respawning, right after the game object is set as active again
