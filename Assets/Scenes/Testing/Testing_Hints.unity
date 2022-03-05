@@ -897,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2874820045489884387, guid: 5f036038bb2ce0748b59c9965a7df048, type: 3}
       propertyPath: text
-      value: Press E while near a box to push or pull it.
+      value: Press <color=green>E</color> while near a box to push or pull it.
       objectReference: {fileID: 0}
     - target: {fileID: 2874820045489884397, guid: 5f036038bb2ce0748b59c9965a7df048, type: 3}
       propertyPath: m_RootOrder
@@ -1137,7 +1137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2519588315094634123, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6645361
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 2519588315094634123, guid: aa5272dde18981c4297f21c8565bcaf5, type: 3}
       propertyPath: m_LocalPosition.y
