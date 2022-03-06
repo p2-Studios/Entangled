@@ -32,7 +32,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     protected bool entangled, active, passive;
 
     // force data
-    protected Vector2 selfVelocity, prevActiveVelocity, newActiveVelocity;                   // 
+    protected Vector2 selfVelocity, velocity;                   // 
     protected Vector3 position, previousPosition;
     public float maxVelocity = 20.0f;
     protected Boolean velocityUpdate;
@@ -47,7 +47,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
         entangled = passive = active 
             = destroyed = false;   // new object is not entangled, destroyed, or respawning
 
-        selfVelocity = prevActiveVelocity = newActiveVelocity = Vector2.zero;
+        selfVelocity = Vector2.zero;
         velocityUpdate = false;
 
         velocityManager = VelocityManager.GetInstance();
@@ -56,13 +56,17 @@ public class Entanglable : MonoBehaviour, IDestroyable {
 
     }
 
-
+    private bool VelAboveThreshold(float f) {
+        return (Math.Abs(f) > 0.3);
+    }
+    
     void FixedUpdate() {
         if (velocityUpdate) {       // mirror active object velocity
-            selfVelocity = rb.velocity - prevActiveVelocity;    // velocity of the passive object itself
-            rb.velocity = selfVelocity + newActiveVelocity;     // new velocity
+            float x = VelAboveThreshold(velocity.x) ? velocity.x : rb.velocity.x;
+            float y = VelAboveThreshold(velocity.y) ? velocity.y : rb.velocity.y;
+            rb.velocity = new Vector2(x, y);
             velocityUpdate = false; // unflag velocity change
-            prevActiveVelocity = newActiveVelocity; // remember the active velocity applied
+            velocity = Vector2.zero;
         }
 
         /*
@@ -130,7 +134,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     /// <param name="vel">A Vector2 of the velocity to mirror.</param>
     /// <param name="fromActive">Whether this velocity is being applied from an active object</param>
     public virtual void ApplyVelocity(Vector2 vel, bool fromActive) {
-        newActiveVelocity = vel / rb.mass;
+        velocity += (vel / rb.mass);
         velocityUpdate = true;
     }
 
