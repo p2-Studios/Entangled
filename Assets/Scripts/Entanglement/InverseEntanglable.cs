@@ -6,10 +6,10 @@ public class InverseEntanglable : Entanglable {
 
     public override void ApplyVelocity(Vector2 vel, bool fromActive) {
         if (fromActive) {
-            velocity = (-1 * vel) / rb.mass;
+            newActiveVelocity = (-1 * vel) / rb.mass;
             velocityUpdate = true;
         } else {
-            velocity = vel / rb.mass;
+            newActiveVelocity = vel / rb.mass;
             velocityUpdate = true;
         }
     }

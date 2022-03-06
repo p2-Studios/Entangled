@@ -32,7 +32,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     protected bool entangled, active, passive;
 
     // force data
-    protected Vector2 velocity;                   // list of queued forces
+    protected Vector2 selfVelocity, prevActiveVelocity, newActiveVelocity;                   // 
     protected Vector3 position, previousPosition;
     public float maxVelocity = 20.0f;
     protected Boolean velocityUpdate;
@@ -47,7 +47,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
         entangled = passive = active 
             = destroyed = false;   // new object is not entangled, destroyed, or respawning
 
-        velocity = Vector2.zero;
+        selfVelocity = prevActiveVelocity = newActiveVelocity = Vector2.zero;
         velocityUpdate = false;
 
         velocityManager = VelocityManager.GetInstance();
@@ -59,11 +59,10 @@ public class Entanglable : MonoBehaviour, IDestroyable {
 
     void FixedUpdate() {
         if (velocityUpdate) {       // mirror active object velocity
-            Vector2 vel = rb.velocity;
-            if (vel.x == 0) velocity.x += vel.x;
-            if (vel.y == 0) velocity.y += vel.y;
-            rb.velocity = velocity;
+            selfVelocity = rb.velocity - prevActiveVelocity;    // velocity of the passive object itself
+            rb.velocity = selfVelocity + newActiveVelocity;     // new velocity
             velocityUpdate = false; // unflag velocity change
+            prevActiveVelocity = newActiveVelocity; // remember the active velocity applied
         }
 
         /*
@@ -131,7 +130,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     /// <param name="vel">A Vector2 of the velocity to mirror.</param>
     /// <param name="fromActive">Whether this velocity is being applied from an active object</param>
     public virtual void ApplyVelocity(Vector2 vel, bool fromActive) {
-        velocity = vel / rb.mass;
+        newActiveVelocity = vel / rb.mass;
         velocityUpdate = true;
     }
 
