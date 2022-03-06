@@ -80,8 +80,9 @@ MonoBehaviour:
   unentangledSprite: {fileID: 21300000, guid: b732c88b6c3986840b4cd5a80d17596e, type: 3}
   activeSprite: {fileID: 21300000, guid: 6f04d53e9a89b924c8de6e3fb1ff5bd9, type: 3}
   passiveSprite: {fileID: 21300000, guid: 4b2b845b744a24c45a826869cb00de1c, type: 3}
+  deathAnimation: {fileID: 2282829766038112090, guid: 9185e0bafe8642845a04d0f5a23d5d6b, type: 3}
   respawnable: 1
-  respawnTime: 3
+  respawnDelay: 3
   maxVelocity: 20
 --- !u!61 &6214380915014417968
 BoxCollider2D:

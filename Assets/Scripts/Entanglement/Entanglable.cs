@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Entanglement;
+using Unity.Mathematics;
 using UnityEngine;
 
 /// <summary>
 /// Entanglable type - represents objects that can be entangled and have forces applied to them.
 /// Can be active, passive, or neither (not entangled)
 /// </summary>
-public class Entanglable : MonoBehaviour {
+public class Entanglable : MonoBehaviour, IDestroyable {
     // basic object physics data
     protected Rigidbody2D rb;             // rigidbody
     //public Transform isGroundedChecker; // to check if the object is grounded
@@ -19,10 +20,11 @@ public class Entanglable : MonoBehaviour {
     // sprite stuff
     public Sprite unentangledSprite, activeSprite, passiveSprite;
     protected SpriteRenderer spriteRenderer;
+    public Transform deathAnimation;
     
     // object states
     public bool respawnable = true;     // object respawns after being destroyed, true by default
-    public float respawnTime = 3.0f;    // how long it should take the object to respawn after being destroyed, 3.0s by default
+    public float respawnDelay = 3.0f;    // how long it should take the object to respawn after being destroyed, 3.0s by default
     protected bool destroyed;             // object is currently destroyed
     //private bool respawning;            // object is currently respawning
 
@@ -156,33 +158,12 @@ public class Entanglable : MonoBehaviour {
     public bool IsPassive() {
         return (entangled && passive);
     }
-
-    /// <summary>
-    /// Destroys the object (currently, destroyed = set as inactive)
-    /// </summary>
-    public void Destroy() {
-        //if (!gameObject.activeSelf) return;                  // cancel if already destroyed
-        //destroyed = true;                                    // flag as destroyed
-        //gameObject.SetActive(false);                         // disable the object
-        //if (respawnable) Invoke(nameof (Respawn), respawnTime);     // respawn after respawnTime delay
-        gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
-    }
-
-    /// <summary>
-    /// Respawns the object and moves it to the position of the respawnLocation transform
-    /// </summary>
-    void Respawn() {
-        if (gameObject.activeSelf) return;                                  // cancel if already active
-        destroyed = false;
-        gameObject.SetActive(true);                                         // re-enable the object
-        gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
-    }
     
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Platform")) {    // object on platform
                 transform.parent = col.gameObject.transform;      // set parent to platform so object doesn't slide
         } else if (col.gameObject.CompareTag("Destroyer")) {
-            Destroy();
+            Kill();
         } 
     }
     
@@ -207,4 +188,26 @@ public class Entanglable : MonoBehaviour {
         MouseHover.instance.Default();
     }
     */
+    
+    public void Kill() {
+        DestructionManager dm = DestructionManager.instance;
+        if (dm != null) dm.Destroy(this, respawnDelay);
+    }
+    
+    public GameObject GetGameObject() {
+        return gameObject;
+    }
+    
+    // do things that need to be done on destroying, before the gameobject is set to inactive
+    public void Destroy() {
+        destroyed = true;
+        Instantiate(deathAnimation, transform.position, quaternion.identity);
+    }
+    
+    // do things that need to be done on respawning, right after the game object is set as active again
+    public void Respawn() {
+        destroyed = false;
+        gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
+    }
+
 }
