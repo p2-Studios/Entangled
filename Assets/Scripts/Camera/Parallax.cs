@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Parallax : MonoBehaviour{
-    private float length, startpos;
+    private float length, startposX, startposY;
     public GameObject cam;
     public float parallaxEffect;
 
     void Start(){
-        startpos = transform.position.x;
+        startposX = transform.position.x;
+        startposY = transform.position.y;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
     void FixedUpdate(){
         float temp = (cam.transform.position.x * (1 - parallaxEffect));
-        float dist = (cam.transform.position.x * parallaxEffect);
+        float distX = (cam.transform.position.x * parallaxEffect);
+        float distY = (cam.transform.position.y * parallaxEffect);
 
-        transform.position = new Vector3(startpos +dist, transform.position.y, transform.position.z);
+        transform.position = new Vector3(startposX + distX, startposY + distY, transform.position.z);
 
-
-        Debug.Log("temp: "+temp +"  splen: "+((startpos + length) - 5));
-        if(temp > (startpos + length) - 5)
-            startpos += length;
-        else if (temp < (startpos - length) + 5)
-            startpos -= length;
+        if(temp > (startposX + length) - 5)
+            startposX += length;
+        else if (temp < (startposX - length) + 5)
+            startposX -= length;
 
     }
 }
