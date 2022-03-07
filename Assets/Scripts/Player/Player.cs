@@ -35,6 +35,8 @@ public class Player : MonoBehaviour, IDestroyable {
     public bool facingRight = true;
     [HideInInspector]
     public RaycastHit2D hit;
+    [HideInInspector]
+    public bool grabbing;
     private float horzInput;
 
     private void Start(){
@@ -44,6 +46,7 @@ public class Player : MonoBehaviour, IDestroyable {
         stateMachine = gameObject.AddComponent<PlayerStateMachine>() as PlayerStateMachine;
         audioManager = FindObjectOfType<AudioManager>();
         stateMachine.Initialize(this);
+        grabbing = false;
     }
 
     private void Update(){
@@ -56,14 +59,15 @@ public class Player : MonoBehaviour, IDestroyable {
         }
 
         horzInput = Input.GetAxisRaw("Horizontal");
-        if (horzInput > 0f)
-            facingRight = true;
-        else if (horzInput < 0f)
-            facingRight = false;
-
+        if(!grabbing){
+            if (horzInput > 0f)
+                facingRight = true;
+            else if (horzInput < 0f)
+                facingRight = false;
+        }
         Vector3 ray = transform.position;
         ray.y += rayHeight; 
-
+        
         if (facingRight) {
             hit = Physics2D.Raycast(ray, Vector2.right, grabDistance, pushMask);
             spriteRenderer.flipX = false;

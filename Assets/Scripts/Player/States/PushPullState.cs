@@ -18,6 +18,7 @@ public class PushPullState : BaseState {
     // Enter calls
     public override void Enter(){
         base.Enter();
+        Player.grabbing = true;
         Player.pushedObject.GetComponent<FixedJoint2D>().enabled = true;
         Player.pushedObject.GetComponent<FixedJoint2D>().connectedBody = Player.rigidbody;
 
@@ -35,17 +36,16 @@ public class PushPullState : BaseState {
             Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
             playerSM.ChangeState(playerSM.idleState);
         }
+        if(Player.hit.collider == null){
+            Debug.Log("HERER");
+            Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
+            playerSM.ChangeState(playerSM.idleState);
+        }
     }
 
     // Apply velocity to player for movement
     public override void UpdatePhysics(){
         base.UpdatePhysics();
-        // if player ends up off ground while pull/pushing then break 
-        if(!Player.rigidbody.IsTouchingLayers(groundLayer)){
-            //Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
-            //playerSM.ChangeState(playerSM.idleState);
-        }
-
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * Player.speed;
         Player.rigidbody.velocity = velocity;
@@ -55,6 +55,7 @@ public class PushPullState : BaseState {
     // Exit calls (make sure variables don't remain)
     public override void Exit(){
         base.Exit();
+        Player.grabbing = false;
         Player.pushedObject = null;
     }
 }
