@@ -23,7 +23,6 @@ public class PushPullState : BaseState {
         Player.pushedObject.GetComponent<FixedJoint2D>().connectedBody = Player.rigidbody;
 
         horzInput = 0f;
-        //Player.spriteRenderer.color = Color.red;  // For testing purposes, will be used later for player animations
     }
 
     // Detect if horizontal input less than Epsilon (switch to idle if true)
@@ -37,7 +36,6 @@ public class PushPullState : BaseState {
             playerSM.ChangeState(playerSM.idleState);
         }
         if(Player.hit.collider == null){
-            Debug.Log("HERER");
             Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
             playerSM.ChangeState(playerSM.idleState);
         }
