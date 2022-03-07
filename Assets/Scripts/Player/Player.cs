@@ -12,6 +12,7 @@ public class Player : MonoBehaviour, IDestroyable {
     public float speed = 6f;
     public float jumpForce = 12f;
     public float grabDistance = 0.5f;
+    public float pushStrength = 1f;
     public SpriteRenderer spriteRenderer;
     public Animator animator;
     public Transform deathAnimation;

@@ -6,7 +6,9 @@ public class PushPullState : BaseState {
 
     protected private PlayerStateMachine playerSM;
     private float horzInput;
-    private int groundLayer = 1 << 6;
+    private float objMass;
+
+
 
     // Constructor
     public PushPullState(PlayerStateMachine playerStateMachine,Player player,AudioManager audioManager) : base("Pulling", playerStateMachine, player){
@@ -21,7 +23,7 @@ public class PushPullState : BaseState {
         Player.grabbing = true;
         Player.pushedObject.GetComponent<FixedJoint2D>().enabled = true;
         Player.pushedObject.GetComponent<FixedJoint2D>().connectedBody = Player.rigidbody;
-
+        objMass = Player.pushedObject.GetComponent<Rigidbody2D>().mass;
         horzInput = 0f;
     }
 
@@ -44,8 +46,10 @@ public class PushPullState : BaseState {
     // Apply velocity to player for movement
     public override void UpdatePhysics(){
         base.UpdatePhysics();
+        float strengthDif = (objMass - Player.pushStrength) * 4;
+        Debug.Log(strengthDif);
         Vector2 velocity = Player.rigidbody.velocity;
-        velocity.x = horzInput * Player.speed;
+        velocity.x = horzInput * (Player.speed - strengthDif) ;
         Player.rigidbody.velocity = velocity;
     }
 
