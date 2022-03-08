@@ -20,6 +20,9 @@ public class PushPullState : BaseState {
     // Enter calls
     public override void Enter(){
         base.Enter();
+
+        playerSM.player.SetAnimatorState("pushing");
+
         Player.grabbing = true;
         Player.pushedObject.GetComponent<FixedJoint2D>().enabled = true;
         Player.pushedObject.GetComponent<FixedJoint2D>().connectedBody = Player.rigidbody;
