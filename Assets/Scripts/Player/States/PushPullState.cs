@@ -47,7 +47,6 @@ public class PushPullState : BaseState {
     public override void UpdatePhysics(){
         base.UpdatePhysics();
         float strengthDif = (objMass - Player.pushStrength) * 4;
-        Debug.Log(strengthDif);
         Vector2 velocity = Player.rigidbody.velocity;
         velocity.x = horzInput * (Player.speed - strengthDif) ;
         Player.rigidbody.velocity = velocity;

@@ -8,14 +8,19 @@ public class BoxInteractable : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite button;
     public Sprite grab;
+    public bool isBall = false;
     private bool toggle;
     private Transform indicator;
+    Quaternion iniRot;
+    float iniY;
     // Start is called before the first frame update
     void Start()
     {
         toggle = false;
         indicator = transform.GetChild(0);
         indicator.gameObject.SetActive(toggle);
+        iniRot = indicator.transform.rotation;
+        iniY = indicator.transform.position.y;
     }
 
     public void toggleIndicator(bool state){
@@ -28,5 +33,10 @@ public class BoxInteractable : MonoBehaviour
             spriteRenderer.sprite = grab;
         else
             spriteRenderer.sprite = button;
+    }
+
+    public void LateUpdate(){
+        indicator.transform.rotation = iniRot;
+        indicator.transform.position = new Vector2(transform.position.x,indicator.transform.position.y);
     }
 }
