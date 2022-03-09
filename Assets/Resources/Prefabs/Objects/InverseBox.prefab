@@ -78,8 +78,9 @@ MonoBehaviour:
   unentangledSprite: {fileID: 21300000, guid: 10a65a106f0d4c2499fbed0292a5208f, type: 3}
   activeSprite: {fileID: 21300000, guid: c19f7c6cf87c4f147bd9864b27d43c87, type: 3}
   passiveSprite: {fileID: 21300000, guid: abf4e01ded049574baf075ef3732ccb6, type: 3}
+  deathAnimation: {fileID: 0}
   respawnable: 1
-  respawnTime: 3
+  respawnDelay: 3
   maxVelocity: 20
 --- !u!61 &6214380915014417968
 BoxCollider2D:
@@ -152,7 +153,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -252,7 +253,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
