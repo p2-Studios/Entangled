@@ -8,7 +8,6 @@ public class BoxInteractable : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite button;
     public Sprite grab;
-    public bool isBall = false;
     private bool toggle;
     private Transform indicator;
     Quaternion iniRot;
@@ -20,7 +19,7 @@ public class BoxInteractable : MonoBehaviour
         indicator = transform.GetChild(0);
         indicator.gameObject.SetActive(toggle);
         iniRot = indicator.transform.rotation;
-        iniY = indicator.transform.position.y;
+        iniY = indicator.transform.position.y - transform.position.y;
     }
 
     public void toggleIndicator(bool state){
@@ -35,8 +34,9 @@ public class BoxInteractable : MonoBehaviour
             spriteRenderer.sprite = button;
     }
 
+
     public void LateUpdate(){
         indicator.transform.rotation = iniRot;
-        indicator.transform.position = new Vector2(transform.position.x,indicator.transform.position.y);
+        indicator.transform.position = new Vector2(transform.position.x,transform.position.y + iniY);
     }
 }
