@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efdb59272604dca4299370c094817bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnLocation: {fileID: 3703792065115831476}
+  respawnLocation: {fileID: 2282829766038112090, guid: d55891c79403af24683d0a1e864d34bb, type: 3}
   checkGroundRadius: 0.05
   groundLayer:
     serializedVersion: 2
@@ -319,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: -7147965791592146770, guid: 95aa965296869f045a0f4f4c132002a4, type: 3}
     - target: {fileID: 4867798720408623335, guid: c1f1872aeeac11c46b34a6e236491e6b, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4867798720408623335, guid: c1f1872aeeac11c46b34a6e236491e6b, type: 3}
       propertyPath: m_SortingOrder

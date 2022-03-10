@@ -204,7 +204,8 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     // do things that need to be done on destroying, before the gameobject is set to inactive
     public void Destroy() {
         destroyed = true;
-        Instantiate(deathAnimation, transform.position, quaternion.identity);
+        Transform destructionAnimation = Instantiate(deathAnimation, transform.position, quaternion.identity);
+        destructionAnimation.localScale = transform.localScale;
     }
     
     // do things that need to be done on respawning, right after the game object is set as active again
