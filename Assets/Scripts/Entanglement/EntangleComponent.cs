@@ -118,7 +118,7 @@ public class EntangleComponent : MonoBehaviour {
                                           active.name);
                                 entanglable.SetEntanglementStates(false, true);
                                 passives.Add(entanglable);
-                                FindObjectOfType<AudioManager>().Play("object_entangled");
+                                //FindObjectOfType<AudioManager>().Play("object_entangled");
                             }
                         }
                     }

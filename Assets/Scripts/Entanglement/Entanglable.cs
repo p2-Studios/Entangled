@@ -18,10 +18,10 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     public LayerMask groundLayer;       // the layer type of the ground
 
     // sprite stuff
-    public Sprite unentangledSprite, activeSprite, passiveSprite;
     protected SpriteRenderer spriteRenderer;
     public Transform deathAnimation;
-    
+    [SerializeField] Material defaultMat, activeGlow, pasiveGlow;
+
     // object states
     public bool respawnable = true;     // object respawns after being destroyed, true by default
     public float respawnDelay = 3.0f;    // how long it should take the object to respawn after being destroyed, 3.0s by default
@@ -114,12 +114,13 @@ public class Entanglable : MonoBehaviour, IDestroyable {
 
         if (entangled) {
             if (active) {
-                spriteRenderer.sprite = activeSprite;
+                spriteRenderer.material = activeGlow;
             } else {
-                spriteRenderer.sprite = passiveSprite;
+                spriteRenderer.material = pasiveGlow;
             }
-        } else {
-            spriteRenderer.sprite = unentangledSprite;
+        } 
+        else {
+            spriteRenderer.material = defaultMat;
         }
     }
 
