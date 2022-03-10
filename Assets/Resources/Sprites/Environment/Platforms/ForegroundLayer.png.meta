@@ -1,0 +1,864 @@
+fileFormatVersion: 2
+guid: 12087f67ee0474a6e9929a345d30a91d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -723117075371034695
+    second: ForegroundLayer_0
+  - first:
+      213: 9049274697154043504
+    second: ForegroundLayer_1
+  - first:
+      213: -4737317685147487838
+    second: ForegroundLayer_2
+  - first:
+      213: -4131688279053418981
+    second: ForegroundLayer_3
+  - first:
+      213: -332619627613814851
+    second: ForegroundLayer_4
+  - first:
+      213: -3027228650886287787
+    second: ForegroundLayer_5
+  - first:
+      213: 8452629056259142229
+    second: ForegroundLayer_6
+  - first:
+      213: -2925907327030335239
+    second: ForegroundLayer_7
+  - first:
+      213: -434990527774731119
+    second: ForegroundLayer_8
+  - first:
+      213: 5342180238390193464
+    second: ForegroundLayer_9
+  - first:
+      213: -7140027476786648710
+    second: ForegroundLayer_10
+  - first:
+      213: 8835203133396159060
+    second: ForegroundLayer_11
+  - first:
+      213: 7303775061854662167
+    second: ForegroundLayer_12
+  - first:
+      213: 3590298057297168213
+    second: ForegroundLayer_13
+  - first:
+      213: 9039088916083820882
+    second: ForegroundLayer_14
+  - first:
+      213: 7446403069287228801
+    second: ForegroundLayer_15
+  - first:
+      213: 930166556870360140
+    second: ForegroundLayer_18
+  - first:
+      213: -2720812613421442772
+    second: ForegroundLayer_19
+  - first:
+      213: 1955272135359023426
+    second: ForegroundLayer_20
+  - first:
+      213: -5359355619801299694
+    second: ForegroundLayer_21
+  - first:
+      213: -6452265837782493564
+    second: ForegroundLayer_22
+  - first:
+      213: 8539653419363746906
+    second: ForegroundLayer_23
+  - first:
+      213: -4934763711138211519
+    second: ForegroundLayer_24
+  - first:
+      213: 2467756735312544633
+    second: ForegroundLayer_25
+  - first:
+      213: -2556247072376488590
+    second: ForegroundLayer_27
+  - first:
+      213: 114570542041852292
+    second: ForegroundLayer_28
+  - first:
+      213: -7272898315971871134
+    second: ForegroundLayer_29
+  - first:
+      213: 1010929321502591234
+    second: ForegroundLayer_30
+  - first:
+      213: -6432293974694008800
+    second: ForegroundLayer_31
+  - first:
+      213: 5267879952816397244
+    second: ForegroundLayer_32
+  - first:
+      213: -6471907517332071291
+    second: ForegroundLayer_33
+  - first:
+      213: -7785276890859388717
+    second: ForegroundLayer_34
+  - first:
+      213: -2846365851132533076
+    second: ForegroundLayer_35
+  - first:
+      213: 8092265081957209129
+    second: ForegroundLayer_36
+  - first:
+      213: 6687106749216468740
+    second: ForegroundLayer_37
+  - first:
+      213: -3313955077858385212
+    second: ForegroundLayer_38
+  - first:
+      213: -7578431282038881759
+    second: ForegroundLayer_39
+  - first:
+      213: 2352167862084287057
+    second: ForegroundLayer_40
+  - first:
+      213: -5163262244560580050
+    second: ForegroundLayer_41
+  - first:
+      213: 2299358837275493618
+    second: ForegroundLayer_42
+  - first:
+      213: 5403895662178585670
+    second: ForegroundLayer_43
+  - first:
+      213: -1032173663987764948
+    second: ForegroundLayer_44
+  - first:
+      213: -6529157929690150233
+    second: ForegroundLayer_45
+  - first:
+      213: -2635472803373416903
+    second: ForegroundLayer_46
+  - first:
+      213: -5183071881202858849
+    second: ForegroundLayer_47
+  - first:
+      213: 4252695761533339701
+    second: ForegroundLayer_48
+  - first:
+      213: -5727289493480222774
+    second: ForegroundLayer_49
+  - first:
+      213: -1981547710100306251
+    second: ForegroundLayer_50
+  - first:
+      213: -722206993475563796
+    second: ForegroundLayer_51
+  - first:
+      213: -2443244940490196562
+    second: ForegroundLayer_52
+  - first:
+      213: -7236204724120978296
+    second: ForegroundLayer_53
+  - first:
+      213: -5910517173641268957
+    second: ForegroundLayer_54
+  - first:
+      213: 6587187515967588982
+    second: ForegroundLayer_55
+  - first:
+      213: 6067276256015433261
+    second: ForegroundLayer_56
+  - first:
+      213: -4497934748702351289
+    second: ForegroundLayer_57
+  - first:
+      213: -5714299910423377811
+    second: ForegroundLayer_58
+  - first:
+      213: 5321659167714043616
+    second: ForegroundLayer_59
+  - first:
+      213: -6590067411975697098
+    second: ForegroundLayer_60
+  - first:
+      213: 1679469575470371315
+    second: ForegroundLayer_62
+  - first:
+      213: 1848004245281719443
+    second: ForegroundLayer_63
+  - first:
+      213: -4381790615464137152
+    second: ForegroundLayer_64
+  - first:
+      213: 5931703644890600725
+    second: ForegroundLayer_65
+  - first:
+      213: -6840922639307380789
+    second: ForegroundLayer_66
+  - first:
+      213: -853191687722367106
+    second: ForegroundLayer_67
+  - first:
+      213: -7992047904578944353
+    second: ForegroundLayer_69
+  - first:
+      213: -5567821665339702872
+    second: ForegroundLayer_70
+  - first:
+      213: -510201134914775944
+    second: ForegroundLayer_71
+  - first:
+      213: -8360760177340448306
+    second: ForegroundLayer_72
+  - first:
+      213: -6612375073359417426
+    second: ForegroundLayer_73
+  - first:
+      213: -6490063989867303010
+    second: ForegroundLayer_74
+  - first:
+      213: 4326767007434858246
+    second: ForegroundLayer_75
+  - first:
+      213: -5407444132836177996
+    second: ForegroundLayer_76
+  - first:
+      213: -5185702036298012589
+    second: ForegroundLayer_77
+  - first:
+      213: -1375200647716278193
+    second: ForegroundLayer_78
+  - first:
+      213: 2825805180479617155
+    second: ForegroundLayer_79
+  - first:
+      213: 4769032014104103682
+    second: ForegroundLayer_80
+  - first:
+      213: 6821685258905833564
+    second: ForegroundLayer_81
+  - first:
+      213: 8021262946482625758
+    second: ForegroundLayer_82
+  - first:
+      213: -9008893174469730648
+    second: ForegroundLayer_83
+  - first:
+      213: 6547281577109807636
+    second: ForegroundLayer_84
+  - first:
+      213: 4267077149580420753
+    second: ForegroundLayer_85
+  - first:
+      213: -7801904807300104356
+    second: ForegroundLayer_86
+  - first:
+      213: 4416183393714237252
+    second: ForegroundLayer_87
+  - first:
+      213: 58077503026900478
+    second: ForegroundLayer_88
+  - first:
+      213: 1137045384941395020
+    second: ForegroundLayer_89
+  - first:
+      213: 6452447937704719896
+    second: ForegroundLayer_90
+  - first:
+      213: -108091014267802315
+    second: ForegroundLayer_91
+  - first:
+      213: 7851570855853539641
+    second: ForegroundLayer_92
+  - first:
+      213: 1501272710235298018
+    second: ForegroundLayer_94
+  - first:
+      213: 3190146969915147610
+    second: ForegroundLayer_95
+  - first:
+      213: 6706472233460348589
+    second: ForegroundLayer_96
+  - first:
+      213: 4010366204067741959
+    second: ForegroundLayer_97
+  - first:
+      213: 68251215665369428
+    second: ForegroundLayer_16
+  - first:
+      213: 2203224944027347232
+    second: ForegroundLayer_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 192
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ForegroundLayer_0
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1344
+        width: 852
+        height: 186
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b77d77e9d8f6f5f0800000000000000
+      internalID: -723117075371034695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_1
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1152
+        width: 336
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07e1cc6546b759d70800000000000000
+      internalID: 9049274697154043504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_2
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 1230
+        width: 342
+        height: 306
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a1bb9c2aaaa14eb0800000000000000
+      internalID: -4737317685147487838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_3
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1102
+        width: 852
+        height: 236
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1e306c966b49a6c0800000000000000
+      internalID: -4131688279053418981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_12
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 768
+        width: 288
+        height: 348
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71e2431c8b83c5560800000000000000
+      internalID: 7303775061854662167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_13
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 768
+        width: 288
+        height: 348
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55709f69f0d43d130800000000000000
+      internalID: 3590298057297168213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_56
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 528
+        width: 432
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e36f9eb9b433450800000000000000
+      internalID: 6067276256015433261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_57
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 528
+        width: 438
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 740e5b85d202491c0800000000000000
+      internalID: -4497934748702351289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_79
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 534
+        width: 288
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38832f207d6473720800000000000000
+      internalID: 2825805180479617155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_80
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 54
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20b042379510f2240800000000000000
+      internalID: 4769032014104103682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_81
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 42
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50d992a99e7bae50800000000000000
+      internalID: 6821685258905833564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_82
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 0
+        width: 54
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edc991fb620415f60800000000000000
+      internalID: 8021262946482625758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_83
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 96
+        width: 90
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ae5a44936bf9f280800000000000000
+      internalID: -9008893174469730648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_84
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 294
+        width: 192
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 412e618c7ed9cda50800000000000000
+      internalID: 6547281577109807636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_85
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 130
+        width: 432
+        height: 314
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1966de14f04b73b30800000000000000
+      internalID: 4267077149580420753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_86
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 126
+        width: 438
+        height: 318
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5ff67df9e01ab390800000000000000
+      internalID: -7801904807300104356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_87
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 198
+        width: 192
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44fe05d066f694d30800000000000000
+      internalID: 4416183393714237252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 894
+        width: 192
+        height: 162
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45119397e1a72f000800000000000000
+      internalID: 68251215665369428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_17
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 936
+        width: 186
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 029a705d96d639e10800000000000000
+      internalID: 2203224944027347232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_4
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 905
+        width: 252
+        height: 151
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 4}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbf71c2063c426bf0800000000000000
+      internalID: -332619627613814851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_5
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 670
+        width: 500
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55ea90ab49f1df5d0800000000000000
+      internalID: -3027228650886287787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForegroundLayer_6
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 684
+        width: 327
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 552b87cb755cd4570800000000000000
+      internalID: 8452629056259142229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
