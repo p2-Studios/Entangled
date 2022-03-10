@@ -75,10 +75,11 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  unentangledSprite: {fileID: 21300000, guid: 10a65a106f0d4c2499fbed0292a5208f, type: 3}
-  activeSprite: {fileID: 21300000, guid: c19f7c6cf87c4f147bd9864b27d43c87, type: 3}
-  passiveSprite: {fileID: 21300000, guid: abf4e01ded049574baf075ef3732ccb6, type: 3}
   deathAnimation: {fileID: 0}
+  defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  activeGlow: {fileID: 2100000, guid: fd9a8a520be6a0a47a47dad1124ee2b4, type: 2}
+  pasiveGlow: {fileID: 2100000, guid: 1454fd05688e01b41825eccc9ac9f87a, type: 2}
+  hoverGlow: {fileID: 2100000, guid: 98a6fdfc65731fd4987ad9fc96d24dd4, type: 2}
   respawnable: 1
   respawnDelay: 3
   maxVelocity: 20

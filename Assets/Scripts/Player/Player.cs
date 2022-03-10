@@ -80,7 +80,6 @@ public class Player : MonoBehaviour, IDestroyable {
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
-        //Debug.Log(other.gameObject.tag);
         if (other.gameObject.CompareTag("Platform")) {
             transform.parent = other.gameObject.transform;      // set parent of player to platform so player doesn't slide
         } else if (other.gameObject.CompareTag("Destroyer")) {
