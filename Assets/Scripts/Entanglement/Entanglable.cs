@@ -20,7 +20,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     // sprite stuff
     protected SpriteRenderer spriteRenderer;
     public Transform deathAnimation;
-    [SerializeField] Material defaultMat, activeGlow, pasiveGlow;
+    [SerializeField] Material defaultMat, activeGlow, pasiveGlow, hoverGlow;
 
     // object states
     public bool respawnable = true;     // object respawns after being destroyed, true by default
@@ -107,7 +107,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     /// </summary>
     /// <param name="isActive"> (bool) Is it active?</param>
     /// <param name="isPassive"> (bool) Is it passive?</param>
-    public void SetEntanglementStates(bool isActive, bool isPassive) {
+    public void SetEntanglementStates(bool isActive, bool isPassive, bool hover) {
         active = isActive;
         passive = isPassive;
         entangled = active || passive;
@@ -119,6 +119,9 @@ public class Entanglable : MonoBehaviour, IDestroyable {
                 spriteRenderer.material = pasiveGlow;
             }
         } 
+        else if(hover){
+            spriteRenderer.material = hoverGlow;
+        }
         else {
             spriteRenderer.material = defaultMat;
         }

@@ -161,7 +161,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3682734787062045483, guid: 8a049853b81ea844d8fc0414ac7b5d48, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a7ae9afad0f37c42a3f060c47b5ed4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -189,10 +189,11 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  unentangledSprite: {fileID: 3682734787062045483, guid: 8a049853b81ea844d8fc0414ac7b5d48, type: 3}
-  activeSprite: {fileID: -3063294496382507922, guid: 8a049853b81ea844d8fc0414ac7b5d48, type: 3}
-  passiveSprite: {fileID: -2628348883552464528, guid: 8a049853b81ea844d8fc0414ac7b5d48, type: 3}
   deathAnimation: {fileID: 0}
+  defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  activeGlow: {fileID: 2100000, guid: a4b9c9ce97542804b93eccda923bd408, type: 2}
+  pasiveGlow: {fileID: 2100000, guid: f00e9793af2cea249ad04f98b586fe21, type: 2}
+  hoverGlow: {fileID: 2100000, guid: 09c2a98a45bcae640b48061319bcd772, type: 2}
   respawnable: 1
   respawnDelay: 3
   maxVelocity: 20
