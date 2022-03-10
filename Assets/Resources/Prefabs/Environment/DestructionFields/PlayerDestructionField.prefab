@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3526631541760153690}
   - component: {fileID: 3526631541760153691}
   - component: {fileID: 3526631541760153684}
+  - component: {fileID: 6243307949758321553}
   m_Layer: 0
   m_Name: PlayerDestructionField
   m_TagString: Untagged
@@ -131,11 +132,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-<<<<<<< HEAD
   m_Offset: {x: 0, y: 0}
-=======
-  m_Offset: {x: 0, y: -0.06}
->>>>>>> 54e0dca9bb9825e8b2fb865d454ed4ccc4f3754c
   m_SpriteTilingProperty:
     border: {x: 0, y: 0.083333336, z: 0, w: 0.625}
     pivot: {x: 0.5, y: 0.5}
@@ -146,10 +143,31 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-<<<<<<< HEAD
   m_Size: {x: 0.5, y: 2}
   m_EdgeRadius: 0
-=======
-  m_Size: {x: 1.81, y: 0.04}
-  m_EdgeRadius: 0.1
->>>>>>> 54e0dca9bb9825e8b2fb865d454ed4ccc4f3754c
+--- !u!61 &6243307949758321553
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526631541760153688}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: b54e2551c4b738f46a1fbf0b1f0a27bd, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0.083333336, z: 0, w: 0.625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.45, y: 2}
+  m_EdgeRadius: 0
