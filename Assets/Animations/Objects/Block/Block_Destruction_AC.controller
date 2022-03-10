@@ -29,8 +29,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Object_DESTROY
-  m_Speed: 3
+  m_Name: Block_DESTROY
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -42,7 +42,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ebdc2c8f8a83c004eb890b991e7c8989, type: 2}
+  m_Motion: {fileID: 7400000, guid: c3f464754177f554b9d06457f237bea3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
