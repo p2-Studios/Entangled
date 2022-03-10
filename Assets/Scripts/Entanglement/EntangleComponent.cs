@@ -41,7 +41,7 @@ public class EntangleComponent : MonoBehaviour {
                 if (active == null)
                 {
                     active = e;
-                    active.SetEntanglementStates(true, false);
+                    active.SetEntanglementStates(true, false, true);
                     mousePressedOnActive = true;
                     Debug.Log("Selected " + hit.collider.gameObject.name + " as active");
                 }
@@ -54,7 +54,7 @@ public class EntangleComponent : MonoBehaviour {
 
             } else {    // clicked on background
                 if (active != null && passives.Count == 0){
-                    active.SetEntanglementStates(false, false);
+                    active.SetEntanglementStates(false, false, true);
                     UnsetActive();
                 }
             }
@@ -80,7 +80,7 @@ public class EntangleComponent : MonoBehaviour {
                             Debug.Log("Added " + hit.collider.gameObject.name +
                                       " to passive objects. Currently active- " +
                                       active.name);
-                            entanglable.SetEntanglementStates(false, true);
+                            entanglable.SetEntanglementStates(false, true, true);
                             passives.Add(entanglable);
                             FindObjectOfType<AudioManager>().Play("object_entangled");
                         }
@@ -101,13 +101,13 @@ public class EntangleComponent : MonoBehaviour {
                 if (active == entanglable)
                 {
                     Debug.Log("Removed the active object");
-                    active.SetEntanglementStates(false, false);
+                    active.SetEntanglementStates(false, false, true);
                     UnsetActive();
                     if (passives != null)
                     {
                         foreach (Entanglable passive in passives)
                         {
-                            passive.SetEntanglementStates(false, false);
+                            passive.SetEntanglementStates(false, false, true);
                         }
                     }
 
@@ -116,7 +116,7 @@ public class EntangleComponent : MonoBehaviour {
                 }
                 if (passives.Contains(entanglable)){
                     Debug.Log("Removed the object from the list of passives");
-                    entanglable.SetEntanglementStates(false, false);
+                    entanglable.SetEntanglementStates(false, false, true);
                     passives.Remove(entanglable);
                 }
             }
