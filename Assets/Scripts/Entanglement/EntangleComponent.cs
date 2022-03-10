@@ -12,12 +12,15 @@ public class EntangleComponent : MonoBehaviour {
     public List<Entanglable> passives;
     LayerMask entangleMask;
 
+    private GameObject[] allEntanglableObjects;
 
     // Start is called before the first frame update
     void Start() {
         passives = new List<Entanglable>();
         VelocityManager.GetInstance().onActiveMoved += OnActiveMoved;
         entangleMask = LayerMask.GetMask("Ground");
+
+        allEntanglableObjects = GameObject.FindGameObjectsWithTag("Pushable");
     }
 
     // Update is called once per frame
@@ -35,11 +38,11 @@ public class EntangleComponent : MonoBehaviour {
                 if (active == e) {
                     if (Input.GetKey(KeyCode.LeftControl)) {
                         Debug.Log("Removed the active object");
-                        active.SetEntanglementStates(false, false);
+                        active.SetEntanglementStates(false, false, false);
                         UnsetActive();
-                        if (passives != null) {
-                            foreach (Entanglable passive in passives) {
-                                passive.SetEntanglementStates(false, false);
+                        foreach (GameObject obj in allEntanglableObjects){
+                            if(obj.GetComponent<Entanglable>() != null){
+                                obj.GetComponent<Entanglable>().SetEntanglementStates(false,false,false);
                             }
                         }
 
@@ -51,17 +54,17 @@ public class EntangleComponent : MonoBehaviour {
                     if (Input.GetKey(KeyCode.LeftControl)) {
                         Debug.Log("Cannot remove a non-active object");
                     } else {
-                        if (active != null) active.SetEntanglementStates(false, false);
+                        if (active != null) active.SetEntanglementStates(false, false, false);
                         active = e;
 
                         if (passives != null) {
                             foreach (Entanglable passive in passives) {
-                                passive.SetEntanglementStates(false, false);
+                                passive.SetEntanglementStates(false, false, false);
                             }
                         }
 
                         ClearPassives();
-                        if (active != null) active.SetEntanglementStates(true, false);
+                        if (active != null) active.SetEntanglementStates(true, false, false);
                         passives = new List<Entanglable>();
                         Debug.Log("Selected " + hit.collider.gameObject.name + " as active");
                     }
@@ -69,25 +72,22 @@ public class EntangleComponent : MonoBehaviour {
             } else {
                 if (Input.GetKey(KeyCode.LeftControl)) {
                     Debug.Log("Deselected active and all passive objects");
-
-                    if (active != null)
-                        active.SetEntanglementStates(false, false);
                     UnsetActive();
+                    ClearPassives();
+                    passives = new List<Entanglable>();
 
-                    if (passives != null) {
-                        foreach (Entanglable passive in passives) {
-                            passive.SetEntanglementStates(false, false);
+                    foreach (GameObject obj in allEntanglableObjects){
+                        if(obj.GetComponent<Entanglable>() != null){
+                            obj.GetComponent<Entanglable>().SetEntanglementStates(false,false,false);
                         }
                     }
 
-                    ClearPassives();
-                    passives = new List<Entanglable>();
                 }
             }
         }
-
-        if (Input.GetMouseButtonDown(1)) // When right click is pressed
-        {
+        // When right click is pressed
+        if (Input.GetMouseButtonDown(1)) {
+       
             if (active == null) {
                 Debug.Log("No active object found");
             } else {
@@ -105,7 +105,7 @@ public class EntangleComponent : MonoBehaviour {
                         if (passives.Contains(entanglable)) {
                             if (Input.GetKey(KeyCode.LeftControl)) {
                                 Debug.Log("Removed the object from the list of passives");
-                                entanglable.SetEntanglementStates(false, false);
+                                entanglable.SetEntanglementStates(false, false, true);
                                 passives.Remove(entanglable);
                             } else
                                 Debug.Log("Object is already passive");
@@ -116,7 +116,7 @@ public class EntangleComponent : MonoBehaviour {
                                 Debug.Log("Added " + hit.collider.gameObject.name +
                                           " to passive objects. Currently active- " +
                                           active.name);
-                                entanglable.SetEntanglementStates(false, true);
+                                entanglable.SetEntanglementStates(false, true, false);
                                 passives.Add(entanglable);
                                 FindObjectOfType<AudioManager>().Play("object_entangled");
                             }
@@ -125,6 +125,16 @@ public class EntangleComponent : MonoBehaviour {
                 }
             }
         }
+
+        if (active != null && passives.Count == 0){
+            foreach (GameObject obj in allEntanglableObjects){
+                if(obj.GetComponent<Entanglable>() != null){
+                    if(!obj.GetComponent<Entanglable>().IsEntangled())
+                        obj.GetComponent<Entanglable>().SetEntanglementStates(false,false,true);
+                }
+            }
+        }
+        
 
         if (Input.GetKeyDown(KeyCode.Q)) // Debugging
         {
