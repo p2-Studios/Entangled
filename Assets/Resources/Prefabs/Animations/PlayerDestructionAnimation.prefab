@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2282829766038112164}
   - component: {fileID: 4446116658796337163}
   m_Layer: 0
-  m_Name: DestructionAnimation
+  m_Name: PlayerDestructionAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ Animator:
   m_GameObject: {fileID: 2282829766038112165}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8ad683870a2e4244d808e8a32c90876e, type: 2}
+  m_Controller: {fileID: 9100000, guid: dc308a7d353d0014c96bb56b48942597, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

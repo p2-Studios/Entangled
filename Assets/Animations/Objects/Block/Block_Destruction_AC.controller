@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Object_Destruction_AC
+  m_Name: Block_Destruction_AC
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -42,7 +42,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 317dc04b10c460c4b9726443b7047aac, type: 2}
+  m_Motion: {fileID: 7400000, guid: ebdc2c8f8a83c004eb890b991e7c8989, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
