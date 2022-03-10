@@ -1,7 +1,61 @@
 fileFormatVersion: 2
 guid: d7d56be266d8b46539b8e505c7c34ca2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6408287865084402522
+    second: destruction_field_v2_red_0
+  - first:
+      213: -4409372957311787213
+    second: destruction_field_v2_red_1
+  - first:
+      213: -7639146677258661097
+    second: destruction_field_v2_red_2
+  - first:
+      213: 2339157915653738158
+    second: destruction_field_v2_red_3
+  - first:
+      213: 1634705289525521557
+    second: destruction_field_v2_red_4
+  - first:
+      213: -3065102537951957020
+    second: destruction_field_v2_red_5
+  - first:
+      213: 3631805400930137182
+    second: destruction_field_v2_red_6
+  - first:
+      213: 3200272864407689348
+    second: destruction_field_v2_red_7
+  - first:
+      213: 5135063462465556454
+    second: destruction_field_v2_red_8
+  - first:
+      213: -6025601393509875706
+    second: destruction_field_v2_red_9
+  - first:
+      213: -2786936071798468732
+    second: destruction_field_v2_red_10
+  - first:
+      213: -2471865483328553734
+    second: destruction_field_v2_red_11
+  - first:
+      213: -3477964125891224023
+    second: destruction_field_v2_red_12
+  - first:
+      213: -4768637527363802893
+    second: destruction_field_v2_red_13
+  - first:
+      213: -1062007357316295948
+    second: destruction_field_v2_red_14
+  - first:
+      213: 2879673940764463543
+    second: destruction_field_v2_red_15
+  - first:
+      213: -5131134378094185354
+    second: destruction_field_v2_red_16
+  - first:
+      213: -2796288481674529753
+    second: destruction_field_v2_red_17
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -32,21 +86,21 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 144
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -68,7 +122,31 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -77,7 +155,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: destruction_field_v2_red_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 144
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 12, z: 0, w: 90}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b5dc85cdfcee850800000000000000
+      internalID: 6408287865084402522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: destruction_field_v2_red_1
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 144
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 12, z: 0, w: 90}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f973d38a2cec2c0800000000000000
+      internalID: -4409372957311787213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: destruction_field_v2_red_2
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 144
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 12, z: 0, w: 90}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71354ea229c4cf590800000000000000
+      internalID: -7639146677258661097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: destruction_field_v2_red_3
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 144
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 12, z: 0, w: 90}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eae851c1bbb567020800000000000000
+      internalID: 2339157915653738158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: destruction_field_v2_red_4
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 144
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 12, z: 0, w: 90}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59cee9ebcc3afa610800000000000000
+      internalID: 1634705289525521557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: destruction_field_v2_red_5
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 144
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 12, z: 0, w: 90}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4efa9393b719675d0800000000000000
+      internalID: -3065102537951957020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
