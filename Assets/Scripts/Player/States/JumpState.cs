@@ -54,7 +54,7 @@ public class JumpState : BaseState {
         grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && Player.rigidbody.IsTouchingLayers(groundLayer);
         if(!touchingBox){
             Vector2 velocity = Player.rigidbody.velocity;
-            velocity.x = horzInput * Player.speed;
+            velocity.x = horzInput * Player.speed / 1.5f;
             Player.rigidbody.velocity = velocity;
         }
     }
