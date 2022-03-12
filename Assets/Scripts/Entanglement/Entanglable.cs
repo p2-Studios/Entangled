@@ -83,9 +83,10 @@ public class Entanglable : MonoBehaviour, IDestroyable {
                 var parent = rb.transform.parent;
                 if (!(parent == null)) {    // has a parent object, so calculate the object's absolute velocity
                     position = transform.position;
-                    Vector3 worldVelocity = (position - previousPosition) / Time.deltaTime;
+                    Vector3 worldVelocity = (position - previousPosition) / Time.fixedDeltaTime;
                     previousPosition = position;
-                    if (!(worldVelocity.Equals(Vector2.zero))) {    // if absolute velocity > 0, apply
+                    if (!worldVelocity.Equals(Vector2.zero) && worldVelocity.sqrMagnitude < maxVelocity) {    // if absolute velocity > 0, apply
+                        Debug.Log(worldVelocity);
                         velocityManager.ActiveMoved(this, worldVelocity * rb.mass);
                     }
                 }
