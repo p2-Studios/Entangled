@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -20,10 +21,8 @@ public class PauseMenu : MonoBehaviour
 	public Button yes;
 	public Button no;
 	
-	// Screen 3: Option screen
-	// TODO : When options are available implement them here
-	public GameObject Options;
-	public Button back;
+	// Paused?
+	private bool paused = false;
 	
 	// Timescale for pause
 	private float timescale;
@@ -54,8 +53,6 @@ public class PauseMenu : MonoBehaviour
 		
 		yes.onClick.AddListener(btnYes);
 		no.onClick.AddListener(btnNo);
-		
-		back.onClick.AddListener(btnBack);
 		
 		timescale = Time.timeScale;
     }
@@ -118,20 +115,16 @@ public class PauseMenu : MonoBehaviour
 	// button reset.onclick function
 	void btnReset() {
 		// Check button is held on for atleast 2 seconds
-		//if (System.DateTime.Now.Subtract(clickTime).TotalSeconds >= 2) {
-		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-		menuState();
-		buttonClick = false;
-		//}
+		if (System.DateTime.Now.Subtract(clickTime).TotalSeconds >= 2) {
+			SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+			menuState();
+			buttonClick = false;
+		}
 	}
 	
 	// button options.onclick function
 	void btnOptions() {
-		// Hide Screen 1
-		menu.SetActive(false);
-		
-		// Show Screen 3
-		Options.SetActive(true);
+		SceneManager.LoadSceneAsync("Options",LoadSceneMode.Additive);
 	}
 	
 	// button exit.onclick function
@@ -162,8 +155,23 @@ public class PauseMenu : MonoBehaviour
 		confirm.SetActive(false);
 	}
 	
+	// button graphics.onclick function
+	void btnGraphics() {
+		
+	}
+	
+	// button controls.onclick function
+	void btControls() {
+		
+	}
+	
+	// button sound.onclick function
+	void btnSound() {
+		
+	}
+	
 	void resumeState() {
-		if (menu.activeSelf) {
+		if (paused) {
 			// Pause
 			Time.timeScale = 0.0f;
 		}
@@ -173,20 +181,17 @@ public class PauseMenu : MonoBehaviour
 		}
 	}
 	
-	// button back.onclick function
-	void btnBack() {
-		// Show Screen 1
-		menu.SetActive(true);
-		
-		// Hide Screen 3
-		Options.SetActive(false);
-	}
-	
 	void menuState() {
-		menu.SetActive(!menu.activeSelf);
 		
-		confirm.SetActive(false);
+		if (paused) {
+			menu.SetActive(false);
+			confirm.SetActive(false);
+		}
+		else {
+			menu.SetActive(true);
+		}
 		
+		paused = !paused;
 		resumeState();
 	}
 	
