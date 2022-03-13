@@ -7,7 +7,7 @@ using UnityEngine;
 public class Level : MonoBehaviour {
     public string label;
     public FlashDrive[] flashDrives, foundFlashDrives;
-    public int totalOrbs, orbsFound;
+    public Orb[] orbs, orbsFound;
 
     public void Awake() {
         LoadLevelData();
