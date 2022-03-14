@@ -155,21 +155,6 @@ public class PauseMenu : MonoBehaviour
 		confirm.SetActive(false);
 	}
 	
-	// button graphics.onclick function
-	void btnGraphics() {
-		
-	}
-	
-	// button controls.onclick function
-	void btControls() {
-		
-	}
-	
-	// button sound.onclick function
-	void btnSound() {
-		
-	}
-	
 	void resumeState() {
 		if (paused) {
 			// Pause

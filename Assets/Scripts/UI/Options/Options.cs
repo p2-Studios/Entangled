@@ -19,8 +19,6 @@ public class Options : MonoBehaviour
 	
 	// Controls
 	public GameObject control;
-	public Button control_cancel;
-	public Button control_apply;
 	
 	// Sound
 	
@@ -31,8 +29,6 @@ public class Options : MonoBehaviour
 		back.onClick.AddListener(btnBack);
 		controls.onClick.AddListener(btnControl);
 		
-		// control
-		control_cancel.onClick.AddListener(btnCtrCancel);
     }
 	
 	 // Update is called once per frame
@@ -49,15 +45,6 @@ public class Options : MonoBehaviour
 		
 		// Show control
 		control.SetActive(true);
-	}
-
-	// button control_cancel.onclick function
-	void btnCtrCancel() {
-		// Show main
-		main.SetActive(true);
-		
-		// Hide control
-		control.SetActive(false);
 	}
 	
 	// button exit.onclick function
