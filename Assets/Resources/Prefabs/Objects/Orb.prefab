@@ -81,10 +81,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1328738331305067993}
-  - component: {fileID: 1328738331305067998}
-  - component: {fileID: 1328738331305067999}
   - component: {fileID: 1282156313438595617}
   - component: {fileID: 3448143006170432402}
+  - component: {fileID: 5096797845500856319}
+  - component: {fileID: 1328738331305067998}
+  - component: {fileID: 1328738331305067999}
   m_Layer: 0
   m_Name: Orb
   m_TagString: Orb
@@ -107,6 +108,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1282156313438595617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328738331305067996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c620a4831635434a97962492ec02544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UID: {fileID: 5096797845500856319}
+--- !u!114 &3448143006170432402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328738331305067996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68dfd295da17b0b43bfd1c42fe6519de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0.05
+  speed: 0.1
+--- !u!114 &5096797845500856319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328738331305067996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497732968f1d87f4aa7b249433f778f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: Orb_dde32ae7-a468-4fe9-82a9-29b30421a487
 --- !u!212 &1328738331305067998
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -174,35 +215,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
---- !u!114 &1282156313438595617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328738331305067996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c620a4831635434a97962492ec02544, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3448143006170432402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328738331305067996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68dfd295da17b0b43bfd1c42fe6519de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  distance: 0.05
-  speed: 0.1

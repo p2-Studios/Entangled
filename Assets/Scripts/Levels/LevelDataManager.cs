@@ -15,8 +15,4 @@ public class LevelDataManager : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
-    public void AddOrb() {
-        
-    }
 }

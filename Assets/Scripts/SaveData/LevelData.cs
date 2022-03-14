@@ -6,17 +6,13 @@ using UnityEngine;
 public class LevelData {
     
     public string label;
-    public FlashDrive[] flashDrives;
-    public FlashDrive[] foundFlashDrives;
-    public Orb[] orbs;
-    public Orb[] orbsFound;
+    public string[] foundFlashDrives;
+    public string[] foundOrbs;
 
     public LevelData(Level level) {
         label = level.label;
-        flashDrives = level.flashDrives;
-        foundFlashDrives = level.foundFlashDrives;
-        orbs = level.orbs;
-        orbsFound = level.orbsFound;
+        foundFlashDrives = level.GetFoundFlashDriveIDs();
+        foundOrbs = level.GetCollectedOrbIDS();
     }
     
 }

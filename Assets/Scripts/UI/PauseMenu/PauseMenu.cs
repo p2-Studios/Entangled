@@ -41,7 +41,7 @@ public class PauseMenu : MonoBehaviour
 		if (instance == null) {
 			instance = this;
 		} else {
-			DestroyObject(gameObject);
+			Destroy(gameObject);
 		}
 	}
 

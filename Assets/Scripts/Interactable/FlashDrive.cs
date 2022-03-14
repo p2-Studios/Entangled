@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class FlashDrive : Interactable {
     public string label;
     public string[] texts;
+    public UniqueId UID;
 
-    protected override void Interact() {
-        base.Interact();
-        CollectFlashDrive();
+    public void Collect() {
+        FindObjectOfType<Level>().FlashDriveFound(this); 
     }
 
-    private void CollectFlashDrive() {
-        this.gameObject.SetActive(false);
+    public string GetID() {
+        return UID.uniqueId;
+    }
+    
+    protected override void Interact() {
+        base.Interact();
+        Collect();
     }
 }
