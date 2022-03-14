@@ -86,4 +86,9 @@ public class Level : MonoBehaviour {
         foundFlashDrives.Add(f);
         f.gameObject.SetActive(false);
     }
+
+    public void OrbCollected(Orb o) {
+        collectedOrbs.Add(o);
+        o.gameObject.SetActive(false);
+    }
 }

@@ -1,18 +1,22 @@
 using UnityEngine;
 
-[System.Serializable]
 public class Orb : MonoBehaviour {
 
     public UniqueId UID;
+    private Level level;
     
+    private void Awake() {
+        level = FindObjectOfType<Level>();
+    }
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Player")) {
-            CollectOrb();
+            Collect();
         }
     }
-    private void CollectOrb() {
-        gameObject.SetActive(false);
-        //levelDataManager.collectOrb(this);
+
+    public void Collect() {
+        FindObjectOfType<AudioManager>().Play("orb_collect");
+        level.OrbCollected(this); 
     }
     public string GetID() {
         return UID.uniqueId;
