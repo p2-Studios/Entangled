@@ -156,9 +156,14 @@ public class EntangleComponent : MonoBehaviour {
     }
 
     public void ClearEntangled() {
-        active.SetEntanglementStates(false, false, true);
-        UnsetActive();
-        ClearPassives();
+        if (active != null) {
+            active.SetEntanglementStates(false, false, true);
+            UnsetActive();
+            ClearPassives();
+            if (EntangledHelix != null) {
+                Destroy(EntangledHelix);
+            }
+        }
     }
     
     /// <summary>

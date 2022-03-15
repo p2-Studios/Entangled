@@ -20,7 +20,8 @@ public class Player : MonoBehaviour, IDestroyable {
     public float rayHeight = 0;
 
 
-    private EntangleComponent entangleComponent;
+    [HideInInspector]
+    public EntangleComponent entangleComponent;
     public GameObject EntanglingHelix, EntangledHelix;
     public bool showEntanglingHelix = true;
     public bool showEntangledHelix = true;
@@ -160,13 +161,12 @@ public class Player : MonoBehaviour, IDestroyable {
 
     // do things that need to be done on destroying, before the gameobject is set to inactive
     public void Destroy() {
-        Debug.Log("Destroying Player");
+        entangleComponent.ClearEntangled();
         Instantiate(deathAnimation, transform.position, quaternion.identity);
     }
     
     // do things that need to be done on respawning, right after the game object is set as active again
     public void Respawn() {
-        Debug.Log("Respawning Player");
         gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
         ResetPlayer();
     }
