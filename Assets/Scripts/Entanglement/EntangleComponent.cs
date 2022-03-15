@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Entanglement;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 /// <summary>
 /// EntangleComponent - Keeps track of the Entanglable objects that a player currently has entangled.
@@ -235,10 +236,11 @@ public class EntangleComponent : MonoBehaviour {
         if (EntanglingHelix == null) EntanglingHelix = Instantiate(EntanglingHelixPrefab);
         Vector3 centerPos = (initialPosition + finalPosition) / 2f;
         EntanglingHelix.transform.position = centerPos;
-        Vector3 direction = finalPosition - initialPosition;
+        Vector3 direction = finalPosition - initialPosition; 
         direction = Vector3.Normalize(direction);
         EntanglingHelix.transform.right = direction;
         var scale = new Vector2(1f,0.33f) { x = Vector3.Distance(initialPosition, finalPosition) };
+        //EntanglingHelix.transform.GetChild(0).localScale = scale; light stuff - todo
         EntanglingHelix.GetComponent<SpriteRenderer>().size = scale;
     }
     
@@ -250,6 +252,7 @@ public class EntangleComponent : MonoBehaviour {
         direction = Vector3.Normalize(direction);
         EntangledHelix.transform.right = direction;
         var scale = new Vector2(1f,0.33f) { x = Vector3.Distance(initialPosition, finalPosition)};
+        //EntangledHelix.transform.GetChild(0).localScale = scale; light stuff - todo
         EntangledHelix.GetComponent<SpriteRenderer>().size = scale;
     }
 }
