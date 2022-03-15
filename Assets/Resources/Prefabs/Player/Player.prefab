@@ -60,6 +60,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 118
   rayHeight: -0.27
+  EntanglingHelix: {fileID: 8639923436664529287, guid: e1a32811dcf2783498d19a0b23de7b5c, type: 3}
+  EntangledHelix: {fileID: 4301194098379100217, guid: 6b752724eae5b3c41bfbecf5a7a9c0bd, type: 3}
   respawnLocation: {fileID: 0}
   respawnDelay: 2
   worldVelocity: {x: 0, y: 0}

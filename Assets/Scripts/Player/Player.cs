@@ -21,6 +21,10 @@ public class Player : MonoBehaviour, IDestroyable {
 
 
     private EntangleComponent entangleComponent;
+    public GameObject EntanglingHelix, EntangledHelix;
+    public bool showEntanglingHelix = true;
+    public bool showEntangledHelix = true;
+    
     private AudioManager audioManager;
     PlayerStateMachine stateMachine;
 
@@ -43,6 +47,10 @@ public class Player : MonoBehaviour, IDestroyable {
     private void Start(){
         // Initialize entangleComponent
         entangleComponent = gameObject.AddComponent<EntangleComponent>();
+        entangleComponent.EntangledHelixPrefab = EntangledHelix;
+        entangleComponent.EntanglingHelixPrefab = EntanglingHelix;
+        entangleComponent.showEntanglingHelix = showEntanglingHelix;
+        entangleComponent.showEntangledHelix = showEntangledHelix;
         // Add and initialize PlayerStateMachine
         stateMachine = gameObject.AddComponent<PlayerStateMachine>() as PlayerStateMachine;
         audioManager = FindObjectOfType<AudioManager>();
