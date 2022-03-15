@@ -91,4 +91,12 @@ public class Level : MonoBehaviour {
         collectedOrbs.Add(o);
         o.gameObject.SetActive(false);
     }
+
+    public int GetTotalOrbCount() {
+        return orbs.Length;
+    }
+
+    public int GetFoundOrbsCount() {
+        return collectedOrbs.Count;
+    }
 }
