@@ -2905,6 +2905,7 @@ GameObject:
   - component: {fileID: 1765073113}
   - component: {fileID: 1765073112}
   - component: {fileID: 1765073118}
+  - component: {fileID: 1765073119}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -3050,6 +3051,34 @@ MonoBehaviour:
   sound: {fileID: 1087320676}
   back: {fileID: 409191823}
   control: {fileID: 2037545137}
+--- !u!114 &1765073119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765073111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 711a6a32221c4454e92497d0c1c69860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  option_screen: {fileID: 1765073111}
+  control_screen: {fileID: 2037545137}
+  control1: {fileID: 218606800}
+  control2: {fileID: 654981177}
+  walk_up: {fileID: 883942777}
+  walk_down: {fileID: 218213804}
+  walk_left: {fileID: 335838815}
+  walk_right: {fileID: 2139394876}
+  push_pull: {fileID: 606473539}
+  reset: {fileID: 1701042231}
+  interact: {fileID: 2105742498}
+  entangle: {fileID: 1836507735}
+  cancel: {fileID: 2099997911}
+  apply: {fileID: 1773097939}
+  next: {fileID: 1326028568}
+  prev: {fileID: 1198229268}
 --- !u!1 &1773097937
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,7 +3857,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037545137}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 711a6a32221c4454e92497d0c1c69860, type: 3}
   m_Name: 
@@ -3849,8 +3878,6 @@ MonoBehaviour:
   apply: {fileID: 1773097939}
   next: {fileID: 1326028568}
   prev: {fileID: 1198229268}
-  list1: {fileID: 0}
-  list2: {fileID: 0}
 --- !u!1 &2099997909
 GameObject:
   m_ObjectHideFlags: 0

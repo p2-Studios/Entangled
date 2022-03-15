@@ -59,71 +59,89 @@ public class Controls : MonoBehaviour
 	}
 	
     // Update is called once per frame
-    void Update()
+    void OnGUI()
     {
-		if (button_assign != 0) {
-			
+		if (button_assign != -1) {
+			Event e = Event.current;
+			if (e.isKey) {
+				curr_keys[button_assign] = e.character.ToString();
+				applyText(false);
+				button_assign = -1;
+			}
 		}
     }
 	
 	void btnWalkUp() {
 		if (button_assign != -1)
-			revertText();
+			applyText(false);
 		button_assign = 0;
 	}
 	
 	void btnWalkDown() {
 		if (button_assign != -1)
-			revertText();
+			applyText(false);
 		button_assign = 1;
 	}
 	
 	void btnWalkLeft() {
 		if (button_assign != -1)
-			revertText();
+			applyText(false);
 		button_assign = 2;
 	}
 	
 	void btnWalkRight() {
 		if (button_assign != -1)
-			revertText();
+			applyText(false);
 		button_assign = 3;
 	}
 	
 	void btnPushPull() {
 		if (button_assign != -1)
-			revertText();
+			applyText(false);
 		button_assign = 4;
 	}
 	
 	void btnReset() {
 		if (button_assign != -1)
-			revertText();
+			applyText(false);
 		button_assign = 5;
 	}
 	
 	void btnInteract() {
 		if (button_assign != -1)
-			revertText();
+			applyText(false);
 		button_assign = 6;
 	}
 	
 	void btnEntangle() {
 		if (button_assign != -1)
-			revertText();
+			applyText(false);
 		button_assign = 7;
 	}
 	
-	void revertText() {
+	void applyText(bool revert) {
+		
+		string[] chosen_keys = curr_keys;
+		
+		if (revert) {
+			chosen_keys = prev_keys;
+		}
+	
+		getSelectedButton().GetComponentInChildren<Text>().text = chosen_keys[button_assign];
+
+	}
+	
+	Button getSelectedButton() {
 		
 		switch (button_assign) {
-			case 0 : walk_up.GetComponentInChildren<Text>().text = prev_keys[button_assign]; break;
-			case 1 : walk_down.GetComponentInChildren<Text>().text = prev_keys[button_assign]; break;
-			case 2 : walk_left.GetComponentInChildren<Text>().text = prev_keys[button_assign]; break;
-			case 3 : walk_right.GetComponentInChildren<Text>().text = prev_keys[button_assign]; break;
-			case 4 : push_pull.GetComponentInChildren<Text>().text = prev_keys[button_assign]; break;
-			case 5 : reset.GetComponentInChildren<Text>().text = prev_keys[button_assign]; break;
-			case 6 : interact.GetComponentInChildren<Text>().text = prev_keys[button_assign]; break;
+			case 0 : return walk_up;
+			case 1 : return walk_down;
+			case 2 : return walk_left;
+			case 3 : return walk_right;
+			case 4 : return push_pull;
+			case 5 : return reset;
+			case 6 : return interact;
+			default: return null;
 		}
 		
 	}
