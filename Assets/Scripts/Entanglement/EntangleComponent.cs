@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Entanglement;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 /// <summary>
 /// EntangleComponent - Keeps track of the Entanglable objects that a player currently has entangled.
@@ -10,11 +11,16 @@ using UnityEngine.Events;
 public class EntangleComponent : MonoBehaviour {
     public Entanglable active;
     public List<Entanglable> passives;
-    private bool mousePressedOnActive = false;
 
-    LayerMask entangleMask;
+    public bool showEntanglingHelix = true;
+    public bool showEntangledHelix = true;
 
     private GameObject[] allEntanglableObjects;
+
+    public GameObject EntanglingHelix, EntanglingHelixPrefab, EntangledHelix, EntangledHelixPrefab;
+
+    LayerMask entangleMask;
+    private bool mousePressedOnActive = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -27,118 +33,152 @@ public class EntangleComponent : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        // draw helixes from active to passive(s)
+        if (showEntangledHelix) {
+            if (passives.Count != 0) {
+                foreach (Entanglable e in passives) {
+                    DrawEntangledHelix(active.transform.position, e.transform.position);
+                }
+            }
+        }
+        
         // Mouse Controls for Entangling Objects
         // (Hit detector- https://stackoverflow.com/a/61659152. I have modified this a bit to suit our needs)
-
+        // mouse button held, draw line if there is an active
+        if (Input.GetMouseButton(0)) {
+            if (active != null) {
+                // active, but no passives. Draw Entangling line
+                Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                cursorPos.z = 0;
+                DrawEntanglingHelix(active.transform.position, cursorPos);
+            }
+        } else {
+            if (EntanglingHelix != null) Destroy(EntanglingHelix);
+        }
+        
         if (Input.GetMouseButtonDown(0)) {
+
+            Debug.Log("Mouse down");
+            
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
-            if (hit.collider != null) { // If one object is clicked, all objects get the click input. This is to prevent multiple selection
-                Debug.Log(hit.collider.gameObject.name);
+            if (hit.collider != null) {
+                // If one object is clicked, all objects get the click input. This is to prevent multiple selection
+                //Debug.Log(hit.collider.gameObject.name);
                 Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
                 if (e == null) return;
-
-                if (active == null)
-                {
-                    active = e;
-                    active.SetEntanglementStates(true, false, true);
+                
+                if (e == active) {  // e is already the active
                     mousePressedOnActive = true;
-                    Debug.Log("Selected " + hit.collider.gameObject.name + " as active");
+                    //Debug.Log("This is currently active.");
+                } else { // e is not the active, so clear passives for new entanglement
+                    ClearEntangled();
                 }
+                
+                active = e;
 
-                if (e == active)
-                {
-                    mousePressedOnActive = true;
-                    Debug.Log("This is currently active.");
-                }
-
-            } else {    // clicked on background
-                if (active != null && passives.Count == 0){
+                active.SetEntanglementStates(true, false, true);
+                mousePressedOnActive = true;
+            } else {
+                // clicked on background
+                if (active != null && passives.Count == 0) {
                     active.SetEntanglementStates(false, false, true);
                     UnsetActive();
                 }
             }
         }
 
-        if (Input.GetMouseButtonUp(0)) // When mouse click is released
-        {
-            if (active == null)
-                Debug.Log("No active object found");
-            else {
+        if (Input.GetMouseButtonUp(0)) {
+            // When mouse click is released
+            if (active != null) {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
-                if (hit.collider != null) { // If one object is clicked, all objects get the click input. This is to prevent multiple selection
-                    Entanglable entanglable = hit.collider.gameObject.GetComponent<Entanglable>();
-                    if (entanglable == null) return;
-                    if (active.Equals(entanglable)) {
-                        Debug.Log("Drag and release mouse on another object");
-                    } else if (mousePressedOnActive){
+                if (hit.collider != null) {
+                    // If one object is clicked, all objects get the click input. This is to prevent multiple selection
+                    Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
+                    if (e == null) return;
+                    if (!active.Equals(e) && mousePressedOnActive) {
                         mousePressedOnActive = false;
-                        if (passives.Contains(entanglable)) {
-                            Debug.Log("Object is already passive");
-                        } else{
-                            Debug.Log("Added " + hit.collider.gameObject.name +
-                                      " to passive objects. Currently active- " +
-                                      active.name);
-                            entanglable.SetEntanglementStates(false, true, true);
-                            passives.Add(entanglable);
-                            FindObjectOfType<AudioManager>().Play("object_entangled");
-                        }
-                    }
-                }
-            }
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
-            if (hit.collider != null)
-            {
-                // If one object is clicked, all objects get the click input. This is to prevent multiple selection
-                Entanglable entanglable = hit.collider.gameObject.GetComponent<Entanglable>();
-                if (entanglable == null) return;
-                if (active == entanglable)
-                {
-                    Debug.Log("Removed the active object");
-                    active.SetEntanglementStates(false, false, true);
-                    UnsetActive();
-                    if (passives != null)
-                    {
-                        foreach (Entanglable passive in passives)
-                        {
+                        // for now, only one passive object is possible, so clear other actives
+                        foreach (Entanglable passive in passives) {
                             passive.SetEntanglementStates(false, false, true);
                         }
+                        if (!passives.Contains(e)) {
+                            FindObjectOfType<AudioManager>().Play("object_entangled");
+                        }
+                        e.SetEntanglementStates(false, true, true);
+                        passives.Clear();
+                        passives.Add(e);
                     }
-
-                    ClearPassives();
-                    passives = new List<Entanglable>();
-                }
-                if (passives.Contains(entanglable)){
-                    Debug.Log("Removed the object from the list of passives");
-                    entanglable.SetEntanglementStates(false, false, true);
-                    passives.Remove(entanglable);
                 }
             }
-        }
-
-        if (active != null && passives.Count == 0){
-            foreach (GameObject obj in allEntanglableObjects){
-                if(obj.GetComponent<Entanglable>() != null){
-                    if(!obj.GetComponent<Entanglable>().IsEntangled())
-                        obj.GetComponent<Entanglable>().SetEntanglementStates(false,false,true);
+            
+            if (passives.Count == 0){
+                if (active != null) {
+                    active.SetEntanglementStates(false, false, true);
+                    active = null;
                 }
             }
         }
 
+        // Right click pressed
+        if (Input.GetMouseButtonDown(1)) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
+            if (hit.collider != null) {
+                // If one object is clicked, all objects get the click input. This is to prevent multiple selection
+                Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
+                if (e == null) return;
+                if (active == e) {
+                    ClearEntangled();
+                }
 
-        if (Input.GetKeyDown(KeyCode.Q)) // Debugging
-        {
-            Debug.Log("Active- " + active);
-            foreach (Entanglable e in passives) {
-                Debug.Log("Passive- " + e);
+                if (passives.Contains(e)) {
+                    //Debug.Log("Removed the object from the list of passives");
+                    e.SetEntanglementStates(false, false, true);
+                    passives.Remove(e);
+                }
             }
         }
+
+        if (active != null && passives.Count == 0) {
+            foreach (GameObject obj in allEntanglableObjects) {
+                Entanglable e = obj.GetComponent<Entanglable>();
+                if (e != null) {
+                    if (!e.IsEntangled())
+                        e.SetEntanglementStates(false, false, true);
+                }
+            }
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Q)) { // Q to quick clear entangleds
+            ClearEntangled();
+        }
+        
+    }
+
+    public void ClearEntangled() {
+        if (active != null) {
+            active.SetEntanglementStates(false, false, true);
+            UnsetActive();
+            ClearPassives();
+            if (EntangledHelix != null) {
+                Destroy(EntangledHelix);
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Clears passive list (sets to new list). Use SetPassive to create new list of passives.
+    /// </summary>
+    public void ClearPassives() {
+        if (passives != null) {
+            foreach (Entanglable passive in passives) {
+                passive.SetEntanglementStates(false, false, true);
+            }
+        }
+        passives = new List<Entanglable>();
     }
 
 
@@ -185,15 +225,6 @@ public class EntangleComponent : MonoBehaviour {
         passives.Remove(removed);
     }
 
-
-    /// <summary>
-    /// Clears passive list (sets to null). Use SetPassive to create new list of passives.
-    /// </summary>
-    public void ClearPassives() {
-        passives = null;
-    }
-
-
     /// <summary>
     /// Loops through passive objects and applies force (if force is applied to current active object).
     /// </summary>
@@ -204,5 +235,32 @@ public class EntangleComponent : MonoBehaviour {
                 passive.ApplyVelocity(force);
             }
         }
+    }
+    
+    // source: https://answers.unity.com/questions/844792/unity-stretch-sprite-between-two-points-at-runtime.html
+    // Stretches the helix sprites appropriately
+    // TODO: Refactor this mess
+    public void DrawEntanglingHelix(Vector3 initialPosition, Vector3 finalPosition) {
+        if (EntanglingHelix == null) EntanglingHelix = Instantiate(EntanglingHelixPrefab);
+        Vector3 centerPos = (initialPosition + finalPosition) / 2f;
+        EntanglingHelix.transform.position = centerPos;
+        Vector3 direction = finalPosition - initialPosition; 
+        direction = Vector3.Normalize(direction);
+        EntanglingHelix.transform.right = direction;
+        var scale = new Vector2(1f,0.33f) { x = Vector3.Distance(initialPosition, finalPosition) };
+        //EntanglingHelix.transform.GetChild(0).localScale = scale; light stuff - todo
+        EntanglingHelix.GetComponent<SpriteRenderer>().size = scale;
+    }
+    
+    public void DrawEntangledHelix(Vector3 initialPosition, Vector3 finalPosition) {
+        if (EntangledHelix == null) EntangledHelix = Instantiate(EntangledHelixPrefab);
+        Vector3 centerPos = (initialPosition + finalPosition) / 2f;
+        EntangledHelix.transform.position = centerPos;
+        Vector3 direction = finalPosition - initialPosition;
+        direction = Vector3.Normalize(direction);
+        EntangledHelix.transform.right = direction;
+        var scale = new Vector2(1f,0.33f) { x = Vector3.Distance(initialPosition, finalPosition)};
+        //EntangledHelix.transform.GetChild(0).localScale = scale; light stuff - todo
+        EntangledHelix.GetComponent<SpriteRenderer>().size = scale;
     }
 }

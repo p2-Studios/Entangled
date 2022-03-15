@@ -13,6 +13,6 @@ public class RespawnSetter : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D col) {
-        player.respawnLocation = respawnPoint;
+        if (col.gameObject.CompareTag("Player")) player.respawnLocation = respawnPoint;
     }
 }

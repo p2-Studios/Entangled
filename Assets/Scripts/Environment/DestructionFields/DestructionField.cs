@@ -12,9 +12,15 @@ public class DestructionField : MonoBehaviour {
         Player p = other.GetComponent<Player>();
         Entanglable e = other.GetComponent<Entanglable>();
 
-        if (p != null && destroyPlayer) {
-            p.Kill();
-        } else if (e != null && destroyObjects) {
+        if (p != null) {
+            if (destroyPlayer) {
+                p.Kill();
+            } else {
+                p.entangleComponent.ClearEntangled();
+            }
+        }
+        
+        if (e != null && destroyObjects) {
             e.Kill();
         }
     }
