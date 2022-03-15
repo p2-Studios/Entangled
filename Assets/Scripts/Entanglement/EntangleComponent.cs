@@ -67,18 +67,18 @@ public class EntangleComponent : MonoBehaviour {
                 //Debug.Log(hit.collider.gameObject.name);
                 Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
                 if (e == null) return;
-
-                if (active == null) {
-                    active = e;
-                    active.SetEntanglementStates(true, false, true);
-                    mousePressedOnActive = true;
-                    //Debug.Log("Selected " + hit.collider.gameObject.name + " as active");
-                }
-
-                if (e == active) {
+                
+                if (e == active) {  // e is already the active
                     mousePressedOnActive = true;
                     //Debug.Log("This is currently active.");
+                } else { // e is not the active, so clear passives for new entanglement
+                    ClearEntangled();
                 }
+                
+                active = e;
+
+                active.SetEntanglementStates(true, false, true);
+                mousePressedOnActive = true;
             } else {
                 // clicked on background
                 if (active != null && passives.Count == 0) {
@@ -97,15 +97,18 @@ public class EntangleComponent : MonoBehaviour {
                     // If one object is clicked, all objects get the click input. This is to prevent multiple selection
                     Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
                     if (e == null) return;
-                    if (active.Equals(e)) {
-                        Debug.Log("Drag and release mouse on another object");
-                    } else if (mousePressedOnActive) {
+                    if (!active.Equals(e) && mousePressedOnActive) {
                         mousePressedOnActive = false;
+                        // for now, only one passive object is possible, so clear other actives
+                        foreach (Entanglable passive in passives) {
+                            passive.SetEntanglementStates(false, false, true);
+                        }
                         if (!passives.Contains(e)) {
-                            e.SetEntanglementStates(false, true, true);
-                            passives.Add(e);
                             FindObjectOfType<AudioManager>().Play("object_entangled");
                         }
+                        e.SetEntanglementStates(false, true, true);
+                        passives.Clear();
+                        passives.Add(e);
                     }
                 }
             }
