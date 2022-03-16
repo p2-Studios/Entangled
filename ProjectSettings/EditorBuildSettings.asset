@@ -5,12 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: 571708a76f46f42f3b0cc2e908687d66
+  - enabled: 1
+    path: Assets/Scenes/ElevatorTransition.unity
+    guid: 9edfb4ca5f4bb12479156e2b0bff67ac
   - enabled: 1
     path: Assets/Scenes/Puzzles/Tutorial.unity
     guid: 1dfa7057e0b5b7140b100a921e070569

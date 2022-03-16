@@ -37,7 +37,7 @@ public class EntangleComponent : MonoBehaviour {
         if (showEntangledHelix) {
             if (passives.Count != 0) {
                 foreach (Entanglable e in passives) {
-                    DrawEntangledHelix(active.transform.position, e.transform.position);
+                    if (active != null) DrawEntangledHelix(active.transform.position, e.transform.position);
                 }
             }
         }
@@ -216,13 +216,31 @@ public class EntangleComponent : MonoBehaviour {
         active = null;
     }
 
+    public void RemoveActive(Entanglable e) {
+        if (active == null) return;
+        if (active.Equals(e)) {
+            UnsetActive();
+            Destroy(EntangledHelix);
+            e.SetEntanglementStates(false, false, true);
+            ClearPassives();
+        }
+    }
+
+    public void Unentangle(Entanglable e) {
+        RemoveActive(e);
+        RemovePassive(e);
+    }
 
     /// <summary>
     /// Removes the provided entanglable from the current list of passives. 
     /// </summary>
     /// <param name="removed">A currently existing Entanglable object to remove from list.</param>
-    public void RemovePassive(Entanglable removed) {
-        passives.Remove(removed);
+    public void RemovePassive(Entanglable e) {
+        if (passives.Contains(e)) {
+            passives.Remove(e);
+            Destroy(EntangledHelix);
+            e.SetEntanglementStates(false, false, true);
+        }
     }
 
     /// <summary>
