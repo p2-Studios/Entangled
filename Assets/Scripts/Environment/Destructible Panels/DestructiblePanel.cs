@@ -9,14 +9,26 @@ public class DestructiblePanel : MonoBehaviour
 
 	private Animator anim;
 
+	List <GameObject> currentCollisions = new List <GameObject> ();
+
 	public void Start() {
 		anim = GetComponent<Animator>();
         panel_col = GetComponent<Collider2D>();
     }
 
 	private void OnCollisionEnter2D(Collision2D collision) {
-
+		float total = 0;
 		// check initial collision for the impulse ...
+		currentCollisions.Add (collision.gameObject);
+		foreach (GameObject gObject in currentCollisions) {
+			total += collision.rigidbody.mass;
+            print (total);
+        }
+		if(total >= required_impulse){
+			panel_col.enabled = false;
+			anim.SetBool("Destroyed", true);
+			return;
+		}
 
 		foreach (ContactPoint2D contact in collision.contacts) {
 
@@ -35,9 +47,9 @@ public class DestructiblePanel : MonoBehaviour
 		ContactPoint2D[] cps = new ContactPoint2D[25];
 
 		panel_col.GetContacts(cps);
-
+		
 		foreach (ContactPoint2D contact in cps) {
-			if (contact.normalImpulse >= required_impulse) {
+			if (contact.normalImpulse >= required_impulse ) {
 				panel_col.enabled = false;
 				anim.SetBool("Destroyed", true);
 				return;
