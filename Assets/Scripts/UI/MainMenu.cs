@@ -6,14 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-    public string firstLevel;
-
     private void Awake() {
         StartCoroutine(StartMusicWithDelay());
     }
 
-    public void PlayGame() {
-        SceneManager.LoadSceneAsync(firstLevel);
+    public void StartAtLevel(string levelName) {
+        SceneManager.LoadSceneAsync(levelName);
     }
 
     public void QuitGame() {
