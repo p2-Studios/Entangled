@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.CustomKeybinds;
 using UnityEngine;
 
 // tutorials used: https://youtu.be/OtUKsjPWzO8
@@ -34,7 +35,7 @@ public class Grounded : BaseState {
         if (Player.hit.collider != null && Player.hit.collider.gameObject.tag == "Pushable" ){
             lastTouchedBox = Player.hit.collider.gameObject.GetComponent<BoxInteractable>();
             lastTouchedBox.toggleIndicator(true);
-            if(Input.GetKeyDown(KeyCode.E)){
+            if(Input.GetKeyDown(Keybinds.GetInstance().grabRelease)){
                 lastTouchedBox.toggleSprite(true);
                 Player.pushedObject = Player.hit.collider.gameObject.GetComponent<Entanglable>();
                 playerSM.ChangeState(playerSM.pushpullState);
@@ -48,7 +49,7 @@ public class Grounded : BaseState {
         }
 
         // jump
-        if (!haltMovement && Input.GetKeyDown(KeyCode.Space))
+        if (!haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump))
             playerSM.ChangeState(playerSM.jumpState);
 
         

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.CustomKeybinds;
 using UnityEngine;
 
 public class PushPullState : BaseState {
@@ -36,7 +37,7 @@ public class PushPullState : BaseState {
         horzInput = Input.GetAxis("Horizontal");
 
         // Let go of object
-        if (Input.GetKeyDown(KeyCode.E)){
+        if (Input.GetKeyDown(Keybinds.GetInstance().grabRelease)){
             Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
             playerSM.ChangeState(playerSM.idleState);
         }

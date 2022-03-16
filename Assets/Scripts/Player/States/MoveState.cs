@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.CustomKeybinds;
 using UnityEngine;
 
 // tutorials used: https://youtu.be/-VkezxxjsSE
@@ -32,7 +33,7 @@ public class MoveState : Grounded {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D)){
+        if (Input.GetKeyUp(Keybinds.GetInstance().moveLeft) || Input.GetKeyUp(Keybinds.GetInstance().moveRight)){
             playerSM.player.SetAnimatorState("idle");
             //playerSM.ChangeState(playerSM.idleState);
         }

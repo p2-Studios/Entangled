@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="" />
+    <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/CustomKeybinds.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/CustomKeybinds/Keybinds.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/CustomKeybinds/Keybinds.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/CustomKeybinds/SaveLoadKeybinds.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Game/CustomKeybinds/SaveLoadKeybinds.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entanglement/EntangleComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entanglement/EntangleComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactable/Interactable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactable/Interactable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/States/Grounded.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/States/Grounded.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/States/IdleState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/States/IdleState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/States/MoveState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/States/MoveState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/States/PushPullState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/States/PushPullState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Dialogue/DialogueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Dialogue/DialogueManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PauseMenu/PauseMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PauseMenu/PauseMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="staging" />
+      </map>
+    </option>
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -26,9 +52,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="rider.run.widget.enabled.cache" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -66,6 +97,9 @@
       <workItem from="1647312630884" duration="9564000" />
       <workItem from="1647392866185" duration="7717000" />
       <workItem from="1647405571382" duration="544000" />
+      <workItem from="1647439602287" duration="42000" />
+      <workItem from="1647439651396" duration="41000" />
+      <workItem from="1647439728356" duration="11567000" />
     </task>
     <servers />
   </component>
