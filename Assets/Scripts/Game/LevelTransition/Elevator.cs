@@ -11,13 +11,8 @@ public class Elevator : MonoBehaviour {
 
     // load the defined next level
     public void LoadNextLevel() {
-        Scene scene = SceneManager.GetSceneByName(nextLevel);
-        if (!scene.IsValid()) { // check if scene was found
-            Debug.Log("Scene found");
-            SceneManager.LoadSceneAsync(nextLevel);
-        } else {
-          Debug.LogError("Scene " + nextLevel + " attempted to load, but wasn't found!");  
-        }
+        ElevatorTransition.levelToLoad = nextLevel;
+        SceneManager.LoadSceneAsync("ElevatorTransition");
     }
 
     // open the elevator
