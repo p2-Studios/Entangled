@@ -19,37 +19,31 @@ public class DestructiblePanel : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D collision) {
 		float total = 0;
 		// check initial collision for the impulse ...
-		currentCollisions.Add (collision.gameObject);
-		foreach (GameObject gObject in currentCollisions) {
-			total += collision.rigidbody.mass;
-            print (total);
-        }
-		if(total >= required_impulse){
-			panel_col.enabled = false;
-			anim.SetBool("Destroyed", true);
-			return;
-		}
+		float total_impulse = 0.0f;
 
 		foreach (ContactPoint2D contact in collision.contacts) {
-
-			if (contact.normalImpulse >= required_impulse) {
+			total_impulse += contact.normalImpulse;
+			if (total_impulse >= required_impulse) {
 				panel_col.enabled = false;
 				anim.SetBool("Destroyed", true);
 				return;
 			}
 		}
+		
 	}
 
 	private void OnCollisionStay2D(Collision2D collision) {
 
 		// check other incoming impulse of collision hitting panel
-
+		float total_impulse = 0.0f;
+		
 		ContactPoint2D[] cps = new ContactPoint2D[25];
 
 		panel_col.GetContacts(cps);
 		
 		foreach (ContactPoint2D contact in cps) {
-			if (contact.normalImpulse >= required_impulse ) {
+			total_impulse += contact.normalImpulse;
+			if (total_impulse >= required_impulse) {
 				panel_col.enabled = false;
 				anim.SetBool("Destroyed", true);
 				return;

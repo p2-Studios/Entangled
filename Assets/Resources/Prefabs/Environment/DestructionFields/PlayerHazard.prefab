@@ -121,9 +121,9 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.17}
+  m_Size: {x: 1, y: 0.17}
   m_EdgeRadius: 0
 --- !u!61 &4473768583552061919
 BoxCollider2D:
@@ -147,7 +147,7 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.17}
+  m_Size: {x: 1, y: 0.17}
   m_EdgeRadius: 0
