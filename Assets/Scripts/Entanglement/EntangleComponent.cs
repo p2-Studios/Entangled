@@ -222,9 +222,7 @@ public class EntangleComponent : MonoBehaviour {
             UnsetActive();
             Destroy(EntangledHelix);
             e.SetEntanglementStates(false, false, true);
-            foreach (Entanglable p in passives) {
-                RemovePassive(p);
-            }
+            ClearPassives();
         }
     }
 
