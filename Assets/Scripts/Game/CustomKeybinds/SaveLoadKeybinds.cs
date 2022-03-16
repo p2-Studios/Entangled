@@ -7,14 +7,13 @@ namespace Game.CustomKeybinds
     public static class SaveLoadKeybinds
     {
         // Copied from SaveSystem.cs
-        public static void SaveControlScheme(Level level)
+        public static void SaveControlScheme()
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
             string path = Application.persistentDataPath + "/keybinds.config";
             FileStream stream = new FileStream(path, FileMode.Create);
-
-            // Keybinds data = Camera.GetComponent<Keybinds>().GetInstance();
+            
             Keybinds data = Keybinds.GetInstance();
             
             formatter.Serialize(stream, data);

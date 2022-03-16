@@ -24,7 +24,8 @@ namespace Game.CustomKeybinds
         public KeyCode pause;
 
         private Keybinds()
-        {
+        {   
+            
             moveLeft = KeyCode.A;
             moveRight = KeyCode.D;
             moveUp = KeyCode.W;
@@ -45,20 +46,23 @@ namespace Game.CustomKeybinds
 
         private void UpdateControls(Keybinds tempControls)
         {
-            moveLeft = tempControls.moveLeft;
-            moveRight = tempControls.moveRight;
-            moveUp = tempControls.moveUp;
-            moveDown = tempControls.moveDown;
-            jump = tempControls.jump;
-            
-            grabRelease = tempControls.grabRelease;
-            interact = tempControls.interact;
-            
-            clearAllEntangled = tempControls.clearAllEntangled;
-            entangle = tempControls.entangle;
-            unentangle = tempControls.unentangle;
-            
-            pause = tempControls.pause;
+            if (tempControls != null)
+            {
+                moveLeft = tempControls.moveLeft;
+                moveRight = tempControls.moveRight;
+                moveUp = tempControls.moveUp;
+                moveDown = tempControls.moveDown;
+                jump = tempControls.jump;
+
+                grabRelease = tempControls.grabRelease;
+                interact = tempControls.interact;
+
+                clearAllEntangled = tempControls.clearAllEntangled;
+                entangle = tempControls.entangle;
+                unentangle = tempControls.unentangle;
+
+                pause = tempControls.pause;
+            }
         }
         
         
