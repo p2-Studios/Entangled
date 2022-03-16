@@ -316,7 +316,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -12.000001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &141484176
 MonoBehaviour:
@@ -664,7 +664,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -708,7 +708,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267166332
 MonoBehaviour:
@@ -937,7 +937,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 49cecfb2bd1817d478f607870d41d455, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b08dc18affaf56459cd9546e5c7092f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1111,7 +1111,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &510836223
 MonoBehaviour:
@@ -1694,7 +1694,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &993047599
 MonoBehaviour:
@@ -2015,7 +2015,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1118546661
 MonoBehaviour:
@@ -2214,7 +2214,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1252334248
 MonoBehaviour:
@@ -2644,7 +2644,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1678902208
 MonoBehaviour:
@@ -2985,7 +2985,7 @@ MonoBehaviour:
   m_ScaleFactor: 2
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3063,7 +3063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711a6a32221c4454e92497d0c1c69860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  option_screen: {fileID: 1765073111}
+  option_screen: {fileID: 1891586940}
   control_screen: {fileID: 2037545137}
   control1: {fileID: 218606800}
   control2: {fileID: 654981177}
@@ -3079,6 +3079,11 @@ MonoBehaviour:
   apply: {fileID: 1773097939}
   next: {fileID: 1326028568}
   prev: {fileID: 1198229268}
+  key_short: {fileID: 21300000, guid: 49cecfb2bd1817d478f607870d41d455, type: 3}
+  key_long: {fileID: 21300000, guid: 5b08dc18affaf56459cd9546e5c7092f, type: 3}
+  mouse_r: {fileID: 21300000, guid: 4210ba7682359d14abf6562ae949fb4e, type: 3}
+  mouse_l: {fileID: 21300000, guid: ba52af5391767f0438c10801814d8cd7, type: 3}
+  i: -1
 --- !u!1 &1773097937
 GameObject:
   m_ObjectHideFlags: 0
@@ -3235,7 +3240,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1790764453
 MonoBehaviour:
@@ -3756,7 +3761,6 @@ GameObject:
   - component: {fileID: 2037545141}
   - component: {fileID: 2037545140}
   - component: {fileID: 2037545139}
-  - component: {fileID: 2037545142}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -3850,34 +3854,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &2037545142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037545137}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 711a6a32221c4454e92497d0c1c69860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  option_screen: {fileID: 1891586940}
-  control_screen: {fileID: 2037545137}
-  control1: {fileID: 218606800}
-  control2: {fileID: 654981177}
-  walk_up: {fileID: 883942777}
-  walk_down: {fileID: 218213804}
-  walk_left: {fileID: 335838815}
-  walk_right: {fileID: 2139394876}
-  push_pull: {fileID: 606473539}
-  reset: {fileID: 1701042231}
-  interact: {fileID: 2105742498}
-  entangle: {fileID: 1836507735}
-  cancel: {fileID: 2099997911}
-  apply: {fileID: 1773097939}
-  next: {fileID: 1326028568}
-  prev: {fileID: 1198229268}
 --- !u!1 &2099997909
 GameObject:
   m_ObjectHideFlags: 0
