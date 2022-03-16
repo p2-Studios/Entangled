@@ -21,7 +21,9 @@ public class Controls : MonoBehaviour
 	public Button push_pull;
 	public Button reset;
 	public Button interact;
+	public Button clear;
 	public Button entangle;
+	public Button unentangle;
 	
 	// confirmation
 	public Button cancel;
@@ -42,14 +44,14 @@ public class Controls : MonoBehaviour
 
 	// String representation of keys
 	private string[] prev_keys = { "W", "S", "A", "D",
-									"E", "R", "F", ""};
+									"E", "R", "F", "Q", "", ""};
 	private string[] curr_keys = { "W", "S", "A", "D",
-									"E", "R", "F", "" };
+									"E", "R", "F", "Q", "", ""};
 	// keycodes
 	private KeyCode[] prev_keycodes = { KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D,
-									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Mouse0};
+									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1};
 	private KeyCode[] curr_keycodes = { KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D,
-									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Mouse0};
+									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1};
 
 	// Start is called before the first frame update
 	void Start()
@@ -62,7 +64,9 @@ public class Controls : MonoBehaviour
 		push_pull.onClick.AddListener(btnPushPull);
 		reset.onClick.AddListener(btnReset);
 		interact.onClick.AddListener(btnInteract);
+		clear.onClick.AddListener(btnClear);
 		entangle.onClick.AddListener(btnEntangle);
+		unentangle.onClick.AddListener(btnUnEntangle);
 		
 		// next/back page for screen
 		next.onClick.AddListener(btnNext);
@@ -82,34 +86,41 @@ public class Controls : MonoBehaviour
 			getSelectedButton(i).GetComponentInChildren<Text>().text = "???";
 			getSelectedButton(i).GetComponent<Image>().sprite = key_short;
 			getSelectedButton(i).GetComponent<RectTransform>().sizeDelta = new Vector2(50, 35);
-
-			if (Input.GetMouseButton(0)) {
-
-				// Fetch click location
-				Vector3 mousePos = Input.mousePosition;
-				Vector3 buttonLoc = apply.transform.position;
-				float sizeX = Screen.width * 0.2f;
-				float sizeY = Screen.height * 0.0375f;
-
-				// Check if mouse is clicking button
-				if (mousePos.x >= (buttonLoc.x - sizeX) && mousePos.x <= (buttonLoc.x + sizeX)
-				&& mousePos.y >= (buttonLoc.y - sizeY) && mousePos.y <= (buttonLoc.y + sizeY)) {
-					return;
-				}
-
+			
+			if (Input.GetMouseButtonDown(0)) {
 				int val = findfrom(curr_keycodes, KeyCode.Mouse0);
 				curr_keys[i] = "";
 				curr_keycodes[i] = KeyCode.Mouse0;
 				getSelectedButton(i).GetComponent<Image>().sprite = mouse_l;
 				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
 				i = val;
 			}
-			else if (Input.GetMouseButton(1)) {
+			else if (Input.GetMouseButtonDown(1)) {
 				int val = findfrom(curr_keycodes, KeyCode.Mouse1);
 				curr_keys[i] = "";
 				curr_keycodes[i] = KeyCode.Mouse1;
 				getSelectedButton(i).GetComponent<Image>().sprite = mouse_r;
 				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
 				i = val;
 			}
 			else if (Input.GetKeyDown(KeyCode.LeftControl)) {
@@ -117,6 +128,16 @@ public class Controls : MonoBehaviour
 				curr_keys[i] = "L-ctrl";
 				curr_keycodes[i] = KeyCode.LeftControl;
 				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
 				i = val;
 			}
 			else if (Input.GetKeyDown(KeyCode.RightControl)) {
@@ -124,6 +145,16 @@ public class Controls : MonoBehaviour
 				curr_keys[i] = "R-ctrl";
 				curr_keycodes[i] = KeyCode.RightControl;
 				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
 				i = val;
 			}
 			else if (Input.GetKeyDown(KeyCode.LeftAlt)) {
@@ -131,6 +162,16 @@ public class Controls : MonoBehaviour
 				curr_keys[i] = "L-alt";
 				curr_keycodes[i] = KeyCode.LeftAlt;
 				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
 				i = val;
 			}
 			else if (Input.GetKeyDown(KeyCode.RightAlt)) {
@@ -138,6 +179,16 @@ public class Controls : MonoBehaviour
 				curr_keys[i] = "R-alt";
 				curr_keycodes[i] = KeyCode.RightAlt;
 				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
 				i = val;
 			}
 			else if (Input.GetKeyDown(KeyCode.Return)) {
@@ -146,6 +197,16 @@ public class Controls : MonoBehaviour
 				curr_keycodes[i] = KeyCode.Return;
 				getSprite(curr_keycodes[i], i);
 				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
 				i = val;
 			}
 			else if (Input.GetKeyDown(KeyCode.LeftShift)) {
@@ -154,6 +215,16 @@ public class Controls : MonoBehaviour
 				curr_keycodes[i] = KeyCode.LeftShift;
 				getSprite(curr_keycodes[i], i);
 				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
 				i = val;
 			}
 			else if (Input.GetKeyDown(KeyCode.RightShift)) {
@@ -162,6 +233,16 @@ public class Controls : MonoBehaviour
 				curr_keycodes[i] = KeyCode.RightShift;
 				getSprite(curr_keycodes[i], i);
 				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x <prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
 				i = val;
 			}
 			else if (Input.GetKeyDown(KeyCode.Backspace)) {
@@ -170,6 +251,16 @@ public class Controls : MonoBehaviour
 				curr_keycodes[i] = KeyCode.Backspace;
 				getSprite(curr_keycodes[i], i);
 				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
 				i = val;
 			}
 			else if (Input.inputString.Length != 0) {
@@ -177,6 +268,16 @@ public class Controls : MonoBehaviour
 				int val = findfrom(curr_keycodes, (KeyCode)System.Enum.Parse(typeof(KeyCode), curr_keys[i]));
 				curr_keycodes[i] = (KeyCode)System.Enum.Parse(typeof(KeyCode), curr_keys[i]);
 				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
 				i = val;
 			}
 
@@ -194,51 +295,114 @@ public class Controls : MonoBehaviour
     }
 	
 	void btnWalkUp() {
-		if (i != -1)
-			applyText(curr_keys);
+		if (i != -1) {
+			resetButton();
+		}
 		i = 0;
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			if (i != x)
+				getSelectedButton(x).interactable = false;
+		}
+
 	}
 	
 	void btnWalkDown() {
-		if (i != -1)
-			applyText(curr_keys);
+		if (i != -1) {
+			resetButton();
+		}
 		i = 1;
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			if (i != x)
+				getSelectedButton(x).interactable = false;
+		}
 	}
 	
 	void btnWalkLeft() {
-		if (i != -1)
-			applyText(curr_keys);
+		if (i != -1) {
+			resetButton();
+		}
 		i = 2;
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			if (i != x)
+				getSelectedButton(x).interactable = false;
+		}
 	}
 	
 	void btnWalkRight() {
-		if (i != -1)
-			applyText(curr_keys);
+		if (i != -1) {
+			resetButton();
+		}
 		i = 3;
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			if (i != x)
+				getSelectedButton(x).interactable = false;
+		}
 	}
 	
 	void btnPushPull() {
-		if (i != -1)
-			applyText(curr_keys);
+		if (i != -1) {
+			resetButton();
+		}
 		i = 4;
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			if (i != x)
+				getSelectedButton(x).interactable = false;
+		}
 	}
 	
 	void btnReset() {
-		if (i != -1)
-			applyText(curr_keys);
+		if (i != -1) {
+			resetButton();
+		}
 		i = 5;
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			if (i != x)
+				getSelectedButton(x).interactable = false;
+		}
 	}
 	
 	void btnInteract() {
-		if (i != -1)
-			applyText(curr_keys);
+		if (i != -1) {
+			resetButton();
+		}
 		i = 6;
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			if (i != x)
+				getSelectedButton(x).interactable = false;
+		}
+	}
+	
+	void btnClear() {
+		if (i != -1) {
+			resetButton();
+		}
+		i = 7;
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			if (i != x)
+				getSelectedButton(x).interactable = false;
+		}
 	}
 	
 	void btnEntangle() {
-		if (i != -1)
-			applyText(curr_keys);
-		i = 7;
+		if (i != -1) {
+			resetButton();
+		}
+		i = 8;
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			if (i != x)
+				getSelectedButton(x).interactable = false;
+		}
+	}
+	
+	void btnUnEntangle() {
+		if (i != -1) {
+			resetButton();
+		}
+		i = 9;
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			if (i != x)
+				getSelectedButton(x).interactable = false;
+		}
 	}
 	
 	void applyText(string[] chosen_keys) {
@@ -290,7 +454,9 @@ public class Controls : MonoBehaviour
 			case 4 : return push_pull;
 			case 5 : return reset;
 			case 6 : return interact;
-			case 7 : return entangle;
+			case 7 : return clear;
+			case 8 : return entangle;
+			case 9 : return unentangle;
 			default: return null;
 		}
 		
@@ -298,7 +464,7 @@ public class Controls : MonoBehaviour
 
 	int findfrom(KeyCode[] arr,KeyCode key) {
 		for (int x = 0; x < arr.Length; x++) {
-			if (((int)key) == ((int)arr[x]))
+			if (x != i && ((int)key) == ((int)arr[x]))
 				return x;
         }
 		return -1;
@@ -306,14 +472,11 @@ public class Controls : MonoBehaviour
 	
 	// button cancel.onclick function
 	void btnCancel() {
-		if (i != -1) {
-			applyText(prev_keys);
-			i = -1;
-		}
 
 		for (int x = 0; x < prev_keycodes.Length; x++) {
 			curr_keycodes[x] = prev_keycodes[x];
 			curr_keys[x] = prev_keys[x];
+			getSelectedButton(x).GetComponentInChildren<Text>().text = prev_keys[x];
 			getSprite(prev_keycodes[x], x);
 		}
 		
@@ -349,6 +512,14 @@ public class Controls : MonoBehaviour
 	
 	void btnPrev() {
 		showList1();
+	}
+	
+	// reset button if currently button is click
+	void resetButton() {
+		curr_keycodes[i] = prev_keycodes[i];
+		curr_keys[i] = prev_keys[i];
+		getSprite(curr_keycodes[i],i);
+		applyText(curr_keys);
 	}
 	
 	void showList1() {
