@@ -14,8 +14,7 @@ public class Controls : MonoBehaviour
 	public GameObject control2;
 	
 	// keybinds
-	public Button walk_up;
-	public Button walk_down;
+	public Button jump;
 	public Button walk_left;
 	public Button walk_right;
 	public Button push_pull;
@@ -43,22 +42,21 @@ public class Controls : MonoBehaviour
 	public int i = -1;
 
 	// String representation of keys
-	private string[] prev_keys = { "W", "S", "A", "D",
+	private string[] prev_keys = { "W", "A", "D",
 									"E", "R", "F", "Q", "", ""};
-	private string[] curr_keys = { "W", "S", "A", "D",
+	private string[] curr_keys = { "W","A", "D",
 									"E", "R", "F", "Q", "", ""};
 	// keycodes
-	private KeyCode[] prev_keycodes = { KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D,
+	private KeyCode[] prev_keycodes = { KeyCode.W,KeyCode.A, KeyCode.D,
 									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1};
-	private KeyCode[] curr_keycodes = { KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D,
+	private KeyCode[] curr_keycodes = { KeyCode.W, KeyCode.A, KeyCode.D,
 									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1};
 
 	// Start is called before the first frame update
 	void Start()
     {
 		// -- ADD CODE TO FETCH KEYBINDS --
-		walk_up.onClick.AddListener(btnWalkUp);
-		walk_down.onClick.AddListener(btnWalkDown);
+		jump.onClick.AddListener(btnWalkUp);
 		walk_left.onClick.AddListener(btnWalkLeft);
 		walk_right.onClick.AddListener(btnWalkRight);
 		push_pull.onClick.AddListener(btnPushPull);
@@ -263,6 +261,24 @@ public class Controls : MonoBehaviour
 				}
 				i = val;
 			}
+			else if (Input.GetKeyDown(KeyCode.Space)) {
+				int val = findfrom(curr_keycodes, KeyCode.Space);
+				curr_keys[i] = "Space";
+				curr_keycodes[i] = KeyCode.Space;
+				getSprite(curr_keycodes[i], i);
+				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
+				i = val;
+			}
 			else if (Input.inputString.Length != 0) {
 				curr_keys[i] = Input.inputString[0].ToString().ToUpper();
 				int val = findfrom(curr_keycodes, (KeyCode)System.Enum.Parse(typeof(KeyCode), curr_keys[i]));
@@ -447,16 +463,15 @@ public class Controls : MonoBehaviour
 	Button getSelectedButton(int number) {
 		
 		switch (number) {
-			case 0 : return walk_up;
-			case 1 : return walk_down;
-			case 2 : return walk_left;
-			case 3 : return walk_right;
-			case 4 : return push_pull;
-			case 5 : return reset;
-			case 6 : return interact;
-			case 7 : return clear;
-			case 8 : return entangle;
-			case 9 : return unentangle;
+			case 0 : return jump;
+			case 1 : return walk_left;
+			case 2 : return walk_right;
+			case 3 : return push_pull;
+			case 4 : return reset;
+			case 5 : return interact;
+			case 6 : return clear;
+			case 7 : return entangle;
+			case 8 : return unentangle;
 			default: return null;
 		}
 		
