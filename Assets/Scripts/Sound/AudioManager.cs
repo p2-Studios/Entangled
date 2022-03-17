@@ -36,10 +36,10 @@ public class AudioManager : MonoBehaviour {
         loopingSounds = new ArrayList();
 
 
-        String scene = SceneManager.GetActiveScene().name;
-        if (name.Equals("MainMenu")) {
+        String sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName.Equals("MainMenu")) {
             PlayLooping("music_main");
-        } else if (!name.Equals("ElevatorTransition")) { // don't play sound in elevator transition
+        } else if (!sceneName.Equals("ElevatorTransition")) { // don't play sound in elevator transition
             if (UnityEngine.Random.value > 0.5) {
                 PlayLooping("music_3");
             } else {
