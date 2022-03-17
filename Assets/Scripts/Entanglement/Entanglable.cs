@@ -54,6 +54,8 @@ public class Entanglable : MonoBehaviour, IDestroyable {
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        SetEntanglementStates(false, false, true);
+        
     }
 
     private bool VelAboveThreshold(float f) {
