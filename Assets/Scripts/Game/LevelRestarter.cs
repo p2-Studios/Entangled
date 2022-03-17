@@ -9,10 +9,6 @@ public class LevelRestarter : MonoBehaviour
 
     private bool restarting = false;
     private bool holdingR = false;
-    void Start()
-    {
-        print("This scene has been loaded.");
-    }
 
     // Update is called once per frame
     void Update()

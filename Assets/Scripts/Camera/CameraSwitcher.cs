@@ -31,12 +31,10 @@ public static class CameraSwitcher {
     // registers cam in cameras list
     public static void Register(CinemachineVirtualCamera camera){
         cameras.Add(camera);
-        Debug.Log("Camera Registered: "+ camera);
     }
 
     // removes cam from cameras list
     public static void Unregister(CinemachineVirtualCamera camera){
         cameras.Remove(camera);
-        Debug.Log("Camera Unregistered: "+ camera);
     }
 }
