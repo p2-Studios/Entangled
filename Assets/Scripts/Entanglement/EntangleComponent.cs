@@ -56,9 +56,7 @@ public class EntangleComponent : MonoBehaviour {
             if (EntanglingHelix != null) Destroy(EntanglingHelix);
         }
         
-        if (Input.GetMouseButtonDown(0)) {
-
-            Debug.Log("Mouse down");
+        if (Input.GetMouseButtonDown(0)) { ;
             
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
