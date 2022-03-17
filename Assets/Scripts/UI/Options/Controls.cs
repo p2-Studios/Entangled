@@ -56,7 +56,7 @@ public class Controls : MonoBehaviour
 	void Start()
     {
 		// -- ADD CODE TO FETCH KEYBINDS --
-		jump.onClick.AddListener(btnWalkUp);
+		jump.onClick.AddListener(btnJump);
 		walk_left.onClick.AddListener(btnWalkLeft);
 		walk_right.onClick.AddListener(btnWalkRight);
 		push_pull.onClick.AddListener(btnPushPull);
@@ -310,7 +310,7 @@ public class Controls : MonoBehaviour
 		}
     }
 	
-	void btnWalkUp() {
+	void btnJump() {
 		if (i != -1) {
 			resetButton();
 		}
@@ -322,7 +322,7 @@ public class Controls : MonoBehaviour
 
 	}
 	
-	void btnWalkDown() {
+	void btnWalkLeft() {
 		if (i != -1) {
 			resetButton();
 		}
@@ -333,7 +333,7 @@ public class Controls : MonoBehaviour
 		}
 	}
 	
-	void btnWalkLeft() {
+	void btnWalkRight() {
 		if (i != -1) {
 			resetButton();
 		}
@@ -344,7 +344,7 @@ public class Controls : MonoBehaviour
 		}
 	}
 	
-	void btnWalkRight() {
+	void btnPushPull() {
 		if (i != -1) {
 			resetButton();
 		}
@@ -355,7 +355,7 @@ public class Controls : MonoBehaviour
 		}
 	}
 	
-	void btnPushPull() {
+	void btnReset() {
 		if (i != -1) {
 			resetButton();
 		}
@@ -366,7 +366,7 @@ public class Controls : MonoBehaviour
 		}
 	}
 	
-	void btnReset() {
+	void btnInteract() {
 		if (i != -1) {
 			resetButton();
 		}
@@ -377,7 +377,7 @@ public class Controls : MonoBehaviour
 		}
 	}
 	
-	void btnInteract() {
+	void btnClear() {
 		if (i != -1) {
 			resetButton();
 		}
@@ -388,7 +388,7 @@ public class Controls : MonoBehaviour
 		}
 	}
 	
-	void btnClear() {
+	void btnEntangle() {
 		if (i != -1) {
 			resetButton();
 		}
@@ -399,22 +399,11 @@ public class Controls : MonoBehaviour
 		}
 	}
 	
-	void btnEntangle() {
-		if (i != -1) {
-			resetButton();
-		}
-		i = 8;
-		for (int x = 0; x < prev_keycodes.Length; x++) {
-			if (i != x)
-				getSelectedButton(x).interactable = false;
-		}
-	}
-	
 	void btnUnEntangle() {
 		if (i != -1) {
 			resetButton();
 		}
-		i = 9;
+		i = 8;
 		for (int x = 0; x < prev_keycodes.Length; x++) {
 			if (i != x)
 				getSelectedButton(x).interactable = false;
@@ -450,6 +439,10 @@ public class Controls : MonoBehaviour
 				getSelectedButton(button).GetComponent<RectTransform>().sizeDelta = new Vector2(75, 35);
 				break;
 			case KeyCode.Backspace:
+				getSelectedButton(button).GetComponent<Image>().sprite = key_long;
+				getSelectedButton(button).GetComponent<RectTransform>().sizeDelta = new Vector2(75, 35);
+				break;
+			case KeyCode.Space:
 				getSelectedButton(button).GetComponent<Image>().sprite = key_long;
 				getSelectedButton(button).GetComponent<RectTransform>().sizeDelta = new Vector2(75, 35);
 				break;
