@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine.Audio;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Random = System.Random;
 
 // tutorial: https://www.youtube.com/watch?v=6OT43pvUyfY
 public class AudioManager : MonoBehaviour {
@@ -21,7 +23,8 @@ public class AudioManager : MonoBehaviour {
         }
         
         // don't destroy audio manager when switching scenes
-        DontDestroyOnLoad(gameObject);
+        // todo: fix changing music between levels
+        // DontDestroyOnLoad(gameObject);
         
         foreach (Sound s in sounds) {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -31,6 +34,16 @@ public class AudioManager : MonoBehaviour {
         }
 
         loopingSounds = new ArrayList();
+
+        if (SceneManager.GetActiveScene().name.Equals("MainMenu")) {
+            PlayLooping("music_main");
+        } else {
+            if (UnityEngine.Random.value > 0.5) {
+                PlayLooping("music_3");
+            } else {
+                PlayLooping("music_4");
+            }
+        }
     }
 
     public void Play(string soundName) {
@@ -41,6 +54,16 @@ public class AudioManager : MonoBehaviour {
         s.source.Play();
     }
 
+    public void PlayLooping(string soundName) {
+        Sound s = FetchSound(soundName);
+        if (s == null) return;
+        if (s.source == null) return;
+
+        s.source.loop = true;
+        s.source.Play();
+    }
+
+    
     public void Play(Sound sound) {
         sound.source.Play();
     }

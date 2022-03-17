@@ -89,11 +89,6 @@ MonoBehaviour:
     source: {fileID: 0}
     volume: 0.05
     pitch: 1
-  - name: music_main
-    clip: {fileID: 8300000, guid: 322f0dfdde8ea9640a9d2db2d1cc4a66, type: 3}
-    source: {fileID: 0}
-    volume: 0.025
-    pitch: 1
   - name: orb_collect
     clip: {fileID: 8300000, guid: 4be3b6f8b463cb943b8d014294efde5d, type: 3}
     source: {fileID: 0}
@@ -103,4 +98,24 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a873a3239ab66c743a61775d3861220a, type: 3}
     source: {fileID: 0}
     volume: 0.1
+    pitch: 1
+  - name: elevator_descend
+    clip: {fileID: 8300000, guid: a873a3239ab66c743a61775d3861220a, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+  - name: music_3
+    clip: {fileID: 8300000, guid: 6f36b010469ad46408f1e670748a3b9b, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+  - name: music_4
+    clip: {fileID: 8300000, guid: 98e831882d08b4540b7ad7cbb62d0b35, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+  - name: music_main
+    clip: {fileID: 8300000, guid: 322f0dfdde8ea9640a9d2db2d1cc4a66, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
     pitch: 1
