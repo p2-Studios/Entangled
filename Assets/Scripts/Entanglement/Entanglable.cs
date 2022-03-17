@@ -85,7 +85,6 @@ public class Entanglable : MonoBehaviour, IDestroyable {
                     position = transform.position;
                     Vector3 worldVelocity = (position - previousPosition) / Time.fixedDeltaTime;
                     previousPosition = position;
-                    Debug.Log(worldVelocity);
                     if (!worldVelocity.Equals(Vector2.zero) && worldVelocity.sqrMagnitude < maxVelocity) {    // if absolute velocity > 0, apply
                         velocityManager.ActiveMoved(this, worldVelocity * rb.mass);
                     }
