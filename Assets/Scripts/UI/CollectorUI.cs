@@ -30,8 +30,8 @@ public class CollectorUI : MonoBehaviour
         }
         else {
             orbsText.enabled = true;
+            changeText();
         }
-        changeText();
     }
 
     void changeText() {
