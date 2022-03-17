@@ -212,7 +212,9 @@ public class Entanglable : MonoBehaviour, IDestroyable {
         destroyed = true;
         Transform destructionAnimation = Instantiate(deathAnimation, transform.position, quaternion.identity);
         destructionAnimation.localScale = transform.localScale;
-        FindObjectOfType<EntangleComponent>().Unentangle(this);
+        rb.velocity = Vector2.zero;
+        EntangleComponent ec = FindObjectOfType<EntangleComponent>();
+        if (ec != null) ec.Unentangle(this);
     }
     
     // do things that need to be done on respawning, right after the game object is set as active again

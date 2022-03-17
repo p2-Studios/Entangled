@@ -52,7 +52,7 @@ MonoBehaviour:
   speed: 6
   jumpForce: 5
   grabDistance: 0.5
-  pushStrength: 1
+  pushStrength: 0.7
   spriteRenderer: {fileID: 7411563505412239111}
   animator: {fileID: 6269613174981301470}
   deathAnimation: {fileID: 2282829766038112090, guid: d55891c79403af24683d0a1e864d34bb, type: 3}
@@ -60,8 +60,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 118
   rayHeight: -0.27
+  entangleComponent: {fileID: 0}
   EntanglingHelix: {fileID: 8639923436664529287, guid: e1a32811dcf2783498d19a0b23de7b5c, type: 3}
   EntangledHelix: {fileID: 4301194098379100217, guid: 6b752724eae5b3c41bfbecf5a7a9c0bd, type: 3}
+  showEntanglingHelix: 1
+  showEntangledHelix: 1
   respawnLocation: {fileID: 0}
   respawnDelay: 2
   worldVelocity: {x: 0, y: 0}
