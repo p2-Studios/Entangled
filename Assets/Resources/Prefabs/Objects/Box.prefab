@@ -82,7 +82,6 @@ MonoBehaviour:
   activeGlow: {fileID: 2100000, guid: e5b94465c4f6fd14ea4d898d0788ca2f, type: 2}
   pasiveGlow: {fileID: 2100000, guid: b607e1e0be85f4444aba032f66bdb875, type: 2}
   hoverGlow: {fileID: 2100000, guid: 27fd2da8fe08b2848a3d6ae2bce6852b, type: 2}
-  hover: 0
   respawnable: 1
   respawnDelay: 3
   maxVelocity: 20
@@ -175,8 +174,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -189938303
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b732c88b6c3986840b4cd5a80d17596e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

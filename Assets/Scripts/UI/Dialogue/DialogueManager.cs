@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.CustomKeybinds;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +28,7 @@ public class DialogueManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.F)) {
+        if (Input.GetKeyDown(Keybinds.GetInstance().interact)) {
             if (inDialogue) {
                 DisplayNextSentence();
             }

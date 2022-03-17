@@ -8,7 +8,9 @@ public class ElevatorInteractable : Interactable {
     protected override void Interact() {
         base.Interact();
         PlayInteractionSound();
-        elevator.LoadNextLevel();
+        elevator.Player.enabled = false;
+        elevator.Exit();
+        // elevator.LoadNextLevel();
     }
 
     protected override void OnRangeEnter() {

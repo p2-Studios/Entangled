@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3526631541760153690}
   - component: {fileID: 3526631541760153684}
   - component: {fileID: 4473768583552061919}
+  - component: {fileID: 8448347533521867718}
   m_Layer: 0
   m_Name: PlayerHazard
   m_TagString: Untagged
@@ -46,8 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966dead0a7006f448b75b99e77b36dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requireAllActivators: 0
+  activateByDefault: 1
   destroyPlayer: 1
   destroyObjects: 0
+  animator: {fileID: 8448347533521867718}
+  activators: []
 --- !u!212 &3526631541760153690
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -114,16 +119,16 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.03}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0.75, w: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 0.25}
     newSize: {x: 2, y: 0.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.17}
+  m_Size: {x: 1, y: 0.17}
   m_EdgeRadius: 0
 --- !u!61 &4473768583552061919
 BoxCollider2D:
@@ -140,14 +145,33 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.03}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0.75, w: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 0.25}
     newSize: {x: 2, y: 0.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.17}
+  m_Size: {x: 1, y: 0.17}
   m_EdgeRadius: 0
+--- !u!95 &8448347533521867718
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526631541760153688}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c4f4676d01a91940a959e085469e497, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -86,7 +86,6 @@ public class Entanglable : MonoBehaviour, IDestroyable {
                     Vector3 worldVelocity = (position - previousPosition) / Time.fixedDeltaTime;
                     previousPosition = position;
                     if (!worldVelocity.Equals(Vector2.zero) && worldVelocity.sqrMagnitude < maxVelocity) {    // if absolute velocity > 0, apply
-                        Debug.Log(worldVelocity);
                         velocityManager.ActiveMoved(this, worldVelocity * rb.mass);
                     }
                 }
@@ -177,7 +176,9 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     
     private void OnTriggerExit2D(Collider2D col) {
         if (col.gameObject.CompareTag("Platform")) {    // object leaving platform
-            transform.parent = null;
+            if (gameObject.activeSelf) {
+                transform.parent = null;
+            }
         }
     }
     
@@ -211,11 +212,13 @@ public class Entanglable : MonoBehaviour, IDestroyable {
         destroyed = true;
         Transform destructionAnimation = Instantiate(deathAnimation, transform.position, quaternion.identity);
         destructionAnimation.localScale = transform.localScale;
+        FindObjectOfType<EntangleComponent>().Unentangle(this);
     }
     
     // do things that need to be done on respawning, right after the game object is set as active again
     public void Respawn() {
         destroyed = false;
+        transform.parent = null;
         gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
     }
 

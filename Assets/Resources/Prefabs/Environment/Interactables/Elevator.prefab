@@ -65,6 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLevel: level2
   Animator: {fileID: 429289540591911158}
+  Player: {fileID: 0}
 --- !u!212 &5880884689359741016
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102,8 +103,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 532046353
-  m_SortingLayer: -1
+  m_SortingLayerID: -189938303
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -4781373940957465942, guid: 28df8c37dc3087b4d9108ebefb67b124, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -180,7 +181,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5}
+  m_Size: {x: 0.23, y: 0.96}
   m_EdgeRadius: 0
 --- !u!1001 &3134481936226096206
 PrefabInstance:

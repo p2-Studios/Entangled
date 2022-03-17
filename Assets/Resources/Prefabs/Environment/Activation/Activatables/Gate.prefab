@@ -50,6 +50,7 @@ MonoBehaviour:
   activateByDefault: 0
   openSound: gate_open
   closeSound: gate_close
+  stayOpen: 0
   activators: []
 --- !u!212 &3509673993890282041
 SpriteRenderer:
@@ -88,8 +89,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -189938303
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 1921053324792869636, guid: c59dac7e9f539ab43941364a94a3106a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -145,5 +146,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 1.5}
+  m_Size: {x: 0.31, y: 1.5}
   m_EdgeRadius: 0

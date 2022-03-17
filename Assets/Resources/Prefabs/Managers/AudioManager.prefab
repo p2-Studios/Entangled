@@ -94,3 +94,13 @@ MonoBehaviour:
     source: {fileID: 0}
     volume: 0.025
     pitch: 1
+  - name: orb_collect
+    clip: {fileID: 8300000, guid: 4be3b6f8b463cb943b8d014294efde5d, type: 3}
+    source: {fileID: 0}
+    volume: 0.3
+    pitch: 1
+  - name: elevator_descend
+    clip: {fileID: 8300000, guid: a873a3239ab66c743a61775d3861220a, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
+    pitch: 1

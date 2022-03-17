@@ -1,3 +1,4 @@
+using Game.CustomKeybinds;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class Options : MonoBehaviour
 	
 	 // Update is called once per frame
     void Update() {
-		if(Input.GetKeyDown(KeyCode.Escape)) {
+		if(main.activeSelf && Input.GetKeyDown(Keybinds.GetInstance().pause)) {
 			btnBack();
 		}
 	}
@@ -49,7 +50,7 @@ public class Options : MonoBehaviour
 	
 	// button exit.onclick function
 	void btnBack() {
-		SceneManager.UnloadSceneAsync(4);
+		SceneManager.UnloadSceneAsync("Options");
 	}
 	
 }

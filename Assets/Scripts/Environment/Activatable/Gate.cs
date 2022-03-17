@@ -7,6 +7,7 @@ namespace Activation_System {
     public class Gate : Activatable {
 
 	    public string openSound, closeSound;
+	    public bool stayOpen = false;			// whether the gate should stay open after being opened once
 	    
         public Activator[] activators;			// -- array of activators, REQUIRED to set the activators manually! --
         
@@ -59,7 +60,7 @@ namespace Activation_System {
 				setOpen();
 			}
 			else if (active && !IsActivated()) {
-				setClose();
+				if (!stayOpen) setClose();
 			}
 			
 			// Play's animation

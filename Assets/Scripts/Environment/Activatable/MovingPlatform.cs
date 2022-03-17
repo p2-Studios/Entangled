@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Threading;
 using Activation_System;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.UI;
 using Activator = Activation_System.Activator;
 
 public class MovingPlatform : Activatable {
     public Transform posStart, posEnd, startPos;        // positions
-
+    public Light2D light;
+    
+    
     public float speed;                                 // speed
     public Boolean stopAtEnd;                           // whether the platform should stop upon reaching posEnd, 
                                                         // or move back and forth
@@ -20,8 +23,7 @@ public class MovingPlatform : Activatable {
     
     
     public Activator[] activators;			// -- array of activators, REQUIRED to set the activators manually! --
-
-    private SpriteRenderer spriteRenderer;
+    
     private Color activatedTint;
     
     void Start() {
@@ -31,15 +33,14 @@ public class MovingPlatform : Activatable {
             AddActivator(a);
         }
 
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        activatedTint =  new Color(200f/255f, 255f/255f, 200f/255f);
-        
-        if (activateByDefault) Activate();
+        if (activateByDefault) {
+            Activate();
+        } else Deactivate();
     }
 
     public override void Deactivate() {
         base.Deactivate();
-        spriteRenderer.color = Color.white; // no colour when deactivated
+        light.color = Color.red; // no colour when deactivated
         if (stopAtEnd) { // if stopAtEnd, move back to start on deactivate
             nextPos = posStart.position;
         }
@@ -47,7 +48,7 @@ public class MovingPlatform : Activatable {
 
     public override void Activate() {
         base.Activate();
-        spriteRenderer.color = activatedTint;
+        light.color =  Color.green;
         if (stopAtEnd) { // if stopAtEnd and moving back to posStart, send back to posEnd
             if (nextPos == (Vector2) posStart.position) nextPos = posEnd.position;
         }

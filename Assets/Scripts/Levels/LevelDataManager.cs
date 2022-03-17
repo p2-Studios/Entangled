@@ -6,6 +6,7 @@ using Object = UnityEngine.Object;
 
 public class LevelDataManager : MonoBehaviour {
     public static LevelDataManager instance;
+    private Level level;
 
     private void Awake() {
         if (instance == null) {

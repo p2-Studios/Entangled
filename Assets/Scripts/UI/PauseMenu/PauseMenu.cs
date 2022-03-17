@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.CustomKeybinds;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,13 +35,14 @@ public class PauseMenu : MonoBehaviour
 	public static PauseMenu instance;
 
 	private void Awake() {
+				
 		// don't destroy pause menu when switching scenes
 		DontDestroyOnLoad(gameObject);
 		
 		if (instance == null) {
 			instance = this;
 		} else {
-			DestroyObject(gameObject);
+			Destroy(gameObject);
 		}
 	}
 
@@ -59,7 +61,7 @@ public class PauseMenu : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
+        if(Input.GetKeyDown(Keybinds.GetInstance().pause)) {
 	        if (SceneManager.GetActiveScene().buildIndex != 0) {
 		        // don't allow opening in main menu
 		        menuState();

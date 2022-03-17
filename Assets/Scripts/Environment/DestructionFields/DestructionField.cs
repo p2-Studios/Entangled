@@ -1,20 +1,53 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Activation_System;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
+using Activator = Activation_System.Activator;
 
-public class DestructionField : MonoBehaviour {
+public class DestructionField : Activatable {
     public bool destroyPlayer;
     public bool destroyObjects;
 
+    public Animator animator;
+    public Activator[] activators;
+    public Light2D light;
 
+    void Start() {
+        foreach (Activator a in activators) {
+            AddActivator(a);
+        }
+
+        if (activateByDefault) { Activate(); } else { Deactivate();}
+    }
+
+    public override void Activate() {
+        base.Activate();
+        if (light != null) light.enabled = true;
+        if (animator != null) animator.SetBool("isActive", true);
+    }
+
+    public override void Deactivate() {
+        base.Deactivate();
+        if (light != null) light.enabled = false;
+        if (animator != null) animator.SetBool("isActive", false);
+    }
+    
     private void OnTriggerEnter2D(Collider2D other) {
+        if (!activated) return;
         Player p = other.GetComponent<Player>();
         Entanglable e = other.GetComponent<Entanglable>();
 
-        if (p != null && destroyPlayer) {
-            p.Kill();
-        } else if (e != null && destroyObjects) {
+        if (p != null) {
+            if (destroyPlayer) {
+                p.Kill();
+            } else {
+                p.entangleComponent.ClearEntangled();
+            }
+        }
+        
+        if (e != null && destroyObjects) {
             e.Kill();
         }
     }

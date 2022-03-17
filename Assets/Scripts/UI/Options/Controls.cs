@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.CustomKeybinds;
 
 public class Controls : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class Controls : MonoBehaviour
 	public Button clear;
 	public Button entangle;
 	public Button unentangle;
+	public Button pause;
 	
 	// confirmation
 	public Button cancel;
@@ -40,22 +42,32 @@ public class Controls : MonoBehaviour
 
 	// The button selected value
 	public int i = -1;
-
+	
 	// String representation of keys
 	private string[] prev_keys = { "W", "A", "D",
-									"E", "R", "F", "Q", "", ""};
+									"E", "R", "F", "Q", "", "", "Esc"};
 	private string[] curr_keys = { "W","A", "D",
-									"E", "R", "F", "Q", "", ""};
+									"E", "R", "F", "Q", "", "", "Esc"};
 	// keycodes
 	private KeyCode[] prev_keycodes = { KeyCode.W,KeyCode.A, KeyCode.D,
-									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1};
+									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.Escape};
 	private KeyCode[] curr_keycodes = { KeyCode.W, KeyCode.A, KeyCode.D,
-									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1};
+									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.Escape};
 
 	// Start is called before the first frame update
-	void Start()
+	void Awake()
     {
-		// -- ADD CODE TO FETCH KEYBINDS --
+		SaveLoadKeybinds.LoadControlScheme();
+		
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			prev_keycodes[x] = KeyCodeInstance(x);
+			curr_keycodes[x] = KeyCodeInstance(x);
+			prev_keys[x] = Keybinds.GetInstance().keys[x];
+			curr_keys[x] = Keybinds.GetInstance().keys[x];
+			getSprite(curr_keycodes[x],x);
+			getSelectedButton(x).GetComponentInChildren<Text>().text = curr_keys[x];
+		}
+		
 		jump.onClick.AddListener(btnJump);
 		walk_left.onClick.AddListener(btnWalkLeft);
 		walk_right.onClick.AddListener(btnWalkRight);
@@ -65,6 +77,7 @@ public class Controls : MonoBehaviour
 		clear.onClick.AddListener(btnClear);
 		entangle.onClick.AddListener(btnEntangle);
 		unentangle.onClick.AddListener(btnUnEntangle);
+		pause.onClick.AddListener(btnPause);
 		
 		// next/back page for screen
 		next.onClick.AddListener(btnNext);
@@ -176,6 +189,23 @@ public class Controls : MonoBehaviour
 				int val = findfrom(curr_keycodes, KeyCode.RightAlt);
 				curr_keys[i] = "R-alt";
 				curr_keycodes[i] = KeyCode.RightAlt;
+				applyText(curr_keys);
+				
+				if (val == -1) {
+					for (int x = 0; x < prev_keycodes.Length; x++) {
+						getSelectedButton(x).interactable = true;
+					}
+				}
+				else {
+					getSelectedButton(i).interactable = false;
+					getSelectedButton(val).interactable = true;
+				}
+				i = val;
+			}
+			else if (Input.GetKeyDown(KeyCode.Escape)) {
+				int val = findfrom(curr_keycodes, KeyCode.Escape);
+				curr_keys[i] = "Esc";
+				curr_keycodes[i] = KeyCode.Escape;
 				applyText(curr_keys);
 				
 				if (val == -1) {
@@ -308,6 +338,10 @@ public class Controls : MonoBehaviour
 			}
 
 		}
+		else {
+			if (Input.GetKeyDown(Keybinds.GetInstance().pause))
+				btnCancel();
+		}
     }
 	
 	void btnJump() {
@@ -410,6 +444,17 @@ public class Controls : MonoBehaviour
 		}
 	}
 	
+	void btnPause() {
+		if (i != -1) {
+			resetButton();
+		}
+		i = 9;
+		for (int x = 0; x < prev_keycodes.Length; x++) {
+			if (i != x)
+				getSelectedButton(x).interactable = false;
+		}
+	}
+	
 	void applyText(string[] chosen_keys) {
 	
 		getSelectedButton(i).GetComponentInChildren<Text>().text = chosen_keys[i];
@@ -465,6 +510,7 @@ public class Controls : MonoBehaviour
 			case 6 : return clear;
 			case 7 : return entangle;
 			case 8 : return unentangle;
+			case 9 : return pause;
 			default: return null;
 		}
 		
@@ -503,8 +549,23 @@ public class Controls : MonoBehaviour
 				prev_keycodes[x] = curr_keycodes[x];
 				prev_keys[x] = curr_keys[x];
 				getSprite(curr_keycodes[x], x);
-			}
 
+				Keybinds.GetInstance().keys[x] = curr_keys[x];
+			}
+			
+			Keybinds.GetInstance().jump = curr_keycodes[0];
+			Keybinds.GetInstance().moveLeft = curr_keycodes[1];
+			Keybinds.GetInstance().moveRight = curr_keycodes[2];
+			Keybinds.GetInstance().grabRelease = curr_keycodes[3];
+			Keybinds.GetInstance().reset = curr_keycodes[4];
+			Keybinds.GetInstance().interact = curr_keycodes[5];
+			Keybinds.GetInstance().clearAllEntangled = curr_keycodes[6];
+			Keybinds.GetInstance().entangle = curr_keycodes[7];
+			Keybinds.GetInstance().unentangle = curr_keycodes[8];
+			Keybinds.GetInstance().pause = curr_keycodes[9];
+
+			SaveLoadKeybinds.SaveControlScheme();
+			
 			// Show option_screen
 			option_screen.SetActive(true);
 
@@ -520,6 +581,22 @@ public class Controls : MonoBehaviour
 	
 	void btnPrev() {
 		showList1();
+	}
+	
+	KeyCode KeyCodeInstance(int val) {
+		switch (val) {
+			case 0 : return Keybinds.GetInstance().jump;
+			case 1 : return Keybinds.GetInstance().moveLeft;
+			case 2 : return Keybinds.GetInstance().moveRight;
+			case 3 : return Keybinds.GetInstance().grabRelease;
+			case 4 : return Keybinds.GetInstance().reset;
+			case 5 : return Keybinds.GetInstance().interact;
+			case 6 : return Keybinds.GetInstance().clearAllEntangled;
+			case 7 : return Keybinds.GetInstance().entangle;
+			case 8 : return Keybinds.GetInstance().unentangle;
+			case 9 : return Keybinds.GetInstance().pause;
+			default: return KeyCode.None;
+		}
 	}
 	
 	// reset button if currently button is click
