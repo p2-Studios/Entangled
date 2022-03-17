@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using Activation_System;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using Activator = Activation_System.Activator;
 
 public class ToggleSwitch : Activator {
     
     public Activatable[] activatables;								// -- array of activatables, REQUIRED to set the activatables manually! --
+
+    public Light2D light;
 
     public Animator animator;
     
@@ -18,11 +21,13 @@ public class ToggleSwitch : Activator {
 
     public override void Activate() {
         animator.SetBool("SwitchOn", true);
+        light.color = Color.green;
         StartCoroutine(switchDelay(true));
     }
 
     public override void Deactivate() {
         animator.SetBool("SwitchOn", false);
+        light.color = Color.red;
         StartCoroutine(switchDelay(false));
     }
 
