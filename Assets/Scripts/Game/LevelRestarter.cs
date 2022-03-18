@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,9 +20,12 @@ public class LevelRestarter : MonoBehaviour {
         } else {
             Destroy(gameObject);
         }
+    }
+
+    private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-    
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         if (checkpointPos != Vector3.zero) {
             Player player = FindObjectOfType<Player>();
@@ -55,7 +59,7 @@ public class LevelRestarter : MonoBehaviour {
 
     public void RestartLevel() {
         AudioManager.instance.restartSong = false;  // don't restart song when restarting level
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     public void SetCheckpointPosition(Vector3 pos) {

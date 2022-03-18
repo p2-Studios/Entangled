@@ -33,7 +33,6 @@ public class AudioManager : MonoBehaviour {
 
         loopingSounds = new ArrayList();
 
-        SceneManager.sceneLoaded += OnSceneChange;
         
         String sceneName = SceneManager.GetActiveScene().name;
         if (sceneName.Equals("MainMenu")) {
@@ -46,8 +45,13 @@ public class AudioManager : MonoBehaviour {
             }
         }
     }
+    
+    private void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneChange;
+    }
 
     private void OnSceneChange(Scene scene, LoadSceneMode mode) {
+        Debug.Log(restartSong);
         if (!restartSong) return; // if restartSong flag is true, don't restart song on scene load/reload
         String sceneName = scene.name;
         
