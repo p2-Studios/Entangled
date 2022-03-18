@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4813846201998853859}
   - component: {fileID: 3485668168858168497}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5880884689359741022}
   - component: {fileID: 5880884689359741018}
   - component: {fileID: 429289540591911158}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ToggleSwitch
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9137876388916219252, guid: f97852f9d8c240c458d8b3a542cca4af, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f97852f9d8c240c458d8b3a542cca4af, type: 3}
