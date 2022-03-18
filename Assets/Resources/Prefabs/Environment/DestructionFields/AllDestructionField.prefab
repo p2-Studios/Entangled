@@ -54,7 +54,7 @@ MonoBehaviour:
   destroyObjects: 1
   animator: {fileID: 3526631541760153691}
   activators: []
-  light: {fileID: 5130520610627242475}
+  glowLight: {fileID: 5130520610627242475}
 --- !u!212 &3526631541760153690
 SpriteRenderer:
   m_ObjectHideFlags: 0

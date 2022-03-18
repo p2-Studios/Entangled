@@ -12,7 +12,7 @@ public class DestructionField : Activatable {
 
     public Animator animator;
     public Activator[] activators;
-    public Light2D light;
+    public Light2D glowLight;
 
     void Start() {
         foreach (Activator a in activators) {
@@ -24,13 +24,13 @@ public class DestructionField : Activatable {
 
     public override void Activate() {
         base.Activate();
-        if (light != null) light.enabled = true;
+        if (glowLight != null) glowLight.enabled = true;
         if (animator != null) animator.SetBool("isActive", true);
     }
 
     public override void Deactivate() {
         base.Deactivate();
-        if (light != null) light.enabled = false;
+        if (glowLight != null) glowLight.enabled = false;
         if (animator != null) animator.SetBool("isActive", false);
     }
     

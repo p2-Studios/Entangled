@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activatables: []
-  light: {fileID: 3485668168858168497}
+  indicatorLight: {fileID: 3485668168858168497}
   animator: {fileID: 429289540591911158}
 --- !u!114 &45171927986839778
 MonoBehaviour:

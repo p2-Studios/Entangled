@@ -20,6 +20,16 @@ public class DialogueManager : MonoBehaviour {
 
     private AudioManager audioManager;
     
+    public static DialogueManager instance;
+    
+    private void Awake() {
+        if (instance == null) {
+            instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+    }
+    
     void Start() {
         sentences = new Queue<string>();
         starting = inDialogue = typing = false;

@@ -182,7 +182,7 @@ MonoBehaviour:
   triggerers:
   - Player
   - Pushable
-  light: {fileID: 2982526402445669402}
+  indicatorLight: {fileID: 2982526402445669402}
 --- !u!212 &9119957939663652726
 SpriteRenderer:
   m_ObjectHideFlags: 0

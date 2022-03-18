@@ -10,6 +10,16 @@ public class HintManager : MonoBehaviour {
 
     private AudioManager audioManager;
     
+    public static HintManager instance;
+    
+    private void Awake() {
+        if (instance == null) {
+            instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+    }
+    
     void Start() {
         audioManager = FindObjectOfType<AudioManager>();
     }

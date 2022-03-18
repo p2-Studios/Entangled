@@ -16,6 +16,7 @@ public class Elevator : MonoBehaviour {
 
     // load the defined next level
     public void LoadNextLevel() {
+        LevelRestarter.instance.ClearCheckpointPosition();  // clear checkpoint location
         ElevatorTransition.levelToLoad = nextLevel;
         SceneManager.LoadSceneAsync("ElevatorTransition");
     }

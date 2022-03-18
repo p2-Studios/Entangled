@@ -18,7 +18,7 @@ namespace Activation_System
 		
 		public String[] triggerers;
 
-		public Light2D light;
+		public Light2D indicatorLight;
 		
 		private BoxCollider2D padCollider;
 		
@@ -41,12 +41,12 @@ namespace Activation_System
 		}
 
 		public override void Activate() {
-			light.color = Color.green;
+			indicatorLight.color = Color.green;
 			base.Activate();
 		}
 
 		public override void Deactivate() {
-			light.color = Color.red;
+			indicatorLight.color = Color.red;
 			base.Deactivate();
 		}
 

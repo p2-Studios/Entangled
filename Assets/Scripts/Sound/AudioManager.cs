@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour {
     
     public Sound[] sounds;
     private ArrayList loopingSounds;
+    private Sound currentSong;
+    public bool restartSong = true;
 
     public static AudioManager instance;
     
@@ -22,10 +24,6 @@ public class AudioManager : MonoBehaviour {
             return;
         }
         
-        // don't destroy audio manager when switching scenes
-        // todo: fix changing music between levels
-        // DontDestroyOnLoad(gameObject);
-        
         foreach (Sound s in sounds) {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -35,17 +33,35 @@ public class AudioManager : MonoBehaviour {
 
         loopingSounds = new ArrayList();
 
-
+        SceneManager.sceneLoaded += OnSceneChange;
+        
         String sceneName = SceneManager.GetActiveScene().name;
         if (sceneName.Equals("MainMenu")) {
-            PlayLooping("music_main");
+            PlayMusic("music_main");
         } else if (!sceneName.Equals("ElevatorTransition")) { // don't play sound in elevator transition
             if (UnityEngine.Random.value > 0.5) {
-                PlayLooping("music_3");
+                PlayMusic("music_3");
             } else {
-                PlayLooping("music_4");
+                PlayMusic("music_4");
             }
         }
+    }
+
+    private void OnSceneChange(Scene scene, LoadSceneMode mode) {
+        if (!restartSong) return; // if restartSong flag is true, don't restart song on scene load/reload
+        String sceneName = scene.name;
+        
+        if (sceneName.Equals("MainMenu")) {
+            PlayMusic("music_main");
+        } else if (!sceneName.Equals("ElevatorTransition")) { // don't play sound in elevator transition
+            if (UnityEngine.Random.value > 0.5) {
+                PlayMusic("music_3");
+            } else {
+                PlayMusic("music_4");
+            }
+        }
+
+        restartSong = true; // set to true again so that the next scene change will restart the song, unless told not to
     }
 
     public void Play(string soundName) {
@@ -56,6 +72,21 @@ public class AudioManager : MonoBehaviour {
         s.source.Play();
     }
 
+    public void PlayMusic(string songName) {
+        if (currentSong != null) {  // stop other song playing
+            currentSong.source.loop = false;
+            currentSong.source.Stop();
+        }
+        
+        Sound s = FetchSound(songName);
+        if (s == null) return;
+        if (s.source == null) return;
+
+        currentSong = s;
+        s.source.loop = true;
+        s.source.Play(); 
+    }
+    
     public void PlayLooping(string soundName) {
         Sound s = FetchSound(soundName);
         if (s == null) return;
