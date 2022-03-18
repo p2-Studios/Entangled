@@ -12,6 +12,7 @@ public class LevelRestarter : MonoBehaviour {
 
     public static LevelRestarter instance;
     public Vector3 checkpointPos;
+    private string sceneName = "";   // keep track of the current scene name
     
     private void Awake() {
 
@@ -27,12 +28,18 @@ public class LevelRestarter : MonoBehaviour {
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if (!scene.name.Equals(sceneName)) {    // if loading a different scene, reset checkpoint location
+            checkpointPos = Vector3.zero;
+        }
+        
         if (checkpointPos != Vector3.zero) {
             Player player = FindObjectOfType<Player>();
             if (player != null) {
                 player.transform.position = checkpointPos;
             }
         }
+
+        sceneName = scene.name;
     }
     
     // Update is called once per frame
