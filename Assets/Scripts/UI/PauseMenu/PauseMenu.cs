@@ -119,7 +119,8 @@ public class PauseMenu : MonoBehaviour
 	void btnReset() {
 		// Check button is held on for atleast 2 seconds
 		//if (System.DateTime.Now.Subtract(clickTime).TotalSeconds >= 2) {
-		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+		LevelRestarter.instance.RestartLevel();
+		//SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
 		menuState();
 		buttonClick = false;
 		//}
