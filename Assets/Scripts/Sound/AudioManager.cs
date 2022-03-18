@@ -51,7 +51,6 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void OnSceneChange(Scene scene, LoadSceneMode mode) {
-        Debug.Log(restartSong);
         if (!restartSong) return; // if restartSong flag is true, don't restart song on scene load/reload
         String sceneName = scene.name;
         
