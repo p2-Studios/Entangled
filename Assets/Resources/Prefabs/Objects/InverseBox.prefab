@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 860720563158253895}
   - component: {fileID: 110078431754699557}
   - component: {fileID: 8410045050839653573}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: InverseBox
   m_TagString: Pushable
   m_Icon: {fileID: 0}
@@ -36,6 +36,7 @@ Transform:
   m_Children:
   - {fileID: 5523186202652005681}
   - {fileID: 3703792065115831476}
+  - {fileID: 3376467347399892613}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -231,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8104859030927349111}
   - component: {fileID: 7780679277806229612}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: inverse_symbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,6 +304,83 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
+--- !u!1 &4401307493168349946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3376467347399892613}
+  - component: {fileID: 6690705997227681684}
+  - component: {fileID: 2847410485870098243}
+  m_Layer: 9
+  m_Name: BoxTop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3376467347399892613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4401307493168349946}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 2}
+  m_Children: []
+  m_Father: {fileID: 2519588315094634123}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &6690705997227681684
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4401307493168349946}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.45}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.1}
+  m_EdgeRadius: 0
+--- !u!251 &2847410485870098243
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4401307493168349946}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 150
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &8040473390515467866
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3703792065115831476}
   - component: {fileID: 4543347856570728976}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,6 +473,10 @@ PrefabInstance:
     - target: {fileID: 561325585342317894, guid: c1f1872aeeac11c46b34a6e236491e6b, type: 3}
       propertyPath: m_Name
       value: Grab_Indicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 561325585342317894, guid: c1f1872aeeac11c46b34a6e236491e6b, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4867798720408623335, guid: c1f1872aeeac11c46b34a6e236491e6b, type: 3}
       propertyPath: m_Sprite
