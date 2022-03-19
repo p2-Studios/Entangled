@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
 	public Button resume;
 	public Button reset;
 	public Button options;
+	public Button feedback;
 	public Button exit;
 	
 	// Screen 2: confirmation screen for exit
@@ -50,6 +51,7 @@ public class PauseMenu : MonoBehaviour
         resume.onClick.AddListener(btnResume);
 		reset.onClick.AddListener(btnReset);
 		options.onClick.AddListener(btnOptions);
+		feedback.onClick.AddListener(btnFeedback);
 		exit.onClick.AddListener(btnExit);
 		
 		yes.onClick.AddListener(btnYes);
@@ -64,9 +66,11 @@ public class PauseMenu : MonoBehaviour
     void Update() {
         if(Input.GetKeyDown(KeyCode.Escape)) {
 	        if (!SceneManager.GetActiveScene().name.Equals("MainMenu")) { // don't allow opening in main menu
+		        HintManager hm = HintManager.instance;
+		        if (hm != null) hm.CloseHint();
+		        
 		        DialogueManager dm = DialogueManager.instance;
-		        Debug.Log(dm.inDialogue);
-		        if (!dm.inDialogue) { // don't allow opening while in a dialogue (Escape exits dialogue)
+		        if (!(dm == null) && !dm.inDialogue) { // don't allow opening while in a dialogue (Escape exits dialogue)
 			        menuState();
 		        }
 	        }
@@ -138,6 +142,10 @@ public class PauseMenu : MonoBehaviour
 		Options.SetActive(true);
 	}
 	
+	void btnFeedback() {
+		Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSduizPyNvgwBKM6RKQIJBMhdP-MfVxOmvlQN4bWaZeT_3VL7Q/viewform");
+	}
+	
 	// button exit.onclick function
 	void btnExit() {
 		// Hide Screen 1
@@ -145,7 +153,6 @@ public class PauseMenu : MonoBehaviour
 		
 		// Show Screen 2
 		confirm.SetActive(true);
-		
 	}
 	
 	// button yes.onclick function
@@ -154,6 +161,7 @@ public class PauseMenu : MonoBehaviour
 		Time.timeScale = timescale;
 		confirm.SetActive(false);
 		menu.SetActive(false);
+
 		SceneManager.LoadSceneAsync("MainMenu",LoadSceneMode.Single);
 	}
 	
