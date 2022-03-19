@@ -63,9 +63,12 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update() {
         if(Input.GetKeyDown(KeyCode.Escape)) {
-	        if (SceneManager.GetActiveScene().buildIndex != 0) {
-		        // don't allow opening in main menu
-		        menuState();
+	        if (!SceneManager.GetActiveScene().name.Equals("MainMenu")) { // don't allow opening in main menu
+		        DialogueManager dm = DialogueManager.instance;
+		        Debug.Log(dm.inDialogue);
+		        if (!dm.inDialogue) { // don't allow opening while in a dialogue (Escape exits dialogue)
+			        menuState();
+		        }
 	        }
         }
 		if (Input.GetMouseButton(0)) {
