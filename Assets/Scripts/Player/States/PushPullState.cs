@@ -49,9 +49,9 @@ public class PushPullState : BaseState {
     // Apply velocity to player for movement
     public override void UpdatePhysics(){
         base.UpdatePhysics();
-        float strengthDif = (objMass - Player.pushStrength) * 4;
+        float strengthDif = (Player.pushStrength - .25f);
         Vector2 velocity = Player.rigidbody.velocity;
-        velocity.x = horzInput * (Player.speed - strengthDif) ;
+        velocity.x = horzInput * (Player.speed * strengthDif) ;
         Player.rigidbody.velocity = velocity;
     }
 
