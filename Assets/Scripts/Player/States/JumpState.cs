@@ -14,6 +14,7 @@ public class JumpState : BaseState {
 
     private bool grounded;
     private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
+    private int objectsLayer = 1 << 9;   // Bitwise shift for ground layer number (should be 6)
 
     private float horzInput;
 
@@ -54,7 +55,7 @@ public class JumpState : BaseState {
     public override void UpdatePhysics(){
         base.UpdatePhysics();
         
-        grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && feetCollider.IsTouchingLayers(groundLayer);
+        grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && (feetCollider.IsTouchingLayers(groundLayer) || feetCollider.IsTouchingLayers(objectsLayer));
         if(!touchingBox){
             Vector2 velocity = Player.rigidbody.velocity;
             velocity.x = horzInput * Player.speed / 1.5f;
