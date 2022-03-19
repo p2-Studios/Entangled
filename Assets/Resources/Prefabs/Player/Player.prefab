@@ -51,7 +51,7 @@ MonoBehaviour:
   rigidbody: {fileID: 7929462300034805080}
   speed: 6
   jumpForce: 5
-  grabDistance: 0.3
+  grabDistance: 0.5
   pushStrength: 0.8
   spriteRenderer: {fileID: 7411563505412239111}
   animator: {fileID: 6269613174981301470}
