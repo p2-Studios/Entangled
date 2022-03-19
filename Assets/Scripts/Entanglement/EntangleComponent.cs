@@ -26,7 +26,7 @@ public class EntangleComponent : MonoBehaviour {
     void Start() {
         passives = new List<Entanglable>();
         VelocityManager.GetInstance().onActiveMoved += OnActiveMoved;
-        entangleMask = LayerMask.GetMask("Ground");
+        entangleMask = LayerMask.GetMask("Objects");
 
         allEntanglableObjects = GameObject.FindGameObjectsWithTag("Pushable");
     }
