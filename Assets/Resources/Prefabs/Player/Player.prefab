@@ -52,7 +52,7 @@ MonoBehaviour:
   speed: 6
   jumpForce: 5
   grabDistance: 0.5
-  pushStrength: 0.7
+  pushStrength: 0.8
   spriteRenderer: {fileID: 7411563505412239111}
   animator: {fileID: 6269613174981301470}
   deathAnimation: {fileID: 2282829766038112090, guid: d55891c79403af24683d0a1e864d34bb, type: 3}

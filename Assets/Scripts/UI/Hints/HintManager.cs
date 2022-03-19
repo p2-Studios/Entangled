@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HintManager : MonoBehaviour {
-    public Text hintText; // text box hint
+    public TextMeshProUGUI hintText; // text box hint
     
     public Animator animator;   // animator for text box animation
 

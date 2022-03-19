@@ -51,7 +51,10 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void OnSceneChange(Scene scene, LoadSceneMode mode) {
-        if (!restartSong) return; // if restartSong flag is true, don't restart song on scene load/reload
+        if (!restartSong) { // if restartSong flag is false, don't restart song on scene load/reload
+            restartSong = true; // set to true again so that the next scene change will restart the song, unless told not to
+            return; 
+        }
         String sceneName = scene.name;
         
         if (sceneName.Equals("MainMenu")) {
@@ -64,7 +67,6 @@ public class AudioManager : MonoBehaviour {
             }
         }
 
-        restartSong = true; // set to true again so that the next scene change will restart the song, unless told not to
     }
 
     public void Play(string soundName) {
