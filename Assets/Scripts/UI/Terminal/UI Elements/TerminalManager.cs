@@ -2,25 +2,30 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 // tutorial: https://www.youtube.com/watch?v=_nRzoTzeyxU
-public class DialogueManager : MonoBehaviour {
-    public Text nameText; // text box header - the name of the interactable triggering the text
-    public Text dialogueText; // the body of the text box
 
-    public float typingSpeed = 0.01f; // the delay (seconds) between each letter appearing
+// manages the UI components of the terminal, getting the data to display from a given Terminal object
+public class TerminalManager : MonoBehaviour {
+
+    public GameObject terminalWindow, fileList;
+    public ImageFileDisplayer imageFileDisplayer;
+    public TextFileDisplayer textFileDisplayer;
+
+    //public float typingSpeed = 0.01f; // the delay (seconds) between each letter appearing
     
     public Animator animator;   // animator for text box animation
 
-    public Boolean starting, inDialogue, typing, closing; // state booleans
-    
-    private Queue<string> sentences;    // queue of sentences to display, one at a time
-    private string currentSentence;
+    public Boolean starting, inTerminal, typing, closing; // state booleans
+
+    //private Queue<string> sentences;    // queue of sentences to display, one at a time
+    //private string currentSentence;
 
     private AudioManager audioManager;
     
-    public static DialogueManager instance;
+    public static TerminalManager instance;
     
     private void Awake() {
         if (instance == null) {
@@ -28,32 +33,46 @@ public class DialogueManager : MonoBehaviour {
         } else {
             Destroy(gameObject);
         }
+        
+        // do terminal setup stuff
+        
+        terminalWindow.SetActive(false);
+    }
+
+    public void OpenTerminal() {
+        terminalWindow.SetActive(true);
+        // do terminal open stuff
+    }
+
+    public void CloseTerminal() {
+        // do terminal close stuff
+        terminalWindow.SetActive(false);
     }
     
     void Start() {
-        sentences = new Queue<string>();
-        starting = inDialogue = typing = false;
+        //sentences = new Queue<string>();
+        starting = inTerminal = typing = false;
         audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.F)) {
-            if (inDialogue) {
-                DisplayNextSentence();
+            if (inTerminal) {
+                // DisplayNextSentence();
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            StartCoroutine(EndDialogue());
+            StartCoroutine(EscapeWindow());
         }
     }
-
+    
+    #region old code
+    /*
     public void StartDialogue(Dialogue dialogue) {
         Debug.Log("In dialogue");
-        starting = inDialogue = true;
+        starting = inTerminal = true;
         animator.SetBool("IsOpen", true);   // set animator flag to show box
-        
-        sentences.Clear();  // clear sentences possibly left over from previous dialogue
 
         foreach (string sentence in dialogue.sentences) {
             // load each sentences from the dialogue
@@ -67,7 +86,7 @@ public class DialogueManager : MonoBehaviour {
     IEnumerator TypeTitle(string name) {
         nameText.text = "> "; // start with no text
         foreach (char letter in name) { // type each letter one-by-one
-            if (inDialogue) {   // make sure we're still in the dialogue
+            if (inTerminal) {   // make sure we're still in the dialogue
                 nameText.text += letter;
                 audioManager.Play("text_scroll");
                 yield return new WaitForSecondsRealtime(typingSpeed);
@@ -86,18 +105,15 @@ public class DialogueManager : MonoBehaviour {
     
     // ends the dialogue, removing it from the screen and setting flags appropriately
     IEnumerator EndDialogue() {
-        yield return new WaitForSeconds(0.05f); // wait for a moment to allow escape menu to check if inDialogue is false
+        yield return new WaitForSeconds(0.05f); // wait for a moment to allow escape menu to check if inTerminal is false
         animator.SetBool("IsOpen", false);  // set animator flag to hide text box
-        inDialogue = false;
+        inTerminal = false;
         closing = true;
         StartCoroutine(CloseDialogue());
         yield return null;
     }
     
-    IEnumerator CloseDialogue() {
-        yield return new WaitForEndOfFrame();
-        closing = false;
-    }
+
     
     // displays the next sentence, or skips typing the current sentence
     public void DisplayNextSentence() {
@@ -118,13 +134,13 @@ public class DialogueManager : MonoBehaviour {
         currentSentence = sentences.Dequeue(); // get next sentence from queue
         StartCoroutine(TypeSentence(currentSentence));
     }
-
-    // Types the body of a sentence onto the screen
+    
+        // Types the body of a sentence onto the screen
     IEnumerator TypeSentence(string sentence) {
         typing = true;
         dialogueText.text = "> "; // start with no text
         foreach (char letter in sentence) { // type each letter one-by-one
-            if (inDialogue) {
+            if (inTerminal) {
                 // make sure we're still in the dialogue
                 dialogueText.text += letter;
                 audioManager.Play("text_scroll");
@@ -136,8 +152,17 @@ public class DialogueManager : MonoBehaviour {
         }
         typing = false;
     }
+    
+    */
+    #endregion
+
+    IEnumerator EscapeWindow() {
+        yield return new WaitForEndOfFrame();
+        closing = false;
+    }
 
     public void CancelDialogue() {
-        starting = inDialogue = typing = false;
+        starting = inTerminal = typing = false;
     }
+
 }

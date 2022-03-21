@@ -69,8 +69,8 @@ public class PauseMenu : MonoBehaviour
 		        HintManager hm = HintManager.instance;
 		        if (hm != null) hm.CloseHint();
 		        
-		        DialogueManager dm = DialogueManager.instance;
-		        if (!(dm == null) && !dm.inDialogue) { // don't allow opening while in a dialogue (Escape exits dialogue)
+		        TerminalManager dm = TerminalManager.instance;
+		        if (!(dm == null) && !dm.inTerminal) { // don't allow opening while in a dialogue (Escape exits dialogue)
 			        menuState();
 		        }
 	        }

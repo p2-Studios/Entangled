@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class DialogueTrigger : Interactable {
     public Dialogue dialogue;
-    private DialogueManager dialogueManager;
+    private TerminalManager terminalManager;
     public Animator animator;
 
     public void Trigger() {
         PlayInteractionSound();
-        dialogueManager.StartDialogue(dialogue);
+        terminalManager.StartDialogue(dialogue);
         animator.SetBool("messageRead", true);
     }
 
     protected override void Interact() {
         base.Interact();
-        if (dialogueManager == null) dialogueManager = FindObjectOfType<DialogueManager>();
-        if (!dialogueManager.inDialogue && !dialogueManager.closing) {
+        if (terminalManager == null) terminalManager = FindObjectOfType<TerminalManager>();
+        if (!terminalManager.inTerminal && !terminalManager.closing) {
             Trigger();
         }
     }
