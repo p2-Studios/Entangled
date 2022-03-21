@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class TerminalFile : MonoBehaviour {
 
-    private string name;
+    public string fileName;
 
     public string GetFileName() {
-        return name;
+        return fileName;
     }
 }

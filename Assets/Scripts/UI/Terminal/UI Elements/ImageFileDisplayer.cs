@@ -1,18 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ImageFileDisplayer : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class ImageFileDisplayer : FileDisplayer {
+    public GameObject imageField;
+    private Image image;
+    public TextMeshProUGUI descriptionField;
+
+
+    public void Awake() {
+        image = imageField.GetComponent<Image>();
+        btnClose.onClick.AddListener(Close);
+    }
+    
+    public void Open(ImageFile file) {
+        fileNameField.text = file.GetFileName();
+        descriptionField.text = file.GetDescription();
+        image.sprite = file.GetImage();
+        SetVisible(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void Close() {
+        fileNameField.text = "";    // clear content
+        descriptionField.text = "";
+        //imageField.GetComponent<Image>().image = null;
+        TerminalManager.instance.SetViewingFile(false);
+        SetVisible(false);
     }
 }

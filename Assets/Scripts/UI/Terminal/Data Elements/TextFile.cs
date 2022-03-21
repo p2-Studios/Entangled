@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class TextFile : TerminalFile {
-    private string body;
+    
+    [TextArea(3, 10)]
+    public string body;
 
     public string GetBodyText() {
         return body;
