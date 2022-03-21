@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4056950570538461375}
   - component: {fileID: 764364749471016899}
   - component: {fileID: 861495427903868919}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AirVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 1296416925560699589}
   - component: {fileID: 1296416925560699586}
   - component: {fileID: 1296416925560699591}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AirFan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6396039202374097701}
   - component: {fileID: 1512119366028975107}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: AirVisualAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 4217903150499981563}
   - component: {fileID: 766392949989970193}
   - component: {fileID: 3557547276774490797}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: FanBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
