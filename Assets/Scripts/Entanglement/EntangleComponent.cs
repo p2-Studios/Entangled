@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Entanglement;
+using Game.CustomKeybinds;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Experimental.Rendering.LWRP;
@@ -32,7 +33,10 @@ public class EntangleComponent : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
+        Keybinds keybindInstance = Keybinds.GetInstance();
+        
         // draw helixes from active to passive(s)
         if (showEntangledHelix) {
             if (passives.Count != 0) {
@@ -45,7 +49,7 @@ public class EntangleComponent : MonoBehaviour {
         // Mouse Controls for Entangling Objects
         // (Hit detector- https://stackoverflow.com/a/61659152. I have modified this a bit to suit our needs)
         // mouse button held, draw line if there is an active
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetKey(keybindInstance.entangle)) {
             if (active != null) {
                 // active, but no passives. Draw Entangling line
                 Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -56,7 +60,9 @@ public class EntangleComponent : MonoBehaviour {
             if (EntanglingHelix != null) Destroy(EntanglingHelix);
         }
         
-        if (Input.GetMouseButtonDown(0)) { ;
+        if (Input.GetKeyDown(keybindInstance.entangle)) {
+
+            Debug.Log("Mouse down");
             
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
@@ -86,7 +92,7 @@ public class EntangleComponent : MonoBehaviour {
             }
         }
 
-        if (Input.GetMouseButtonUp(0)) {
+        if (Input.GetKeyUp(keybindInstance.entangle)) {
             // When mouse click is released
             if (active != null) {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -120,7 +126,7 @@ public class EntangleComponent : MonoBehaviour {
         }
 
         // Right click pressed
-        if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetKeyDown(keybindInstance.unentangle)) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
             if (hit.collider != null) {
@@ -150,7 +156,7 @@ public class EntangleComponent : MonoBehaviour {
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Q)) { // Q to quick clear entangleds
+        if (Input.GetKeyDown(keybindInstance.clearAllEntangled)) { // quick clear entangled objects
             ClearEntangled();
         }
         

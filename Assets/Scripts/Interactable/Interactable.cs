@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.CustomKeybinds;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour {
@@ -16,7 +17,7 @@ public class Interactable : MonoBehaviour {
     }
     
     void Update() {
-        if (Input.GetKeyDown(KeyCode.F)) {
+        if (Input.GetKeyDown(Keybinds.GetInstance().interact)) {
             if (inRange) {
                 Interact();
             }
