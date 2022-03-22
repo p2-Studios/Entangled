@@ -20,8 +20,10 @@ public class Terminal : Interactable {
             Debug.LogWarning("No Level object found - can't load remote terminal messages.");
         } else {
             FlashDrive[] flashDrives = FindObjectsOfType<FlashDrive>();  // find all flashdrives in the scene
+
             foreach (FlashDrive f in flashDrives) {
                 if (f.file != null) {
+                    f.file.encrypted = true;    // make sure the file is encrypted
                     remoteFiles.Add(f.file);
                 }
             }
