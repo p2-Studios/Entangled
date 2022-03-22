@@ -1,28 +1,19 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-
-// tutorial: https://www.youtube.com/watch?v=_nRzoTzeyxU
 
 // manages the UI components of the terminal, getting the data to display from a given Terminal object
 public class TerminalManager : MonoBehaviour {
 
-    public GameObject terminalWindow, fileList, fileButton;
+    public Button exitButton;
+    public GameObject terminalWindow, localFileList, remoteFileList, errorWindow, fileButton, encryptedFileButton;
     public ImageFileDisplayer imageFileDisplayer;
     public TextFileDisplayer textFileDisplayer;
-
-    //public float typingSpeed = 0.01f; // the delay (seconds) between each letter appearing
     
-    //public Animator animator;   // animator for text box animation
+    private Boolean viewingFile, inTerminal, errorVisible; // state booleans
 
-    public Boolean viewingFile, inTerminal, closing; // state booleans
-
-    //private Queue<string> sentences;    // queue of sentences to display, one at a time
-    //private string currentSentence;
-
+    
     private AudioManager audioManager;
     
     public static TerminalManager instance;
@@ -33,9 +24,8 @@ public class TerminalManager : MonoBehaviour {
         } else {
             Destroy(gameObject);
         }
-        
-        
-        CloseFileViewers();
+
+        CloseSubWindows();
         
         terminalWindow.SetActive(false);
     }
@@ -45,15 +35,11 @@ public class TerminalManager : MonoBehaviour {
         //sentences = new Queue<string>();
          inTerminal = viewingFile = false;
         audioManager = FindObjectOfType<AudioManager>();
+        exitButton.onClick.AddListener(CloseTerminal);
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.F)) {
-            if (inTerminal) {
-                // DisplayNextSentence();
-            }
-        }
-
+        
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (viewingFile) {
                 imageFileDisplayer.Close();
@@ -64,12 +50,14 @@ public class TerminalManager : MonoBehaviour {
         }
     }
 
+    // opens and displays the terminal gui, with the files of the given terminal
     public void OpenTerminal(Terminal t) {
         terminalWindow.SetActive(true);
         inTerminal = true;
         LoadFiles(t);
     }
 
+    // closes the entire terminal
     public void CloseTerminal() {
         ClearFiles();
         CloseFileViewers();
@@ -77,16 +65,31 @@ public class TerminalManager : MonoBehaviour {
         terminalWindow.SetActive(false);
     }
 
+    // loads all local and remote files from the given Terminal object, and puts them in the correct categories
     public void LoadFiles(Terminal t) {
-        //ClearFiles();   // clear out old files
-        foreach (TerminalFile file in t.files) {
-            TerminalFileButton fb = Instantiate(fileButton, fileList.transform, false).GetComponent<TerminalFileButton>();
+        //ClearFiles();   // clear out old localFiles
+        foreach (TerminalFile file in t.GetLocalFiles()) {
+            TerminalFileButton fb = Instantiate(fileButton, localFileList.transform, false).GetComponent<TerminalFileButton>();
+            fb.SetFile(file);
+        }
+        
+        foreach (TerminalFile file in t.GetRemoteFiles()) {
+            TerminalFileButton fb;
+            if (file.IsEncrypted()) {
+                fb = Instantiate(encryptedFileButton, remoteFileList.transform, false).GetComponent<TerminalFileButton>();
+            } else {
+                fb = Instantiate(fileButton, remoteFileList.transform, false).GetComponent<TerminalFileButton>();
+            }
             fb.SetFile(file);
         }
     }
 
+    // clears all files in the terminal file lists
     public void ClearFiles() {
-        foreach (Transform child in fileList.transform) {
+        foreach (Transform child in localFileList.transform) {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in remoteFileList.transform) {
             Destroy(child.gameObject);
         }
     }
@@ -180,32 +183,62 @@ public class TerminalManager : MonoBehaviour {
     */
     #endregion
 
+    // closes the frontmost terminal window
     IEnumerator EscapeWindow() {
         yield return new WaitForEndOfFrame();
         CloseTerminal();
-        closing = false;
     }
 
+    // opens the given text file, displaying it on the textFileDisplayer
     public void OpenTextFile(TextFile file) {
         CloseFileViewers();
         viewingFile = true;
         textFileDisplayer.Open(file);
     }
     
+    // opens the given image file, displaying it on the imageFileDisplayer
     public void OpenImageFile(ImageFile file) {
         CloseFileViewers();
         viewingFile = true;
         imageFileDisplayer.Open(file);
     }
 
+    // closes ALL sub-windows of the terminal
+    public void CloseSubWindows() {
+        CloseFileViewers();
+        errorWindow.SetActive(false);
+    }
+    
+    // Closes all potentially open file viewer windows
     public void CloseFileViewers() {
         imageFileDisplayer.Close();
         textFileDisplayer.Close();
         viewingFile = false;
     }
 
+    public bool IsTerminalOpen() {
+        return inTerminal;
+    }
+    
+    public bool IsViewingFile() {
+        return viewingFile;
+    }
+    
+    // set whether a file is currently being viewed in the terminal
     public void SetViewingFile(bool b) {
         viewingFile = b;
+    }
+
+    public void DisplayError() {
+        if (!errorVisible) StartCoroutine(ErrorDisplay());
+    }
+    
+    IEnumerator ErrorDisplay() {
+        errorWindow.SetActive(true);
+        errorVisible = true;
+        yield return new WaitForSecondsRealtime(3.0f);
+        errorWindow.SetActive(false);
+        errorVisible = false;
     }
 
 }

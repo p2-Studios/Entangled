@@ -18,12 +18,17 @@ public class TerminalFileButton : MonoBehaviour {
     }
 
     public void OpenFile() {
-        if (file.GetType() == typeof(TextFile)) {
-            TerminalManager.instance.OpenTextFile((TextFile) file);
-        } else if (file.GetType() == typeof(ImageFile)) {
-            TerminalManager.instance.OpenImageFile((ImageFile) file);
+        if (TerminalManager.instance.IsViewingFile()) return;
+        if (file.IsEncrypted()) {
+            TerminalManager.instance.DisplayError();
         } else {
-            Debug.LogWarning("Non- image or text file attempted to be opened.");
+            if (file.GetType() == typeof(TextFile)) {
+                TerminalManager.instance.OpenTextFile((TextFile) file);
+            } else if (file.GetType() == typeof(ImageFile)) {
+                TerminalManager.instance.OpenImageFile((ImageFile) file);
+            } else {
+                Debug.LogWarning("Non- image or text file attempted to be opened.");
+            }
         }
     }
 
@@ -33,6 +38,23 @@ public class TerminalFileButton : MonoBehaviour {
     
     public void SetFile(TerminalFile f) {
         file = f;
-        buttonLabel.text = file.fileName;
+        if (file.IsEncrypted()) {
+            buttonLabel.text = GetStringSha256Hash(file.fileName);
+        } else {
+            buttonLabel.text = file.fileName;
+        }
+    }
+    
+    internal static string GetStringSha256Hash(string text)
+    {
+        if (String.IsNullOrEmpty(text))
+            return String.Empty;
+
+        using (var sha = new System.Security.Cryptography.SHA256Managed())
+        {
+            byte[] textData = System.Text.Encoding.UTF8.GetBytes(text);
+            byte[] hash = sha.ComputeHash(textData);
+            return (BitConverter.ToString(hash).Replace("-", String.Empty)).Substring(0, 16);
+        }
     }
 }

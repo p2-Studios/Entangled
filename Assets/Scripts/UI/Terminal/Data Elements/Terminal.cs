@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Terminal : Interactable {
     [SerializeField]
-    public TerminalFile[] files;
+    public TerminalFile[] localFiles, remoteFiles;
     public Dialogue dialogue;
     private TerminalManager terminalManager;
     public Animator animator;
 
 
-    public TerminalFile[] GetFiles() {
-        return files;
+    public TerminalFile[] GetLocalFiles() {
+        return localFiles;
+    }
+
+    public TerminalFile[] GetRemoteFiles() {
+        return remoteFiles;
     }
     
     
@@ -24,7 +28,7 @@ public class Terminal : Interactable {
     protected override void Interact() {
         base.Interact();
         if (terminalManager == null) terminalManager = TerminalManager.instance;
-        if (!terminalManager.inTerminal && !terminalManager.closing) {
+        if (!terminalManager.IsTerminalOpen()) {
             Trigger();
         }
     }
