@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7411563505412239111}
   - component: {fileID: 6269613174981301470}
   - component: {fileID: 8766520434676390421}
-  - component: {fileID: 8858257689520475915}
-  m_Layer: 7
+  - component: {fileID: 108507452419385933}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -52,18 +52,21 @@ MonoBehaviour:
   speed: 6
   jumpForce: 5
   grabDistance: 0.5
-  pushStrength: 1
+  pushStrength: 0.8
   spriteRenderer: {fileID: 7411563505412239111}
   animator: {fileID: 6269613174981301470}
   deathAnimation: {fileID: 2282829766038112090, guid: d55891c79403af24683d0a1e864d34bb, type: 3}
   pushMask:
     serializedVersion: 2
-    m_Bits: 118
+    m_Bits: 630
   rayHeight: -0.27
+  entangleComponent: {fileID: 0}
   EntanglingHelix: {fileID: 8639923436664529287, guid: e1a32811dcf2783498d19a0b23de7b5c, type: 3}
   EntangledHelix: {fileID: 4301194098379100217, guid: 6b752724eae5b3c41bfbecf5a7a9c0bd, type: 3}
+  showEntanglingHelix: 1
+  showEntangledHelix: 1
   respawnLocation: {fileID: 0}
-  respawnDelay: 2
+  respawnDelay: 1
   worldVelocity: {x: 0, y: 0}
   pushedObject: {fileID: 0}
   facingRight: 1
@@ -126,9 +129,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -189938303
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 8540186788001818639, guid: 3caa9414dbbdac64ba2703d74d4a169e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -168,11 +171,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 7929462300034805081}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 313e18232f0c78746a4b0a45a3700f69, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.12}
+  m_Offset: {x: 0, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -185,15 +188,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45, y: 0.5}
   m_EdgeRadius: 0.18
---- !u!114 &8858257689520475915
-MonoBehaviour:
+--- !u!70 &108507452419385933
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7929462300034805081}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9fedc2fd8bfe8549845be1a0625bc2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.5460868}
+  m_Size: {x: 0.5000001, y: 0.14782654}
+  m_Direction: 1

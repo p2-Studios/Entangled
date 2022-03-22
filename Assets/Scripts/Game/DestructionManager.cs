@@ -12,11 +12,7 @@ public class DestructionManager : MonoBehaviour {
             instance = this;
         } else {
             Destroy(gameObject);
-            return;
         }
-        
-        // don't destroy DestructionManager when switching scenes
-        DontDestroyOnLoad(gameObject);
     }
 
     public void Destroy(IDestroyable destroyable, float delay) {

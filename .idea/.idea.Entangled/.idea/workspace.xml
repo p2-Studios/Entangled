@@ -36,7 +36,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@10.8.1/Runtime/Inputs/InputRegistering.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/TextEditor.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -61,6 +61,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Builds/Beta\Entangled.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Dakota\Desktop\CMPT_406\Entangled\Builds\Beta" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -94,16 +102,14 @@
       <workItem from="1647312630884" duration="9564000" />
       <workItem from="1647392866185" duration="7717000" />
       <workItem from="1647405571382" duration="544000" />
-      <workItem from="1647439602287" duration="42000" />
-      <workItem from="1647439651396" duration="41000" />
-      <workItem from="1647439728356" duration="19916000" />
-    </task>
-    <task id="LOCAL-00001" summary="Added Custom Keybinding Manager (CustomKeybinds). Modified 8 files to use the manager.">
-      <created>1647452509015</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1647452509015</updated>
+      <workItem from="1647471547224" duration="1962000" />
+      <workItem from="1647534804450" duration="8689000" />
+      <workItem from="1647574016980" duration="173000" />
+      <workItem from="1647574235845" duration="45000" />
+      <workItem from="1647651627609" duration="4909000" />
+      <workItem from="1647669500668" duration="3773000" />
+      <workItem from="1647723034318" duration="1119000" />
+      <workItem from="1647796570136" duration="2297000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace Activation_System
 {
@@ -16,6 +17,8 @@ namespace Activation_System
 		public Activatable[] activatables;								// -- array of activatables, REQUIRED to set the activatables manually! --
 		
 		public String[] triggerers;
+
+		public Light2D indicatorLight;
 		
 		private BoxCollider2D padCollider;
 		
@@ -36,7 +39,17 @@ namespace Activation_System
 			}
 			
 		}
-		
+
+		public override void Activate() {
+			indicatorLight.color = Color.green;
+			base.Activate();
+		}
+
+		public override void Deactivate() {
+			indicatorLight.color = Color.red;
+			base.Deactivate();
+		}
+
 		void OnTriggerEnter2D(Collider2D col) {
 			if (!canTrigger(col.gameObject.tag)) return;
 			obj_mass.Add(col,col.gameObject.GetComponent<Rigidbody2D>().mass);				// The sum of all mass on the pressure pad
