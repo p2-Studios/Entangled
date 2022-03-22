@@ -780,6 +780,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1251444168186947255, guid: 59a879f802bf2114cbb1c949f5d2408c, type: 3}
+      propertyPath: file
+      value: 
+      objectReference: {fileID: 7419897541711876239, guid: 7f99c8a876335bd48ad43b830ea6205d, type: 3}
+    - target: {fileID: 1251444168186947255, guid: 59a879f802bf2114cbb1c949f5d2408c, type: 3}
+      propertyPath: label
+      value: File2
+      objectReference: {fileID: 0}
     - target: {fileID: 2909335779304743504, guid: 59a879f802bf2114cbb1c949f5d2408c, type: 3}
       propertyPath: uniqueId
       value: Testing_Terminal_730cbce0-dcfd-48dc-9643-d843a6b134fd

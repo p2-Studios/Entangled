@@ -25,9 +25,16 @@ public static class SaveSystem {
 
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Open);
+        LevelData data;
 
-        LevelData data = formatter.Deserialize(stream) as LevelData;
-        
+        if (File.Exists(path) && stream.Length > 0) {
+            data = formatter.Deserialize(stream) as LevelData;
+
+        } else {
+            Debug.LogWarning("No save file found at " + path);
+            data = null;
+        }
+
         stream.Close();
 
         return data;

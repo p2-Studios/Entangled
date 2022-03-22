@@ -12,7 +12,8 @@ public class TerminalManager : MonoBehaviour {
     public TextFileDisplayer textFileDisplayer;
     
     private Boolean viewingFile, inTerminal, errorVisible; // state booleans
-
+    //private Level level;    // level data
+    //private TerminalFile[] unlockedRemotefiles; // remote files that are unlocked (player has found flashdrive)
     
     private AudioManager audioManager;
     
@@ -29,8 +30,7 @@ public class TerminalManager : MonoBehaviour {
         
         terminalWindow.SetActive(false);
     }
-    
-        
+
     void Start() {
         //sentences = new Queue<string>();
          inTerminal = viewingFile = false;
@@ -67,20 +67,31 @@ public class TerminalManager : MonoBehaviour {
 
     // loads all local and remote files from the given Terminal object, and puts them in the correct categories
     public void LoadFiles(Terminal t) {
-        //ClearFiles();   // clear out old localFiles
-        foreach (TerminalFile file in t.GetLocalFiles()) {
+        
+        Level level = FindObjectOfType<Level>(); // get level data
+        ArrayList unlockedRemoteFiles = new ArrayList();
+        foreach (FlashDrive fd in level.foundFlashDrives) { // get unlocked files (found flashdrives)
+            Debug.Log(fd);
+            unlockedRemoteFiles.Add(fd.file);
+        }
+        
+        
+        foreach (TerminalFile file in t.GetLocalFiles()) {  // load local files from terminal object
             TerminalFileButton fb = Instantiate(fileButton, localFileList.transform, false).GetComponent<TerminalFileButton>();
             fb.SetFile(file);
         }
         
-        foreach (TerminalFile file in t.GetRemoteFiles()) {
+        foreach (TerminalFile file in t.GetRemoteFiles()) { // load remote files from terminal object
             TerminalFileButton fb;
-            if (file.IsEncrypted()) {
+            bool locked = !unlockedRemoteFiles.Contains(file);
+            if (file.IsEncrypted() && locked) { // file is encrypted and corresponding flashdrive hasn't been found
                 fb = Instantiate(encryptedFileButton, remoteFileList.transform, false).GetComponent<TerminalFileButton>();
-            } else {
+            } else {  // file is unlocked
                 fb = Instantiate(fileButton, remoteFileList.transform, false).GetComponent<TerminalFileButton>();
             }
             fb.SetFile(file);
+            
+            if (!locked) fb.Unlock();
         }
     }
 

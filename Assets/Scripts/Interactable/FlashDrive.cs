@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class FlashDrive : Interactable {
     public string label;
-    public string[] texts;
+    public TerminalFile file;
     public UniqueId UID;
     private Level level;
 
     private void Awake() {
         level = FindObjectOfType<Level>();
+        if (file == null) {
+            Debug.LogWarning("Flash drive has no file, destroying!");
+            Destroy(gameObject);
+        }
     }
 
     public void Collect() {
