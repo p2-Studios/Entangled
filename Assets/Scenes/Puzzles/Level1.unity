@@ -384,6 +384,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointSetter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 477020422476931212, guid: 979ab6c0362817a40b3b85aeb4d52593, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 477020422476931213, guid: 979ab6c0362817a40b3b85aeb4d52593, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -500,7 +504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7684704498889250462, guid: 1298cab3b50aafd45af853435097740c, type: 3}
       propertyPath: boxSize.x
-      value: 15.91
+      value: 15.06
       objectReference: {fileID: 0}
     - target: {fileID: 7684704498889250462, guid: 1298cab3b50aafd45af853435097740c, type: 3}
       propertyPath: boxSize.y
@@ -832,7 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7684704498889250462, guid: 1298cab3b50aafd45af853435097740c, type: 3}
       propertyPath: boxSize.x
-      value: 15.91
+      value: 14.7
       objectReference: {fileID: 0}
     - target: {fileID: 7684704498889250462, guid: 1298cab3b50aafd45af853435097740c, type: 3}
       propertyPath: boxSize.y
@@ -3687,7 +3691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7684704498889250462, guid: 1298cab3b50aafd45af853435097740c, type: 3}
       propertyPath: boxSize.x
-      value: 15.91
+      value: 15.2
       objectReference: {fileID: 0}
     - target: {fileID: 7684704498889250462, guid: 1298cab3b50aafd45af853435097740c, type: 3}
       propertyPath: boxSize.y
@@ -4310,7 +4314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7684704498889250462, guid: 1298cab3b50aafd45af853435097740c, type: 3}
       propertyPath: boxSize.x
-      value: 15.91
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 7684704498889250462, guid: 1298cab3b50aafd45af853435097740c, type: 3}
       propertyPath: boxSize.y

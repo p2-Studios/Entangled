@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: boxPurpleGlow
+  m_Name: boulderhoverGlow
   m_Shader: {fileID: -6465566751694194690, guid: 4c40fe8187d19994287c586218b94c31, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -41,5 +41,5 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_2b59baaef7544b68986b27f1769ffe84: {r: 0.110918716, g: 0, b: 0.84298223, a: 0}
+    - Color_2b59baaef7544b68986b27f1769ffe84: {r: 47.937256, g: 47.937256, b: 47.937256, a: 0}
   m_BuildTextureStacks: []
