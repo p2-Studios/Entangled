@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.CustomKeybinds;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -64,7 +65,7 @@ public class PauseMenu : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
+        if(Input.GetKeyDown(Keybinds.GetInstance().pause)) {
 	        if (!SceneManager.GetActiveScene().name.Equals("MainMenu")) { // don't allow opening in main menu
 		        HintManager hm = HintManager.instance;
 		        if (hm != null) hm.CloseHint();

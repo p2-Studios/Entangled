@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.CustomKeybinds;
 using UnityEngine;
 
 // tutorials used: https://youtu.be/-VkezxxjsSE
@@ -24,9 +25,9 @@ public class IdleState : Grounded {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
-        if(haltMovement && Input.GetKeyDown(KeyCode.Space))
+        if(haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump))
             playerSM.ChangeState(playerSM.jumpState);    
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(Keybinds.GetInstance().moveLeft) || Input.GetKeyDown(Keybinds.GetInstance().moveRight))
             playerSM.player.SetAnimatorState("running");
         if (Mathf.Abs(horzInput) > Mathf.Epsilon)
             playerSM.ChangeState(playerSM.moveState);      
