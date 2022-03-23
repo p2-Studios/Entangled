@@ -170,15 +170,5 @@ public class Player : MonoBehaviour, IDestroyable {
         gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
         ResetPlayer();
     }
-<<<<<<< HEAD
-    #endregion
     
-    // utility methods
-    public bool IsGrounded() { 
-        bool grounded =  rigidbody.velocity.y < Mathf.Epsilon && (feetCollider.IsTouchingLayers(groundLayer) || feetCollider.IsTouchingLayers(objectsLayer));
-        Debug.Log(grounded);
-        return grounded;
-    }
-=======
->>>>>>> parent of 5e75dfc (Fixed jumping in midair)
 }

@@ -25,15 +25,9 @@ public class IdleState : Grounded {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
-<<<<<<< HEAD
-        if (haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump) && player.IsGrounded()) {
-            playerSM.ChangeState(playerSM.jumpState);
-        }
 
-=======
         if(haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump))
             playerSM.ChangeState(playerSM.jumpState);    
->>>>>>> parent of 5e75dfc (Fixed jumping in midair)
         if (Input.GetKeyDown(Keybinds.GetInstance().moveLeft) || Input.GetKeyDown(Keybinds.GetInstance().moveRight))
             playerSM.player.SetAnimatorState("running");
         if (Mathf.Abs(horzInput) > Mathf.Epsilon)
