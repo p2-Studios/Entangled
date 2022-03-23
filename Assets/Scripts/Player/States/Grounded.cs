@@ -33,18 +33,25 @@ public class Grounded : BaseState {
 
         // check if player can latch onto object      
         if (Player.hit.collider != null && Player.hit.collider.gameObject.tag == "Pushable" ){
-            lastTouchedBox = Player.hit.collider.gameObject.GetComponent<BoxInteractable>();
-            lastTouchedBox.toggleIndicator(true);
+            BoxInteractable touchedBox = Player.hit.collider.gameObject.GetComponent<BoxInteractable>();
+            touchedBox.ToggleControlSprite(true);
+            
+            if (lastTouchedBox != null && !touchedBox.Equals(lastTouchedBox)) {   // if now looking at a differernt box, disable control sprite of old box
+                lastTouchedBox.ToggleControlSprite(false);
+            }
+
+            lastTouchedBox = touchedBox;
+            
             if(Input.GetKeyDown(Keybinds.GetInstance().grabRelease)){
-                lastTouchedBox.toggleSprite(true);
+                lastTouchedBox.ToggleGrabbingSprite(true);
                 Player.pushedObject = Player.hit.collider.gameObject.GetComponent<Entanglable>();
                 playerSM.ChangeState(playerSM.pushpullState);
             }
         }
-        else{
-            if(lastTouchedBox != null){
-                lastTouchedBox.toggleSprite(false);
-                lastTouchedBox.toggleIndicator(false);
+        else {
+            if (lastTouchedBox != null){
+                lastTouchedBox.ToggleGrabbingSprite(false);
+                lastTouchedBox.ToggleControlSprite(false);
             }
         }
 

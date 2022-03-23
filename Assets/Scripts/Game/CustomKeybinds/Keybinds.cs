@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.CustomKeybinds
 {
     [Serializable]
-    public class Keybinds
-    {
+    public class Keybinds {
+        private Dictionary<String, KeyCode> keyCodes;
         private static Keybinds _instance;
 
         public KeyCode moveLeft;
@@ -23,8 +24,7 @@ namespace Game.CustomKeybinds
 
         public KeyCode pause;
 
-        private Keybinds()
-        {   
+        private Keybinds() {   
             
             moveLeft = KeyCode.A;
             moveRight = KeyCode.D;
@@ -32,7 +32,7 @@ namespace Game.CustomKeybinds
             moveDown = KeyCode.S;
             jump = KeyCode.Space;
             
-            grabRelease = KeyCode.E;
+            grabRelease = KeyCode.LeftShift;
             interact = KeyCode.F;
             
             clearAllEntangled = KeyCode.Q;

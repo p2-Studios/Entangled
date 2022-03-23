@@ -37,8 +37,10 @@ public class PushPullState : BaseState {
         horzInput = Input.GetAxis("Horizontal");
 
         // Let go of object
-        if (Input.GetKeyDown(Keybinds.GetInstance().grabRelease)){
+        if (Input.GetKeyUp(Keybinds.GetInstance().grabRelease)){
             Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
+            BoxInteractable lastTouchedBox = Player.hit.collider.gameObject.GetComponent<BoxInteractable>();
+            if (lastTouchedBox != null) lastTouchedBox.ToggleGrabbingSprite(false);
             playerSM.ChangeState(playerSM.idleState);
         }
         if(Player.hit.collider == null){
