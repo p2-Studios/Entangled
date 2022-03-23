@@ -4030,7 +4030,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2874820045489884387, guid: 5f036038bb2ce0748b59c9965a7df048, type: 3}
       propertyPath: text
-      value: Press <color=purple>E</color> near an object to grab or let go of it.
+      value: Hold <color=purple>SHIFT</color> while near an object to grab or let
+        go of it.
       objectReference: {fileID: 0}
     - target: {fileID: 2874820045489884397, guid: 5f036038bb2ce0748b59c9965a7df048, type: 3}
       propertyPath: m_RootOrder
