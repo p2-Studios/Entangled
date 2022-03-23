@@ -26,7 +26,6 @@ public class IdleState : Grounded {
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
         if (haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump) && player.IsGrounded()) {
-            Debug.Log("Player grounded");
             playerSM.ChangeState(playerSM.jumpState);
         }
 

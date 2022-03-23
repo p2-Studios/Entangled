@@ -181,6 +181,8 @@ public class Player : MonoBehaviour, IDestroyable {
     
     // utility methods
     public bool IsGrounded() { 
-        return rigidbody.velocity.y < Mathf.Epsilon && (feetCollider.IsTouchingLayers(groundLayer) || feetCollider.IsTouchingLayers(objectsLayer));
+        bool grounded =  rigidbody.velocity.y < Mathf.Epsilon && (feetCollider.IsTouchingLayers(groundLayer) || feetCollider.IsTouchingLayers(objectsLayer));
+        Debug.Log(grounded);
+        return grounded;
     }
 }

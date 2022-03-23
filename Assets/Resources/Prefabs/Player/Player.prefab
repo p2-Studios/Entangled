@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 7929462300034805080}
-  speed: 6
+  speed: 5
   jumpForce: 5
   grabDistance: 0.5
   pushStrength: 0.8
