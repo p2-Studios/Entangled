@@ -61,8 +61,6 @@ public class EntangleComponent : MonoBehaviour {
         }
         
         if (Input.GetKeyDown(keybindInstance.entangle)) {
-
-            Debug.Log("Mouse down");
             
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);

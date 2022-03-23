@@ -30,7 +30,9 @@ public class Player : MonoBehaviour, IDestroyable {
     PlayerStateMachine stateMachine;
 
     private Vector2 position, previousPosition;
-    public Transform respawnLocation;   // location that the player should respawn at when necessary
+    public Transform respawnTransform;   // location that the player should respawn at when necessary
+    [HideInInspector]
+    public Vector3 respawnLocation;
     public float respawnDelay = 2.0f;
     [HideInInspector]
     public Vector2 worldVelocity;  // worldVelocity information
@@ -57,6 +59,8 @@ public class Player : MonoBehaviour, IDestroyable {
         audioManager = FindObjectOfType<AudioManager>();
         stateMachine.Initialize(this);
         grabbing = false;
+
+        if (respawnTransform != null) respawnLocation = respawnTransform.position;
     }
 
     private void Update(){
@@ -167,7 +171,7 @@ public class Player : MonoBehaviour, IDestroyable {
     
     // do things that need to be done on respawning, right after the game object is set as active again
     public void Respawn() {
-        gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
+        gameObject.transform.position = respawnLocation; // move the object to respawnTransform
         ResetPlayer();
     }
     

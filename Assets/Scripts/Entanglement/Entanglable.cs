@@ -200,7 +200,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     public void Respawn() {
         destroyed = false;
         transform.parent = null;
-        gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
+        gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnTransform
         rb.velocity = Vector2.zero; // reset velocity
     }
     #endregion Destructible Methods

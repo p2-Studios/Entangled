@@ -36,6 +36,7 @@ public class LevelRestarter : MonoBehaviour {
             Player player = FindObjectOfType<Player>();
             if (player != null) {
                 player.transform.position = checkpointPos;
+                player.respawnLocation = checkpointPos;
             }
         }
 
