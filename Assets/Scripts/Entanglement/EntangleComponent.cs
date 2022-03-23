@@ -133,14 +133,8 @@ public class EntangleComponent : MonoBehaviour {
                 // If one object is clicked, all objects get the click input. This is to prevent multiple selection
                 Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
                 if (e == null) return;
-                if (active == e) {
+                if (active == e || passives.Contains(e)) {
                     ClearEntangled();
-                }
-
-                if (passives.Contains(e)) {
-                    //Debug.Log("Removed the object from the list of passives");
-                    e.SetEntanglementStates(false, false, true);
-                    passives.Remove(e);
                 }
             }
         }
