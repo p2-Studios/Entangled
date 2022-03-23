@@ -15,7 +15,7 @@ public class PushPullState : BaseState {
     public PushPullState(PlayerStateMachine playerStateMachine,Player player,AudioManager audioManager) : base("Pulling", playerStateMachine, player){
         playerSM = (PlayerStateMachine)playerStateMachine;
         this.audioManager = audioManager;
-        base.player = player;
+        Player = player;
     }
 
     // Enter calls
@@ -24,10 +24,10 @@ public class PushPullState : BaseState {
 
         playerSM.player.SetAnimatorState("pushing");
 
-        player.grabbing = true;
-        player.pushedObject.GetComponent<FixedJoint2D>().enabled = true;
-        player.pushedObject.GetComponent<FixedJoint2D>().connectedBody = player.rigidbody;
-        objMass = player.pushedObject.GetComponent<Rigidbody2D>().mass;
+        Player.grabbing = true;
+        Player.pushedObject.GetComponent<FixedJoint2D>().enabled = true;
+        Player.pushedObject.GetComponent<FixedJoint2D>().connectedBody = Player.rigidbody;
+        objMass = Player.pushedObject.GetComponent<Rigidbody2D>().mass;
         horzInput = 0f;
     }
 
@@ -38,11 +38,11 @@ public class PushPullState : BaseState {
 
         // Let go of object
         if (Input.GetKeyDown(Keybinds.GetInstance().grabRelease)){
-            player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
+            Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
             playerSM.ChangeState(playerSM.idleState);
         }
-        if(player.hit.collider == null){
-            player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
+        if(Player.hit.collider == null){
+            Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
             playerSM.ChangeState(playerSM.idleState);
         }
     }
@@ -50,19 +50,19 @@ public class PushPullState : BaseState {
     // Apply velocity to player for movement
     public override void UpdatePhysics(){
         base.UpdatePhysics();
-        float strengthDif = (player.pushStrength - .25f);
-        Vector2 velocity = player.rigidbody.velocity;
-        float mass = player.pushedObject.GetComponent<Rigidbody2D>().mass;
-        velocity.x = horzInput * (player.speed * strengthDif) * (1f/mass);
-        player.rigidbody.velocity = velocity;
+        float strengthDif = (Player.pushStrength - .25f);
+        Vector2 velocity = Player.rigidbody.velocity;
+        float mass = Player.pushedObject.GetComponent<Rigidbody2D>().mass;
+        velocity.x = horzInput * (Player.speed * strengthDif) * (1f/mass);
+        Player.rigidbody.velocity = velocity;
     }
 
 
     // Exit calls (make sure variables don't remain)
     public override void Exit(){
         base.Exit();
-        player.grabbing = false;
-        player.pushedObject = null;
+        Player.grabbing = false;
+        Player.pushedObject = null;
     }
 }
 

@@ -13,6 +13,8 @@ public class JumpState : BaseState {
     private PlayerStateMachine playerSM;
 
     private bool grounded;
+    private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
+    private int objectsLayer = 1 << 9;   // Bitwise shift for ground layer number (should be 6)
 
     private float horzInput;
 
@@ -24,7 +26,7 @@ public class JumpState : BaseState {
         playerSM = (PlayerStateMachine)playerStateMachine;
         touchingBox = false;
         this.audioManager = audioManager;
-        feetCollider = base.player.GetComponent<CapsuleCollider2D>();
+        feetCollider = Player.GetComponent<CapsuleCollider2D>();
     }
 
     // upon entering state, apply upward velocity to achieve jump
@@ -35,10 +37,10 @@ public class JumpState : BaseState {
         //audioManager.Play("movement_jump");
 
         horzInput = 0f;
-        Vector2 velocity = player.rigidbody.velocity;
-        velocity.y += player.jumpForce;
+        Vector2 velocity = Player.rigidbody.velocity;
+        velocity.y += Player.jumpForce;
         velocity.x = 0;
-        player.rigidbody.velocity = velocity;
+        Player.rigidbody.velocity = velocity;
     }
 
     // Switch states if grounded
@@ -53,17 +55,17 @@ public class JumpState : BaseState {
     // Check if player velocity is less than epsilon and rigidbody is touching a ground layer
     public override void UpdatePhysics(){
         base.UpdatePhysics();
-
-        grounded = player.IsGrounded();
         
-        if (!touchingBox) {
-            Vector2 velocity = player.rigidbody.velocity;
-            velocity.x = horzInput * player.speed / 1.5f;
-            player.rigidbody.velocity = velocity;
+        grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && (feetCollider.IsTouchingLayers(groundLayer) || feetCollider.IsTouchingLayers(objectsLayer));
+        if(!touchingBox){
+            Vector2 velocity = Player.rigidbody.velocity;
+            velocity.x = horzInput * Player.speed / 1.5f;
+            Player.rigidbody.velocity = velocity;
         }
     }
 
-    public override void EnterTrigger(Collider2D collider) {
+    public override void EnterTrigger(Collider2D collider)
+    {
         base.EnterTrigger(collider);
         if(collider.gameObject.tag == "Pushable"){
             touchingBox = true;
@@ -71,7 +73,8 @@ public class JumpState : BaseState {
     }
 
 
-    public override void Exit() {
+    public override void Exit()
+    {
         base.Exit();
         touchingBox = false;
     }

@@ -44,11 +44,6 @@ public class Player : MonoBehaviour, IDestroyable {
     [HideInInspector]
     public bool grabbing;
     private float horzInput;
-    
-    // ground checking
-    private CapsuleCollider2D feetCollider;
-    private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
-    private int objectsLayer = 1 << 9;   // Bitwise shift for ground layer number (should be 6)
 
     private void Start(){
         // Initialize entangleComponent
@@ -62,7 +57,6 @@ public class Player : MonoBehaviour, IDestroyable {
         audioManager = FindObjectOfType<AudioManager>();
         stateMachine.Initialize(this);
         grabbing = false;
-        feetCollider = GetComponent<CapsuleCollider2D>();
     }
 
     private void Update(){
@@ -156,7 +150,6 @@ public class Player : MonoBehaviour, IDestroyable {
         rigidbody.velocity = Vector2.zero;
     }
 
-    #region Destructible Methods
     public void Kill() {
         DestructionManager dm = DestructionManager.instance;
         if (dm != null) dm.Destroy(this, respawnDelay);
@@ -177,6 +170,7 @@ public class Player : MonoBehaviour, IDestroyable {
         gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
         ResetPlayer();
     }
+<<<<<<< HEAD
     #endregion
     
     // utility methods
@@ -185,4 +179,6 @@ public class Player : MonoBehaviour, IDestroyable {
         Debug.Log(grounded);
         return grounded;
     }
+=======
+>>>>>>> parent of 5e75dfc (Fixed jumping in midair)
 }

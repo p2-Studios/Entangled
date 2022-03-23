@@ -20,7 +20,7 @@ public class Grounded : BaseState {
     // Constructor, sets sm to active stateMachine
     public Grounded(string name, PlayerStateMachine playerStateMachine, Player player) : base(name, playerStateMachine, player){
         playerSM = (PlayerStateMachine)playerStateMachine;
-        base.player = player;
+        Player = player;
         touchingBox = false;    // checks if player is touching a pushable object
         haltMovement = false;   // checks if player should be allowed to move
     }
@@ -32,12 +32,12 @@ public class Grounded : BaseState {
         checkNonPushingCollision();
 
         // check if player can latch onto object      
-        if (player.hit.collider != null && player.hit.collider.gameObject.tag == "Pushable" ){
-            lastTouchedBox = player.hit.collider.gameObject.GetComponent<BoxInteractable>();
+        if (Player.hit.collider != null && Player.hit.collider.gameObject.tag == "Pushable" ){
+            lastTouchedBox = Player.hit.collider.gameObject.GetComponent<BoxInteractable>();
             lastTouchedBox.toggleIndicator(true);
             if(Input.GetKeyDown(Keybinds.GetInstance().grabRelease)){
                 lastTouchedBox.toggleSprite(true);
-                player.pushedObject = player.hit.collider.gameObject.GetComponent<Entanglable>();
+                Player.pushedObject = Player.hit.collider.gameObject.GetComponent<Entanglable>();
                 playerSM.ChangeState(playerSM.pushpullState);
             }
         }
@@ -49,7 +49,7 @@ public class Grounded : BaseState {
         }
 
         // jump
-        if (!haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump) && player.IsGrounded())
+        if (!haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump))
             playerSM.ChangeState(playerSM.jumpState);
 
         
@@ -59,12 +59,14 @@ public class Grounded : BaseState {
     // checks to see if player is colliding with a box while not actively
     // in pushpull state (should halt player movement)
     public void checkNonPushingCollision(){
-         if (player.hit.collider != null && player.hit.collider.gameObject.tag == "Pushable" && touchingBox){
+         if (Player.hit.collider != null && Player.hit.collider.gameObject.tag == "Pushable" && touchingBox){
             haltMovement = true;
-            player.rigidbody.velocity = Vector2.zero;
-         } else {
+            Player.rigidbody.velocity = Vector2.zero;
+
+        }
+        else{
             haltMovement = false;
-         }
+        }
     }
 
     // Checks when player enters trigger collider

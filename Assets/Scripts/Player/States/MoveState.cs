@@ -45,9 +45,9 @@ public class MoveState : Grounded {
     public override void UpdatePhysics(){
         base.UpdatePhysics();
         if(!haltMovement){
-            Vector2 velocity = player.rigidbody.velocity;
-            velocity.x = horzInput * player.speed;
-            player.rigidbody.velocity = velocity;
+            Vector2 velocity = Player.rigidbody.velocity;
+            velocity.x = horzInput * Player.speed;
+            Player.rigidbody.velocity = velocity;
         }
     }
 

@@ -10,14 +10,14 @@ public class BaseState {
 
     public string name;
     protected PlayerStateMachine playerStateMachine;
-    protected Player player;
+    protected Player Player;
     protected private AudioManager audioManager;
 
     //Constructor, sets name and statemachine
     public BaseState(string name, PlayerStateMachine playerSM, Player player){
         this.name = name;
         this.playerStateMachine = playerSM;
-        this.player = player;
+        this.Player = player;
     }
 
     // methods to be used by children state classes
