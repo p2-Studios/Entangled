@@ -11,23 +11,29 @@ public class Options : MonoBehaviour
 {
 	// The main screen of options
 	public GameObject main;
-	public Button graphics;
+	public Button display;
 	public Button controls;
 	public Button sound;
 	public Button back;
 	
-	// Graphics
-	
-	// Controls
-	public GameObject control;
+	// Display
+	public GameObject display_menu;
 	
 	// Sound
+	public GameObject sound_menu;
+	
+	// Controls
+	public GameObject control_menu;
+	
+	
 	
     // Start is called before the first frame update
     void Start()
     {
 		// main
 		back.onClick.AddListener(btnBack);
+		display.onClick.AddListener(btnDisplay);
+		sound.onClick.AddListener(btnSound);
 		controls.onClick.AddListener(btnControl);
 		
     }
@@ -39,13 +45,31 @@ public class Options : MonoBehaviour
 		}
 	}
 	
+	// button display.onclick function
+	void btnDisplay() {
+		// Hide main
+		main.SetActive(false);
+		
+		// Show display
+		display_menu.SetActive(true);
+	}
+	
+	// button sound.onclick function
+	void btnSound() {
+		// Hide main
+		main.SetActive(false);
+		
+		// Show sound
+		sound_menu.SetActive(true);
+	}
+	
 	// button control.onclick function
 	void btnControl() {
 		// Hide main
 		main.SetActive(false);
 		
 		// Show control
-		control.SetActive(true);
+		control_menu.SetActive(true);
 	}
 	
 	// button exit.onclick function

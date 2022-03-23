@@ -22,7 +22,7 @@ namespace Game.CustomKeybinds
         public KeyCode pause;
 		public KeyCode reset;
 		
-		public string[] keys = { "W", "A", "D",
+		public string[] keys = { "Space", "A", "D",
 									"E", "R", "F", "Q", "", "", "Esc"};
 
         private Keybinds()
@@ -30,7 +30,7 @@ namespace Game.CustomKeybinds
             
             moveLeft = KeyCode.A;
             moveRight = KeyCode.D;
-            jump = KeyCode.W;
+            jump = KeyCode.Space;
             
             grabRelease = KeyCode.E;
             interact = KeyCode.F;

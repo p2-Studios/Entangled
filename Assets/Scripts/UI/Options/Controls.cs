@@ -44,17 +44,17 @@ public class Controls : MonoBehaviour
 	public int i = -1;
 	
 	// String representation of keys
-	private string[] prev_keys = { "W", "A", "D",
+	private string[] prev_keys = { "Space", "A", "D",
 									"E", "R", "F", "Q", "", "", "Esc"};
-	private string[] curr_keys = { "W","A", "D",
+	private string[] curr_keys = { "Space","A", "D",
 									"E", "R", "F", "Q", "", "", "Esc"};
 	// keycodes
-	private KeyCode[] prev_keycodes = { KeyCode.W,KeyCode.A, KeyCode.D,
+	private KeyCode[] prev_keycodes = { KeyCode.Space,KeyCode.A, KeyCode.D,
 									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.Escape};
-	private KeyCode[] curr_keycodes = { KeyCode.W, KeyCode.A, KeyCode.D,
+	private KeyCode[] curr_keycodes = { KeyCode.Space, KeyCode.A, KeyCode.D,
 									KeyCode.E, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.Escape};
 
-	// Start is called before the first frame update
+	// Awake is called before Start
 	void Awake()
     {
 		SaveLoadKeybinds.LoadControlScheme();
