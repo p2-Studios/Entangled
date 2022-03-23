@@ -110,7 +110,7 @@
       <workItem from="1647669500668" duration="3773000" />
       <workItem from="1647723034318" duration="1119000" />
       <workItem from="1647796570136" duration="2297000" />
-      <workItem from="1648002144780" duration="404000" />
+      <workItem from="1648002144780" duration="1784000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -125,5 +125,24 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Added Custom Keybinding Manager (CustomKeybinds). Modified 8 files to use the manager." />
     <option name="LAST_COMMIT_MESSAGE" value="Added Custom Keybinding Manager (CustomKeybinds). Modified 8 files to use the manager." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Player/Player.cs</url>
+          <line>96</line>
+          <properties documentPath="C:\Users\Dakota\Desktop\CMPT_406\Entangled\Assets\Scripts\Player\Player.cs" initialLine="90" containingFunctionPresentation="method 'OnTriggerEnter2D'">
+            <startOffsets>
+              <option value="3473" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3474" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
