@@ -10,12 +10,11 @@ using UnityEngine;
 /// Can be active, passive, or neither (not entangled)
 /// </summary>
 public class Entanglable : MonoBehaviour, IDestroyable {
+    #region Fields
     // basic object physics data
     protected Rigidbody2D rb;             // rigidbody
     //public Transform isGroundedChecker; // to check if the object is grounded
     public Transform respawnLocation;   // location that the object should respawn at when necessary
-    public float checkGroundRadius = 0.05f;     // radius around the bottom of the object to check for the ground
-    public LayerMask groundLayer;       // the layer type of the ground
 
     // sprite stuff
     protected SpriteRenderer spriteRenderer;
@@ -23,31 +22,26 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     [SerializeField] Material defaultMat, activeGlow, pasiveGlow, hoverGlow;
 
     // object states
-    public bool respawnable = true;     // object respawns after being destroyed, true by default
     public float respawnDelay = 3.0f;    // how long it should take the object to respawn after being destroyed, 3.0s by default
-    protected bool destroyed;             // object is currently destroyed
-    //private bool respawning;            // object is currently respawning
 
     // entanglement states
-    protected bool entangled, active, passive;
+    protected bool entangled, active, passive, destroyed;
 
     // force data
-    protected Vector2 selfVelocity, velocity;                   // 
+    protected Vector2 velocity;
     protected Vector3 position, previousPosition;
     public float maxVelocity = 20.0f;
     protected Boolean velocityUpdate;
 
     // VelocityManager instance
     protected VelocityManager velocityManager;
-    
+    #endregion
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();       // get the Rigidbody2D component of the object
 
-        entangled = passive = active 
-            = destroyed = false;   // new object is not entangled, destroyed, or respawning
+        entangled = passive = active = false;   // new object is not entangled, destroyed, or respawning
 
-        selfVelocity = Vector2.zero;
         velocityUpdate = false;
 
         velocityManager = VelocityManager.GetInstance();
@@ -71,12 +65,6 @@ public class Entanglable : MonoBehaviour, IDestroyable {
             velocity = Vector2.zero;
         }
 
-        /*
-        // if velocity > max velocity, set velocity to max velocity
-        if (rb.velocity.magnitude > maxVelocity) {
-            rb.velocity = Vector2.zero;
-        }*/
-        
         if (active) {   // if active and moving, mirror velocity
             Vector2 vel = rb.velocity;
             if (!(vel.Equals(Vector2.zero))) {
@@ -93,17 +81,9 @@ public class Entanglable : MonoBehaviour, IDestroyable {
                 }
             }
         }
-
-        /*
-        if (active)
-            GetComponent<SpriteRenderer>().material.SetColor("_Color", new Color(255f/255f, 136f/255f, 220f/255f));
-        if (passive)
-            GetComponent<SpriteRenderer>().material.SetColor("_Color", new Color(250f/255f, 255f/255f, 127f/255f));
-        if (!entangled)
-            GetComponent<SpriteRenderer>().material.SetColor("_Color", Color.white);
-        */
     }
     
+    #region Entanglement Methods
     /// <summary>
     /// Modifies entanglement states of the object
     /// </summary>
@@ -143,7 +123,10 @@ public class Entanglable : MonoBehaviour, IDestroyable {
         velocity += (vel / rb.mass);
         velocityUpdate = true;
     }
+    #endregion
 
+    #region Getters/Setters
+    
     /// <summary>
     /// Returns whether this object is entangled.
     /// </summary>
@@ -168,6 +151,17 @@ public class Entanglable : MonoBehaviour, IDestroyable {
         return (entangled && passive);
     }
     
+    public GameObject GetGameObject() {
+        return gameObject;
+    }
+
+    public bool IsDestroyed() {
+        return destroyed;
+    }
+    
+    #endregion
+    
+    #region Collision Management
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Platform")) {    // object on platform
                 transform.parent = col.gameObject.transform;      // set parent to platform so object doesn't slide
@@ -183,38 +177,21 @@ public class Entanglable : MonoBehaviour, IDestroyable {
             }
         }
     }
-    
-    /*
-    /// <summary>
-    /// When the mouse hovers over an Entanglable, changes cursor texture (calls MouseHover class)
-    /// </summary>
-    public void OnMouseEnter() {
-        MouseHover.instance.Clickable();
-    }
+    #endregion
 
-    /// <summary>
-    /// When the mouse leaves an Entanglable, changes cursor texture (calls MouseHover class)
-    /// </summary>
-    public void OnMouseExit() {
-        MouseHover.instance.Default();
-    }
-    */
-    
+    #region Destructable Methods
     public void Kill() {
         DestructionManager dm = DestructionManager.instance;
         if (dm != null) dm.Destroy(this, respawnDelay);
     }
-    
-    public GameObject GetGameObject() {
-        return gameObject;
-    }
-    
+
     // do things that need to be done on destroying, before the gameobject is set to inactive
     public void Destroy() {
         destroyed = true;
-        Transform destructionAnimation = Instantiate(deathAnimation, transform.position, quaternion.identity);
+        Transform destructionAnimation = Instantiate(deathAnimation, transform.position, quaternion.identity);  // play destruction animation
         destructionAnimation.localScale = transform.localScale;
-        rb.velocity = Vector2.zero;
+        GetComponent<FixedJoint2D>().enabled = false;   // disable object being pushed/pulled
+        rb.velocity = Vector2.zero; // reset velocity
         EntangleComponent ec = FindObjectOfType<EntangleComponent>();
         if (ec != null) ec.Unentangle(this);
     }
@@ -224,6 +201,8 @@ public class Entanglable : MonoBehaviour, IDestroyable {
         destroyed = false;
         transform.parent = null;
         gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
+        rb.velocity = Vector2.zero; // reset velocity
     }
+    #endregion Destructible Methods
 
 }
