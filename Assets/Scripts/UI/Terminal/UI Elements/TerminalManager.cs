@@ -70,12 +70,15 @@ public class TerminalManager : MonoBehaviour {
         
         Level level = FindObjectOfType<Level>(); // get level data
         ArrayList unlockedRemoteFiles = new ArrayList();
-        foreach (FlashDrive fd in level.foundFlashDrives) { // get unlocked files (found flashdrives)
-            Debug.Log(fd);
-            unlockedRemoteFiles.Add(fd.file);
+        if (level != null) {
+            foreach (FlashDrive fd in level.foundFlashDrives) {
+                // get unlocked files (found flashdrives)
+                Debug.Log(fd);
+                unlockedRemoteFiles.Add(fd.file);
+            }
         }
-        
-        
+
+
         foreach (TerminalFile file in t.GetLocalFiles()) {  // load local files from terminal object
             TerminalFileButton fb = Instantiate(fileButton, localFileList.transform, false).GetComponent<TerminalFileButton>();
             fb.SetFile(file);

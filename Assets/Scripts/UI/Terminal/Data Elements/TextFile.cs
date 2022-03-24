@@ -4,6 +4,11 @@ using UnityEngine;
 
 [System.Serializable]
 public class TextFile : TerminalFile {
+
+    public TextFile(string name, string body) {
+        this.name = name;
+        this.body = body;
+    }
     
     [TextArea(3, 10)]
     public string body;
