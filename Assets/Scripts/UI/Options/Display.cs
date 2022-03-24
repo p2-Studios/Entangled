@@ -13,19 +13,27 @@ public class Display : MonoBehaviour
 	
 	public GameObject Option_screen;
 	public GameObject Display_screen;
-	
+
+	List<Resolution> resolution;
+	List<string> res_string;
+
 	// Start is called before the first frame update
 	void Start() {
 		
 		back.onClick.AddListener(btnBack);
-		res_dropdown.value = find_res(Screen.width, Screen.height);
+
+		resolution = new List<Resolution>();
+		res_string = new List<string>();
+		add_res();
 		res_dropdown.onValueChanged.AddListener(delegate {
             change_res();
         });
+
 		brightness.value = Screen.brightness;
 		brightness.onValueChanged.AddListener(delegate {
             change_brightness();
         });
+
 		fullscreen.isOn = Screen.fullScreen;
 		fullscreen.onValueChanged.AddListener(delegate {
             change_fullScreen();
@@ -40,7 +48,8 @@ public class Display : MonoBehaviour
 	
 	// Sets resolution when dropdown changes
 	void change_res() {
-		Screen.SetResolution(get_res(res_dropdown.value)[0],get_res(res_dropdown.value)[1], fullscreen.isOn);
+		Resolution r = resolution[res_dropdown.value];
+		Screen.SetResolution(r.width, r.height, fullscreen.isOn);
 	}
 	
 	// Changes screen brightness when slider changes
@@ -53,34 +62,23 @@ public class Display : MonoBehaviour
 		Screen.fullScreen = !Screen.fullScreen;
 	}
 	
-	// fetches resolution of screen by value
-	int[] get_res(int val) {
-		
-		switch (val) {
-			case 0 : return new int [] {1920,1080};
-			case 1 : return new int [] {1366, 768};
-			case 2 : return new int [] {1280, 720};
-			case 3 : return new int [] {800 , 600};
-			case 4 : return new int [] {640 , 360};
-			default : return new int [] {1920,1080};
+	void add_res() {
+
+		Resolution[] resolutions = Screen.resolutions;
+
+		foreach (Resolution r in resolutions) {
+			if (!res_string.Contains(r.width + " x " + r.height)) {
+				resolution.Add(r);
+				res_string.Add(r.width + " x " + r.height);
+			}
 		}
-		
-	}
-	
-	// fetches corresponding value by resolution
-	int find_res(int width, int height) {
-		
-		switch ((width, height)) {
-			case (1920,1080) : return 0;
-			case (1366, 768) : return 1;
-			case (1280, 720) : return 2;
-			case (800, 600) : return 3;
-			case (640 , 360) : return 4;
-			default : return 0;
-		}
-		
-	}
-	
+
+		res_dropdown.AddOptions(res_string);
+
+		res_dropdown.value = res_string.IndexOf(Screen.width + " x " + Screen.height);
+
+    }
+
 	// back button
 	void btnBack() {
 		Option_screen.SetActive(true);

@@ -15,24 +15,31 @@ public class Audio : MonoBehaviour
 	
 	public GameObject Option_screen;
 	public GameObject Audio_screen;
+
+	public bool soundFound = false;
 	
     // Start is called before the first frame update
     void Start()
     {
-		sound =  FindObjectsOfType<AudioManager>()[0];
+		if (FindObjectsOfType<AudioManager>().Length > 0) {
+			sound = FindObjectsOfType<AudioManager>()[0];
+			soundFound = true;
+		}
         back.onClick.AddListener(btnBack);
-		volume.value = sound.sounds[0].source.volume;
-		volume.onValueChanged.AddListener(delegate {
-            change_volume();
-        });
-		mute.isOn = sound.sounds[0].source.mute;
-		mute.onValueChanged.AddListener(delegate {
-            toggle_mute();
-        });
-		balance.value = sound.sounds[0].source.panStereo;
-		balance.onValueChanged.AddListener(delegate {
-            change_balance();
-        });
+		if (soundFound) {
+			volume.value = sound.sounds[0].source.volume;
+			volume.onValueChanged.AddListener(delegate {
+				change_volume();
+			});
+			mute.isOn = sound.sounds[0].source.mute;
+			mute.onValueChanged.AddListener(delegate {
+				toggle_mute();
+			});
+			balance.value = sound.sounds[0].source.panStereo;
+			balance.onValueChanged.AddListener(delegate {
+				change_balance();
+			});
+		}
     }
 
     // Update is called once per frame
