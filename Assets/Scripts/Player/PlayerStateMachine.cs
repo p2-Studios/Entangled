@@ -16,6 +16,7 @@ public class PlayerStateMachine : MonoBehaviour {
     public MoveState moveState;
     public JumpState jumpState;
     public PushPullState pushpullState;
+    public FallState fallState;
 
     public Player player;
 
@@ -27,6 +28,7 @@ public class PlayerStateMachine : MonoBehaviour {
         moveState = new MoveState(this,player,audioManager);
         jumpState = new JumpState(this,player,audioManager);
         pushpullState = new PushPullState(this,player,audioManager);
+        fallState = new FallState(this,player,audioManager);
 
         this.player = player;
         

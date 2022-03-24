@@ -133,6 +133,7 @@ public class Player : MonoBehaviour, IDestroyable {
         // 2 = jumping
         // 3 = push/pull
         // 4 = destroyed
+        // 5 = falling
         switch (state) {
             case "idle":
                 animator.SetInteger("State", 0);
@@ -151,6 +152,9 @@ public class Player : MonoBehaviour, IDestroyable {
                 break;
             case "dying":
                 animator.SetInteger("State", 4);
+                break;
+            case "falling":
+                animator.SetInteger("State", 2);
                 break;
             default:
                 Debug.LogWarning("Invalid player state set ('" + state + "')");
