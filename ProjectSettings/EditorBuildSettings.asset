@@ -6,9 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menus/Options.unity
-    guid: 68d0c36354a4b2d418bc5f4f2d4c0e36
+    path: Assets/Scenes/Menus/MainMenu.unity
+    guid: 571708a76f46f42f3b0cc2e908687d66
+  - enabled: 1
+    path: Assets/Scenes/ElevatorTransition.unity
+    guid: 9edfb4ca5f4bb12479156e2b0bff67ac
   - enabled: 1
     path: Assets/Scenes/Puzzles/Level1.unity
     guid: d993da30bb60c8545bf465a05fd389d1
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level2.unity
+    guid: 3407ce2c96326f649b546ffee96da079
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level3.unity
+    guid: 96383c3f4ce464e30b861b486cfc20e0
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level4.unity
+    guid: bcf2eed5e8fe9e54788a51fd3eaf5d23
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level5.unity
+    guid: 0166b3cdb8e1ca94581a7f3d8c9f1e78
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level6.unity
+    guid: e23bbad640676d945b60b4f5388e9983
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level7.unity
+    guid: 489fad5bb2fb7074baa920fd741472d1
   m_configObjects: {}
