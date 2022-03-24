@@ -27,7 +27,7 @@ public class EntangleComponent : MonoBehaviour {
     void Start() {
         passives = new List<Entanglable>();
         VelocityManager.GetInstance().onActiveMoved += OnActiveMoved;
-        entangleMask = LayerMask.GetMask("Objects");
+        entangleMask = LayerMask.GetMask("Ground");
 
         allEntanglableObjects = GameObject.FindGameObjectsWithTag("Pushable");
     }
@@ -61,6 +61,8 @@ public class EntangleComponent : MonoBehaviour {
         }
         
         if (Input.GetKeyDown(keybindInstance.entangle)) {
+
+            Debug.Log("Mouse down");
             
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
@@ -131,8 +133,14 @@ public class EntangleComponent : MonoBehaviour {
                 // If one object is clicked, all objects get the click input. This is to prevent multiple selection
                 Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
                 if (e == null) return;
-                if (active == e || passives.Contains(e)) {
+                if (active == e) {
                     ClearEntangled();
+                }
+
+                if (passives.Contains(e)) {
+                    //Debug.Log("Removed the object from the list of passives");
+                    e.SetEntanglementStates(false, false, true);
+                    passives.Remove(e);
                 }
             }
         }
@@ -236,7 +244,6 @@ public class EntangleComponent : MonoBehaviour {
             passives.Remove(e);
             Destroy(EntangledHelix);
             e.SetEntanglementStates(false, false, true);
-            ClearEntangled();
         }
     }
 

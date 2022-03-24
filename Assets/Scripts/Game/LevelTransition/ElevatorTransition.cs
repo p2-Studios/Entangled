@@ -14,14 +14,7 @@ public class ElevatorTransition : MonoBehaviour {
     private bool atEnd = false;
 
     private void Awake() {
-        StartCoroutine(StartSoundWithDelay());
-    }
-    
-    IEnumerator StartSoundWithDelay() {
-        yield return new WaitForSeconds(0.5f);
-        
-        AudioManager am = FindObjectOfType<AudioManager>();
-        if (am != null) am.Play("elevator_descend");
+        FindObjectOfType<AudioManager>().Play("elevator_descend");
     }
 
     void Update() {

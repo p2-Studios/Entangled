@@ -77,6 +77,7 @@ namespace Environment {
         public override void ToggleState() {
             if (IsActivated()) Deactivate();
             else Activate();
+            Debug.Log("Fan " +  activated);
         }
 
         /// <summary>
@@ -128,7 +129,7 @@ namespace Environment {
         private void OnTriggerStay2D(Collider2D other) {
             if (!IsActivated()) return;
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
-            if (rb == null) return;
+            if (rb.Equals(null)) return;
             ApplyFanVelocity(other, rb,(transform.up * power));
         }
 

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour {
 
     private void Awake() {
-        //StartCoroutine(StartMusicWithDelay());
+        StartCoroutine(StartMusicWithDelay());
     }
 
     public void StartAtLevel(string levelName) {
@@ -19,10 +19,6 @@ public class MainMenu : MonoBehaviour {
         Application.Quit();
     }
 
-    public void OpenFeedbackLink() {
-        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSduizPyNvgwBKM6RKQIJBMhdP-MfVxOmvlQN4bWaZeT_3VL7Q/viewform");
-    }
-    
     IEnumerator StartMusicWithDelay() {
         yield return new WaitForSeconds(1f);
         

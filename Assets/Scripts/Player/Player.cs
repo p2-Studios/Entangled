@@ -30,9 +30,7 @@ public class Player : MonoBehaviour, IDestroyable {
     PlayerStateMachine stateMachine;
 
     private Vector2 position, previousPosition;
-    public Transform respawnTransform;   // location that the player should respawn at when necessary
-    [HideInInspector]
-    public Vector3 respawnLocation;
+    public Transform respawnLocation;   // location that the player should respawn at when necessary
     public float respawnDelay = 2.0f;
     [HideInInspector]
     public Vector2 worldVelocity;  // worldVelocity information
@@ -59,17 +57,6 @@ public class Player : MonoBehaviour, IDestroyable {
         audioManager = FindObjectOfType<AudioManager>();
         stateMachine.Initialize(this);
         grabbing = false;
-
-        if (respawnTransform != null) { // if a respawn transform was manually set, use it
-            respawnLocation = respawnTransform.position;
-        } else {                        // otherwise, default to using the elevator at the start of the level, if one is found
-            GameObject elevator = GameObject.Find("Elevator_Open");
-            if (elevator != null) {
-                respawnLocation = elevator.transform.position;
-            } else {                    // and finally, if no elevator was found, use the player's starting position
-                respawnLocation = transform.position;
-            }
-        }
     }
 
     private void Update(){
@@ -133,7 +120,6 @@ public class Player : MonoBehaviour, IDestroyable {
         // 2 = jumping
         // 3 = push/pull
         // 4 = destroyed
-        // 5 = falling
         switch (state) {
             case "idle":
                 animator.SetInteger("State", 0);
@@ -152,9 +138,6 @@ public class Player : MonoBehaviour, IDestroyable {
                 break;
             case "dying":
                 animator.SetInteger("State", 4);
-                break;
-            case "falling":
-                animator.SetInteger("State", 2);
                 break;
             default:
                 Debug.LogWarning("Invalid player state set ('" + state + "')");
@@ -184,8 +167,7 @@ public class Player : MonoBehaviour, IDestroyable {
     
     // do things that need to be done on respawning, right after the game object is set as active again
     public void Respawn() {
-        gameObject.transform.position = respawnLocation; // move the object to respawnTransform
+        gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
         ResetPlayer();
     }
-    
 }

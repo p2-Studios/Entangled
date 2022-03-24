@@ -21,16 +21,6 @@ public class DialogueManager : MonoBehaviour {
 
     private AudioManager audioManager;
     
-    public static DialogueManager instance;
-    
-    private void Awake() {
-        if (instance == null) {
-            instance = this;
-        } else {
-            Destroy(gameObject);
-        }
-    }
-    
     void Start() {
         sentences = new Queue<string>();
         starting = inDialogue = typing = false;
@@ -43,15 +33,10 @@ public class DialogueManager : MonoBehaviour {
                 DisplayNextSentence();
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            StartCoroutine(EndDialogue());
-        }
     }
 
     public void StartDialogue(Dialogue dialogue) {
-        Debug.Log("In dialogue");
-        starting = inDialogue = true;
+        starting = true;
         animator.SetBool("IsOpen", true);   // set animator flag to show box
         
         sentences.Clear();  // clear sentences possibly left over from previous dialogue
@@ -60,6 +45,8 @@ public class DialogueManager : MonoBehaviour {
             // load each sentences from the dialogue
             sentences.Enqueue(sentence);
         }
+        
+        inDialogue = true;
         dialogueText.text = ""; // clear old dialogue text
         StartCoroutine(TypeTitle(dialogue.name)); // type out the dialogue title/program name
     }
@@ -68,15 +55,9 @@ public class DialogueManager : MonoBehaviour {
     IEnumerator TypeTitle(string name) {
         nameText.text = "> "; // start with no text
         foreach (char letter in name) { // type each letter one-by-one
-            if (inDialogue) {   // make sure we're still in the dialogue
-                nameText.text += letter;
-                audioManager.Play("text_scroll");
-                yield return new WaitForSecondsRealtime(typingSpeed);
-            } else { 
-                CancelDialogue();
-                yield return null;
-                
-            }
+            nameText.text += letter;
+            audioManager.Play("text_scroll");
+            yield return new WaitForSecondsRealtime(typingSpeed);
         }
 
         yield return new WaitForSecondsRealtime(0.3f);  // slight delay after title is typed
@@ -86,13 +67,11 @@ public class DialogueManager : MonoBehaviour {
     }
     
     // ends the dialogue, removing it from the screen and setting flags appropriately
-    IEnumerator EndDialogue() {
-        yield return new WaitForSeconds(0.05f); // wait for a moment to allow escape menu to check if inDialogue is false
+    public void EndDialogue() {
         animator.SetBool("IsOpen", false);  // set animator flag to hide text box
         inDialogue = false;
         closing = true;
         StartCoroutine(CloseDialogue());
-        yield return null;
     }
     
     IEnumerator CloseDialogue() {
@@ -112,7 +91,7 @@ public class DialogueManager : MonoBehaviour {
         
         // if previous sentence is fully typed, move to the next sentence
         if (sentences.Count == 0) { // end dialogue if no sentences remain
-            StartCoroutine(EndDialogue());
+            EndDialogue();
             return;
         }
         
@@ -125,20 +104,10 @@ public class DialogueManager : MonoBehaviour {
         typing = true;
         dialogueText.text = "> "; // start with no text
         foreach (char letter in sentence) { // type each letter one-by-one
-            if (inDialogue) {
-                // make sure we're still in the dialogue
-                dialogueText.text += letter;
-                audioManager.Play("text_scroll");
-                yield return new WaitForSecondsRealtime(typingSpeed);
-            } else {
-                CancelDialogue();
-                yield return null;
-            }
+            dialogueText.text += letter;
+            audioManager.Play("text_scroll");
+            yield return new WaitForSecondsRealtime(typingSpeed);
         }
         typing = false;
-    }
-
-    public void CancelDialogue() {
-        starting = inDialogue = typing = false;
     }
 }

@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3324715219477928510, guid: 414474ee1f70e1e44a1255742ac6b704, type: 3}
       propertyPath: m_Name
-      value: HorzFollowingCam Variant
+      value: HorzFollowingCam
       objectReference: {fileID: 0}
     - target: {fileID: 3324715219953281686, guid: 414474ee1f70e1e44a1255742ac6b704, type: 3}
       propertyPath: m_LocalPosition.x
@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3324715220683608241, guid: 414474ee1f70e1e44a1255742ac6b704, type: 3}
       propertyPath: m_BiasY
-      value: 0
+      value: 0.000007997269
       objectReference: {fileID: 0}
     - target: {fileID: 3324715220683608241, guid: 414474ee1f70e1e44a1255742ac6b704, type: 3}
       propertyPath: m_ScreenY
@@ -85,11 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3324715220683608241, guid: 414474ee1f70e1e44a1255742ac6b704, type: 3}
       propertyPath: m_DeadZoneHeight
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3324715220683608241, guid: 414474ee1f70e1e44a1255742ac6b704, type: 3}
-      propertyPath: m_SoftZoneHeight
-      value: 2
+      value: 0.323
       objectReference: {fileID: 0}
     - target: {fileID: 3324715220683608241, guid: 414474ee1f70e1e44a1255742ac6b704, type: 3}
       propertyPath: m_LookaheadSmoothing

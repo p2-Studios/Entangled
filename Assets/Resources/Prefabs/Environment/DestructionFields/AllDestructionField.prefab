@@ -54,7 +54,7 @@ MonoBehaviour:
   destroyObjects: 1
   animator: {fileID: 3526631541760153691}
   activators: []
-  glowLight: {fileID: 5130520610627242475}
+  light: {fileID: 5130520610627242475}
 --- !u!212 &3526631541760153690
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -92,9 +92,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -189938303
-  m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingLayerID: 1924641603
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 6408287865084402522, guid: d7d56be266d8b46539b8e505c7c34ca2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0.05
-  m_ApplyToSortingLayers: 000000001162b61f81c5adf4
+  m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0

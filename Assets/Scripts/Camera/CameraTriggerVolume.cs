@@ -36,14 +36,6 @@ public class CameraTriggerVolume : MonoBehaviour
         }
     }
 
-    public void OnTriggerStay2D(Collider2D other){
-        if (other.gameObject.CompareTag("Player")){
-            if (CameraSwitcher.ActiveCamera != cam){
-                CameraSwitcher.SwitchCamera(cam);
-            }
-        }
-    }
-
     private void OnDrawGizmos(){
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position, boxSize);

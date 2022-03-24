@@ -12,32 +12,26 @@ public class DestructionManager : MonoBehaviour {
             instance = this;
         } else {
             Destroy(gameObject);
+            return;
         }
+        
+        // don't destroy DestructionManager when switching scenes
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Destroy(IDestroyable destroyable, float delay) {
-        if (!IsDestroyed(destroyable.GetGameObject())) {
-            destroyable.Destroy();
-            destroyable.GetGameObject().SetActive(false); // set the game object as inactive (destroyed)
-            StartCoroutine(DelayRespawn(destroyable, delay));
-        }
+        destroyable.Destroy();
+        destroyable.GetGameObject().SetActive(false);   // set the game object as inactive (destroyed)
+        StartCoroutine(DelayRespawn(destroyable, delay));
     }
 
     public void Respawn(IDestroyable destroyable) {
-        if (!IsDestroyed(destroyable.GetGameObject())) {
-            destroyable.GetGameObject().SetActive(true);
-            destroyable.Respawn();
-        }
+        destroyable.GetGameObject().SetActive(true);
+        destroyable.Respawn();
     }
 
     private IEnumerator DelayRespawn(IDestroyable destroyable, float delay) {
         yield return new WaitForSeconds(delay);
-        if (!IsDestroyed(destroyable.GetGameObject())) {
-            Respawn(destroyable);
-        }
-    }
-    
-    public static bool IsDestroyed(GameObject gameObject) {
-        return gameObject == null && !ReferenceEquals(gameObject, null);
+        Respawn(destroyable);
     }
 }
