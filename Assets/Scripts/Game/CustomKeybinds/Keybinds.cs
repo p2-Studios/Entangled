@@ -1,15 +1,16 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.CustomKeybinds
 {
     [Serializable]
-    public class Keybinds
-    {
+    public class Keybinds {
         private static Keybinds _instance;
 
         public KeyCode moveLeft;
         public KeyCode moveRight;
+
         public KeyCode jump;
 
         public KeyCode grabRelease;
@@ -25,14 +26,15 @@ namespace Game.CustomKeybinds
 		public string[] keys = { "Space", "A", "D",
 									"E", "R", "F", "Q", "", "", "Esc"};
 
-        private Keybinds()
-        {   
+        public Dictionary<String, KeyCode> keyCodes;
+
+        private Keybinds() {   
             
             moveLeft = KeyCode.A;
             moveRight = KeyCode.D;
             jump = KeyCode.Space;
             
-            grabRelease = KeyCode.E;
+            grabRelease = KeyCode.LeftShift;
             interact = KeyCode.F;
             
             clearAllEntangled = KeyCode.Q;
@@ -41,8 +43,55 @@ namespace Game.CustomKeybinds
             
             pause = KeyCode.Escape;
 			reset = KeyCode.R;
-			
+
+            keyCodes = new Dictionary<string, KeyCode>();
+            
+            keyCodes.Add("Move Left", moveLeft);
+            keyCodes.Add("Move Right", moveRight);
+            keyCodes.Add("Jump", jump);
+
+            keyCodes.Add("Grab/Release", grabRelease);
+            keyCodes.Add("Interact", interact);
+
+            keyCodes.Add("Unentangle all", clearAllEntangled);
+            keyCodes.Add("Entangle", entangle);
+            keyCodes.Add("Unentangle", unentangle);
+            
+            keyCodes.Add("Pause", pause);
+
             UpdateControls(SaveLoadKeybinds.LoadControlScheme());
+        }
+
+        private void UpdateDictionaryFromAttributes()
+        {
+            keyCodes["Move Left"] = moveLeft;
+            keyCodes["Move Right"] = moveRight;
+            keyCodes["Jump"] = jump;
+
+            keyCodes["Grab/Release"] = grabRelease;
+            keyCodes["Interact"] = interact;
+
+            keyCodes["Unentangle all"] = clearAllEntangled;
+            keyCodes["Entangle"] = entangle;
+            keyCodes["Unentangle"] = unentangle;
+            
+            keyCodes["Pause"] = pause;
+        }
+
+        private void UpdateAttributesFromDictionary()
+        {
+            moveLeft = keyCodes["Move Left"];
+            moveRight = keyCodes["Move Right"];
+            jump = keyCodes["Jump"];
+
+            grabRelease = keyCodes["Grab/Release"];
+            interact = keyCodes["Interact"];
+
+            clearAllEntangled = keyCodes["Unentangle all"];
+            entangle = keyCodes["Entangle"];
+            unentangle = keyCodes["Unentangle"];
+
+            pause = keyCodes["Pause"];
         }
 
         private void UpdateControls(Keybinds tempControls)
@@ -64,8 +113,15 @@ namespace Game.CustomKeybinds
 				reset = tempControls.reset;
 				
 				keys = tempControls.keys;
-				
+                
+                UpdateDictionaryFromAttributes();
             }
+        }
+
+        public void UpdateKeyBind(string action, KeyCode newKey)
+        {
+            keyCodes[action] = newKey;
+            UpdateAttributesFromDictionary();
         }
         
         public static Keybinds GetInstance()

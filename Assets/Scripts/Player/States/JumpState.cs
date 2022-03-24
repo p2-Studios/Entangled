@@ -14,8 +14,11 @@ public class JumpState : BaseState {
 
     private bool grounded;
     private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
+    private int objectsLayer = 1 << 9;   // Bitwise shift for ground layer number (should be 6)
 
     private float horzInput;
+
+    private CapsuleCollider2D feetCollider;
     
     protected private bool touchingBox;
 
@@ -23,6 +26,7 @@ public class JumpState : BaseState {
         playerSM = (PlayerStateMachine)playerStateMachine;
         touchingBox = false;
         this.audioManager = audioManager;
+        feetCollider = Player.GetComponent<CapsuleCollider2D>();
     }
 
     // upon entering state, apply upward velocity to achieve jump
@@ -43,6 +47,7 @@ public class JumpState : BaseState {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
+        
         if(grounded)
             playerSM.ChangeState(playerSM.idleState);
     }
@@ -51,7 +56,7 @@ public class JumpState : BaseState {
     public override void UpdatePhysics(){
         base.UpdatePhysics();
         
-        grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && Player.rigidbody.IsTouchingLayers(groundLayer);
+        grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && (feetCollider.IsTouchingLayers(groundLayer) || feetCollider.IsTouchingLayers(objectsLayer));
         if(!touchingBox){
             Vector2 velocity = Player.rigidbody.velocity;
             velocity.x = horzInput * Player.speed / 1.5f;

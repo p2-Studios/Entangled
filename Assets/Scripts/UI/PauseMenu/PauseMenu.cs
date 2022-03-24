@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
 	public Button resume;
 	public Button reset;
 	public Button options;
+	public Button feedback;
 	public Button exit;
 	
 	// Screen 2: confirmation screen for exit
@@ -51,6 +52,7 @@ public class PauseMenu : MonoBehaviour
         resume.onClick.AddListener(btnResume);
 		reset.onClick.AddListener(btnReset);
 		options.onClick.AddListener(btnOptions);
+		feedback.onClick.AddListener(btnFeedback);
 		exit.onClick.AddListener(btnExit);
 		
 		yes.onClick.AddListener(btnYes);
@@ -62,9 +64,14 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update() {
         if(Input.GetKeyDown(Keybinds.GetInstance().pause)) {
-	        if (SceneManager.GetActiveScene().buildIndex != 0) {
-		        // don't allow opening in main menu
-		        menuState();
+	        if (!SceneManager.GetActiveScene().name.Equals("MainMenu")) { // don't allow opening in main menu
+		        HintManager hm = HintManager.instance;
+		        if (hm != null) hm.CloseHint();
+		        
+		        DialogueManager dm = DialogueManager.instance;
+		        if (!(dm == null) && !dm.inDialogue) { // don't allow opening while in a dialogue (Escape exits dialogue)
+			        menuState();
+		        }
 	        }
         }
 		if (Input.GetMouseButton(0)) {
@@ -117,16 +124,21 @@ public class PauseMenu : MonoBehaviour
 	// button reset.onclick function
 	void btnReset() {
 		// Check button is held on for atleast 2 seconds
-		if (System.DateTime.Now.Subtract(clickTime).TotalSeconds >= 2) {
-			SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-			menuState();
-			buttonClick = false;
-		}
+		//if (System.DateTime.Now.Subtract(clickTime).TotalSeconds >= 2) {
+		LevelRestarter.instance.RestartLevel();
+		//SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+		menuState();
+		buttonClick = false;
+		//}
 	}
 	
 	// button options.onclick function
 	void btnOptions() {
 		SceneManager.LoadSceneAsync("Options",LoadSceneMode.Additive);
+	}
+	
+	void btnFeedback() {
+		Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSduizPyNvgwBKM6RKQIJBMhdP-MfVxOmvlQN4bWaZeT_3VL7Q/viewform");
 	}
 	
 	// button exit.onclick function
@@ -136,7 +148,6 @@ public class PauseMenu : MonoBehaviour
 		
 		// Show Screen 2
 		confirm.SetActive(true);
-		
 	}
 	
 	// button yes.onclick function
@@ -145,6 +156,7 @@ public class PauseMenu : MonoBehaviour
 		Time.timeScale = timescale;
 		confirm.SetActive(false);
 		menu.SetActive(false);
+
 		SceneManager.LoadSceneAsync("MainMenu",LoadSceneMode.Single);
 	}
 	

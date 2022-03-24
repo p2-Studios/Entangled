@@ -10,7 +10,7 @@ using Activator = Activation_System.Activator;
 
 public class MovingPlatform : Activatable {
     public Transform posStart, posEnd, startPos;        // positions
-    public Light2D light;
+    public Light2D indicatorLight;
     
     
     public float speed;                                 // speed
@@ -40,7 +40,7 @@ public class MovingPlatform : Activatable {
 
     public override void Deactivate() {
         base.Deactivate();
-        light.color = Color.red; // no colour when deactivated
+        indicatorLight.color = Color.red; // no colour when deactivated
         if (stopAtEnd) { // if stopAtEnd, move back to start on deactivate
             nextPos = posStart.position;
         }
@@ -48,7 +48,7 @@ public class MovingPlatform : Activatable {
 
     public override void Activate() {
         base.Activate();
-        light.color =  Color.green;
+        indicatorLight.color =  Color.green;
         if (stopAtEnd) { // if stopAtEnd and moving back to posStart, send back to posEnd
             if (nextPos == (Vector2) posStart.position) nextPos = posEnd.position;
         }

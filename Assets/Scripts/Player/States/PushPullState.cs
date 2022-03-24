@@ -37,8 +37,10 @@ public class PushPullState : BaseState {
         horzInput = Input.GetAxis("Horizontal");
 
         // Let go of object
-        if (Input.GetKeyDown(Keybinds.GetInstance().grabRelease)){
+        if (Input.GetKeyUp(Keybinds.GetInstance().grabRelease)){
             Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
+            BoxInteractable lastTouchedBox = Player.hit.collider.gameObject.GetComponent<BoxInteractable>();
+            if (lastTouchedBox != null) lastTouchedBox.ToggleGrabbingSprite(false);
             playerSM.ChangeState(playerSM.idleState);
         }
         if(Player.hit.collider == null){
@@ -50,9 +52,10 @@ public class PushPullState : BaseState {
     // Apply velocity to player for movement
     public override void UpdatePhysics(){
         base.UpdatePhysics();
-        float strengthDif = (objMass - Player.pushStrength) * 4;
+        float strengthDif = (Player.pushStrength - .25f);
         Vector2 velocity = Player.rigidbody.velocity;
-        velocity.x = horzInput * (Player.speed - strengthDif) ;
+        float mass = Player.pushedObject.GetComponent<Rigidbody2D>().mass;
+        velocity.x = horzInput * (Player.speed * strengthDif) * (1f/mass);
         Player.rigidbody.velocity = velocity;
     }
 

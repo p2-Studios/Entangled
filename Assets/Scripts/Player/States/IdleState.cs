@@ -25,6 +25,7 @@ public class IdleState : Grounded {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
+
         if(haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump))
             playerSM.ChangeState(playerSM.jumpState);    
         if (Input.GetKeyDown(Keybinds.GetInstance().moveLeft) || Input.GetKeyDown(Keybinds.GetInstance().moveRight))
