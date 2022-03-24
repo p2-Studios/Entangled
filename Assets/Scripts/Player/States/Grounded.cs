@@ -14,8 +14,12 @@ public class Grounded : BaseState {
     protected private float horzInput;
     protected private bool touchingBox;
     protected private bool haltMovement;
+    private CapsuleCollider2D feetCollider;
 
     protected private BoxInteractable lastTouchedBox;
+
+    private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
+    private int objectsLayer = 1 << 9; 
 
     // Constructor, sets sm to active stateMachine
     public Grounded(string name, PlayerStateMachine playerStateMachine, Player player) : base(name, playerStateMachine, player){
@@ -23,6 +27,7 @@ public class Grounded : BaseState {
         Player = player;
         touchingBox = false;    // checks if player is touching a pushable object
         haltMovement = false;   // checks if player should be allowed to move
+        feetCollider = Player.GetComponent<CapsuleCollider2D>();
     }
 
     // Update Logic changes (key pressses)
@@ -59,6 +64,8 @@ public class Grounded : BaseState {
         if (!haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump))
             playerSM.ChangeState(playerSM.jumpState);
 
+        if(!(feetCollider.IsTouchingLayers(groundLayer) || feetCollider.IsTouchingLayers(objectsLayer)))
+            playerSM.ChangeState(playerSM.fallState);
         
     }
 
