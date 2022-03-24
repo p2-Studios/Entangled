@@ -21,6 +21,10 @@ namespace Game.CustomKeybinds
         public KeyCode unentangle;
 
         public KeyCode pause;
+		public KeyCode reset;
+		
+		public string[] keys = { "Space", "A", "D",
+									"E", "R", "F", "Q", "", "", "Esc"};
 
         public Dictionary<String, KeyCode> keyCodes;
 
@@ -38,6 +42,7 @@ namespace Game.CustomKeybinds
             unentangle = KeyCode.Mouse1;
             
             pause = KeyCode.Escape;
+			reset = KeyCode.R;
 
             keyCodes = new Dictionary<string, KeyCode>();
             
@@ -53,7 +58,7 @@ namespace Game.CustomKeybinds
             keyCodes.Add("Unentangle", unentangle);
             
             keyCodes.Add("Pause", pause);
-            
+
             UpdateControls(SaveLoadKeybinds.LoadControlScheme());
         }
 
@@ -105,6 +110,9 @@ namespace Game.CustomKeybinds
                 unentangle = tempControls.unentangle;
 
                 pause = tempControls.pause;
+				reset = tempControls.reset;
+				
+				keys = tempControls.keys;
                 
                 UpdateDictionaryFromAttributes();
             }
@@ -115,7 +123,6 @@ namespace Game.CustomKeybinds
             keyCodes[action] = newKey;
             UpdateAttributesFromDictionary();
         }
-        
         
         public static Keybinds GetInstance()
         {

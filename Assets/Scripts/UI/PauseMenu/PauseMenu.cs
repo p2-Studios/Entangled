@@ -5,6 +5,7 @@ using Game.CustomKeybinds;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -22,10 +23,8 @@ public class PauseMenu : MonoBehaviour
 	public Button yes;
 	public Button no;
 	
-	// Screen 3: Option screen
-	// TODO : When options are available implement them here
-	public GameObject Options;
-	public Button back;
+	// Paused?
+	private bool paused = false;
 	
 	// Timescale for pause
 	private float timescale;
@@ -37,6 +36,7 @@ public class PauseMenu : MonoBehaviour
 	public static PauseMenu instance;
 
 	private void Awake() {
+				
 		// don't destroy pause menu when switching scenes
 		DontDestroyOnLoad(gameObject);
 		
@@ -57,8 +57,6 @@ public class PauseMenu : MonoBehaviour
 		
 		yes.onClick.AddListener(btnYes);
 		no.onClick.AddListener(btnNo);
-		
-		back.onClick.AddListener(btnBack);
 		
 		timescale = Time.timeScale;
     }
@@ -136,11 +134,7 @@ public class PauseMenu : MonoBehaviour
 	
 	// button options.onclick function
 	void btnOptions() {
-		// Hide Screen 1
-		menu.SetActive(false);
-		
-		// Show Screen 3
-		Options.SetActive(true);
+		SceneManager.LoadSceneAsync("Options",LoadSceneMode.Additive);
 	}
 	
 	void btnFeedback() {
@@ -176,7 +170,7 @@ public class PauseMenu : MonoBehaviour
 	}
 	
 	void resumeState() {
-		if (menu.activeSelf) {
+		if (paused) {
 			// Pause
 			Time.timeScale = 0.0f;
 		}
@@ -186,20 +180,17 @@ public class PauseMenu : MonoBehaviour
 		}
 	}
 	
-	// button back.onclick function
-	void btnBack() {
-		// Show Screen 1
-		menu.SetActive(true);
-		
-		// Hide Screen 3
-		Options.SetActive(false);
-	}
-	
 	void menuState() {
-		menu.SetActive(!menu.activeSelf);
 		
-		confirm.SetActive(false);
+		if (paused) {
+			menu.SetActive(false);
+			confirm.SetActive(false);
+		}
+		else {
+			menu.SetActive(true);
+		}
 		
+		paused = !paused;
 		resumeState();
 	}
 	
