@@ -17,6 +17,7 @@ public class IdleState : Grounded {
 
     public override void Enter(){
         base.Enter();
+        Player.rigidbody.velocity = Vector3.zero;
         horzInput = 0f;
         playerSM.player.SetAnimatorState("idle");
     }
@@ -24,7 +25,7 @@ public class IdleState : Grounded {
     // Detect if horizontal input more than Epsilon (switch to move if true)
     public override void UpdateLogic(){
         base.UpdateLogic();
-        horzInput = Input.GetAxis("Horizontal");
+        horzInput = Input.GetAxisRaw("Horizontal");
 
         if(haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump))
             playerSM.ChangeState(playerSM.jumpState);    
