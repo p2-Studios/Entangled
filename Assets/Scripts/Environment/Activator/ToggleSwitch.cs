@@ -22,26 +22,24 @@ public class ToggleSwitch : Activator {
     public override void Activate() {
         animator.SetBool("SwitchOn", true);
         indicatorLight.color = Color.green;
-        StartCoroutine(switchDelay(true));
+        ChangeState(true);
     }
 
     public override void Deactivate() {
         animator.SetBool("SwitchOn", false);
         indicatorLight.color = Color.red;
-        StartCoroutine(switchDelay(false));
+        ChangeState(false);
     }
 
-    // activates/deactivates based on activate bool after short delay to let animation finish
-    private IEnumerator switchDelay(bool activate) {
-        yield return new WaitForSeconds(0.3f);      // delay to let animation finish
-        if (activate) {     // activate/deactivate after delay
+
+    public void ChangeState(bool state) {
+        if (state) {     // activate/deactivate after delay
             base.Activate();
-        }
-        else {
+        } else {
             base.Deactivate();
         }
     }
-
+    
     public override void ToggleState() {
         base.ToggleState();
     }
