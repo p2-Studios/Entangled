@@ -8,6 +8,30 @@ TextureImporter:
   - first:
       213: -7796599025207785430
     second: helix_entangled_1
+  - first:
+      213: 5446257525324098731
+    second: helix_entangled_2
+  - first:
+      213: 624660102866630896
+    second: helix_entangled_3
+  - first:
+      213: -6090155760966538016
+    second: helix_entangled_4
+  - first:
+      213: 6443662652028152324
+    second: helix_entangled_5
+  - first:
+      213: 325004379969064472
+    second: helix_entangled_6
+  - first:
+      213: -1612304406128356252
+    second: helix_entangled_7
+  - first:
+      213: 9029549849558940091
+    second: helix_entangled_8
+  - first:
+      213: -6133634851075337380
+    second: helix_entangled_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -125,7 +149,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
+        y: 864
         width: 192
         height: 96
       alignment: 0
@@ -146,7 +170,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 768
         width: 192
         height: 96
       alignment: 0
@@ -158,6 +182,174 @@ TextureImporter:
       bones: []
       spriteID: a284556ae7aecc390800000000000000
       internalID: -7796599025207785430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helix_entangled_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 192
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bacad302d5ef49b40800000000000000
+      internalID: 5446257525324098731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helix_entangled_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 192
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f879b0dd0d3ba800800000000000000
+      internalID: 624660102866630896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helix_entangled_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 192
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ec6ac83a9b6b7ba0800000000000000
+      internalID: -6090155760966538016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helix_entangled_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 192
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40ae692ca0d7c6950800000000000000
+      internalID: 6443662652028152324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helix_entangled_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 288
+        width: 192
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81e808af2c5a28400800000000000000
+      internalID: 325004379969064472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helix_entangled_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 192
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4641cea5fa1ff99e0800000000000000
+      internalID: -1612304406128356252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helix_entangled_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 192
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb974a06fb76f4d70800000000000000
+      internalID: 9029549849558940091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helix_entangled_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c53d2bfa993f0eaa0800000000000000
+      internalID: -6133634851075337380
       vertices: []
       indices: 
       edges: []
