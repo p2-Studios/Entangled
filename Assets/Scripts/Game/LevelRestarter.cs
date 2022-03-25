@@ -1,3 +1,4 @@
+using Game.CustomKeybinds;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -45,13 +46,13 @@ public class LevelRestarter : MonoBehaviour {
     
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.R)) {
+        if (Input.GetKeyDown(Keybinds.GetInstance().reset)) {
             if (!restarting) {
                 holdingR = true;
                 restarting = true;
                 StartCoroutine(Action());
             }
-        } if (Input.GetKeyUp(KeyCode.R)) {
+        } if (Input.GetKeyUp(Keybinds.GetInstance().reset)) {
             holdingR = false;
         }
     }

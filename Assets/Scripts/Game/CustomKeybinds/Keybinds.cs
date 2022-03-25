@@ -21,10 +21,15 @@ namespace Game.CustomKeybinds
         public KeyCode unentangle;
 
         public KeyCode pause;
+        public KeyCode reset; // <- Added a variable here for reset key
 
         public Dictionary<String, KeyCode> keyCodes;
 
-        private Keybinds() {   
+        // -- This is added to easily fetch keycodes by string! --
+        public string[] keys = {
+                "Space","A", "D",
+									"L-Shift", "R", "F", "Q", "", "", "Esc"};
+    private Keybinds() {   
             
             moveLeft = KeyCode.A;
             moveRight = KeyCode.D;
@@ -38,6 +43,7 @@ namespace Game.CustomKeybinds
             unentangle = KeyCode.Mouse1;
             
             pause = KeyCode.Escape;
+            reset = KeyCode.R;
 
             keyCodes = new Dictionary<string, KeyCode>();
             
@@ -53,6 +59,7 @@ namespace Game.CustomKeybinds
             keyCodes.Add("Unentangle", unentangle);
             
             keyCodes.Add("Pause", pause);
+            keyCodes.Add("Reset", reset);
             
             UpdateControls(SaveLoadKeybinds.LoadControlScheme());
         }
@@ -71,6 +78,8 @@ namespace Game.CustomKeybinds
             keyCodes["Unentangle"] = unentangle;
             
             keyCodes["Pause"] = pause;
+            keyCodes["Reset"] = reset;
+
         }
 
         private void UpdateAttributesFromDictionary()
@@ -87,6 +96,8 @@ namespace Game.CustomKeybinds
             unentangle = keyCodes["Unentangle"];
 
             pause = keyCodes["Pause"];
+            reset = keyCodes["Reset"];
+
         }
 
         private void UpdateControls(Keybinds tempControls)
@@ -105,6 +116,7 @@ namespace Game.CustomKeybinds
                 unentangle = tempControls.unentangle;
 
                 pause = tempControls.pause;
+                reset = tempControls.reset;
                 
                 UpdateDictionaryFromAttributes();
             }
