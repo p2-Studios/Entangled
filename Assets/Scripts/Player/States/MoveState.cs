@@ -9,6 +9,7 @@ using UnityEngine;
 public class MoveState : Grounded {
 
     private bool pushRange;
+    float moveInput;
 
     // Constructor
     public MoveState(PlayerStateMachine playerSM,Player player, AudioManager audioManager) : base("Moving", playerSM, player){
@@ -17,9 +18,9 @@ public class MoveState : Grounded {
 
     public override void Enter(){
         base.Enter();
+        playerSM.player.SetAnimatorState("running");
         touchingBox = false; 
         horzInput = 0f;
-        playerSM.player.SetAnimatorState("running");
         //if (!audioManager.IsLooping("movement_run"))    // don't start another loop if already looping sound
         //    audioManager.StartLoopingSound("movement_run", 0.2f);
     }
@@ -32,13 +33,12 @@ public class MoveState : Grounded {
     // Detect if horizontal input less than Epsilon (switch to idle if true)
     public override void UpdateLogic(){
         base.UpdateLogic();
-        horzInput = Input.GetAxis("Horizontal");
-        if (Input.GetKeyUp(Keybinds.GetInstance().moveLeft) || Input.GetKeyUp(Keybinds.GetInstance().moveRight)){
-            playerSM.player.SetAnimatorState("idle");
-            //playerSM.ChangeState(playerSM.idleState);
-        }
-        if (Mathf.Abs(horzInput) < Mathf.Epsilon)
+        horzInput = Input.GetAxisRaw("Horizontal");
+        moveInput = Input.GetAxis("Horizontal");
+        if (Input.GetKeyUp(Keybinds.GetInstance().moveLeft) || Input.GetKeyUp(Keybinds.GetInstance().moveRight) || Mathf.Abs(horzInput) < Mathf.Epsilon){
+            //playerSM.player.SetAnimatorState("idle");
             playerSM.ChangeState(playerSM.idleState);
+        }
     }
 
     // Apply velocity to player for movement
@@ -46,7 +46,7 @@ public class MoveState : Grounded {
         base.UpdatePhysics();
         if(!haltMovement){
             Vector2 velocity = Player.rigidbody.velocity;
-            velocity.x = horzInput * Player.speed;
+            velocity.x = moveInput * Player.speed;
             Player.rigidbody.velocity = velocity;
         }
     }
