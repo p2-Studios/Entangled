@@ -62,6 +62,13 @@ public class Terminal : Interactable {
         }
     }
 
+    // close terminal when player exits range
+    protected override void OnRangeExit() {
+        base.OnRangeExit();
+        if (terminalManager == null) terminalManager = TerminalManager.instance;
+        if (terminalManager.IsTerminalOpen()) terminalManager.CloseTerminal();
+    }
+
     public TextFile ConvertDialogueToFile(Dialogue d) {
         string body = "";
         foreach (string s in d.sentences) {
