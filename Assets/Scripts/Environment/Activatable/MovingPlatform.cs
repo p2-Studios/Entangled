@@ -19,6 +19,8 @@ public class MovingPlatform : Activatable {
     private Vector2 nextPos;
 
     private bool moving = true;
+    private bool justActivated = false;                 // flag for whether the platform was just activated, to know whether the delay can be skipped
+    public float startDelay = 1.5f;
     public float endDelay = 1.5f;
     
     
@@ -49,6 +51,7 @@ public class MovingPlatform : Activatable {
     public override void Activate() {
         base.Activate();
         indicatorLight.color =  Color.green;
+        justActivated = true;
         if (stopAtEnd) { // if stopAtEnd and moving back to posStart, send back to posEnd
             if (nextPos == (Vector2) posStart.position) nextPos = posEnd.position;
         }
@@ -59,13 +62,27 @@ public class MovingPlatform : Activatable {
         if (activated) {    // only change nextPos while active
             if (transform.position == posStart.position) {
                 nextPos = posEnd.position;                   // start going to posEnd
-                if (moving) StartCoroutine(WaitAtDestination(endDelay));
+                
+                if (justActivated) {
+                    moving = true;
+                } else {
+                    if (moving) StartCoroutine(WaitAtDestination(startDelay));
+                }
+                
                 transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
+                
             } else if (transform.position == posEnd.position) {
                 if (!stopAtEnd) nextPos = posStart.position; // only go back to posStart if stopAtEnd is false
-                if (moving) StartCoroutine(WaitAtDestination(endDelay));
+                
+                if (justActivated) {
+                    moving = true;
+                } else {
+                    if (moving) StartCoroutine(WaitAtDestination(startDelay));
+                }
+                
                 transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
             }
+            justActivated = false;
         }
 
         // move towards the next position, only move if activated or moving back to start

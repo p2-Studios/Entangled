@@ -52,6 +52,7 @@ MonoBehaviour:
   activateByDefault: 1
   destroyPlayer: 1
   destroyObjects: 1
+  clearEntanglement: 1
   animator: {fileID: 3526631541760153691}
   activators: []
   glowLight: {fileID: 5130520610627242475}
