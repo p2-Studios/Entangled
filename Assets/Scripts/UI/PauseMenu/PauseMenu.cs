@@ -29,7 +29,10 @@ public class PauseMenu : MonoBehaviour
 	
 	// Timescale for pause
 	private float timescale;
-	
+
+	// Paused?
+	private bool paused = false;
+
 	// Click Timer
 	private DateTime clickTime;
 	private bool buttonClick = false;
@@ -57,8 +60,6 @@ public class PauseMenu : MonoBehaviour
 		
 		yes.onClick.AddListener(btnYes);
 		no.onClick.AddListener(btnNo);
-		
-		back.onClick.AddListener(btnBack);
 		
 		timescale = Time.timeScale;
     }
@@ -136,11 +137,7 @@ public class PauseMenu : MonoBehaviour
 	
 	// button options.onclick function
 	void btnOptions() {
-		// Hide Screen 1
-		menu.SetActive(false);
-		
-		// Show Screen 3
-		Options.SetActive(true);
+		SceneManager.LoadSceneAsync("Options", LoadSceneMode.Additive);
 	}
 	
 	void btnFeedback() {
@@ -176,7 +173,7 @@ public class PauseMenu : MonoBehaviour
 	}
 	
 	void resumeState() {
-		if (menu.activeSelf) {
+		if (paused) {
 			// Pause
 			Time.timeScale = 0.0f;
 		}
@@ -186,20 +183,18 @@ public class PauseMenu : MonoBehaviour
 		}
 	}
 	
-	// button back.onclick function
-	void btnBack() {
-		// Show Screen 1
-		menu.SetActive(true);
-		
-		// Hide Screen 3
-		Options.SetActive(false);
-	}
-	
 	void menuState() {
-		menu.SetActive(!menu.activeSelf);
-		
-		confirm.SetActive(false);
-		
+
+		if (paused) {
+			menu.SetActive(false);
+			confirm.SetActive(false);
+		}
+		else {
+			menu.SetActive(true);
+		}
+
+		paused = !paused;
+
 		resumeState();
 	}
 	
