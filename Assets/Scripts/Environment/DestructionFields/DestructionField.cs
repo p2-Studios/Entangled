@@ -40,7 +40,7 @@ public class DestructionField : Activatable {
         if (!activated) return;
         Player p = other.GetComponent<Player>();
         Entanglable e = other.GetComponent<Entanglable>();
-
+        
         if (p != null) {
             if (clearEntanglement) {
                 p.entangleComponent.ClearEntangled();
@@ -55,6 +55,10 @@ public class DestructionField : Activatable {
         if (e != null) {
             if (destroyObjects) {
                 e.Kill();
+            }
+            if (clearEntanglement) {
+                Player pl = FindObjectOfType<Player>();
+                if (pl != null) pl.entangleComponent.ClearEntangled();
             }
         }
     }
