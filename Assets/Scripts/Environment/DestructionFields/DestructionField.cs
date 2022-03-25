@@ -7,76 +7,59 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using Activator = Activation_System.Activator;
 
-public class DestructionField : Activatable
-{
+public class DestructionField : Activatable {
     public bool destroyPlayer;
     public bool destroyObjects;
+    public bool clearEntanglement;
 
     public Animator animator;
     public Activator[] activators;
     public Light2D glowLight;
 
-    void Start()
-    {
-        foreach (Activator a in activators)
-        {
+    void Start() {
+        foreach (Activator a in activators) {
             AddActivator(a);
         }
 
-        if (activateByDefault)
-        {
+        if (activateByDefault) {
             Activate();
-        }
-        else
-        {
+        } else {
             Deactivate();
         }
     }
 
-    public override void Activate()
-    {
+    public override void Activate() {
         base.Activate();
         if (glowLight != null) glowLight.enabled = true;
         if (animator != null) animator.SetBool("isActive", true);
     }
 
-    public override void Deactivate()
-    {
+    public override void Deactivate() {
         base.Deactivate();
         if (glowLight != null) glowLight.enabled = false;
         if (animator != null) animator.SetBool("isActive", false);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
+    private void OnTriggerEnter2D(Collider2D other) {
         if (!activated) return;
         Player p = other.GetComponent<Player>();
         Entanglable e = other.GetComponent<Entanglable>();
 
-        if (p != null)
-        {
-            if (destroyPlayer)
-            {
-                p.Kill();
+        if (p != null) {
+            if (clearEntanglement) {
+                p.entangleComponent.ClearEntangled();
             }
-            else
-            {
+            if (destroyPlayer) {
+                p.Kill();
+            } else {
                 p.entangleComponent.ClearEntangled();
             }
         }
 
-        if (e != null)
-        {
-            if (destroyObjects)
-            {
+        if (e != null) {
+            if (destroyObjects) {
                 e.Kill();
-            }
-            else
-            {
-                FindObjectOfType<Player>().entangleComponent.ClearEntangled();
             }
         }
     }
-
 }
-
