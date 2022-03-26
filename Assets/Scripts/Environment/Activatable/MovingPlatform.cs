@@ -69,7 +69,7 @@ public class MovingPlatform : Activatable {
                     if (moving) StartCoroutine(WaitAtDestination(startDelay));
                 }
                 
-                transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
+                //transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
                 
             } else if (transform.position == posEnd.position) {
                 if (!stopAtEnd) nextPos = posStart.position; // only go back to posStart if stopAtEnd is false
@@ -79,8 +79,6 @@ public class MovingPlatform : Activatable {
                 } else {
                     if (moving) StartCoroutine(WaitAtDestination(startDelay));
                 }
-                
-                transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
             }
             justActivated = false;
         }
@@ -100,5 +98,6 @@ public class MovingPlatform : Activatable {
         moving = false;
         yield return new WaitForSeconds(time);
         moving = true;
+        transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
     }
 }
