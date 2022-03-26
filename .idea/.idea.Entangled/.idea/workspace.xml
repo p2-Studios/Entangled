@@ -7,7 +7,10 @@
     <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level4.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/MovingPlatform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/MovingPlatform.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level9.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level9.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Testing/Testing_Box2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Testing/Testing_Box2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/Gate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/Gate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +39,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/TextEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Environment/AutomaticLights.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -112,6 +116,7 @@
       <workItem from="1647796570136" duration="2297000" />
       <workItem from="1648002144780" duration="404000" />
       <workItem from="1648231359064" duration="1080000" />
+      <workItem from="1648325592665" duration="1961000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

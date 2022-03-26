@@ -33,6 +33,10 @@ namespace Activation_System {
 			foreach (Activator a in activators) {
 				AddActivator(a);
 			}
+
+			if (activateByDefault) {
+				StartCoroutine(openDelay());
+			}
 		}
 		
 		bool isOpened() {
@@ -43,24 +47,24 @@ namespace Activation_System {
 			return !active;
 		}
 		
-		void setOpen() {
+		void setOpen(bool sound) {
 			active = true;
 			gate.enabled = false;
-			if (openSound.Length != 0) FindObjectOfType<AudioManager>().Play(openSound); // play opening sound
+			if (openSound.Length != 0 && sound) FindObjectOfType<AudioManager>().Play(openSound); // play opening sound
 		}
 		
-		void setClose() {
+		void setClose(bool sound) {
 			active = false;
 			gate.enabled = true;
-			if (closeSound.Length != 0) FindObjectOfType<AudioManager>().Play(closeSound); // play closing sound
+			if (closeSound.Length != 0 && sound) FindObjectOfType<AudioManager>().Play(closeSound); // play closing sound
 		}
 
 		void FixedUpdate() {							// NOTE: OnTrigger event is timed on FixedUpdate
 			if (!active && IsActivated()) {
-				setOpen();
+				setOpen(true);
 			}
 			else if (active && !IsActivated()) {
-				if (!stayOpen) setClose();
+				if (!stayOpen) setClose(true);
 			}
 			
 			// Play's animation
@@ -83,5 +87,9 @@ namespace Activation_System {
 			
 		}
 
+		private IEnumerator openDelay() {
+			yield return new WaitForSeconds(0.1f);
+			activated = true;
+		}
     }
 }
