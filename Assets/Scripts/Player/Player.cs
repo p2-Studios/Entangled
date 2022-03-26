@@ -110,7 +110,7 @@ public class Player : MonoBehaviour, IDestroyable {
     }
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Platform")) {
-            transform.parent = null;
+            if (gameObject.activeInHierarchy) transform.parent = null;
         }
     }
 
@@ -184,6 +184,7 @@ public class Player : MonoBehaviour, IDestroyable {
     
     // do things that need to be done on respawning, right after the game object is set as active again
     public void Respawn() {
+        transform.parent = null;
         gameObject.transform.position = respawnLocation; // move the object to respawnTransform
         ResetPlayer();
     }
