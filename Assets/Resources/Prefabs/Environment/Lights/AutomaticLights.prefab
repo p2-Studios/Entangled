@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e34ed7f777a0b4aa0dd172dcd38caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: {fileID: 0}
+  trigger: {fileID: 6415332240796922769}
+  delayFirst: 0
   onDelay: 0.35
 --- !u!61 &6415332240796922769
 BoxCollider2D:

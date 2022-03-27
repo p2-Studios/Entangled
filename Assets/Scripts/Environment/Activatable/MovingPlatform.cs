@@ -22,6 +22,7 @@ public class MovingPlatform : Activatable {
     private bool justActivated = false;                 // flag for whether the platform was just activated, to know whether the delay can be skipped
     public float startDelay = 1.5f;
     public float endDelay = 1.5f;
+    public bool makeObjectChild = true;
     
     
     public Activator[] activators;			// -- array of activators, REQUIRED to set the activators manually! --
@@ -99,5 +100,9 @@ public class MovingPlatform : Activatable {
         yield return new WaitForSeconds(time);
         moving = true;
         transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
+    }
+
+    public bool DoesMakeObjectChild() {
+        return makeObjectChild;
     }
 }

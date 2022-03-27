@@ -164,7 +164,8 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     #region Collision Management
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Platform")) {    // object on platform
-                transform.parent = col.gameObject.transform;      // set parent to platform so object doesn't slide
+                MovingPlatform mp = col.gameObject.GetComponent<MovingPlatform>();
+                if (mp != null && mp.makeObjectChild) transform.parent = col.gameObject.transform;      // set parent to platform so object doesn't slide
         } else if (col.gameObject.CompareTag("Destroyer") && !(col is PolygonCollider2D)) { // hacky solution to not having the box top trigger kill the box when it touches the push collider
             Kill();
         } 
@@ -173,7 +174,8 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     private void OnTriggerExit2D(Collider2D col) {
         if (col.gameObject.CompareTag("Platform")) {    // object leaving platform
             if (gameObject.activeSelf) {
-                transform.parent = null;
+                MovingPlatform mp = col.gameObject.GetComponent<MovingPlatform>();
+                if (mp != null && mp.makeObjectChild) transform.parent = null;
             }
         }
     }

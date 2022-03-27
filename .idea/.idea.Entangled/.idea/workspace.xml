@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Lights/ToggleLight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Lights/ToggleLight.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level9.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level9.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/AutomaticLights.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/AutomaticLights.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entanglement/Entanglable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entanglement/Entanglable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/MovingPlatform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/MovingPlatform.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +114,7 @@
       <workItem from="1647796570136" duration="2297000" />
       <workItem from="1648002144780" duration="404000" />
       <workItem from="1648231359064" duration="1080000" />
-      <workItem from="1648325592665" duration="3222000" />
+      <workItem from="1648325592665" duration="5235000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
