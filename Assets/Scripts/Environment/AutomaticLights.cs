@@ -6,6 +6,7 @@ using UnityEngine;
 public class AutomaticLights : MonoBehaviour {
     public BoxCollider2D trigger;
     public bool delayFirst;
+    public float firstDelay = 0.5f;
     public float onDelay = 0.5f;
     public ArrayList lights;
     private bool activated;
@@ -22,7 +23,7 @@ public class AutomaticLights : MonoBehaviour {
 
     private IEnumerator switchLightsOn() {
         if (delayFirst) 
-            yield return new WaitForSeconds(onDelay);
+            yield return new WaitForSeconds(firstDelay);
         foreach (LightToggle l in lights) {
             l.Activate();
             yield return new WaitForSeconds(onDelay);
