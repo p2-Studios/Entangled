@@ -10,7 +10,9 @@ namespace Activation_System
     public class PressurePad : Activator
     {
         public float requiredMass = 1.0f;								// required mass to trigger the pressure pad
-		
+
+        public bool stayActivated;
+        
 		Dictionary<Collider2D, float> obj_mass;							// store object and gather masses
 		Dictionary<Collider2D, ArrayList> obj_stacked;					// store the object being stacked
 		
@@ -118,7 +120,7 @@ namespace Activation_System
 			}
 			
 			if (IsActivated()) {
-				if (requiredMass > sumOfMass) {
+				if (requiredMass > sumOfMass && !stayActivated) {
 					Deactivate(animationSpeed);
 					pressurePadAnimator.SetBool("active",false);
 				}
