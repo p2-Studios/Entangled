@@ -29,6 +29,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
 
     // force data
     protected Vector2 velocity;
+    private Vector2 worldVelocity;
     protected Vector3 position, previousPosition;
     public float maxVelocity = 20.0f;
     protected Boolean velocityUpdate;
@@ -65,16 +66,18 @@ public class Entanglable : MonoBehaviour, IDestroyable {
             velocity = Vector2.zero;
         }
 
+        if (rb.transform.parent != null) {
+            position = transform.position;
+            worldVelocity = (position - previousPosition) / Time.fixedDeltaTime;
+            previousPosition = position;
+        }
+
         if (active) {   // if active and moving, mirror velocity
             Vector2 vel = rb.velocity;
             if (!(vel.Equals(Vector2.zero))) {
                 velocityManager.ActiveMoved(this, vel * rb.mass);
             } else { // check if the object has a parent object that's moving
-                var parent = rb.transform.parent;
-                if (!(parent == null)) {    // has a parent object, so calculate the object's absolute velocity
-                    position = transform.position;
-                    Vector3 worldVelocity = (position - previousPosition) / Time.fixedDeltaTime;
-                    previousPosition = position;
+                if (rb.transform.parent != null) {    // has a parent object, so calculate the object's absolute velocity
                     if (!worldVelocity.Equals(Vector2.zero) && worldVelocity.sqrMagnitude < maxVelocity) {    // if absolute velocity > 0, apply
                         velocityManager.ActiveMoved(this, worldVelocity * rb.mass);
                     }
@@ -175,6 +178,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
         if (col.gameObject.CompareTag("Platform")) {    // object leaving platform
             if (gameObject.activeSelf) {
                 MovingPlatform mp = col.gameObject.GetComponent<MovingPlatform>();
+                rb.velocity += worldVelocity;
                 if (mp != null && mp.makeObjectChild) transform.parent = null;
             }
         }

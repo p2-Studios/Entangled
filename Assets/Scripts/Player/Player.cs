@@ -72,7 +72,7 @@ public class Player : MonoBehaviour, IDestroyable {
         }
     }
 
-    private void Update(){
+    private void FixedUpdate(){
         if (gameObject.transform.parent != null) {  // update world velocity while attached to a parent object
             position = transform.position;
             worldVelocity = (position - previousPosition) / Time.deltaTime;
