@@ -178,6 +178,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
         if (col.gameObject.CompareTag("Platform")) {    // object leaving platform
             if (gameObject.activeSelf) {
                 MovingPlatform mp = col.gameObject.GetComponent<MovingPlatform>();
+                print(velocity + " " + worldVelocity);
                 rb.velocity += worldVelocity;
                 if (mp != null && mp.makeObjectChild) transform.parent = null;
             }
