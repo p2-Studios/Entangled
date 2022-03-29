@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 // Handles the logic and animation of the elevator
 public class Elevator : MonoBehaviour {
     public string nextLevel;    // the level to load upon using this elevator
+    public int nextLevelNum = 0;
     public Animator Animator;   // the animator controlling the open/close animations
     public SpriteRenderer Player;
 
@@ -18,7 +19,9 @@ public class Elevator : MonoBehaviour {
     public void LoadNextLevel() {
         LevelRestarter.instance.ClearCheckpointPosition();  // clear checkpoint location
         ElevatorTransition.levelToLoad = nextLevel;
+        SaveSystem.SetGameDataLevel(nextLevelNum);
         SceneManager.LoadSceneAsync("ElevatorTransition");
+        print(SaveSystem.LoadGameData().GetUnlockedLevel());
     }
 
     // open the elevator

@@ -10,5 +10,9 @@ public class GameData {
     public GameData(int unlockedLevel) {
         this.unlockedLevel = unlockedLevel;
     }
+
+    public int GetUnlockedLevel() {
+        return unlockedLevel;
+    }
 }
 

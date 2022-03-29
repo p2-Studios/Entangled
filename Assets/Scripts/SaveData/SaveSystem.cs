@@ -48,9 +48,11 @@ public static class SaveSystem {
     public static GameData LoadGameData() {
         string path = Application.persistentDataPath + "/gamedata.data";
 
+        
+        // create the file if it doesn't exist
         if (!File.Exists(path)) {
             GameData d = new GameData(1);
-            
+            SaveGameData(d);
         }
 
         BinaryFormatter formatter = new BinaryFormatter();
