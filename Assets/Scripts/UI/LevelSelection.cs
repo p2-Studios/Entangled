@@ -36,7 +36,8 @@ public class LevelSelection : MonoBehaviour {
         scrollDownText.SetActive(false);
         scrollUpText.SetActive(false);
         
-        SaveSystem.SetGameDataLevel(7);
+        // set all levels unlocked (for testing/debug/until all levels are ready)
+        SaveSystem.SetGameDataLevel(10);
         
         InitializeLevelButtons();
         InitializeBuildingVisuals();
