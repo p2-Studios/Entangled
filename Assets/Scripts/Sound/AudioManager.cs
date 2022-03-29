@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour {
         
         if (sceneName.Equals("MainMenu")) {
             PlayMusic("music_main");
-        } else if (!sceneName.Equals("ElevatorTransition")) { // don't play sound in elevator transition
+        } else if (!sceneName.Equals("ElevatorTransition") && !sceneName.Equals("LevelSelection")) { // don't play sound in elevator transition
             if (UnityEngine.Random.value > 0.5) {
                 PlayMusic("music_3");
             } else {
