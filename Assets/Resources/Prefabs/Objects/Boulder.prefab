@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnLocation: {fileID: 424145074564429547}
-  deathAnimation: {fileID: 2282829766038112090, guid: 9185e0bafe8642845a04d0f5a23d5d6b, type: 3}
+  deathAnimation: {fileID: 2282829766038112090, guid: 3f85f14a67ad40542b23cd793140c0c5, type: 3}
   defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   activeGlow: {fileID: 2100000, guid: a4b9c9ce97542804b93eccda923bd408, type: 2}
   pasiveGlow: {fileID: 2100000, guid: f00e9793af2cea249ad04f98b586fe21, type: 2}

@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnLocation: {fileID: 3703792065115831476}
-  deathAnimation: {fileID: 2282829766038112090, guid: 9185e0bafe8642845a04d0f5a23d5d6b, type: 3}
+  deathAnimation: {fileID: 2282829766038112090, guid: 4f97f3e3bb317044b9d086fcb51c9002, type: 3}
   defaultMat: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   activeGlow: {fileID: 2100000, guid: fd9a8a520be6a0a47a47dad1124ee2b4, type: 2}
   pasiveGlow: {fileID: 2100000, guid: 1454fd05688e01b41825eccc9ac9f87a, type: 2}
