@@ -76,9 +76,7 @@ public class Grounded : BaseState {
          if (Player.hit.collider != null && Player.hit.collider.gameObject.tag == "Pushable" && touchingBox){
             haltMovement = true;
             Player.rigidbody.velocity = Vector2.zero;
-
-        }
-        else{
+         } else {
             haltMovement = false;
         }
     }

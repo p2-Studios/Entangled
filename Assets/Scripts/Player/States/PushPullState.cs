@@ -64,6 +64,7 @@ public class PushPullState : BaseState {
     public override void Exit(){
         base.Exit();
         Player.grabbing = false;
+        Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
         Player.pushedObject = null;
     }
 }
