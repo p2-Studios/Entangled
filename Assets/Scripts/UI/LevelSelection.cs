@@ -11,10 +11,12 @@ public class LevelSelection : MonoBehaviour {
     [Header( "Camera Setting")]
     public Camera cam;
     private bool camAtTop = true;
+    private bool camLocked = true;
     private bool camMoving;
     public Transform cameraTopPosition, cameraBottomPosition;
     private Vector3 nextCameraPosition;
     public float cameraSpeed = 1f;
+    public GameObject scrollUpText, scrollDownText;
     
     [Space(5)] 
     [Header( "Level Unlocking Settings")]
@@ -30,9 +32,17 @@ public class LevelSelection : MonoBehaviour {
     private void Awake() {
         nextCameraPosition = cameraTopPosition.position;
         unlockedLevel = GetGameData().GetUnlockedLevel();
+        
+        scrollDownText.SetActive(false);
+        scrollUpText.SetActive(false);
+        
+        // set all levels unlocked (for testing/debug/until all levels are ready)
+        SaveSystem.SetGameDataLevel(10);
+        
         InitializeLevelButtons();
         InitializeBuildingVisuals();
-        SaveSystem.SetGameDataLevel(2);
+        
+        if (GetGameData().unlockedLevel > 5) camLocked = false; // unlock the camera if underground level(s) unlocked
     }
 
     private GameData GetGameData() {
@@ -47,17 +57,15 @@ public class LevelSelection : MonoBehaviour {
 
     private void Update() {
         // move the camera to the top when scrolling up
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f ) { // scroll up
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f && !camLocked) { // scroll up
             if (!camAtTop) {
-                print("scroll up");
                 MoveToTop();
             }    
         }
         
         // move the camera to the bottom when scrolling down
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f ) { // scroll down
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f && !camLocked) { // scroll down
             if (camAtTop) {
-                print("scroll down");
                 MoveToBottom();
             }    
         }
@@ -66,6 +74,14 @@ public class LevelSelection : MonoBehaviour {
         if (cam.transform.position != nextCameraPosition) {
             cam.transform.position = Vector3.MoveTowards(cam.transform.position, 
                 nextCameraPosition, cameraSpeed * Time.deltaTime);
+            scrollDownText.SetActive(false);
+            scrollUpText.SetActive(false);
+        } else {
+            if (cam.transform.position == cameraTopPosition.position) {
+                scrollDownText.SetActive(true);
+            } else {
+                scrollUpText.SetActive(true);
+            }
         }
     }
 
