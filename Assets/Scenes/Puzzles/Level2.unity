@@ -4481,6 +4481,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2107361391}
     m_Modifications:
+    - target: {fileID: 2225125406761396580, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
+      propertyPath: localFiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225125406761396580, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
+      propertyPath: localFiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 7419897541711876239, guid: 3e50a89aae4077b429fdc357d2d8b62e, type: 3}
     - target: {fileID: 5880884689359741017, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4527,7 +4535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5880884689359741021, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: m_Name
-      value: Terminal 2
+      value: Terminal 1
       objectReference: {fileID: 0}
     - target: {fileID: 8682474248818682218, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: dialogue.name
@@ -4567,6 +4575,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2107361391}
     m_Modifications:
+    - target: {fileID: 2225125406761396580, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
+      propertyPath: localFiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5880884689359741017, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4613,7 +4625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5880884689359741021, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: m_Name
-      value: Terminal 4
+      value: Terminal 2
       objectReference: {fileID: 0}
     - target: {fileID: 8682474248818682218, guid: c3803ee534f3b3f42b8f8b5cace60ddf, type: 3}
       propertyPath: dialogue.name

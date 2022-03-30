@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3501149506430902348}
   - component: {fileID: 7419897541711876239}
   m_Layer: 0
-  m_Name: file_2_4
+  m_Name: file_unsorted1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,6 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (personal note)
-  body: "I was looking at some old files the other day and the ethics certification
-    for this research program expired years ago \u2026\r"
+  fileName: (employee messaging system)
+  body: "E1: Here are my notes for the PR release \u2013 Entangled Suits can be used
+    to perform remote work in a variety of settings. \r\nPotential uses include:
+    manufacturing, military, construction, space station maintenance, mining, etc.
+    Can you think of anything else?\t\t\r\nE2: Oh, I don\u2019t know \u2026 maybe
+    an ominous disclaimer in teeny-tiny writing that says our company isn\u2019t
+    responsible for any strange side effects the wearer might experience?\r"

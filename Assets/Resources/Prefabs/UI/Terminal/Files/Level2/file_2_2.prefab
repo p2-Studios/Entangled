@@ -43,10 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (employee messaging system)
-  body: "E1: Here are my notes for the PR release \u2013 Entangled Suits can be used
-    to perform remote work in a variety of settings. \r\nPotential uses include:
-    manufacturing, military, construction, space station maintenance, mining, etc.
-    Can you think of anything else?\t\t\r\nE2: Oh, I don\u2019t know \u2026 maybe
-    an ominous disclaimer in teeny-tiny writing that says our company isn\u2019t
-    responsible for any strange side effects the wearer might experience?\r"
+  encrypted: 0
+  fileName: technology_nomenclature_complaint.txt
+  body: "E1: personally, I am very offended that they went with the name Entangled
+    for the suits. IT DOESN\u2019T HAVE ANYTHING TO DO WITH ACTUAL QUANTUM PHYSICS.\r\n\nE2:
+    You know that doesn\u2019t matter to marketing. It\u2019s just a nice, short,
+    catchy description. Think of it as just \u2026 an evocative metaphor. \r\nAt
+    least one person who hears about it will search it up on a wiki and learn about
+    actual quantum entanglement, if that makes you feel better.\r\n\nE1: and then
+    fail to understand its complexities. I\u2019m going to be mad about this FOREVER."

@@ -43,10 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (off-limits zone warning)
+  encrypted: 0
+  fileName: off_limits_zone_warning.txt
   body: 'Please note that this area is off-limits to anyone who is not a [REDACTED]
     Industries employee.
 
-    (an addendum by a separate author) I really think
-    that you could improve this message by adding "HEY if you happen to notice pointy
-    spikes and red death fields, then maybe you shouldn''t be here!!!"'
+
+    Note: I really think that you could improve this message
+    by adding "HEY if you happen to notice pointy spikes and red death fields, then
+    maybe you shouldn''t be here!!!"'
