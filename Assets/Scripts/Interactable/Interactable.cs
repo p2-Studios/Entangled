@@ -45,7 +45,7 @@ public class Interactable : MonoBehaviour {
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.CompareTag("Player") && interactionEnabled) {
+        if (other.gameObject.CompareTag("Player")) {
             OnRangeExit();
         }
     }
