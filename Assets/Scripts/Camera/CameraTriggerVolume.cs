@@ -32,6 +32,7 @@ public class CameraTriggerVolume : MonoBehaviour
         if (other.gameObject.CompareTag("Player")){
             if (CameraSwitcher.ActiveCamera != cam){
                 CameraSwitcher.SwitchCamera(cam);
+                cam.Priority = 100; // set high priority so that the camera doesn't start at the initial camera when resetting level
             }
         }
     }
