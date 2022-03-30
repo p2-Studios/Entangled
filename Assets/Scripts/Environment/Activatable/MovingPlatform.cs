@@ -58,7 +58,7 @@ public class MovingPlatform : Activatable {
         }
     }
 
-    void Update() {
+    void FixedUpdate() {
         // if at one of the end positions, switch next position
         if (activated) {    // only change nextPos while active
             if (transform.position == posStart.position) {

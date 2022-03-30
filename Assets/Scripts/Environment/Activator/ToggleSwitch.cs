@@ -45,8 +45,4 @@ public class ToggleSwitch : Activator {
     }
 
     // toggling is handled in the Interactable/SwitchInteractable.cs script!
-    
-    void Update() {
-        
-    }
 }

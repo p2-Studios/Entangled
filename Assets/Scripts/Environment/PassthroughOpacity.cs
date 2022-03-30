@@ -8,9 +8,6 @@ public class PassthroughOpacity : MonoBehaviour {
     public SpriteRenderer spriteRenderer;
     public Color opacityColor;
     private Color regularColor;
-    void Start() {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.CompareTag("BehindForeground")) {
