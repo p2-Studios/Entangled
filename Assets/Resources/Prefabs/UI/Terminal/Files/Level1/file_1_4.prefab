@@ -43,12 +43,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (more scientist notes)
-  body: 'This technology designates an ACTIVE object (selected first) and a PASSIVE
-    object (selected second).
+  encrypted: 0
+  fileName: active_vs_passive.txt
+  body: 'This technology designates an <color=purple>ACTIVE</color> object (selected
+    first) and a <color=green>PASSIVE</color> object (selected second).
 
-    The connection is one-way: the force/velocity
-    of the ACTIVE object is transferred to the PASSIVE object. This relationship
+
+    The
+    connection is one-way: the force/velocity of the <color=purple>ACTIVE</color>
+    object is transferred to the <color=green>PASSIVE</color> object. This relationship
     does not hold in the opposite direction.
+
+
+    (Some of the lab members say this
+    is easy to mix up - I think this can easily be solved with the mnemonic of purple
+    = playful (as in a high ACTIVITY level) and green = grass (a notably passive
+    organism). Nonetheless, they continue to disagree.)
+
+
+    TODO: have interaction
+    team design a visual indicator
+
+
 
 '

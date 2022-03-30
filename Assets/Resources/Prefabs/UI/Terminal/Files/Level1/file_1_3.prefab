@@ -43,13 +43,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (scientist research notes)
+  encrypted: 0
+  fileName: entangling_basics.txt
   body: 'Our current project uses a combination of cutting edge technology and a
     brain-computer interface to connect two objects together and transfer force/velocity
     from one to the other.
 
+
     The user controls are extremely simple: first, focus
     intensely on one object and then shift your attention to the other.
+
 
     This
     mimics the way that a user might have clicked on a box and then held the mouse

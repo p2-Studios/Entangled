@@ -43,12 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (a security reminder)
+  encrypted: 0
+  fileName: security_reminder.txt
   body: 'Please note that due to security protocols, the transference of objects
     from one room to another is occasionally prohibited.
 
-    (additional message
-    appended to the first) THANK YOU! I''ve been telling the security department
-    for months that we should give an explanation for our weird blue force fields.
+
+    Note: THANK YOU! I''ve
+    been telling the security department for months that we should give an explanation
+    for our weird blue force fields.
 
 '
