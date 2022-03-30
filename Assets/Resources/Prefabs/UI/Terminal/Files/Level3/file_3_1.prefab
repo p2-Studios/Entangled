@@ -43,9 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: ' (employee messaging)'
+  encrypted: 0
+  fileName: message_log_2322-5-01.txt
   body: "E1: Welcome to [REDACTED] Industries, where we invented a whole bunch of
     fancy new tech to cover up for the fact that our main product has some mysterious
-    problem!\r\nE2: That no one will talk about.\r\nE1: Except for that one scientist
-    who allegedly disappeared \u2026\r\nE2: \u2026\r\nE2: The inverse block is pretty
-    cool though.\r\nE1: True!\r"
+    problem!\r\n\nE2: That no one will talk about.\r\n\nE1: Except for that one scientist
+    who allegedly disappeared \u2026\r\n\nE2: \u2026\r\n\nE2: The inverse block is
+    pretty cool though.\n\r\nE1: True!\r"

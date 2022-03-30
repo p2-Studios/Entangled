@@ -43,9 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (employee messaging)
+  encrypted: 0
+  fileName: message_log_2322-3-12.txt
   body: "E1: Hey, did you hear [REDACTED] from the security team was bragging the
     other day that the Entangled suits are so secure that they can withstand the
-    strongest blaster-settings? \r\nE2: Sounds like a disaster waiting to happen
+    strongest blaster-settings? \r\n\nE2: Sounds like a disaster waiting to happen
     to me. I mean, hasn't anyone on this team watched a science fiction movie? Something
     ALWAYS goes wrong with the over-powered device."

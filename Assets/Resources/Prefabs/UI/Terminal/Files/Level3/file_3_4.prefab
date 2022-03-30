@@ -43,9 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (internal memo)
+  encrypted: 0
+  fileName: birthday_memo.txt
   body: "Hey everyone, I\u2019m collecting credits to finance a card and cake for
-    [REDACTED]\u2019s birthday since we\u2019ve all been away from home for so long.\r\nKeep
+    [REDACTED]\u2019s birthday since we\u2019ve all been away from home for so long.\r\n\nKeep
     up the positive attitude and I'm sure that soon we'll be able to celebrate our
-    success back on our home planets with our loved ones :)\t\r\nJust a little more
-    hard work!\r"
+    success back on our home planets with our loved ones :)\n\t\r\nJust a little
+    more hard work!\r"
