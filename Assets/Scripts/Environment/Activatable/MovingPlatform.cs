@@ -78,7 +78,7 @@ public class MovingPlatform : Activatable {
                 if (justActivated) {
                     moving = true;
                 } else {
-                    if (moving) StartCoroutine(WaitAtDestination(startDelay));
+                    if (moving) StartCoroutine(WaitAtDestination(endDelay));
                 }
             }
             justActivated = false;
