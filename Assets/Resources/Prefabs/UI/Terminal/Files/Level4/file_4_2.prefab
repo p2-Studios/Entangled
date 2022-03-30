@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (internal memo)
+  encrypted: 0
+  fileName: breakroom_cleanup_memo.txt
   body: "REMINDER: If it\u2019s your week for break-room clean up duty, please make
     sure to empty the coffee grounds from the coffee machine. \r\nAs well, due to
     staff changes, the schedule has been updated. Please review the revised version

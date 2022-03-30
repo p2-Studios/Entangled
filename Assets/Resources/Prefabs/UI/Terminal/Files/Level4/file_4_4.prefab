@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (entry from a personal journal)
+  encrypted: 0
+  fileName: journal_entry_45_missing_you.txt
   body: "Dear [REDACTED], \r\nEver since they restricted off-planet communications,
     it\u2019s been lonely. I miss our vid calls and your care packets.\r I know I
     said I wanted to pursue my dream career, but now I\u2019m beginning to wonder

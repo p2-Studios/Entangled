@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (personal note)
+  encrypted: 0
+  fileName: development_note.txt
   body: "Honestly, I think we should just focus on developing these moving platforms
     and stop it with the cursed suits. Way less potential to go wrong.\r"

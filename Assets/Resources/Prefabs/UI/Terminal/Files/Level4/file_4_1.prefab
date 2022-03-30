@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (employee messaging)
-  body: "E1: I haven\u2019t seen [REDACTED] from psych in a while \u2026\r\nE2: I
-    heard in the break room the other day that the whole psych department had been
-    fired.\r\nE1: These damn budget cuts are really hitting everyone these days.\r"
+  encrypted: 0
+  fileName: message_log_2322-7-23.txt
+  body: "E1: I haven\u2019t seen [REDACTED] from psych in a while \u2026\r\n\nE2:
+    I heard in the break room the other day that the whole psych department had been
+    fired.\r\n\nE1: These damn budget cuts are really hitting everyone these days.\r"
