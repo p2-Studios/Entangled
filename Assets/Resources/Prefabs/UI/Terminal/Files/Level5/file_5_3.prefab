@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (neuroscientist notes)
+  encrypted: 0
+  fileName: neuroscience_theory.txt
   body: "Here\u2019s my working theory about the suits: the energy used for the entanglement
     is causing unexpected changes to neural circuits in the prefrontal cortex. Brains
     scans have also shown some structural abnormalities in the amygdalas of frequent

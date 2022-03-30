@@ -43,9 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: ' (draft of a research report) '
+  encrypted: 0
+  fileName: research_report_draft1.txt
   body: "Psychological side effects of the Entangled Suit include disorientation,
-    reduced levels of empathy and increased levels of aggression.\r\n(comment from
-    a colleague) If I were you, I wouldn\u2019t include that in your report to the
-    head office. I heard [REDACTED]\u2019s disappearance the other week wasn\u2019t
+    reduced levels of empathy and increased levels of aggression.\r\n\nEdit note
+    from [REDACTED]: If I were you, I wouldn\u2019t include that in your report to
+    the head office. I heard [REDACTED]\u2019s disappearance the other week wasn\u2019t
     an accident \u2026\r"

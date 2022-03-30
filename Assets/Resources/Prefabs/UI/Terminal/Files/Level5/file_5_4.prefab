@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: (global memo)
-  body: " I don\u2019t know if we have an emergency protocol for this, but someone
+  encrypted: 0
+  fileName: global_channel_transcript.txt
+  body: "I don\u2019t know if we have an emergency protocol for this, but someone
     wearing an Entangled suit is throwing around blocks outside my office window
-    \u2026 did someone authorize an environmental test I haven\u2019t heard about?\r\n(response)
+    \u2026 did someone authorize an environmental test I haven\u2019t heard about?\r\n\nresponse:
     [REDACTED], GET THE HELL OUT OF THERE!\r"
