@@ -35,7 +35,6 @@ public class DestructiblePanel : MonoBehaviour
 		float total = 0;
 		foreach (GameObject gObject in currentCollisions) {
 			total += collision.rigidbody.mass;
-            print (total);
         }
 		if(total >= required_impulse){
 			panel_col.enabled = false;
