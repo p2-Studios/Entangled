@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3501149506430902348}
   - component: {fileID: 7419897541711876239}
   m_Layer: 0
-  m_Name: TestTextFile2
+  m_Name: TestTextFile 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  encrypted: 1
-  fileName: TEXT_FILE_2.txt
-  body: This is another text file. Multiple files can be within one terminal.
+  fileName: TEXT_FILE.txt
+  body: This is a test of the new terminal text file system. This text file can be
+    opened, viewed, and closed. Terminals use prefabs of TerminalFiles, so the text
+    that a terminal contains can be edited without having to edit the terminal itself.
