@@ -12,6 +12,7 @@ public class RespawnSetter : MonoBehaviour {
         if (col.gameObject.CompareTag("Player")) {
             player.respawnLocation = respawnPoint.position;
             LevelRestarter.instance.SetCheckpointPosition(respawnPoint.position);
+            print("Setting respawn point to " + respawnPoint.position);
         }
     }
 }

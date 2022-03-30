@@ -16,7 +16,6 @@ public class LevelRestarter : MonoBehaviour {
     private string sceneName = "";   // keep track of the current scene name
     
     private void Awake() {
-
         if (instance == null) {
             instance = this;
         } else {
@@ -29,19 +28,22 @@ public class LevelRestarter : MonoBehaviour {
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        if (!scene.name.Equals(sceneName)) {    // if loading a different scene, reset checkpoint location
+        if (!sceneName.Equals("") && !scene.name.Equals(sceneName)) {    // if loading a different scene, reset checkpoint location
             checkpointPos = Vector3.zero;
         }
         
-        if (checkpointPos != Vector3.zero) {
+        if (checkpointPos != Vector3.zero) {    // checkpointPos 
+            print("Checkpoint found: " + checkpointPos);
             Player player = FindObjectOfType<Player>();
             if (player != null) {
                 player.transform.position = checkpointPos;
                 player.respawnLocation = checkpointPos;
+                print("Spawning player at " + checkpointPos);
+                print("Player's respawnLocation: " + player.respawnLocation);
             }
         }
 
-        sceneName = scene.name;
+        sceneName = scene.name; // save the name of the current scene
     }
     
     // Update is called once per frame
@@ -81,5 +83,9 @@ public class LevelRestarter : MonoBehaviour {
 
     public void ClearCheckpointPosition() {
         checkpointPos = Vector3.zero;
+    }
+
+    public Vector3 GetCheckpointPosition() {
+        return checkpointPos;
     }
 }
