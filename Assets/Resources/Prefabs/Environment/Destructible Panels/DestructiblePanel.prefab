@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9031979628206350031}
+  - component: {fileID: 9031979628206350027}
   - component: {fileID: 9031979628206350028}
   - component: {fileID: 9031979628206350029}
   - component: {fileID: 9031979628206350026}
-  - component: {fileID: 9031979628206350027}
   m_Layer: 6
   m_Name: DestructiblePanel
   m_TagString: Untagged
@@ -29,11 +29,24 @@ Transform:
   m_GameObject: {fileID: 9031979628206350024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.5021818, y: -0.9720938, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.82, y: 0.82, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9031979628206350027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9031979628206350024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5323c4f7deb99dc4c903e9371f5a30aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  required_impulse: 10
 --- !u!212 &9031979628206350028
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,7 +86,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: a1c892fc2322d894a88ed674af71c8d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130,16 +143,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.60138154, y: 2.88}
   m_EdgeRadius: 0
---- !u!114 &9031979628206350027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9031979628206350024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5323c4f7deb99dc4c903e9371f5a30aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  required_impulse: 10
