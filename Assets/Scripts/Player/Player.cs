@@ -60,14 +60,25 @@ public class Player : MonoBehaviour, IDestroyable {
         stateMachine.Initialize(this);
         grabbing = false;
 
-        if (respawnTransform != null) { // if a respawn transform was manually set, use it
-            respawnLocation = respawnTransform.position;
-        } else {                        // otherwise, default to using the elevator at the start of the level, if one is found
-            GameObject elevator = GameObject.Find("Elevator_Open");
-            if (elevator != null) {
-                respawnLocation = elevator.transform.position;
-            } else {                    // and finally, if no elevator was found, use the player's starting position
-                respawnLocation = transform.position;
+        print("Setting player respawnlocation");
+        
+        
+        // set the player's respawn position
+        if (LevelRestarter.instance.GetCheckpointPosition() != Vector3.zero) {  // if LevelRestarter has a location, use it
+            respawnLocation = LevelRestarter.instance.GetCheckpointPosition();
+        } else {
+            if (respawnTransform != null) {
+                // otherwise, if a respawn transform was manually set, use that
+                respawnLocation = respawnTransform.position;
+            } else {
+                // otherwise, default to using the elevator at the start of the level, if one is found
+                GameObject elevator = GameObject.Find("Elevator_Open");
+                if (elevator != null) {
+                    respawnLocation = elevator.transform.position;
+                } else {
+                    // and finally, if no elevator was found, use the player's starting position
+                    respawnLocation = transform.position;
+                }
             }
         }
     }
@@ -185,8 +196,9 @@ public class Player : MonoBehaviour, IDestroyable {
     // do things that need to be done on respawning, right after the game object is set as active again
     public void Respawn() {
         transform.parent = null;
-        gameObject.transform.position = respawnLocation; // move the object to respawnTransform
         ResetPlayer();
+        print("Player's respawnLocation = " + respawnLocation);
+        gameObject.transform.position = respawnLocation; // move the object to respawnTransform
     }
     
 }

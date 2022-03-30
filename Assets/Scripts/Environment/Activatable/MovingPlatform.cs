@@ -58,7 +58,7 @@ public class MovingPlatform : Activatable {
         }
     }
 
-    void Update() {
+    void FixedUpdate() {
         // if at one of the end positions, switch next position
         if (activated) {    // only change nextPos while active
             if (transform.position == posStart.position) {
@@ -78,7 +78,7 @@ public class MovingPlatform : Activatable {
                 if (justActivated) {
                     moving = true;
                 } else {
-                    if (moving) StartCoroutine(WaitAtDestination(startDelay));
+                    if (moving) StartCoroutine(WaitAtDestination(endDelay));
                 }
             }
             justActivated = false;
