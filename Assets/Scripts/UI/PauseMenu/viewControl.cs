@@ -42,7 +42,6 @@ public class viewControl : MonoBehaviour
 		else if (Input.GetKeyUp("tab")) {
 			control.SetActive(false);
 		}
-
     }
     public void UpdateKeys() {
 
