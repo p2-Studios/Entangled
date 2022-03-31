@@ -34,7 +34,7 @@ public class Level : MonoBehaviour {
         } else {
             // load any orbs and flashdrives the player has already found 
             foundFlashDrives = GetFoundFlashDrivesFromIDs(data.foundFlashDrives);
-            collectedOrbs = GetCollectedOrbsFromIDS(data.foundOrbs);
+            //collectedOrbs = GetCollectedOrbsFromIDS(data.foundOrbs);
 
             foreach (FlashDrive f in foundFlashDrives) {    // disable already found flashdrives
                 if (flashDrives.Contains(f)) f.gameObject.transform.position = new Vector3(1000, 1000, 1000);   // move far away to make inaccessible
@@ -95,12 +95,8 @@ public class Level : MonoBehaviour {
         o.gameObject.SetActive(false);
     }
 
-    public int GetTotalOrbCount() {
-        return orbs.Length;
-    }
-
-    public int GetFoundOrbsCount() {
-        return collectedOrbs.Count;
+    public int GetTotalFlashDriveCount() {
+        return flashDrives.Length;
     }
 
     public FlashDrive[] GetFlashDrives() {

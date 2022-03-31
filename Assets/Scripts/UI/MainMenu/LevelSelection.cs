@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.CustomKeybinds;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,7 +25,9 @@ public class LevelSelection : MonoBehaviour {
     public Image buildingImage;
     public Sprite[] buildingSprites;
     public GameObject[] fanObjects;
-    
+
+    [Space(5)] [Header("Level Data Settings")]
+    public TextMeshProUGUI[] flashDriveTexts;
     
     private GameData data;
     private int unlockedLevel;
@@ -43,6 +46,7 @@ public class LevelSelection : MonoBehaviour {
         // initializes the visuals/interactables based on the user's unlocked levels
         InitializeLevelButtons();
         InitializeBuildingVisuals();
+        InitializeFlashDriveTexts();
         
         // unlock the camera if underground level(s) unlocked
         if (GetGameData().unlockedLevel > 5) camLocked = false;
@@ -123,6 +127,25 @@ public class LevelSelection : MonoBehaviour {
         for (int i = 6; i < fanObjects.Length + 6; i++) {
             if (i > unlockedLevel) {
                 fanObjects[i-6].SetActive(false);
+            }
+        }
+    }
+
+    // fill the flash drives found per level, by grabbing the data from each levels' 
+    public void InitializeFlashDriveTexts() {
+        // retrieve level data for level corresponding to each text box
+        for (int i = 0; i < flashDriveTexts.Length; i++) {
+            TextMeshProUGUI text = flashDriveTexts[i]; // get the flash drive text box for this level
+            String levelName = "Level" + (i + 1);
+            LevelData levelData = SaveSystem.LoadLevel(levelName); // levels start at 1, add 1 to i
+            if (levelData == null) { // level data doesn't exit
+                text.text = "?/?";                           
+                print("No data for " + levelName);
+            } else {    // level data exists, use values                           
+                print("Data found for " + levelName);
+                int totalFlashDrives = levelData.totalFlashDrives;
+                int flashDrivesFound = levelData.foundFlashDrives.Length;
+                text.text = flashDrivesFound + "/" + totalFlashDrives;
             }
         }
     }
