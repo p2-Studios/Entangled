@@ -11,7 +11,8 @@ public class AudioManager : MonoBehaviour {
     public Sound[] sounds;
     private ArrayList loopingSounds;
     private Sound currentSong;
-    public bool restartSong = true;
+    private AudioSource musicPlayer;
+    private string musicType = "menu";
 
     public static AudioManager instance;
     
@@ -35,63 +36,87 @@ public class AudioManager : MonoBehaviour {
 
         
         String sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName.Equals("MainMenu")) {
-            PlayMusic("music_main");
-        } else if (!sceneName.Equals("ElevatorTransition")) { // don't play sound in elevator transition
-            if (UnityEngine.Random.value > 0.5) {
-                PlayMusic("music_3");
-            } else {
-                PlayMusic("music_4");
-            }
+        SetMusicType(sceneName);
+        ChangeMusic();
+    }
+
+
+    private void Update() {
+        if (musicPlayer != null && !musicPlayer.isPlaying) {    // start new song if last song has ended
+            print("CHANGING SONG");
+            ChangeMusic();
         }
     }
-    
+
     private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneChange;
     }
 
-    private void OnSceneChange(Scene scene, LoadSceneMode mode) {
-        if (!restartSong) { // if restartSong flag is false, don't restart song on scene load/reload
-            restartSong = true; // set to true again so that the next scene change will restart the song, unless told not to
-            return; 
+    private void ChangeMusic() {
+        AudioSource source;
+        String song;
+        switch (musicType) {
+            case "menu":    // menu music (main menu, level selection, etc.)
+                song = "music_main";
+                break;
+            
+            case "level":   // music while in-level
+                if (UnityEngine.Random.value > 0.5) {
+                    song = "music_3";
+                } else {
+                    song = "music_4";
+                }
+                break;
+            
+            case "credits": // credits music
+                song = "music_main";    // TODO: change to credit music
+                break;
+            
+            default:
+                song = "music_main";
+                break;
         }
-        String sceneName = scene.name;
         
-        if (sceneName.Equals("MainMenu")) {
-            PlayMusic("music_main");
-        } else if (!sceneName.Equals("ElevatorTransition") && !sceneName.Equals("LevelSelection")) { // don't play sound in elevator transition
-            if (UnityEngine.Random.value > 0.5) {
-                PlayMusic("music_3");
-            } else {
-                PlayMusic("music_4");
-            }
+        if (musicPlayer != null) musicPlayer.Stop();
+        source = GetSource(song);
+        if (source != null) {
+            musicPlayer = source;
+            source.Play();
         }
+    }
 
+    private void OnSceneChange(Scene scene, LoadSceneMode mode) {
+        SetMusicType(scene.name);
+    }
+
+    private void SetMusicType(string sceneName) {
+        if (sceneName.Equals("MainMenu") || sceneName.Equals("LevelSelection")) {
+            TestAndChangeMusic("menu");
+        } else if (sceneName.Equals("Credits")) { 
+            TestAndChangeMusic("credits");
+        } else if (!sceneName.Equals("ElevatorTransition") && !sceneName.Equals("LevelSelection")) { // don't play sound in elevator transition
+            TestAndChangeMusic("level");  // only change is not already playing level music
+        }
+    }
+    
+    private void TestAndChangeMusic(String type) {
+        if (!musicType.Equals(type)) { 
+            musicType = type;
+            ChangeMusic();
+        }
     }
 
     public void Play(string soundName) {
+        AudioSource source = GetSource(soundName);
+        if (source != null) source.PlayOneShot(source.clip);
+    }
+
+    public AudioSource GetSource(string soundName) {
         Sound s = FetchSound(soundName);
-        if (s == null) return;
-        if (s.source == null) return;
-        
-        s.source.Play();
+        if (s == null) return null;
+        return s.source;
     }
 
-    public void PlayMusic(string songName) {
-        if (currentSong != null) {  // stop other song playing
-            currentSong.source.loop = false;
-            currentSong.source.Stop();
-        }
-        
-        Sound s = FetchSound(songName);
-        if (s == null) return;
-        if (s.source == null) return;
-
-        currentSong = s;
-        s.source.loop = true;
-        s.source.Play(); 
-    }
-    
     public void PlayLooping(string soundName) {
         Sound s = FetchSound(soundName);
         if (s == null) return;

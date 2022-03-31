@@ -69,7 +69,6 @@ public class LevelRestarter : MonoBehaviour {
     }
 
     public void RestartLevel() {
-        AudioManager.instance.restartSong = false;  // don't restart song when restarting level
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
