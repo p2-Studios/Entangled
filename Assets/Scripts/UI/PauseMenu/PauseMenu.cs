@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Game.CustomKeybinds;
 using UnityEngine.UI;
 using UnityEngine;
@@ -31,7 +29,7 @@ public class PauseMenu : MonoBehaviour
 	private float timescale;
 
 	// Paused?
-	private bool paused = false;
+	public bool paused = false;
 
 	// Click Timer
 	private DateTime clickTime;

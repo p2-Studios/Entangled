@@ -50,7 +50,6 @@ public class Display : MonoBehaviour
 	void change_res() {
 		Resolution r = resolution[res_dropdown.value];
 		
-		print("Option value: " + res_dropdown.value + "Res:" + r.width + " x " + r.height);
 		Screen.SetResolution(r.width, r.height, fullscreen.isOn);
 		res_dropdown.RefreshShownValue();
 	}
