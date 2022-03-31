@@ -140,9 +140,7 @@ public class LevelSelection : MonoBehaviour {
             LevelData levelData = SaveSystem.LoadLevel(levelName); // levels start at 1, add 1 to i
             if (levelData == null) { // level data doesn't exit
                 text.text = "?/?";                           
-                print("No data for " + levelName);
-            } else {    // level data exists, use values                           
-                print("Data found for " + levelName);
+            } else {    // level data exists, use values     
                 int totalFlashDrives = levelData.totalFlashDrives;
                 int flashDrivesFound = levelData.foundFlashDrives.Length;
                 text.text = flashDrivesFound + "/" + totalFlashDrives;
