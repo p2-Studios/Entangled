@@ -117,6 +117,8 @@ namespace Game.CustomKeybinds
 
                 pause = tempControls.pause;
                 reset = tempControls.reset;
+
+                keys = tempControls.keys;
                 
                 UpdateDictionaryFromAttributes();
             }

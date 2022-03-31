@@ -198,6 +198,8 @@ public class PauseMenu : MonoBehaviour
 		resumeState();
 	}
 	
-
+	public bool isPaused() {
+		return paused;
+    }
 	
 }
