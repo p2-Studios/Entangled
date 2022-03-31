@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3501149506430902348}
   - component: {fileID: 7419897541711876239}
   m_Layer: 0
-  m_Name: file_1_6
+  m_Name: file_1_5_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encrypted: 0
-  fileName: output_log_2322-09-18.txt
-  body: "*** EVACUATION ALERT *** \nAll personnel please secure your work stations
-    and report to the nearest emergency exit.\nRepeat, this is a code red al-"
+  fileName: 'Re: Security Reminder'
+  body: 'THANK YOU! I''ve been telling the security department for months that we
+    should give an explanation for our weird blue force fields. Most people seem
+    to be wary of them at first.
+
+'
