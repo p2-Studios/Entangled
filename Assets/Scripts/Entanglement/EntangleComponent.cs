@@ -54,7 +54,17 @@ public class EntangleComponent : MonoBehaviour {
                 // active, but no passives. Draw Entangling line
                 Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 cursorPos.z = 0;
-                DrawEntanglingHelix(active.transform.position, cursorPos);
+                
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
+                if (hit.collider != null) {
+                    Entanglable e = hit.collider.gameObject.GetComponentInParent<Entanglable>();
+                    if (e != null && e != active) {
+                        DrawEntanglingHelix(active.transform.position, e.transform.position);
+                    }
+                } else {
+                    DrawEntanglingHelix(active.transform.position, cursorPos);
+                }
             }
         } else {
             if (EntanglingHelix != null) Destroy(EntanglingHelix);
@@ -67,7 +77,7 @@ public class EntangleComponent : MonoBehaviour {
             if (hit.collider != null) {
                 // If one object is clicked, all objects get the click input. This is to prevent multiple selection
                 //Debug.Log(hit.collider.gameObject.name);
-                Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
+                Entanglable e = hit.collider.gameObject.GetComponentInParent<Entanglable>();
                 if (e == null) return;
                 
                 if (e == active) {  // e is already the active
@@ -97,7 +107,7 @@ public class EntangleComponent : MonoBehaviour {
                 RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
                 if (hit.collider != null) {
                     // If one object is clicked, all objects get the click input. This is to prevent multiple selection
-                    Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
+                    Entanglable e = hit.collider.gameObject.GetComponentInParent<Entanglable>();
                     if (e == null) return;
                     if (!active.Equals(e) && mousePressedOnActive) {
                         mousePressedOnActive = false;
@@ -129,7 +139,7 @@ public class EntangleComponent : MonoBehaviour {
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
             if (hit.collider != null) {
                 // If one object is clicked, all objects get the click input. This is to prevent multiple selection
-                Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
+                Entanglable e = hit.collider.gameObject.GetComponentInParent<Entanglable>();
                 if (e == null) return;
                 if (active == e || passives.Contains(e)) {
                     ClearEntangled();

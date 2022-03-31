@@ -103,8 +103,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
             } else {
                 spriteRenderer.material = pasiveGlow;
             }
-        } 
-        else if(hover){
+        }  else if(hover){
             spriteRenderer.material = hoverGlow;
         }
         else {
