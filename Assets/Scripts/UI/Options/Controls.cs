@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Game.CustomKeybinds;
@@ -309,6 +306,9 @@ public class Controls : MonoBehaviour
 				}
 				i = val;
 			}
+			else if (Input.GetKeyDown(KeyCode.Tab)) {
+				return; // Reserved key for viewing controls
+            }
 			else if (Input.inputString.Length != 0) {
 				curr_keys[i] = Input.inputString[0].ToString().ToUpper();
 				int val = findfrom(curr_keycodes, (KeyCode)System.Enum.Parse(typeof(KeyCode), curr_keys[i]));
@@ -473,7 +473,7 @@ public class Controls : MonoBehaviour
 				break;
 			case KeyCode.Return:
 				getSelectedButton(button).GetComponent<Image>().sprite = key_long;
-				getSelectedButton(button).GetComponent<RectTransform>().sizeDelta = new Vector2(50, 35);
+				getSelectedButton(button).GetComponent<RectTransform>().sizeDelta = new Vector2(75, 35);
 				break;
 			case KeyCode.RightShift:
 				getSelectedButton(button).GetComponent<Image>().sprite = key_long;
@@ -565,7 +565,12 @@ public class Controls : MonoBehaviour
 			Keybinds.GetInstance().pause = curr_keycodes[9];
 
 			SaveLoadKeybinds.SaveControlScheme();
-			
+
+			viewControl controlView = FindObjectOfType<viewControl>();
+
+			if (controlView != null)
+				controlView.UpdateKeys();
+
 			// Show option_screen
 			option_screen.SetActive(true);
 
