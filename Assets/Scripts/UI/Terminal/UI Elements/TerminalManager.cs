@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TerminalManager : MonoBehaviour {
 
     public Button exitButton;
-    public GameObject terminalWindow, localFileList, remoteFileList, errorWindow, fileButton, encryptedFileButton;
+    public GameObject terminalWindow, localFileList, remoteFileList, errorWindow, fileButton, encryptedFileButton, unlockedFileButton;
     public ImageFileDisplayer imageFileDisplayer;
     public TextFileDisplayer textFileDisplayer;
     
@@ -90,7 +90,7 @@ public class TerminalManager : MonoBehaviour {
             if (file.IsEncrypted() && locked) { // file is encrypted and corresponding flashdrive hasn't been found
                 fb = Instantiate(encryptedFileButton, remoteFileList.transform, false).GetComponent<TerminalFileButton>();
             } else {  // file is unlocked
-                fb = Instantiate(fileButton, remoteFileList.transform, false).GetComponent<TerminalFileButton>();
+                fb = Instantiate(unlockedFileButton, remoteFileList.transform, false).GetComponent<TerminalFileButton>();
             }
             fb.SetFile(file);
             

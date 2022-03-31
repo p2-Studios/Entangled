@@ -2127,8 +2127,9 @@ MonoBehaviour:
   localFileList: {fileID: 3675295894278945143}
   remoteFileList: {fileID: 5741432282603703227}
   errorWindow: {fileID: 6718463120048300562}
-  fileButton: {fileID: 7565710780872921614, guid: bc8b0118263191b4cb3b6834ea9f19e1, type: 3}
+  fileButton: {fileID: 7565710780872921614, guid: 45778c780770cfe4b9d80b0c6b4a7746, type: 3}
   encryptedFileButton: {fileID: 7565710780872921614, guid: dae68ddb88944a548a6e42c9223f8de3, type: 3}
+  unlockedFileButton: {fileID: 7565710780872921614, guid: bc8b0118263191b4cb3b6834ea9f19e1, type: 3}
   imageFileDisplayer: {fileID: 8217000707504191785}
   textFileDisplayer: {fileID: 8748674551852812944}
 --- !u!1 &4922853502594332214

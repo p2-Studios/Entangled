@@ -60,9 +60,7 @@ public class Player : MonoBehaviour, IDestroyable {
         stateMachine.Initialize(this);
         grabbing = false;
 
-        print("Setting player respawnlocation");
-        
-        
+
         // set the player's respawn position
         if (LevelRestarter.instance.GetCheckpointPosition() != Vector3.zero) {  // if LevelRestarter has a location, use it
             respawnLocation = LevelRestarter.instance.GetCheckpointPosition();
@@ -197,7 +195,6 @@ public class Player : MonoBehaviour, IDestroyable {
     public void Respawn() {
         transform.parent = null;
         ResetPlayer();
-        print("Player's respawnLocation = " + respawnLocation);
         gameObject.transform.position = respawnLocation; // move the object to respawnTransform
     }
     
