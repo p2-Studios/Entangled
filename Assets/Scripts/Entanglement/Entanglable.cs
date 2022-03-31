@@ -170,7 +170,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
                 if (e != null) transform.parent = e.gameObject.transform;
                 MovingPlatform mp = col.gameObject.GetComponent<MovingPlatform>();
                 if (mp != null && mp.makeObjectChild) transform.parent = col.gameObject.transform;      // set parent to platform so object doesn't slide
-        } else if (col.gameObject.CompareTag("Destroyer") && !(col is PolygonCollider2D)) { // hacky solution to not having the box top trigger kill the box when it touches the push collider
+        } else if (col.gameObject.CompareTag("Destroyer") && !(col is CircleCollider2D)) {
             Kill();
         } 
     }
