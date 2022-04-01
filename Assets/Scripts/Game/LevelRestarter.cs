@@ -33,13 +33,10 @@ public class LevelRestarter : MonoBehaviour {
         }
         
         if (checkpointPos != Vector3.zero) {    // checkpointPos 
-            print("Checkpoint found: " + checkpointPos);
             Player player = FindObjectOfType<Player>();
             if (player != null) {
                 player.transform.position = checkpointPos;
                 player.respawnLocation = checkpointPos;
-                print("Spawning player at " + checkpointPos);
-                print("Player's respawnLocation: " + player.respawnLocation);
             }
         }
 

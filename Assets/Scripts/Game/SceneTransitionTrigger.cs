@@ -11,7 +11,9 @@ public class SceneTransitionTrigger : MonoBehaviour {
         if (col.CompareTag("Player")) {
             Player player = col.GetComponent<Player>();
             if (player != null) {
+                print("ENTERING " + gameObject.name);
                 FinaleManager.instance.SetPlayerPosition(player.rigidbody.position);
+                Destroy(gameObject);
                 SceneManager.LoadSceneAsync(sceneName);
             }
         }

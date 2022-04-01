@@ -12,15 +12,16 @@ public class AudioManager : MonoBehaviour {
     private ArrayList loopingSounds;
     private Sound currentSong;
     private AudioSource musicPlayer;
-    private string musicType = "menu";
+    private static string _musicType = "menu";
 
     public static AudioManager instance;
     
     private void Awake() {
-
+        
         if (instance == null) {
             instance = this;
         } else {
+            print("DESTROYING");
             Destroy(gameObject);
             return;
         }
@@ -34,17 +35,18 @@ public class AudioManager : MonoBehaviour {
 
         loopingSounds = new ArrayList();
 
-        
         String sceneName = SceneManager.GetActiveScene().name;
         SetMusicType(sceneName);
+        print("Awake(): CHANGING SONG");
         ChangeMusic();
     }
-
+    
 
     private void Update() {
         if (musicPlayer != null && !musicPlayer.isPlaying) {    // start new song if last song has ended
-            print("CHANGING SONG");
+            print("Update(): CHANGING SONG");
             ChangeMusic();
+            
         }
     }
 
@@ -55,7 +57,7 @@ public class AudioManager : MonoBehaviour {
     private void ChangeMusic() {
         AudioSource source;
         String song;
-        switch (musicType) {
+        switch (_musicType) {
             case "menu":    // menu music (main menu, level selection, etc.)
                 song = "music_main";
                 break;
@@ -81,6 +83,7 @@ public class AudioManager : MonoBehaviour {
         source = GetSource(song);
         if (source != null) {
             musicPlayer = source;
+            musicPlayer.ignoreListenerPause = true;
             source.Play();
         }
     }
@@ -100,8 +103,10 @@ public class AudioManager : MonoBehaviour {
     }
     
     private void TestAndChangeMusic(String type) {
-        if (!musicType.Equals(type)) { 
-            musicType = type;
+        print(_musicType + " | " + type);
+        if (!_musicType.Equals(type)) { 
+            _musicType = type;
+            print("TestAndChangeMusic(): CHANGING SONG");
             ChangeMusic();
         }
     }

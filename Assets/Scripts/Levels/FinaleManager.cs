@@ -24,13 +24,11 @@ public class FinaleManager : MonoBehaviour {
         Player player = FindObjectOfType<Player>();
         if (player != null && playerPosition != Vector3.zero) {
             player.rigidbody.position = playerPosition;
-            print("Spawning player at " + playerPosition);
         }
     }
 
     public void SetPlayerPosition(Vector3 pos) {
         playerPosition = pos;
-        print("Set player position to " + playerPosition);
     }
     
 }
