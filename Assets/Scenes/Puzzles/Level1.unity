@@ -7515,6 +7515,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: alarm
       objectReference: {fileID: 0}
+    - target: {fileID: 1053662280695383593, guid: 6a47dd7a643abd647980387c14bd9246, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1053662280695383595, guid: 6a47dd7a643abd647980387c14bd9246, type: 3}
       propertyPath: m_RootOrder
       value: 0
