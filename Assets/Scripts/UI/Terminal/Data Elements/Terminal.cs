@@ -9,7 +9,6 @@ public class Terminal : Interactable {
     public TerminalFile[] localFiles;
 
     private ArrayList remoteFiles;
-    public Dialogue dialogue;
     private TerminalManager terminalManager;
     public Animator animator;
 
@@ -18,13 +17,6 @@ public class Terminal : Interactable {
         remoteFiles = new ArrayList();
         Level level = FindObjectOfType<Level>();
 
-        // old terminal conversion - convert dialogue to a terminal file
-        if (localFiles.Length == 0 && dialogue != null) {
-            localFiles = new TerminalFile[1];
-            localFiles[0] = ConvertDialogueToFile(dialogue);
-            print(localFiles[0].fileName);
-        }
-        
         if (level == null) {
             Debug.LogWarning("No Level object found - can't load remote terminal messages.");
         } else {
@@ -67,21 +59,5 @@ public class Terminal : Interactable {
         base.OnRangeExit();
         if (terminalManager == null) terminalManager = TerminalManager.instance;
         if (terminalManager.IsTerminalOpen()) terminalManager.CloseTerminal();
-    }
-
-    public TextFile ConvertDialogueToFile(Dialogue d) {
-        string body = "";
-        foreach (string s in d.sentences) {
-            body += (s + "\n");
-        }
-
-        // create the gameobject and set the file's data
-        GameObject g = new GameObject();
-        TextFile file = g.AddComponent<TextFile>();
-        print(d.name);
-        file.name = d.name;
-        file.body = body;
-        
-        return file;
     }
 }
