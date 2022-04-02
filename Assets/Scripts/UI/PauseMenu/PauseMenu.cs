@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Game.CustomKeybinds;
 using UnityEngine.UI;
 using UnityEngine;
@@ -35,6 +36,8 @@ public class PauseMenu : MonoBehaviour
 	private DateTime clickTime;
 	private bool buttonClick = false;
 
+	public String[] exemptScenes;
+	
 	public static PauseMenu instance;
 
 	private void Awake() {
@@ -65,7 +68,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update() {
         if(Input.GetKeyDown(Keybinds.GetInstance().pause)) {
-	        if (!SceneManager.GetActiveScene().name.Equals("MainMenu")) { // don't allow opening in main menu
+	        if (!exemptScenes.Contains(SceneManager.GetActiveScene().name)) { // don't allow opening in main menu
 		        HintManager hm = HintManager.instance;
 		        if (hm != null) hm.CloseHint();
 		        
@@ -124,10 +127,7 @@ public class PauseMenu : MonoBehaviour
 	
 	// button reset.onclick function
 	void btnReset() {
-		// Check button is held on for atleast 2 seconds
-		//if (System.DateTime.Now.Subtract(clickTime).TotalSeconds >= 2) {
 		LevelRestarter.instance.RestartLevel();
-		//SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
 		menuState();
 		buttonClick = false;
 		//}
@@ -153,8 +153,8 @@ public class PauseMenu : MonoBehaviour
 	
 	// button yes.onclick function
 	void btnYes() {
-		// TODO : Set Main menu screen here when implemented
 		Time.timeScale = timescale;
+		paused = false;
 		confirm.SetActive(false);
 		menu.SetActive(false);
 

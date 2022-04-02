@@ -730,6 +730,11 @@ MonoBehaviour:
   Options: {fileID: 0}
   back: {fileID: 0}
   paused: 0
+  exemptScenes:
+  - MainMenu
+  - LevelSelection
+  - Options
+  - Credits
 --- !u!114 &1837158548763368145
 MonoBehaviour:
   m_ObjectHideFlags: 0

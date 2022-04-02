@@ -33,8 +33,17 @@ public class EntangleComponent : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
+        if (PauseMenu.instance.paused || TerminalManager.instance.IsTerminalOpen()) {   // if paused or in a terminal, don't allow entanglement, and remove entangling helix
+            if (EntanglingHelix != null) {
+                Destroy(EntanglingHelix);
+                if (active != null && passives.Count == 0) { // prevents active with no passive
+                    ClearEntangled();
+                }
+            }
+            return;
+        }
+        
         Keybinds keybindInstance = Keybinds.GetInstance();
         
         // draw helixes from active to passive(s)

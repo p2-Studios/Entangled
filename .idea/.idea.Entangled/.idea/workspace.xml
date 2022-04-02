@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/AirFan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/AirFan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/PauseMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/PauseMenu.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Entanglement/EntangleComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Entanglement/EntangleComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PauseMenu/PauseMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PauseMenu/PauseMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,6 +127,7 @@
       <workItem from="1648866080986" duration="3180000" />
       <workItem from="1648882563078" duration="720000" />
       <workItem from="1648925063757" duration="2859000" />
+      <workItem from="1648937003615" duration="653000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
