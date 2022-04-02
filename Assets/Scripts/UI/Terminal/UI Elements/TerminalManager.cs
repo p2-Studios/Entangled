@@ -1,24 +1,34 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 // manages the UI components of the terminal, getting the data to display from a given Terminal object
 public class TerminalManager : MonoBehaviour {
-
+    private AudioManager audioManager;
+    private Boolean viewingFile, inTerminal, errorVisible; // state booleans
+    
+    [Space(10)]
+    [Header("Terminal UI Elements")]     
     public Button exitButton;
     public GameObject terminalWindow, localFileList, remoteFileList, errorWindow, fileButton, encryptedFileButton, unlockedFileButton;
+    
+    [Space(10)]
+    [Header("Terminal Displayers")] 
     public ImageFileDisplayer imageFileDisplayer;
     public TextFileDisplayer textFileDisplayer;
     
-    private Boolean viewingFile, inTerminal, errorVisible; // state booleans
-    //private Level level;    // level data
-    //private TerminalFile[] unlockedRemotefiles; // remote files that are unlocked (player has found flashdrive)
-    
-    private AudioManager audioManager;
-    
+    [Space(10)]
+    [Header("Flashdrive Notification")] 
+    public GameObject flashdriveNotification;
+    public Image flashDriveNotificationPanel;
+    public TextMeshProUGUI flashDriveNotificationHeader, flashDriveNotificationBody;
+    public float flashDriveNotifyTime = 3.0f;
+    public float flashdriveNotifyFade = 1.0f;
+
     public static TerminalManager instance;
-    
+
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -29,6 +39,7 @@ public class TerminalManager : MonoBehaviour {
         CloseSubWindows();
         
         terminalWindow.SetActive(false);
+        flashdriveNotification.SetActive(false);
     }
 
     void Start() {
@@ -253,6 +264,22 @@ public class TerminalManager : MonoBehaviour {
         yield return new WaitForSecondsRealtime(3.0f);
         errorWindow.SetActive(false);
         errorVisible = false;
+    }
+
+    public void FlashDriveFound() {
+        StartCoroutine(DisplayFlashDriveNotification());
+    }
+    
+    IEnumerator DisplayFlashDriveNotification() {
+        flashdriveNotification.SetActive(true);
+        yield return new WaitForSeconds(flashDriveNotifyTime);
+        Color colorToFadeTo = new Color (1f, 1f, 1f, 0f);
+        flashDriveNotificationPanel.CrossFadeColor(colorToFadeTo, flashdriveNotifyFade, true, true);
+        flashDriveNotificationHeader.CrossFadeColor(colorToFadeTo, flashdriveNotifyFade, true, true);
+        flashDriveNotificationBody.CrossFadeColor(colorToFadeTo, flashdriveNotifyFade, true, true);
+        yield return new WaitForSeconds(flashdriveNotifyFade);
+        flashdriveNotification.SetActive(false);
+        yield return null;
     }
 
 }

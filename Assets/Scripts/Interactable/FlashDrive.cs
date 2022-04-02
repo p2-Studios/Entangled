@@ -8,6 +8,7 @@ public class FlashDrive : Interactable {
     public TerminalFile file;
     public UniqueId UID;
     private Level level;
+    private bool collected;
 
     private void Awake() {
         level = FindObjectOfType<Level>();
@@ -18,6 +19,7 @@ public class FlashDrive : Interactable {
     }
 
     public void Collect() {
+        collected = true;
         level.FlashDriveFound(this); 
     }
 
@@ -28,5 +30,14 @@ public class FlashDrive : Interactable {
     protected override void Interact() {
         base.Interact();
         Collect();
+        TerminalManager.instance.FlashDriveFound();
+    }
+
+    public void SetCollected(bool c) {
+        collected = c;
+    }
+    
+    public bool IsCollectd() {
+        return collected;
     }
 }

@@ -37,7 +37,10 @@ public class Level : MonoBehaviour {
             //collectedOrbs = GetCollectedOrbsFromIDS(data.foundOrbs);
 
             foreach (FlashDrive f in foundFlashDrives) {    // disable already found flashdrives
-                if (flashDrives.Contains(f)) f.gameObject.transform.position = new Vector3(1000, 1000, 1000);   // move far away to make inaccessible
+                if (flashDrives.Contains(f)) {
+                    f.gameObject.transform.position = new Vector3(1000, 1000, 1000);   // move far away to make inaccessible
+                    f.SetCollected(true);
+                }
             }
         }
     }
@@ -46,6 +49,14 @@ public class Level : MonoBehaviour {
         SaveSystem.SaveLevel(this);
     }
 
+    public int[] GetFlashDriveCounts() {
+        if (flashDrives != null && foundFlashDrives != null) {
+            return new int[] {flashDrives.Length, foundFlashDrives.Count};
+        } else {
+            return new int[] {0, 0};
+        }
+    }
+    
     public ArrayList GetFoundFlashDrivesFromIDs(string[] ids) {
         ArrayList found = new ArrayList();
         foreach (String s in ids) {
