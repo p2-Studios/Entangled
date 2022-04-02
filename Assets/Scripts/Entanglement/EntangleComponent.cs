@@ -233,6 +233,7 @@ public class EntangleComponent : MonoBehaviour {
     }
 
     public void Unentangle(Entanglable e) {
+        if (e == null) return;
         RemoveActive(e);
         RemovePassive(e);
     }
@@ -242,6 +243,7 @@ public class EntangleComponent : MonoBehaviour {
     /// </summary>
     /// <param name="removed">A currently existing Entanglable object to remove from list.</param>
     public void RemovePassive(Entanglable e) {
+        if (e == null) return;
         if (passives.Contains(e)) {
             passives.Remove(e);
             Destroy(EntangledHelix);
@@ -254,6 +256,7 @@ public class EntangleComponent : MonoBehaviour {
     /// Loops through passive objects and applies force (if force is applied to current active object).
     /// </summary>
     private void OnActiveMoved(Entanglable e, Vector2 force) {
+        if (e == null) return;
         if (e == active) {
             foreach (Entanglable passive in passives) {
                 // Loop through passive objects and apply force
