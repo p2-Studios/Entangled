@@ -6,14 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Managers/Managers.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Managers/Managers.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/PauseMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/PauseMenu.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menus/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menus/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level8.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level8.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level9.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level9.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level9d.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level9d.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/SceneTransitionTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/SceneTransitionTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Levels/FinaleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Levels/FinaleManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/AirFan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/AirFan.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
@@ -132,7 +125,7 @@
       <workItem from="1648745883188" duration="6495000" />
       <workItem from="1648866080986" duration="3180000" />
       <workItem from="1648882563078" duration="720000" />
-      <workItem from="1648925063757" duration="1274000" />
+      <workItem from="1648925063757" duration="2859000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

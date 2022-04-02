@@ -120,7 +120,7 @@ namespace Environment {
             inRange.Add(other.gameObject);
             if (!IsActivated()) return;
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
-            if (rb.Equals(null)) return;
+            if (rb == null) return;
             ApplyFanVelocity(other, rb,(transform.up * rb.mass));
         }
 
@@ -133,6 +133,7 @@ namespace Environment {
         }
 
         private void ApplyFanVelocity(Collider2D other, Rigidbody2D rb, Vector2 velocity) {
+            if (rb == null) return;
             Entanglable e = other.gameObject.GetComponent<Entanglable>();
             if (e != null) {    // entanglable
                 e.ApplyVelocity(velocity, false);
