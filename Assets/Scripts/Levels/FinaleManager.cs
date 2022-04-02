@@ -9,11 +9,14 @@ public class FinaleManager : MonoBehaviour {
     public static Vector3 playerPosition = Vector3.zero;
     
     private void Awake() {
+
         if (instance == null) {
             instance = this;
         } else {
             Destroy(gameObject);
         }
+        
+        DontDestroyOnLoad(this);
     }
     
     private void OnEnable() {
@@ -21,6 +24,11 @@ public class FinaleManager : MonoBehaviour {
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        // if the finale manager is brought to a non-level9 scene, destroy it
+        if (!scene.name.Contains("Level9")) {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            Destroy(gameObject);
+        }
         Player player = FindObjectOfType<Player>();
         if (player != null && playerPosition != Vector3.zero) {
             player.rigidbody.position = playerPosition;
