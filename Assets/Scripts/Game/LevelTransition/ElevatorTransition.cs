@@ -34,7 +34,6 @@ public class ElevatorTransition : MonoBehaviour {
     }
 
     private void LoadNextScene() {
-        Debug.Log(levelToLoad);
         Scene scene = SceneManager.GetSceneByName(levelToLoad);
         SceneManager.LoadSceneAsync(levelToLoad);
         if (!scene.IsValid()) { // check if scene was found

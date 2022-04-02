@@ -21,7 +21,6 @@ public class Elevator : MonoBehaviour {
         ElevatorTransition.levelToLoad = nextLevel;
         SaveSystem.SetGameDataLevel(nextLevelNum);
         SceneManager.LoadSceneAsync("ElevatorTransition");
-        print(SaveSystem.LoadGameData().GetUnlockedLevel());
     }
 
     // open the elevator

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3501149506430902348}
   - component: {fileID: 7419897541711876239}
   m_Layer: 0
-  m_Name: file_2_2
+  m_Name: file_2_2_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,11 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encrypted: 0
-  fileName: technology_nomenclature_complaint.txt
-  body: "E1: personally, I am very offended that they went with the name Entangled
-    for the suits. IT DOESN\u2019T HAVE ANYTHING TO DO WITH ACTUAL QUANTUM PHYSICS.\r\n\nE2:
-    You know that doesn\u2019t matter to marketing. It\u2019s just a nice, short,
-    catchy description. Think of it as just \u2026 an evocative metaphor. \r\nAt
-    least one person who hears about it will search it up on a wiki and learn about
-    actual quantum entanglement, if that makes you feel better.\r\n\nE1: and then
-    fail to understand its complexities. I\u2019m going to be mad about this FOREVER."
+  fileName: Technology Nomenclature Complaint
+  body: "Personally, I am very offended that they went with the name \"Entangled\"
+    for the suits. IT DOESN\u2019T HAVE ANYTHING TO DO WITH ACTUAL QUANTUM PHYSICS.\r"

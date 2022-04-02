@@ -21,7 +21,6 @@ public class AudioManager : MonoBehaviour {
         if (instance == null) {
             instance = this;
         } else {
-            print("DESTROYING");
             Destroy(gameObject);
             return;
         }
@@ -37,14 +36,12 @@ public class AudioManager : MonoBehaviour {
 
         String sceneName = SceneManager.GetActiveScene().name;
         SetMusicType(sceneName);
-        print("Awake(): CHANGING SONG");
         ChangeMusic();
     }
     
 
     private void Update() {
         if (musicPlayer != null && !musicPlayer.isPlaying) {    // start new song if last song has ended
-            print("Update(): CHANGING SONG");
             ChangeMusic();
             
         }
@@ -103,10 +100,8 @@ public class AudioManager : MonoBehaviour {
     }
     
     private void TestAndChangeMusic(String type) {
-        print(_musicType + " | " + type);
         if (!_musicType.Equals(type)) { 
             _musicType = type;
-            print("TestAndChangeMusic(): CHANGING SONG");
             ChangeMusic();
         }
     }
