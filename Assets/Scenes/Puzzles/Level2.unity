@@ -5987,22 +5987,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7929462300034805086, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
-      propertyPath: pushStrength
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929462300034805086, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
-      propertyPath: deathAnimation
-      value: 
-      objectReference: {fileID: 2282829766038112090, guid: 40cb64ba21cb05641972bddee094e7f7, type: 3}
-    - target: {fileID: 7929462300034805086, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
-      propertyPath: respawnLocation
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929462300034805086, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
-      propertyPath: respawnAnimation
-      value: 
-      objectReference: {fileID: 2282829766038112090, guid: d55891c79403af24683d0a1e864d34bb, type: 3}
-    - target: {fileID: 7929462300034805086, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
       propertyPath: respawnTransform
       value: 
       objectReference: {fileID: 459540851}
