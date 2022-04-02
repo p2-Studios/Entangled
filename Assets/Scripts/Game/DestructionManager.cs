@@ -29,6 +29,7 @@ public class DestructionManager : MonoBehaviour {
             destroyable.Respawn();
         }
     }
+    
 
     private IEnumerator DelayRespawn(IDestroyable destroyable, float delay) {
         yield return new WaitForSeconds(delay);
@@ -39,5 +40,14 @@ public class DestructionManager : MonoBehaviour {
     
     public static bool IsDestroyed(GameObject gameObject) {
         return gameObject == null && !ReferenceEquals(gameObject, null);
+    }
+
+    public void SetRespawnAnimation(float delay, Transform respawnAnimation, Vector3 respawnLocation) {
+        StartCoroutine(RespawnAnimation(delay, respawnAnimation, respawnLocation));
+    }
+    
+    public IEnumerator RespawnAnimation(float delay, Transform respawnAnimation, Vector3 respawnLocation) {
+        yield return new WaitForSeconds(delay);
+        Instantiate(respawnAnimation, respawnLocation, Quaternion.identity);
     }
 }

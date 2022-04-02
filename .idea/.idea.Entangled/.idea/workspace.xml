@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="" />
+    <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Animations/PlayerDestructionAnimation.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Animations/PlayerDestructionAnimation.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Animations/PlayerDestructionAnimation.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Animations/PlayerDestructionAnimation.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/DestructionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/DestructionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,6 +125,7 @@
       <workItem from="1648669571533" duration="5333000" />
       <workItem from="1648702087697" duration="1299000" />
       <workItem from="1648745883188" duration="6495000" />
+      <workItem from="1648866080986" duration="989000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

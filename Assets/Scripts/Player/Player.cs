@@ -15,7 +15,7 @@ public class Player : MonoBehaviour, IDestroyable {
     public float pushStrength = 1f;
     public SpriteRenderer spriteRenderer;
     public Animator animator;
-    public Transform deathAnimation;
+    public Transform deathAnimation, respawnAnimation;
     public LayerMask pushMask;
     public float rayHeight = 0;
 
@@ -189,6 +189,7 @@ public class Player : MonoBehaviour, IDestroyable {
     public void Destroy() {
         entangleComponent.ClearEntangled();
         Instantiate(deathAnimation, transform.position, quaternion.identity);
+        DestructionManager.instance.SetRespawnAnimation(respawnDelay - 1.01f, respawnAnimation, respawnLocation);
     }
     
     // do things that need to be done on respawning, right after the game object is set as active again
@@ -197,5 +198,5 @@ public class Player : MonoBehaviour, IDestroyable {
         ResetPlayer();
         gameObject.transform.position = respawnLocation; // move the object to respawnTransform
     }
-    
+
 }

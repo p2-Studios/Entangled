@@ -52,10 +52,11 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   grabDistance: 0.5
-  pushStrength: 0.8
+  pushStrength: 0.85
   spriteRenderer: {fileID: 7411563505412239111}
   animator: {fileID: 6269613174981301470}
-  deathAnimation: {fileID: 2282829766038112090, guid: d55891c79403af24683d0a1e864d34bb, type: 3}
+  deathAnimation: {fileID: 2282829766038112090, guid: 40cb64ba21cb05641972bddee094e7f7, type: 3}
+  respawnAnimation: {fileID: 2282829766038112090, guid: d55891c79403af24683d0a1e864d34bb, type: 3}
   pushMask:
     serializedVersion: 2
     m_Bits: 630
@@ -67,7 +68,7 @@ MonoBehaviour:
   showEntangledHelix: 1
   respawnTransform: {fileID: 0}
   respawnLocation: {x: 0, y: 0, z: 0}
-  respawnDelay: 1
+  respawnDelay: 2
   worldVelocity: {x: 0, y: 0}
   pushedObject: {fileID: 0}
   facingRight: 1
