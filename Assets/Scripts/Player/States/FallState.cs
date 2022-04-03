@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.CustomKeybinds;
 using UnityEngine;
 
 // tutorials used: https://youtu.be/OtUKsjPWzO8
@@ -15,6 +16,8 @@ public class FallState : BaseState {
     private bool grounded;
     private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
     private int objectsLayer = 1 << 9;   // Bitwise shift for ground layer number (should be 6)
+    bool jcheck = false;
+
 
     private float horzInput;
 
@@ -22,12 +25,21 @@ public class FallState : BaseState {
     
     protected private bool touchingBox;
 
-    public FallState(PlayerStateMachine playerStateMachine,Player player, AudioManager audioManager) : base("Jumping", playerStateMachine,player){
+    public void Initialize(string name, PlayerStateMachine psm, Player player,AudioManager am){
+        this.Name = name;
+        playerSM = psm;
+        Player = player;
+        touchingBox = false;    // checks if player is touching a pushable object
+        this.audioManager = am;
+        feetCollider = Player.GetComponent<CapsuleCollider2D>();
+    }
+
+    /*public FallState(PlayerStateMachine playerStateMachine,Player player, AudioManager audioManager) : base("Jumping", playerStateMachine,player){
         playerSM = (PlayerStateMachine)playerStateMachine;
         touchingBox = false;
         this.audioManager = audioManager;
         feetCollider = Player.GetComponent<CapsuleCollider2D>();
-    }
+    }*/
 
     // upon entering state, apply upward velocity to achieve jump
     public override void Enter(){
@@ -35,13 +47,36 @@ public class FallState : BaseState {
         playerSM.player.SetAnimatorState("falling");
         //audioManager.Play("movement_jump");
         horzInput = 0f;
+        jcheck = true;
     }
+
+
+    //coroutine for checking if the player can still jump while falling
+    void JumpLeniencyCheck(float time){
+        StartCoroutine(JumpLeniency(time));
+    }
+
+    IEnumerator JumpLeniency(float waitTime){
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(waitTime);
+        jcheck = false;
+    }
+
 
     // Switch states if grounded
     public override void UpdateLogic(){
         base.UpdateLogic();
+
+        // check to see if player is allowed to jump via coroutine
+        if(jcheck){
+            if(Input.GetKeyDown(Keybinds.GetInstance().jump)){
+                playerSM.ChangeState(playerSM.jumpState);
+            }
+            JumpLeniencyCheck(0.1f);   //change paramater to adjust wait time
+        }
+            
+
         horzInput = Input.GetAxis("Horizontal");
-        
         if(grounded)
             playerSM.ChangeState(playerSM.idleState);
     }

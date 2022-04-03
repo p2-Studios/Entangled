@@ -12,9 +12,9 @@ public class MoveState : Grounded {
     float moveInput;
 
     // Constructor
-    public MoveState(PlayerStateMachine playerSM,Player player, AudioManager audioManager) : base("Moving", playerSM, player){
+    /*public MoveState(PlayerStateMachine playerSM,Player player, AudioManager audioManager) : base("Moving", playerSM, player){
         this.audioManager = audioManager;
-    }
+    }*/
 
     public override void Enter(){
         base.Enter();

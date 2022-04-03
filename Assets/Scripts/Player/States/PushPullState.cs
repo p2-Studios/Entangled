@@ -8,15 +8,26 @@ public class PushPullState : BaseState {
     protected private PlayerStateMachine playerSM;
     private float horzInput;
     private float objMass;
+    private CapsuleCollider2D feetCollider;
 
+    private int groundLayer = 1 << 6;
 
+    bool gcheck = false;
+
+    public void Initialize(string name, PlayerStateMachine psm, Player player,AudioManager am){
+        this.Name = name;
+        playerSM = psm;
+        Player = player;
+        feetCollider = Player.GetComponent<CapsuleCollider2D>();
+        this.audioManager = am;
+    }
 
     // Constructor
-    public PushPullState(PlayerStateMachine playerStateMachine,Player player,AudioManager audioManager) : base("Pulling", playerStateMachine, player){
+    /*public PushPullState(PlayerStateMachine playerStateMachine,Player player,AudioManager audioManager) : base("Pulling", playerStateMachine, player){
         playerSM = (PlayerStateMachine)playerStateMachine;
         this.audioManager = audioManager;
         Player = player;
-    }
+    }*/
 
     // Enter calls
     public override void Enter(){
@@ -47,6 +58,29 @@ public class PushPullState : BaseState {
             Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
             playerSM.ChangeState(playerSM.idleState);
         }
+        // check for if player is not touching the ground while pushing box
+        if(!(feetCollider.IsTouchingLayers(groundLayer))){
+            GroundLeniencyCheck(1f);  //change paramater to adjust wait time
+        }
+        else{
+            gcheck = false;
+        }
+    }
+
+    //ground check coroutine
+    void GroundLeniencyCheck(float time){
+        StartCoroutine(GroundLeniency(time));
+        if(gcheck){
+            print("detach box");
+            Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
+            playerSM.ChangeState(playerSM.idleState);
+        } 
+    }
+
+    IEnumerator GroundLeniency(float waitTime){
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(waitTime);
+        gcheck = true;
     }
 
     // Apply velocity to player for movement

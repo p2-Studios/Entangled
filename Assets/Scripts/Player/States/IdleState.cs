@@ -9,11 +9,12 @@ using UnityEngine;
 // Inherits Grounded state
 public class IdleState : Grounded {
 
+
     // Constructor
-    public IdleState(PlayerStateMachine playerSM, Player player, AudioManager audioManager) : base("Idle", playerSM,
+    /*public IdleState(PlayerStateMachine playerSM, Player player, AudioManager audioManager) : base("Idle", playerSM,
         player) {
         this.audioManager = audioManager;
-    }
+    }*/
 
     public override void Enter(){
         base.Enter();
