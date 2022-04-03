@@ -9,6 +9,8 @@ using Random = System.Random;
 public class AudioManager : MonoBehaviour {
     
     public Sound[] sounds;
+    public Sound[] music;
+    public Sound[] uiSounds;
     private ArrayList loopingSounds;
     private Sound currentSong;
     private AudioSource musicPlayer;
@@ -174,5 +176,20 @@ public class AudioManager : MonoBehaviour {
             Debug.Log(sound.ToString());
         }
         return loopingSounds.Contains(s);
+    }
+
+    public void InitializeSounds() {
+        InitializeSoundGroup(sounds);
+        InitializeSoundGroup(music);
+        InitializeSoundGroup(uiSounds);
+    }
+
+    public void InitializeSoundGroup(Sound[] soundGroup) {
+        foreach (Sound s in soundGroup) {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+        }
     }
 }

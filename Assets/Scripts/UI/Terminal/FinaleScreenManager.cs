@@ -92,9 +92,9 @@ public class FinaleScreenManager : MonoBehaviour {
     private IEnumerator UplinkBar() {
         float failPercent = flashDriveCounts[1] * 0.25f;
 
-        uplinkText.color = Color.green;
+        uplinkText.color = Color.magenta;
         uplinkText.fontSize = 20;
-        uplinkText.text = "TRANSMITTING DATA TO SURFACE STATION...";
+        uplinkText.text = "SENDING DATA TO SURFACE STATION...";
         progressBarText.text = "0%";
         
         float percent = 0;
@@ -133,6 +133,7 @@ public class FinaleScreenManager : MonoBehaviour {
         bar.value = 0f;
         while (percent < failPercent) {
             percent += Random.Range(0.001f, 0.01f);
+            if (percent > failPercent) percent = failPercent;
             bar.value = percent;
             progressBarText.text = Math.Round(percent*100.0, 2) + "%";
             yield return new WaitForSeconds(0.05f);
@@ -142,5 +143,27 @@ public class FinaleScreenManager : MonoBehaviour {
         uplinkText.text = "TRANSMISSION FAILED: FATAL ERROR";
         yield return new WaitForSeconds(5);
         // do camera transition stuff
+        StartCoroutine(FinishTransmission());
+    }
+    
+    private IEnumerator FinishTransmission() {
+        float percent = 0.9833f;
+        uplinkText.color = Color.cyan;
+        uplinkText.fontSize = 18;
+        uplinkText.text = "TRANSMITTING DATA TO LOW-ORBIT SATELLITE...";
+        Slider bar = progressBar.GetComponent<Slider>();
+        bar.value = 0f;
+        while (percent < 1) {
+            percent += Random.Range(0.0001f, 0.001f);
+            if (percent > 1f) {
+                percent = 1f;
+            }
+            bar.value = percent;
+            progressBarText.text = Math.Round(percent*100.0, 2) + "%";
+            yield return new WaitForSeconds(0.25f);
+        }
+        yield return new WaitForSeconds(1.0f);
+        uplinkText.color = Color.green;
+        uplinkText.text = "TRANSMISSION DELIVERED TO EARTH.";
     }
 }
