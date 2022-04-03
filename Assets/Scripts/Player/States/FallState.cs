@@ -50,6 +50,8 @@ public class FallState : BaseState {
         jcheck = true;
     }
 
+
+    //coroutine for checking if the player can still jump while falling
     void JumpLeniencyCheck(float time){
         StartCoroutine(JumpLeniency(time));
     }
@@ -70,7 +72,7 @@ public class FallState : BaseState {
             if(Input.GetKeyDown(Keybinds.GetInstance().jump)){
                 playerSM.ChangeState(playerSM.jumpState);
             }
-            JumpLeniencyCheck(0.1f);   //passed value is the window of time jumping is allowed
+            JumpLeniencyCheck(0.1f);   //change paramater to adjust wait time
         }
             
 
