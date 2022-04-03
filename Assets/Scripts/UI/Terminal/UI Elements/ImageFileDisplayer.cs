@@ -12,7 +12,7 @@ public class ImageFileDisplayer : FileDisplayer {
 
     public void Awake() {
         image = imageField.GetComponent<Image>();
-        btnClose.onClick.AddListener(Close);
+        btnClose.onClick.AddListener(CloseWithButton);
     }
     
     public void Open(ImageFile file) {
@@ -20,6 +20,10 @@ public class ImageFileDisplayer : FileDisplayer {
         descriptionField.text = file.GetDescription();
         image.sprite = file.GetImage();
         SetVisible(true);
+    }
+    public void CloseWithButton() {
+        FindObjectOfType<AudioManager>().Play("terminal_click");
+        Close();
     }
 
     public override void Close() {

@@ -46,7 +46,7 @@ public class TerminalManager : MonoBehaviour {
         //sentences = new Queue<string>();
          inTerminal = viewingFile = false;
         audioManager = FindObjectOfType<AudioManager>();
-        exitButton.onClick.AddListener(CloseTerminal);
+        exitButton.onClick.AddListener(CloseTerminalWithButton);
     }
 
     private void Update() {
@@ -68,6 +68,12 @@ public class TerminalManager : MonoBehaviour {
         LoadFiles(t);
     }
 
+    // closes the terminal via exit button
+    public void CloseTerminalWithButton() {
+        audioManager.Play("terminal_click");
+        CloseTerminal();
+    }
+    
     // closes the entire terminal
     public void CloseTerminal() {
         ClearFiles();
@@ -216,6 +222,7 @@ public class TerminalManager : MonoBehaviour {
     // opens the given text file, displaying it on the textFileDisplayer
     public void OpenTextFile(TextFile file) {
         CloseFileViewers();
+        audioManager.Play("terminal_click");
         viewingFile = true;
         textFileDisplayer.Open(file);
     }
@@ -223,6 +230,7 @@ public class TerminalManager : MonoBehaviour {
     // opens the given image file, displaying it on the imageFileDisplayer
     public void OpenImageFile(ImageFile file) {
         CloseFileViewers();
+        audioManager.Play("terminal_click");
         viewingFile = true;
         imageFileDisplayer.Open(file);
     }

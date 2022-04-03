@@ -8,11 +8,9 @@ using Random = System.Random;
 // tutorial: https://www.youtube.com/watch?v=6OT43pvUyfY
 public class AudioManager : MonoBehaviour {
     
+    public Sound[] miscSounds, music, uiSounds, environmentSounds, playerSounds, objectSounds;
     public Sound[] sounds;
-    public Sound[] music;
-    public Sound[] uiSounds;
-    private ArrayList loopingSounds;
-    private Sound currentSong;
+    public ArrayList allSounds;
     private AudioSource musicPlayer;
     private static string _musicType = "menu";
 
@@ -27,14 +25,7 @@ public class AudioManager : MonoBehaviour {
             return;
         }
         
-        foreach (Sound s in sounds) {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-        }
-
-        loopingSounds = new ArrayList();
+        InitializeSounds();
 
         String sceneName = SceneManager.GetActiveScene().name;
         SetMusicType(sceneName);
@@ -132,33 +123,7 @@ public class AudioManager : MonoBehaviour {
     public void Play(Sound sound) {
         sound.source.Play();
     }
-
-    public void StartLoopingSound(String soundName, float delay) {
-        if (delay < 0.01) { // don't allow extremely short delays
-            Debug.LogWarning("Looping delays less than 0.01s not allowed.");
-            return;
-        }
-        
-        Sound s = FetchSound(soundName);
-        if (s == null) return;
-
-        loopingSounds.Add(s);
-        StartCoroutine(LoopSound(s, delay));
-    }
-
-    public void StopLoopingSound(String soundName) {
-        Sound s = FetchSound(soundName);
-        if (s == null) return;
-        loopingSounds.Remove(s);
-    }
-
-    private IEnumerator LoopSound(Sound sound, float delay) {
-        while (loopingSounds.Contains(sound)) {
-            Play(sound);
-            yield return new WaitForSeconds(delay);
-        }
-    }
-
+    
     private Sound FetchSound(String soundName) {
         Sound s = Array.Find(sounds, sound => sound.name == soundName);
         if (s == null) {
@@ -169,19 +134,15 @@ public class AudioManager : MonoBehaviour {
         return s;
     }
 
-    public Boolean IsLooping(String soundName) {
-        Sound s = FetchSound(soundName);
-        if (s == null) return false;
-        foreach (var sound in loopingSounds) {
-            Debug.Log(sound.ToString());
-        }
-        return loopingSounds.Contains(s);
-    }
-
     public void InitializeSounds() {
-        InitializeSoundGroup(sounds);
+        allSounds = new ArrayList();
+        InitializeSoundGroup(miscSounds);
         InitializeSoundGroup(music);
         InitializeSoundGroup(uiSounds);
+        InitializeSoundGroup(environmentSounds);
+        InitializeSoundGroup(playerSounds);
+        InitializeSoundGroup(objectSounds);
+        sounds = (Sound[]) allSounds.ToArray(typeof(Sound));    // put all of the sounds into an array
     }
 
     public void InitializeSoundGroup(Sound[] soundGroup) {
@@ -190,6 +151,7 @@ public class AudioManager : MonoBehaviour {
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+            allSounds.Add(s);
         }
     }
 }
