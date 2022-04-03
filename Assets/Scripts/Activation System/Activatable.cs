@@ -10,6 +10,9 @@ namespace Activation_System {
         protected bool activated;
         public bool requireAllActivators = false; // TODO: Keep 'requireAllActivators'? 
         public bool activateByDefault;
+
+        public string activateSound, deactivateSound;
+        
         //public bool invertable; // if invertable, being activated will turn it off, and vice versa
 
         public Activatable() {
@@ -39,22 +42,12 @@ namespace Activation_System {
             }
         }
 
-        public virtual void Activate(float timer) {
-            // TODO: Wait for timer
-            Activate();
-        }
-
         public virtual void Deactivate() {
             if (requireAllActivators) {
                 if (AreAllActivatorsDeactivated()) activated = false;
             } else {
                 activated = false;
             }
-        }
-
-        public virtual void Deactivate(float timer) {
-            // TODO: Wait for timer
-            Deactivate();
         }
 
         public virtual void ToggleState() {

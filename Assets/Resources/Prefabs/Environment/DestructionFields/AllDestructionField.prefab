@@ -56,6 +56,8 @@ MonoBehaviour:
   animator: {fileID: 3526631541760153691}
   activators: []
   glowLight: {fileID: 5130520610627242475}
+  deathSoundPlayer: object_destroyed
+  deathSoundObject: object_destroyed
 --- !u!212 &3526631541760153690
 SpriteRenderer:
   m_ObjectHideFlags: 0

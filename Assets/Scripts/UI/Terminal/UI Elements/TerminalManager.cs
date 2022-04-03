@@ -223,6 +223,7 @@ public class TerminalManager : MonoBehaviour {
     public void OpenTextFile(TextFile file) {
         CloseFileViewers();
         audioManager.Play("terminal_click");
+        audioManager.PlayDelayed("terminal_open_file", 0.1f);
         viewingFile = true;
         textFileDisplayer.Open(file);
     }
@@ -231,6 +232,7 @@ public class TerminalManager : MonoBehaviour {
     public void OpenImageFile(ImageFile file) {
         CloseFileViewers();
         audioManager.Play("terminal_click");
+        audioManager.PlayDelayed("terminal_open_file", 0.1f);
         viewingFile = true;
         imageFileDisplayer.Open(file);
     }
@@ -262,6 +264,7 @@ public class TerminalManager : MonoBehaviour {
     }
 
     public void DisplayError() {
+        audioManager.Play("terminal_error");
         if (!errorVisible) StartCoroutine(ErrorDisplay());
     }
     

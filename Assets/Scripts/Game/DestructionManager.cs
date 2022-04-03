@@ -42,12 +42,13 @@ public class DestructionManager : MonoBehaviour {
         return gameObject == null && !ReferenceEquals(gameObject, null);
     }
 
-    public void SetRespawnAnimation(float delay, Transform respawnAnimation, Vector3 respawnLocation) {
-        StartCoroutine(RespawnAnimation(delay, respawnAnimation, respawnLocation));
+    public void SetRespawnAnimation(float delay, Transform respawnAnimation, Vector3 respawnLocation, string respawnSound) {
+        StartCoroutine(RespawnAnimation(delay, respawnAnimation, respawnLocation, respawnSound));
     }
     
-    public IEnumerator RespawnAnimation(float delay, Transform respawnAnimation, Vector3 respawnLocation) {
+    public IEnumerator RespawnAnimation(float delay, Transform respawnAnimation, Vector3 respawnLocation, string respawnSound) {
         yield return new WaitForSeconds(delay);
+        FindObjectOfType<AudioManager>().Play(respawnSound);
         Instantiate(respawnAnimation, respawnLocation, Quaternion.identity);
     }
 }

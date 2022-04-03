@@ -6,8 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activators/Pressure_Pad.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activators/Pressure_Pad.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/DestructionFields/AllDestructionField.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/DestructionFields/AllDestructionField.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/DestructionFields/ObjectDestructionField.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/DestructionFields/ObjectDestructionField.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/DestructionFields/PlayerHazard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/DestructionFields/PlayerHazard.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Managers/AudioManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Managers/AudioManager.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Managers/TerminalManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Managers/TerminalManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menus/Options.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menus/Options.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Testing/Testing_Terminal.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Testing/Testing_Terminal.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Activation System/Activatable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Activation System/Activatable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Activation System/Activator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Activation System/Activator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/AirFan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/AirFan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/Activator/PressurePad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/Activator/PressurePad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/DestructionFields/DestructionField.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/DestructionFields/DestructionField.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/DestructionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/DestructionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerStateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sound/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/AudioManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Terminal/UI Elements/ImageFileDisplayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Terminal/UI Elements/ImageFileDisplayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Terminal/UI Elements/TerminalManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Terminal/UI Elements/TerminalManager.cs" afterDir="false" />
@@ -41,6 +56,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/TextEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Environment/AutomaticLights.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -130,7 +147,7 @@
       <workItem from="1648866080986" duration="3180000" />
       <workItem from="1648882563078" duration="720000" />
       <workItem from="1648925063757" duration="2859000" />
-      <workItem from="1648937003615" duration="12352000" />
+      <workItem from="1648937003615" duration="19494000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

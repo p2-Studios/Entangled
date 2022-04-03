@@ -421,6 +421,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6896583114416698834, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
+      propertyPath: playerSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896583114416698834, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
+      propertyPath: playerSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4519420b266ba8c439556a2729118d5f, type: 3}
+    - target: {fileID: 6896583114416698834, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
+      propertyPath: playerSounds.Array.data[0].name
+      value: player_respawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896583114416698834, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
+      propertyPath: playerSounds.Array.data[0].volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7079624422336045898, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0

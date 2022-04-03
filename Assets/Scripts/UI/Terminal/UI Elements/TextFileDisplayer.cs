@@ -7,9 +7,11 @@ using UnityEngine.UIElements;
 
 public class TextFileDisplayer : FileDisplayer {
     public TextMeshProUGUI textField;
+    private AudioManager audioManager;
 
     private void Awake() {
         btnClose.onClick.AddListener(CloseWithButton);
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     public void Open(TextFile file) {
@@ -19,7 +21,8 @@ public class TextFileDisplayer : FileDisplayer {
     }
     
     public void CloseWithButton() {
-        FindObjectOfType<AudioManager>().Play("terminal_click");
+        audioManager.Play("terminal_click");
+        audioManager.PlayDelayed("terminal_close_file", 0.1f);
         Close();
     }
 

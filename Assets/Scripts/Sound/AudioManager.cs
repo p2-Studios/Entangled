@@ -104,22 +104,17 @@ public class AudioManager : MonoBehaviour {
         if (source != null) source.PlayOneShot(source.clip);
     }
 
+    public void PlayDelayed(string soundName, float delay) {
+        AudioSource source = GetSource(soundName);
+        if (source != null) source.PlayDelayed(delay);
+    }
+
     public AudioSource GetSource(string soundName) {
         Sound s = FetchSound(soundName);
         if (s == null) return null;
         return s.source;
     }
 
-    public void PlayLooping(string soundName) {
-        Sound s = FetchSound(soundName);
-        if (s == null) return;
-        if (s.source == null) return;
-
-        s.source.loop = true;
-        s.source.Play();
-    }
-
-    
     public void Play(Sound sound) {
         sound.source.Play();
     }

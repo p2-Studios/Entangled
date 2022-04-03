@@ -177,7 +177,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d54f276fa14d28b24c94bfb2937cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateSound: pressure_pad_activate
+  deactivateSound: pressure_pad_deactivate
   requiredMass: 1
+  stayActivated: 0
   activatables: []
   triggerers:
   - Player

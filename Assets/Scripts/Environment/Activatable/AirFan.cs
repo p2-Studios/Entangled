@@ -105,7 +105,7 @@ namespace Environment {
         // it leaves the trigger area. This makes it stay at the top of the fan's reach without bouncing a few times 
         // before coming to an equilibrium
         private void OnTriggerExit2D(Collider2D other) {
-            inRange.Remove(other.gameObject);
+            if (inRange.Contains(other.gameObject)) inRange.Remove(other.gameObject);
             if (!IsActivated()) return;
             if (!transform.rotation.Equals(Quaternion.identity)) return;    // only when fan is vertical
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();

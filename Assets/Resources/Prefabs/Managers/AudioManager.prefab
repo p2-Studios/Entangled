@@ -43,12 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57fd885470aa7841a85839b0ee6760e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miscSounds:
-  - name: entangle_object
-    clip: {fileID: 8300000, guid: 62d2028050aef9a4fb79999da74a4087, type: 3}
-    source: {fileID: 0}
-    volume: 1
-    pitch: 1
+  miscSounds: []
   music:
   - name: music_3
     clip: {fileID: 8300000, guid: 6f36b010469ad46408f1e670748a3b9b, type: 3}
@@ -71,57 +66,72 @@ MonoBehaviour:
     source: {fileID: 0}
     volume: 1
     pitch: 1
+  - name: terminal_open_file
+    clip: {fileID: 8300000, guid: 94c81296fab03da4dac21e361c235473, type: 3}
+    source: {fileID: 0}
+    volume: 0.25
+    pitch: 1
+  - name: terminal_close_file
+    clip: {fileID: 8300000, guid: cb093a7ab9f16cd40bab7d3bbaafcf72, type: 3}
+    source: {fileID: 0}
+    volume: 0.25
+    pitch: 1
+  - name: terminal_error
+    clip: {fileID: 8300000, guid: 73afb0d254729ea418cade3561154357, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
   environmentSounds:
   - name: gate_open
     clip: {fileID: 8300000, guid: 8d10dce21ad257d488275c8e2db56cbb, type: 3}
     source: {fileID: 0}
-    volume: 1
-    pitch: 1
-  - name: gate_close
-    clip: {fileID: 8300000, guid: 8d10dce21ad257d488275c8e2db56cbb, type: 3}
-    source: {fileID: 0}
-    volume: 1
-    pitch: 0.8
-  - name: switch_toggle
-    clip: {fileID: 8300000, guid: c3a814487bd279d4cb19fbf6d904661d, type: 3}
-    source: {fileID: 0}
-    volume: 1
-    pitch: 1
-  - name: elevator_descend
-    clip: {fileID: 8300000, guid: a873a3239ab66c743a61775d3861220a, type: 3}
-    source: {fileID: 0}
-    volume: 1
-    pitch: 1
-  playerSounds: []
-  objectSounds: []
-  sounds:
-  - name: toggleswitch_toggle
-    clip: {fileID: 8300000, guid: c3a814487bd279d4cb19fbf6d904661d, type: 3}
-    source: {fileID: 0}
-    volume: 0.053
-    pitch: 1
-  - name: object_entangled
-    clip: {fileID: 8300000, guid: 62d2028050aef9a4fb79999da74a4087, type: 3}
-    source: {fileID: 0}
-    volume: 0.025
-    pitch: 0.9
-  - name: gate_open
-    clip: {fileID: 8300000, guid: 8d10dce21ad257d488275c8e2db56cbb, type: 3}
-    source: {fileID: 0}
-    volume: 0.05
+    volume: 0.25
     pitch: 1.2
   - name: gate_close
     clip: {fileID: 8300000, guid: 8d10dce21ad257d488275c8e2db56cbb, type: 3}
     source: {fileID: 0}
-    volume: 0.05
+    volume: 0.25
     pitch: 0.8
-  - name: elevator_descend
-    clip: {fileID: 8300000, guid: a873a3239ab66c743a61775d3861220a, type: 3}
+  - name: toggleswitch_toggle
+    clip: {fileID: 8300000, guid: c3a814487bd279d4cb19fbf6d904661d, type: 3}
     source: {fileID: 0}
-    volume: 0.1
+    volume: 0.2
     pitch: 1
   - name: elevator_descend
     clip: {fileID: 8300000, guid: a873a3239ab66c743a61775d3861220a, type: 3}
     source: {fileID: 0}
+    volume: 0.25
+    pitch: 1
+  - name: pressure_pad_activate
+    clip: {fileID: 8300000, guid: 1ec1b429283c2e74f97da3b8ab6a5129, type: 3}
+    source: {fileID: 0}
     volume: 0.1
     pitch: 1
+  - name: pressure_pad_deactivate
+    clip: {fileID: 8300000, guid: 1ec1b429283c2e74f97da3b8ab6a5129, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 0.7
+  playerSounds:
+  - name: player_respawn
+    clip: {fileID: 8300000, guid: 4519420b266ba8c439556a2729118d5f, type: 3}
+    source: {fileID: 0}
+    volume: 0.25
+    pitch: 1
+  - name: player_death_spikes
+    clip: {fileID: 8300000, guid: 8610ad24f52950f45a88e4506edbd140, type: 3}
+    source: {fileID: 0}
+    volume: 0.25
+    pitch: 1
+  objectSounds:
+  - name: object_destroyed
+    clip: {fileID: 8300000, guid: 45905507fe185564b9801ee3d9fbb308, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
+    pitch: 0.9
+  - name: object_entangled
+    clip: {fileID: 8300000, guid: 62d2028050aef9a4fb79999da74a4087, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+  sounds: []

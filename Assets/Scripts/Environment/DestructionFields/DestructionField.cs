@@ -12,6 +12,10 @@ public class DestructionField : Activatable {
     public Activator[] activators;
     public Light2D glowLight;
 
+    private AudioManager audioManager;
+
+    public string deathSoundPlayer, deathSoundObject;
+    
     void Start() {
         foreach (Activator a in activators) {
             AddActivator(a);
@@ -22,6 +26,8 @@ public class DestructionField : Activatable {
         } else {
             Deactivate();
         }
+
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     public override void Activate() {
@@ -47,6 +53,7 @@ public class DestructionField : Activatable {
             }
             if (destroyPlayer) {
                 p.Kill();
+                audioManager.Play(deathSoundPlayer);
             } else {
                 p.entangleComponent.ClearEntangled();
             }
@@ -55,6 +62,7 @@ public class DestructionField : Activatable {
         if (e != null) {
             if (destroyObjects) {
                 e.Kill();
+                audioManager.Play(deathSoundObject);
             }
             if (clearEntanglement) {
                 Player pl = FindObjectOfType<Player>();

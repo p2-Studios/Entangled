@@ -135,7 +135,6 @@ public class Player : MonoBehaviour, IDestroyable {
 
 
     // Sets the animator state (int) of the player's animator, to transition between animations
-    // author: Dakota
     public void SetAnimatorState(String state) {
         // 0 = idle
         // 1 = running
@@ -189,7 +188,7 @@ public class Player : MonoBehaviour, IDestroyable {
     public void Destroy() {
         entangleComponent.ClearEntangled();
         Instantiate(deathAnimation, transform.position, quaternion.identity);
-        DestructionManager.instance.SetRespawnAnimation(respawnDelay - 1.01f, respawnAnimation, respawnLocation);
+        DestructionManager.instance.SetRespawnAnimation(respawnDelay - 1.01f, respawnAnimation, respawnLocation, "player_respawn");
     }
     
     // do things that need to be done on respawning, right after the game object is set as active again

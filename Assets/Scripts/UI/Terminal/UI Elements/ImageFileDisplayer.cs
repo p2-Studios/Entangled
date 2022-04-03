@@ -8,11 +8,13 @@ public class ImageFileDisplayer : FileDisplayer {
     public GameObject imageField;
     private Image image;
     public TextMeshProUGUI descriptionField;
+    private AudioManager audioManager;
 
 
     public void Awake() {
         image = imageField.GetComponent<Image>();
         btnClose.onClick.AddListener(CloseWithButton);
+        audioManager = FindObjectOfType<AudioManager>();
     }
     
     public void Open(ImageFile file) {
@@ -22,7 +24,8 @@ public class ImageFileDisplayer : FileDisplayer {
         SetVisible(true);
     }
     public void CloseWithButton() {
-        FindObjectOfType<AudioManager>().Play("terminal_click");
+        audioManager.Play("terminal_click");
+        audioManager.PlayDelayed("terminal_close_file", 0.1f);
         Close();
     }
 

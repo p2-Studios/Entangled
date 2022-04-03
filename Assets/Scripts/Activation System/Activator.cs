@@ -9,6 +9,8 @@ namespace Activation_System
         private bool activated;
         private ActivationManager activationManager;
 
+        public string activateSound, deactivateSound;
+        
         public Activator()
         {
             activated = false;
