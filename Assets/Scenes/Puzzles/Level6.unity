@@ -326,7 +326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5358037533584696646, guid: 979ab6c0362817a40b3b85aeb4d52593, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.763
+      value: 0.451
       objectReference: {fileID: 0}
     - target: {fileID: 5358037533584696646, guid: 979ab6c0362817a40b3b85aeb4d52593, type: 3}
       propertyPath: m_LocalPosition.y
@@ -582,11 +582,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5880884689359741017, guid: 66b9207b9184bcb4395e7b977606edcf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.362
+      value: -0.714
       objectReference: {fileID: 0}
     - target: {fileID: 5880884689359741017, guid: 66b9207b9184bcb4395e7b977606edcf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.515
+      value: 6.992
       objectReference: {fileID: 0}
     - target: {fileID: 5880884689359741017, guid: 66b9207b9184bcb4395e7b977606edcf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2152,7 +2152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8536620563877625150, guid: d6e194f4d027f6e41b94b786406f7d10, type: 3}
       propertyPath: stayOpen
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536620563877625150, guid: d6e194f4d027f6e41b94b786406f7d10, type: 3}
+      propertyPath: activateByDefault
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6e194f4d027f6e41b94b786406f7d10, type: 3}
@@ -8065,11 +8069,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7813248299686965699, guid: 326db44a3a0b8c7448dcf4c827d8a105, type: 3}
       propertyPath: onDelay
-      value: 0.7
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7813248299686965699, guid: 326db44a3a0b8c7448dcf4c827d8a105, type: 3}
       propertyPath: delayFirst
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7813248299686965699, guid: 326db44a3a0b8c7448dcf4c827d8a105, type: 3}
       propertyPath: firstDelay
@@ -8354,6 +8358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutomaticLights / 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6415332240796922769, guid: 326db44a3a0b8c7448dcf4c827d8a105, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7049133664546656144, guid: 326db44a3a0b8c7448dcf4c827d8a105, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -8400,7 +8408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7813248299686965699, guid: 326db44a3a0b8c7448dcf4c827d8a105, type: 3}
       propertyPath: onDelay
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7813248299686965699, guid: 326db44a3a0b8c7448dcf4c827d8a105, type: 3}
       propertyPath: delayFirst

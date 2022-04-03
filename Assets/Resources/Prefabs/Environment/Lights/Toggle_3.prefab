@@ -76,6 +76,10 @@ PrefabInstance:
       value: 5.56
       objectReference: {fileID: 0}
     - target: {fileID: 7672983775190123211, guid: 28fbd12ed9fa6cc48b9fbc6bfe23c194, type: 3}
+      propertyPath: activateSound
+      value: light_on
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672983775190123211, guid: 28fbd12ed9fa6cc48b9fbc6bfe23c194, type: 3}
       propertyPath: activateByDefault
       value: 1
       objectReference: {fileID: 0}

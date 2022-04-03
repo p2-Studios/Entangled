@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4237bd22bf364094bb1cef817702db7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateSound: toggleswitch_toggle_on
+  deactivateSound: toggleswitch_toggle_off
   activatables: []
   indicatorLight: {fileID: 3485668168858168497}
   animator: {fileID: 429289540591911158}
@@ -137,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b4651137d4dd324ab66842fa333b57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerSound: toggleswitch_toggle
+  triggerSound: 
   toggleSwitch: {fileID: 1140764013263384902}
 --- !u!212 &5880884689359741016
 SpriteRenderer:

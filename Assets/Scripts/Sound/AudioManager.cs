@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
 // tutorial: https://www.youtube.com/watch?v=6OT43pvUyfY
 public class AudioManager : MonoBehaviour {
@@ -100,13 +100,29 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void Play(string soundName) {
-        AudioSource source = GetSource(soundName);
-        if (source != null) source.PlayOneShot(source.clip);
+        Sound sound = FetchSound(soundName);
+        if (sound != null) {
+            AudioSource source = GetSource(sound);
+            if (source != null) {
+                SetSourcePitch(source, sound);
+                source.PlayOneShot(source.clip);
+            }
+        }
     }
 
     public void PlayDelayed(string soundName, float delay) {
-        AudioSource source = GetSource(soundName);
-        if (source != null) source.PlayDelayed(delay);
+        Sound sound = FetchSound(soundName);
+        if (sound != null) {
+            AudioSource source = GetSource(sound);
+            if (source != null) {
+                SetSourcePitch(source, sound);
+                source.PlayDelayed(delay);
+            }
+        }
+    }
+
+    public void SetSourcePitch(AudioSource source, Sound s) {
+        source.pitch = Random.Range(s.pitchMin, s.pitchMax);
     }
 
     public AudioSource GetSource(string soundName) {
@@ -114,12 +130,18 @@ public class AudioManager : MonoBehaviour {
         if (s == null) return null;
         return s.source;
     }
+    
+    public AudioSource GetSource(Sound sound) {
+        if (sound == null) return null;
+        return sound.source;
+    }
 
     public void Play(Sound sound) {
         sound.source.Play();
     }
-    
+
     private Sound FetchSound(String soundName) {
+        if (soundName.Length == 0) return null;
         Sound s = Array.Find(sounds, sound => sound.name == soundName);
         if (s == null) {
             Debug.LogWarning("Error: Sound " + soundName + " not found.");

@@ -11,6 +11,9 @@ namespace Activation_System {
         public bool requireAllActivators = false; // TODO: Keep 'requireAllActivators'? 
         public bool activateByDefault;
 
+        protected bool playSound = true;
+        public float soundDelay = 0.0f;
+        
         public string activateSound, deactivateSound;
         
         //public bool invertable; // if invertable, being activated will turn it off, and vice versa
@@ -36,17 +39,25 @@ namespace Activation_System {
 
         public virtual void Activate() {
             if (requireAllActivators) {
-                if (AreAllActivatorsActivated()) activated = true;
+                if (AreAllActivatorsActivated()) {
+                    activated = true;
+                    PlaySound(activateSound);
+                }
             } else {
                 activated = true;
+                PlaySound(activateSound);
             }
         }
 
         public virtual void Deactivate() {
             if (requireAllActivators) {
-                if (AreAllActivatorsDeactivated()) activated = false;
+                if (AreAllActivatorsDeactivated()) {
+                    activated = false;
+                    PlaySound(deactivateSound);
+                }
             } else {
                 activated = false;
+                PlaySound(deactivateSound);
             }
         }
 
@@ -84,6 +95,14 @@ namespace Activation_System {
             }
 
             return true;
+        }
+        
+        public void PlaySound(String soundName) {
+            if (playSound) {
+                AudioManager.instance.PlayDelayed(soundName, soundDelay);
+            } else {    // if sound was not enabled, enable it now
+                playSound = true;
+            }
         }
     }
 }

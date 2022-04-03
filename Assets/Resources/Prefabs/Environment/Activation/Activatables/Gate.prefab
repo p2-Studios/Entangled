@@ -48,8 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireAllActivators: 0
   activateByDefault: 0
-  openSound: gate_open
-  closeSound: gate_close
+  soundDelay: 0.15
+  activateSound: gate_open
+  deactivateSound: gate_close
   stayOpen: 0
   activators: []
 --- !u!212 &3509673993890282041

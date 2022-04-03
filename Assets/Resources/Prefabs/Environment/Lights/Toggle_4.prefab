@@ -88,7 +88,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireAllActivators: 0
   activateByDefault: 1
+  activateSound: light_on
+  deactivateSound: 
   activators: []
+  lightComponent: {fileID: 0}
 --- !u!1 &6091911859263353665
 GameObject:
   m_ObjectHideFlags: 0

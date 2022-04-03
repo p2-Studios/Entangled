@@ -17,7 +17,10 @@ public class LightToggle : Activatable{
             AddActivator(a);
         }
 
-        if (activateByDefault) { Activate(); } else { Deactivate();}
+        if (activateByDefault) {
+            playSound = false;
+            Activate();
+        } else { Deactivate();}
     }
 
     public override void Activate(){

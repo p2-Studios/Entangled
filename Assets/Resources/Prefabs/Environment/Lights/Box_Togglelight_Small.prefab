@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireAllActivators: 0
   activateByDefault: 1
+  activateSound: light_on
+  deactivateSound: 
   activators: []
   lightComponent: {fileID: 3214463534203535386}
 --- !u!1 &3769988305373947638

@@ -67,5 +67,9 @@ PrefabInstance:
       propertyPath: m_PointLightOuterRadius
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8713513635023282573, guid: 1fa7b8ba16fe7e04786718559c56c790, type: 3}
+      propertyPath: activateSound
+      value: light_on
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa7b8ba16fe7e04786718559c56c790, type: 3}
