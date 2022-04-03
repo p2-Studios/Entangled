@@ -9,14 +9,19 @@ public class PushPullState : BaseState {
     private float horzInput;
     private float objMass;
 
-
+    public void Initialize(string name, PlayerStateMachine psm, Player player,AudioManager am){
+        this.Name = name;
+        playerSM = psm;
+        Player = player;
+        this.audioManager = am;
+    }
 
     // Constructor
-    public PushPullState(PlayerStateMachine playerStateMachine,Player player,AudioManager audioManager) : base("Pulling", playerStateMachine, player){
+    /*public PushPullState(PlayerStateMachine playerStateMachine,Player player,AudioManager audioManager) : base("Pulling", playerStateMachine, player){
         playerSM = (PlayerStateMachine)playerStateMachine;
         this.audioManager = audioManager;
         Player = player;
-    }
+    }*/
 
     // Enter calls
     public override void Enter(){
