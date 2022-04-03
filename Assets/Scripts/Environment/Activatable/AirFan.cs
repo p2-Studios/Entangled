@@ -59,8 +59,8 @@ namespace Environment {
 
             // nudge any objects that are on the fan, so they trigger the collider events
             foreach (GameObject obj in inRange) {
-                Rigidbody2D rb = obj.GetComponent <Rigidbody2D>();
-                if (!rb.Equals(null)) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 0.1f);
+                Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+                if (rb != null) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 0.1f);
             }
         }
 
