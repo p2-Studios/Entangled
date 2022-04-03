@@ -37,7 +37,7 @@ public class FlashDrive : Interactable {
         collected = c;
     }
     
-    public bool IsCollectd() {
+    public bool IsCollected() {
         return collected;
     }
 }

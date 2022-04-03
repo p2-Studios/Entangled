@@ -84,7 +84,6 @@ public class TerminalManager : MonoBehaviour {
         if (level != null) {
             foreach (FlashDrive fd in level.foundFlashDrives) {
                 // get unlocked files (found flashdrives)
-                Debug.Log(fd);
                 unlockedRemoteFiles.Add(fd.file);
             }
         }
