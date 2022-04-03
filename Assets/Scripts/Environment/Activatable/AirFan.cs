@@ -58,9 +58,12 @@ namespace Environment {
             airVisual.SetActive(true);  // enable visual effect
 
             // nudge any objects that are on the fan, so they trigger the collider events
-            foreach (GameObject obj in inRange) {
-                Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-                if (rb != null) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 0.1f);
+            if (inRange.Count > 0) {
+                foreach (GameObject obj in inRange) {
+                    if (obj == null) continue;
+                    Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+                    if (rb != null) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 0.1f);
+                }
             }
         }
 
@@ -109,7 +112,7 @@ namespace Environment {
             if (!IsActivated()) return;
             if (!transform.rotation.Equals(Quaternion.identity)) return;    // only when fan is vertical
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
-            if (rb.Equals(null)) return;
+            if (rb == null) return;
             ApplyFanVelocity(other, rb,transform.up * (rb.velocity.y * -1));
             rb.velocity = new Vector2(rb.velocity.x, 0);
         }
