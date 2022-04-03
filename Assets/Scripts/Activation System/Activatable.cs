@@ -99,7 +99,11 @@ namespace Activation_System {
         
         public void PlaySound(String soundName) {
             if (playSound) {
-                AudioManager.instance.PlayDelayed(soundName, soundDelay);
+                if (soundDelay > 0f) {
+                    AudioManager.instance.PlayDelayed(soundName, soundDelay);
+                } else {
+                    AudioManager.instance.Play(soundName);
+                }
             } else {    // if sound was not enabled, enable it now
                 playSound = true;
             }

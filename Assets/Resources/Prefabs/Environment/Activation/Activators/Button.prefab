@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad27e602edb7534782fe76929fe121a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateSound: pedestal_button_down
+  deactivateSound: pedestal_button_up
   activatables: []
   indicatorLight: {fileID: 3485668168858168497}
   down: 0

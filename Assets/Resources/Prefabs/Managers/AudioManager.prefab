@@ -152,6 +152,20 @@ MonoBehaviour:
     pitch: 1
     pitchMin: 0.9
     pitchMax: 1.1
+  - name: pedestal_button_down
+    clip: {fileID: 8300000, guid: 40569be66a97b8e43bebc7b976bda248, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1.1
+  - name: pedestal_button_up
+    clip: {fileID: 8300000, guid: 40569be66a97b8e43bebc7b976bda248, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+    pitchMin: 0.8
+    pitchMax: 0.9
   playerSounds:
   - name: player_respawn
     clip: {fileID: 8300000, guid: 4519420b266ba8c439556a2729118d5f, type: 3}
@@ -159,7 +173,7 @@ MonoBehaviour:
     volume: 0.25
     pitch: 1
     pitchMin: 0.9
-    pitchMax: 1.1
+    pitchMax: 1.2
   - name: player_death_spikes
     clip: {fileID: 8300000, guid: 8610ad24f52950f45a88e4506edbd140, type: 3}
     source: {fileID: 0}
