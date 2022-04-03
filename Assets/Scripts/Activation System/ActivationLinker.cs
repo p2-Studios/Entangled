@@ -51,7 +51,7 @@ public class ActivationLinker : MonoBehaviour {
     // draw lines between activator and its activatables
     private void OnDrawGizmos() {
         GetActivationObjects();
-        print(activators);
+        //print(activators);
         foreach (Activator av in activators) {
             foreach (Activatable ac in activatables) {
                 Gizmos.DrawLine(av.transform.position, ac.transform.position);
