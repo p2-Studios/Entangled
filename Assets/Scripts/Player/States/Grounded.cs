@@ -21,14 +21,24 @@ public class Grounded : BaseState {
     private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
     private int objectsLayer = 1 << 9; 
 
+    public void Initialize(string name, PlayerStateMachine psm, Player player,AudioManager am){
+        this.Name = name;
+        playerSM = psm;
+        Player = player;
+        touchingBox = false;    // checks if player is touching a pushable object
+        haltMovement = false;   // checks if player should be allowed to move
+        feetCollider = Player.GetComponent<CapsuleCollider2D>();
+        this.audioManager = am;
+    }
+
     // Constructor, sets sm to active stateMachine
-    public Grounded(string name, PlayerStateMachine playerStateMachine, Player player) : base(name, playerStateMachine, player){
+    /*public Grounded(string name, PlayerStateMachine playerStateMachine, Player player) : base(name, playerStateMachine, player){
         playerSM = (PlayerStateMachine)playerStateMachine;
         Player = player;
         touchingBox = false;    // checks if player is touching a pushable object
         haltMovement = false;   // checks if player should be allowed to move
         feetCollider = Player.GetComponent<CapsuleCollider2D>();
-    }
+    }*/
 
     // Update Logic changes (key pressses)
     public override void UpdateLogic(){
@@ -64,11 +74,10 @@ public class Grounded : BaseState {
         if (!haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump))
             playerSM.ChangeState(playerSM.jumpState);
 
-        if(!(feetCollider.IsTouchingLayers(groundLayer) || feetCollider.IsTouchingLayers(objectsLayer)))
-            playerSM.ChangeState(playerSM.fallState);
-        
+        if(!(feetCollider.IsTouchingLayers(groundLayer) || feetCollider.IsTouchingLayers(objectsLayer))){
+            playerSM.ChangeState(playerSM.fallState); 
+        }
     }
-
 
     // checks to see if player is colliding with a box while not actively
     // in pushpull state (should halt player movement)
