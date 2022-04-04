@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3501149506430902348}
   - component: {fileID: 7419897541711876239}
   m_Layer: 0
-  m_Name: file_1_5_R
+  m_Name: file_6_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5438387716646793735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06170921, y: -1.6869844, z: -1.4697384}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encrypted: 0
-  fileName: 'Re: Security Reminder'
-  body: "THANK YOU! I've been telling the security department for months that we
-    should give an explanation for our weird blue force fields. \n"
+  fileName: message_log.txt
+  body: "E1: It sucks that they've stopped rotating people between departments. I'd
+    much rather be working in Aerodynamics or Polymerization than here.\n\nE2: Come
+    on, destructable walls are a classic! \n\nE1: Yeah, if you're playing a VIDEO
+    GAME. But if you're trialing a new technology that gives humans enhanced capabilities,
+    I'd take being launched through the air by super-powered fans or bouncing over
+    floors covered in repulse gel any day over constantly rebuilding walls. We're
+    basically just glorified crash testers. "

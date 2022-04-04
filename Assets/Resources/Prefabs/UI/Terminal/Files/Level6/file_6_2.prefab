@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3501149506430902348}
   - component: {fileID: 7419897541711876239}
   m_Layer: 0
-  m_Name: file_1_5_R
+  m_Name: file_6_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5438387716646793735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06170921, y: -1.6869844, z: -1.4697384}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,6 +44,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encrypted: 0
-  fileName: 'Re: Security Reminder'
-  body: "THANK YOU! I've been telling the security department for months that we
-    should give an explanation for our weird blue force fields. \n"
+  fileName: journal_entry101.txt
+  body: 'Dear Journal,
+
+    I need to tell someone this but I''m not sure who to
+    trust anymore.
+
+    I''m scared. I don''t know exactly what''s been happening
+    but something''s gone sideways, I just know it. We used to be able to access
+    the whole facility, but now everything below level 7 is locked down. I checked
+    the other day and my keycard doesn''t work. People keep going missing and I don''t
+    know if they''ve been fired, or they''ve quit, or ... something else. Every time
+    I walk into the staff room, there''s a different group of people whispering who
+    go quiet as soon as I walk past. I know I''m a fairly new addition to the team,
+    but I swear people used to be friendlier. I''m just materials engineer, not an
+    exec or a neurologist or an Entangled suit mechanic, so I don''t know what''s
+    been happening with the testing, but I have a really bad feeling about it ...'
