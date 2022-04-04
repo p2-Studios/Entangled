@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3501149506430902348}
   - component: {fileID: 7419897541711876239}
   m_Layer: 0
-  m_Name: TextFileTemplate
+  m_Name: file_6_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,5 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encrypted: 0
-  fileName: FILE_NAME.txt
-  body: body text
+  fileName: just_a_drill.txt
+  body: 'ATTENTION EMPLOYEES,
+
+    Please disregard the alarms that you heard earlier
+    today. That was just a regularly scheduled drill. There was a bit of a mix-up
+    with the administration team - someone forgot to add it to the weekly announcement
+    post. Just a silly case of human error! Nothing to worry about. I repeat, there
+    is no emergency and everyone should return to their stations and get back to
+    work. If you hear rumours of someone in a suit causing havoc, please pay no mind.
+    That was just a part of a test of our security protocols. '
