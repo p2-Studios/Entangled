@@ -937,7 +937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031979628206350031, guid: b824bccbbb971b44c862c85a2edd63b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.26899981
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 9031979628206350031, guid: b824bccbbb971b44c862c85a2edd63b1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5694,7 +5694,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1296416925560699586, guid: d6e6c54c67e270940b4fb0ef8a0779a6, type: 3}
       propertyPath: power
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1296416925560699586, guid: d6e6c54c67e270940b4fb0ef8a0779a6, type: 3}
       propertyPath: range
@@ -6476,7 +6476,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4089886756227155985, guid: 55ea0823da94b4c44830de14fb242108, type: 3}
       propertyPath: m_Mass
-      value: 1.25
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 658916900905061304, guid: 55ea0823da94b4c44830de14fb242108, type: 3}
       propertyPath: m_Name
@@ -8924,7 +8924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7929462300034805085, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.52
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7929462300034805085, guid: 90af3968d6be8974792ff23d4e88fc9a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11203,11 +11203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9031979628206350027, guid: b824bccbbb971b44c862c85a2edd63b1, type: 3}
       propertyPath: required_mass
-      value: 1.25
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 9031979628206350027, guid: b824bccbbb971b44c862c85a2edd63b1, type: 3}
       propertyPath: required_impulse
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9031979628206350028, guid: b824bccbbb971b44c862c85a2edd63b1, type: 3}
       propertyPath: m_Size.x
