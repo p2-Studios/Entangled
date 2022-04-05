@@ -20,6 +20,7 @@ public class MovingPlatform : Activatable {
 
     private bool moving = true;
     private bool justActivated = false;                 // flag for whether the platform was just activated, to know whether the delay can be skipped
+    public bool moveInstantly = true;
     public float startDelay = 1.5f;
     public float endDelay = 1.5f;
     public bool makeObjectChild = true;
@@ -64,7 +65,7 @@ public class MovingPlatform : Activatable {
             if (transform.position == posStart.position) {
                 nextPos = posEnd.position;                   // start going to posEnd
                 
-                if (justActivated) {
+                if (justActivated && moveInstantly) {
                     moving = true;
                 } else {
                     if (moving) StartCoroutine(WaitAtDestination(startDelay));
@@ -73,9 +74,10 @@ public class MovingPlatform : Activatable {
                 //transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
                 
             } else if (transform.position == posEnd.position) {
+                print("AT END");
                 if (!stopAtEnd) nextPos = posStart.position; // only go back to posStart if stopAtEnd is false
                 
-                if (justActivated) {
+                if (justActivated && moveInstantly) {
                     moving = true;
                 } else {
                     if (moving) StartCoroutine(WaitAtDestination(endDelay));
