@@ -30,6 +30,7 @@ public class DestructiblePanel : MonoBehaviour
 			if (contact.normalImpulse >= required_impulse) {
 				panel_col.enabled = false;
 				anim.SetBool("Destroyed", true);
+				AudioManager.instance.Play("wall_break");
 				return;
 			}
 		}
@@ -40,6 +41,7 @@ public class DestructiblePanel : MonoBehaviour
 		if(totalMass >= required_mass){
 			panel_col.enabled = false;
 			anim.SetBool("Destroyed", true);
+			AudioManager.instance.Play("wall_break");
 			return;
 		}
 
@@ -51,6 +53,7 @@ public class DestructiblePanel : MonoBehaviour
 			if (contact.normalImpulse >= required_impulse ) {
 				panel_col.enabled = false;
 				anim.SetBool("Destroyed", true);
+				AudioManager.instance.Play("wall_break");
 				return;
 			}
 		}
