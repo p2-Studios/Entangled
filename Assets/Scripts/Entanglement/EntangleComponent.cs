@@ -175,6 +175,7 @@ public class EntangleComponent : MonoBehaviour {
 
     public void ClearEntangled() {
         if (active != null) {
+            AudioManager.instance.Play("unentangle");
             active.SetEntanglementStates(false, false, true);
             UnsetActive();
             ClearPassives();

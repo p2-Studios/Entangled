@@ -52,8 +52,12 @@ public class AudioManager : MonoBehaviour {
                 song = "music_main";
                 break;
             
+            case "elevator":   // music while in-level
+                song = "music_elevator";
+                break;
+            
             case "level":   // music while in-level
-                if (UnityEngine.Random.value > 0.5) {
+                if (Random.value > 0.5) {
                     song = "music_3";
                 } else {
                     song = "music_4";
@@ -85,8 +89,10 @@ public class AudioManager : MonoBehaviour {
     private void SetMusicType(string sceneName) {
         if (sceneName.Equals("MainMenu") || sceneName.Equals("LevelSelection")) {
             TestAndChangeMusic("menu");
-        } else if (sceneName.Equals("Credits")) { 
+        } else if (sceneName.Equals("Credits")) {   
             TestAndChangeMusic("credits");
+        } else if (sceneName.Equals("ElevatorTransition")) { 
+            TestAndChangeMusic("elevator");
         } else if (!sceneName.Equals("ElevatorTransition") && !sceneName.Equals("LevelSelection")) { // don't play sound in elevator transition
             TestAndChangeMusic("level");  // only change is not already playing level music
         }
