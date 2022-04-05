@@ -74,6 +74,7 @@ public class MovingPlatform : Activatable {
                 //transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
                 
             } else if (transform.position == posEnd.position) {
+                print("AT END");
                 if (!stopAtEnd) nextPos = posStart.position; // only go back to posStart if stopAtEnd is false
                 
                 if (justActivated && moveInstantly) {
