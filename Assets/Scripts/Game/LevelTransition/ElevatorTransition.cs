@@ -15,14 +15,13 @@ public class ElevatorTransition : MonoBehaviour {
 
     private void Awake() {
         StartCoroutine(StartSoundWithDelay());
-        AudioManager.instance.SetMusicType
     }
     
     IEnumerator StartSoundWithDelay() {
         yield return new WaitForSeconds(0.5f);
         
         //AudioManager am = FindObjectOfType<AudioManager>();
-        //if (am != null) am.Play("elevator_descend");
+        //if (am != null) am.PlayDelayed("elevator_descend", 3f);
     }
 
     void Update() {
