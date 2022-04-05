@@ -195,7 +195,10 @@ public class PauseMenu : MonoBehaviour
 
 		resumeState();
 	}
-	
 
+
+	public void OpenOptions() {
+		btnOptions();
+	}
 	
 }

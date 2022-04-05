@@ -91,6 +91,10 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void SetMusicType(string sceneName) {
+        if (sceneName.Equals("Options")) {  // don't change music when opening options scene
+            return;
+        }
+        
         if (sceneName.Equals("MainMenu") || sceneName.Equals("LevelSelection")) {
             TestAndChangeMusic("menu");
         } else if (sceneName.Equals("Credits")) {   
@@ -99,8 +103,8 @@ public class AudioManager : MonoBehaviour {
             TestAndChangeMusic("elevator");
         } else if (sceneName.Contains("Level9")) { 
             TestAndChangeMusic("level9");
-        } else { // don't play sound in elevator transition
-            TestAndChangeMusic("level");  // only change is not already playing level music
+        } else { 
+            TestAndChangeMusic("level");
         }
     }
     
