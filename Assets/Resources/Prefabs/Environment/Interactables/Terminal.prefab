@@ -121,11 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e552bd512fe5394dbb06b12daa9cf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerSound: 
+  triggerSound: terminal_boot
   localFiles: []
-  dialogue:
-    name: 
-    sentences: []
   animator: {fileID: 429289540591911158}
 --- !u!212 &5880884689359741016
 SpriteRenderer:
