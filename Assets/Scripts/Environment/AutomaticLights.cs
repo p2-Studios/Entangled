@@ -6,6 +6,7 @@ using UnityEngine;
 public class AutomaticLights : MonoBehaviour {
     public BoxCollider2D trigger;
     public bool delayFirst;
+    public bool triggered = false;
     public float firstDelay = 0.5f;
     public float onDelay = 0.5f;
     public ArrayList lights;
@@ -26,6 +27,7 @@ public class AutomaticLights : MonoBehaviour {
             yield return new WaitForSeconds(firstDelay);
         foreach (LightToggle l in lights) {
             l.Activate();
+            print("Activating light at " + l.transform.position);
             yield return new WaitForSeconds(onDelay);
         }
 
@@ -35,7 +37,10 @@ public class AutomaticLights : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Player") && !activated) {
-            StartCoroutine(switchLightsOn());
+            if (!triggered) {
+                triggered = true;
+                StartCoroutine(switchLightsOn());
+            }
         }
     }
 }

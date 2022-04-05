@@ -150,8 +150,8 @@ MonoBehaviour:
     source: {fileID: 0}
     volume: 0.05
     pitch: 1
-    pitchMin: 1
-    pitchMax: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
   - name: pedestal_button_down
     clip: {fileID: 8300000, guid: 40569be66a97b8e43bebc7b976bda248, type: 3}
     source: {fileID: 0}
