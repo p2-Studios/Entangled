@@ -66,6 +66,13 @@ MonoBehaviour:
     pitch: 1
     pitchMin: 0.9
     pitchMax: 1.1
+  - name: music_elevator
+    clip: {fileID: 8300000, guid: 524f89089eee3634a8d129165007b708, type: 3}
+    source: {fileID: 0}
+    volume: 0.025
+    pitch: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
   uiSounds:
   - name: terminal_click
     clip: {fileID: 8300000, guid: 9e4cbc5f047fc324ab99442888939447, type: 3}
@@ -87,9 +94,16 @@ MonoBehaviour:
     volume: 0.25
     pitch: 1
     pitchMin: 1
-    pitchMax: 1.1
+    pitchMax: 1
   - name: terminal_error
     clip: {fileID: 8300000, guid: 73afb0d254729ea418cade3561154357, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: terminal_boot
+    clip: {fileID: 8300000, guid: 4c257e2d20d02dd498e96922a059cf9b, type: 3}
     source: {fileID: 0}
     volume: 0.5
     pitch: 1
@@ -127,7 +141,7 @@ MonoBehaviour:
   - name: elevator_descend
     clip: {fileID: 8300000, guid: a873a3239ab66c743a61775d3861220a, type: 3}
     source: {fileID: 0}
-    volume: 0.25
+    volume: 0.025
     pitch: 1
     pitchMin: 1
     pitchMax: 1
@@ -184,14 +198,21 @@ MonoBehaviour:
   - name: player_respawn
     clip: {fileID: 8300000, guid: 4519420b266ba8c439556a2729118d5f, type: 3}
     source: {fileID: 0}
-    volume: 0.25
+    volume: 0.15
     pitch: 1
     pitchMin: 0.9
     pitchMax: 1.2
   - name: player_death_spikes
     clip: {fileID: 8300000, guid: 8610ad24f52950f45a88e4506edbd140, type: 3}
     source: {fileID: 0}
-    volume: 0.25
+    volume: 0.35
+    pitch: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
+  - name: player_death_laser
+    clip: {fileID: 8300000, guid: 33c999bc9f0ad4b4b9ef9bbf2a948d16, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
     pitch: 1
     pitchMin: 0.9
     pitchMax: 1.1
@@ -210,4 +231,18 @@ MonoBehaviour:
     pitch: 1
     pitchMin: 1
     pitchMax: 1
+  - name: unentangle
+    clip: {fileID: 8300000, guid: 9f23afec8c6bb9e41a29aea964438f17, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 0.9
+    pitchMin: 1
+    pitchMax: 1
+  - name: object_destroyed_laser
+    clip: {fileID: 8300000, guid: 3aa63005f5fa8ae4aaf3db147a84684e, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 0.9
+    pitchMin: 0.9
+    pitchMax: 1.1
   sounds: []
