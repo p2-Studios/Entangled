@@ -12,8 +12,8 @@ public class CameraToggle : MonoBehaviour
     public bool toggleCam = false;
 
     // Update is called once per frame
-    void Update()
-    {
+    
+    void Update() {
         activeCamera = CameraSwitcher.ActiveCamera;
         if (activeCamera != null){
             if(toggleCam){
@@ -23,5 +23,15 @@ public class CameraToggle : MonoBehaviour
                 CameraSwitcher.SwitchCamera(activeCamera);
             }
         }
+    }
+
+    public void TransitionToBottom(float delay) {
+        StartCoroutine(WaitAndToggle(delay));
+    }
+
+    public IEnumerator WaitAndToggle(float delay) {
+        yield return new WaitForSeconds(delay);
+        toggleCam = false;
+        FindObjectOfType<FinaleScreenManager>().SatelliteEntangled();
     }
 }

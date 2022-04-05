@@ -50,29 +50,36 @@ MonoBehaviour:
     source: {fileID: 0}
     volume: 0.05
     pitch: 1
-    pitchMin: 0.9
-    pitchMax: 1.1
+    pitchMin: 1
+    pitchMax: 1
   - name: music_4
     clip: {fileID: 8300000, guid: 98e831882d08b4540b7ad7cbb62d0b35, type: 3}
     source: {fileID: 0}
     volume: 0.05
     pitch: 1
-    pitchMin: 0.9
-    pitchMax: 1.1
+    pitchMin: 1
+    pitchMax: 1
   - name: music_main
     clip: {fileID: 8300000, guid: 322f0dfdde8ea9640a9d2db2d1cc4a66, type: 3}
     source: {fileID: 0}
     volume: 0.05
     pitch: 1
-    pitchMin: 0.9
-    pitchMax: 1.1
+    pitchMin: 1
+    pitchMax: 1
   - name: music_elevator
     clip: {fileID: 8300000, guid: 524f89089eee3634a8d129165007b708, type: 3}
     source: {fileID: 0}
     volume: 0.025
     pitch: 1
-    pitchMin: 0.9
-    pitchMax: 1.1
+    pitchMin: 1
+    pitchMax: 1
+  - name: music_level9
+    clip: {fileID: 8300000, guid: eb1a18e025aeb3d40afef072f3ca5ff8, type: 3}
+    source: {fileID: 0}
+    volume: 0.025
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
   uiSounds:
   - name: terminal_click
     clip: {fileID: 8300000, guid: 9e4cbc5f047fc324ab99442888939447, type: 3}

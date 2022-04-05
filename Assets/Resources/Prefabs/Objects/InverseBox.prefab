@@ -61,6 +61,8 @@ MonoBehaviour:
   hoverGlow: {fileID: 2100000, guid: 98a6fdfc65731fd4987ad9fc96d24dd4, type: 2}
   respawnDelay: 3
   maxVelocity: 20
+  frictionMaterial: {fileID: 6200000, guid: b54e2551c4b738f46a1fbf0b1f0a27bd, type: 2}
+  noFrictionMaterial: {fileID: 0}
 --- !u!114 &8410045050839653573
 MonoBehaviour:
   m_ObjectHideFlags: 0
