@@ -155,14 +155,14 @@ MonoBehaviour:
   - name: pressure_pad_activate
     clip: {fileID: 8300000, guid: 201c0ed4baab86b4599372f58d809f2a, type: 3}
     source: {fileID: 0}
-    volume: 0.05
+    volume: 0.025
     pitch: 1
     pitchMin: 0.9
     pitchMax: 1.1
   - name: pressure_pad_deactivate
     clip: {fileID: 8300000, guid: 201c0ed4baab86b4599372f58d809f2a, type: 3}
     source: {fileID: 0}
-    volume: 0.025
+    volume: 0.01
     pitch: 0.7
     pitchMin: 0.65
     pitchMax: 0.76
