@@ -146,12 +146,12 @@ MonoBehaviour:
     pitchMin: 0.65
     pitchMax: 0.76
   - name: light_on
-    clip: {fileID: 8300000, guid: 240794bacd6c2d0478672e8eb8afd4e9, type: 3}
+    clip: {fileID: 8300000, guid: e746665f0dcfaf643b9249664569d1d3, type: 3}
     source: {fileID: 0}
     volume: 0.05
     pitch: 1
-    pitchMin: 0.9
-    pitchMax: 1.1
+    pitchMin: 1
+    pitchMax: 1
   - name: pedestal_button_down
     clip: {fileID: 8300000, guid: 40569be66a97b8e43bebc7b976bda248, type: 3}
     source: {fileID: 0}
@@ -166,6 +166,20 @@ MonoBehaviour:
     pitch: 1
     pitchMin: 0.8
     pitchMax: 0.9
+  - name: wall_break
+    clip: {fileID: 8300000, guid: e50616018098dfa4fa16b36be454124e, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+    pitchMin: 0.5
+    pitchMax: 0.9
+  - name: bounce
+    clip: {fileID: 8300000, guid: 5187039fd64bff440ba8c966fd36af0f, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1.3
   playerSounds:
   - name: player_respawn
     clip: {fileID: 8300000, guid: 4519420b266ba8c439556a2729118d5f, type: 3}
