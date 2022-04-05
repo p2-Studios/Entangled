@@ -143,7 +143,7 @@ public class FinaleScreenManager : MonoBehaviour {
         uplinkText.text = "TRANSMISSION FAILED: FATAL ERROR";
         yield return new WaitForSeconds(3);
         // do camera transition stuff
-        FindObjectOfType<CameraToggle>().toggleCam = true;
+        FindObjectOfType<CameraToggle>().TransitionToTop();
     }
 
     public void SatelliteEntangled() {
