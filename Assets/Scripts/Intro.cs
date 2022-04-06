@@ -6,6 +6,7 @@ public class Intro : MonoBehaviour {
     
     public GameObject player;
     void Start() {
+        player.SetActive(false);
         StartCoroutine(EnablePlayer());
     }
 
