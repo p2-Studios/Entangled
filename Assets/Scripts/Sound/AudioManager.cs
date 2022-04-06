@@ -126,6 +126,29 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
+    public void PlayLooping(string soundName) {
+        Sound sound = FetchSound(soundName);
+        if (sound != null) {
+            AudioSource source = GetSource(sound);
+            if (source != null) {
+                SetSourcePitch(source, sound);
+                source.loop = true;
+                source.Play();
+            }
+        }
+    }
+
+    public void StopLooping(string soundName) {
+        Sound sound = FetchSound(soundName);
+        if (sound != null) {
+            AudioSource source = GetSource(sound);
+            if (source != null) {
+                source.loop = false;
+                source.Stop();
+            }
+        }
+    }
+
     public void PlayDelayed(string soundName, float delay) {
         Sound sound = FetchSound(soundName);
         if (sound != null) {
