@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encrypted: 0
-  fileName: FILE_NAME.txt
-  body: body text
+  fileName: warning.txt
+  body: 'CAUTION: UPCOMING CHAMBERS ARE <b>NOT OFFICIALLY APPROVED</b> BY ETHICS
+    BOARD AND ARE THEREFORE NOT INTENDED FOR PUBLIC DISPLAY.'
