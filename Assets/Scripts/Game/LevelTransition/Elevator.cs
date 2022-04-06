@@ -37,7 +37,6 @@ public class Elevator : MonoBehaviour {
     }
 
     private IEnumerator FadeAndTransition() {
-        FadeManager.instance.FadeOut();
         yield return new WaitForSeconds(1);
         LevelRestarter.instance.ClearCheckpointPosition();  // clear checkpoint location
         ElevatorTransition.levelToLoad = nextLevel;

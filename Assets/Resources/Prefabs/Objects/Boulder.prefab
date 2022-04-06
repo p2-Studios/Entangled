@@ -221,6 +221,8 @@ MonoBehaviour:
   hoverGlow: {fileID: 2100000, guid: 09c2a98a45bcae640b48061319bcd772, type: 2}
   respawnDelay: 3
   maxVelocity: 20
+  frictionMaterial: {fileID: 0}
+  noFrictionMaterial: {fileID: 0}
 --- !u!114 &7069219165921610203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +349,7 @@ FixedJoint2D:
   m_GameObject: {fileID: 7253728624875054520}
   m_Enabled: 0
   serializedVersion: 4
-  m_EnableCollision: 0
+  m_EnableCollision: 1
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity

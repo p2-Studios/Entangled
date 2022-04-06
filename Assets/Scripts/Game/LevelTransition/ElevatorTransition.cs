@@ -29,20 +29,15 @@ public class ElevatorTransition : MonoBehaviour {
         
         if (!atEnd && transform.position == endPos.position) {
             atEnd = true;
-            StartCoroutine(LoadNextScene());
-        }
-    }
-
-    private IEnumerator LoadNextScene() {
-        FadeManager.instance.FadeOut();
-        yield return new WaitForSeconds(1f);
-        Scene scene = SceneManager.GetSceneByName(levelToLoad);
-        SceneManager.LoadSceneAsync(levelToLoad);
-        if (!scene.IsValid()) { // check if scene was found
+            Scene scene = SceneManager.GetSceneByName(levelToLoad);
             SceneManager.LoadSceneAsync(levelToLoad);
-        } else {
-            Debug.LogWarning("Scene " + levelToLoad + " attempted to load, but wasn't found!");
-            SceneManager.LoadSceneAsync("MainMenu");
+            if (!scene.IsValid()) { // check if scene was found
+                SceneManager.LoadSceneAsync(levelToLoad);
+            } else {
+                Debug.LogWarning("Scene " + levelToLoad + " attempted to load, but wasn't found!");
+                SceneManager.LoadSceneAsync("MainMenu");
+            }
         }
     }
+    
 }

@@ -86,7 +86,6 @@ public class PushPullState : BaseState {
     // Apply velocity to player for movement
     public override void UpdatePhysics(){
         base.UpdatePhysics();
-        //float strengthDif = (Player.pushStrength - .25f);
         Vector2 velocity = Player.rigidbody.velocity;
         float mass = Player.pushedObject.GetComponent<Rigidbody2D>().mass;
         float strengthDif = (-Mathf.Log(mass,Player.pushStrength) + 0.75f);
@@ -98,8 +97,9 @@ public class PushPullState : BaseState {
     // Exit calls (make sure variables don't remain)
     public override void Exit(){
         base.Exit();
-        Player.grabbing = false;
+        Player.pushedObject.GetComponent<FixedJoint2D>().connectedBody = null;
         Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
+        Player.grabbing = false;
         Player.pushedObject = null;
     }
 }

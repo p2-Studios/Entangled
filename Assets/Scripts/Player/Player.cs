@@ -197,12 +197,4 @@ public class Player : MonoBehaviour, IDestroyable {
         ResetPlayer();
         gameObject.transform.position = respawnLocation; // move the object to respawnTransform
     }
-    
-    private void OnCollisionEnter2D(Collision2D col) {
-        print("bounce");
-        if (col.gameObject.CompareTag("Bouncy")) {
-            AudioManager.instance.Play("Bounce");
-        }
-    }
-
 }
