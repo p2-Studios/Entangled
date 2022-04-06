@@ -5,7 +5,7 @@ using UnityEngine;
 
 [Serializable]
 public class GameData {
-    public int unlockedLevel = 1;
+    public int unlockedLevel = 0;
 
     public GameData(int unlockedLevel) {
         this.unlockedLevel = unlockedLevel;

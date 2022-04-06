@@ -41,7 +41,7 @@ public class LevelSelection : MonoBehaviour {
         scrollUpText.SetActive(false);
         
         // set all levels unlocked (for testing/debug/until all levels are ready)
-        SaveSystem.SetGameDataLevel(10);
+        //SaveSystem.SetGameDataLevel(10);
         
         // initializes the visuals/interactables based on the user's unlocked levels
         InitializeLevelButtons();
@@ -87,7 +87,7 @@ public class LevelSelection : MonoBehaviour {
             scrollUpText.SetActive(false);
         } else {
             if (cam.transform.position == cameraTopPosition.position) {
-                scrollDownText.SetActive(true);
+                if (GetGameData().unlockedLevel > 5) scrollDownText.SetActive(true);
             } else {
                 scrollUpText.SetActive(true);
             }
@@ -120,7 +120,7 @@ public class LevelSelection : MonoBehaviour {
         if (unlockedLevel > 5) {
             buildingImage.sprite = buildingSprites[4];
         } else {
-            buildingImage.sprite = buildingSprites[unlockedLevel - 1];
+            if (unlockedLevel >= 1) buildingImage.sprite = buildingSprites[unlockedLevel - 1];
         }
         
         // underground fans

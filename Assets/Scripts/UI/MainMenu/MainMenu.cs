@@ -3,11 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
-
+    
+    private GameData data;
+    public Button levelsButton;
+    public GameObject resetConfirmationPanel;
+    
     private void Awake() {
-        //StartCoroutine(StartMusicWithDelay());
+        if (GetGameData().GetUnlockedLevel() < 1) {
+            levelsButton.interactable = false;
+        }
     }
 
     public void StartAtLevel(string levelName) {
@@ -28,5 +35,29 @@ public class MainMenu : MonoBehaviour {
         
         AudioManager am = FindObjectOfType<AudioManager>();
         if (am != null) am.Play("music_main");
+    }
+    
+    private GameData GetGameData() {
+        if (data == null) 
+            data = SaveSystem.LoadGameData();
+        return data;
+    }
+
+    public void NewGame() {
+        if (GetGameData().GetUnlockedLevel() < 1) {
+            StartAtLevel("Level1");
+        } else {
+            resetConfirmationPanel.SetActive(true);
+        }
+    }
+
+    public void CancelReset() {
+        resetConfirmationPanel.SetActive(false);
+    }
+
+    public void ConfirmReset() {
+        SaveSystem.ClearSaveData();
+        resetConfirmationPanel.SetActive(false);
+        SceneManager.LoadScene("Level1");
     }
 }

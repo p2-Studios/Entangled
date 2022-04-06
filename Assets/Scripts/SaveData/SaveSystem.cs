@@ -44,7 +44,7 @@ public static class SaveSystem {
     public static void SaveGameData(GameData data) {
         BinaryFormatter formatter = new BinaryFormatter();
 
-        string path = Application.persistentDataPath + "/gamedata.data";
+        string path = Application.persistentDataPath + "/gamedata";
         FileStream stream = new FileStream(path, FileMode.Create);
         
         formatter.Serialize(stream, data);
@@ -53,12 +53,12 @@ public static class SaveSystem {
     
     // retrieves the game data, if available. If not available, creates a default GameData
     public static GameData LoadGameData() {
-        string path = Application.persistentDataPath + "/gamedata.data";
+        string path = Application.persistentDataPath + "/gamedata";
 
         
         // create the file if it doesn't exist
         if (!File.Exists(path)) {
-            GameData d = new GameData(1);
+            GameData d = new GameData(0);
             SaveGameData(d);
         }
 
@@ -76,6 +76,13 @@ public static class SaveSystem {
     public static void SetGameDataLevel(int levelNum) {
         GameData data = new GameData(levelNum);
         SaveGameData(data);
+    }
+
+    public static void ClearSaveData() {
+        File.Delete(Application.persistentDataPath + "/gamedata");
+        for (int i = 1; i < 10; i++) {
+            File.Delete(Application.persistentDataPath + "/Level" + i + ".level");
+        }
     }
     
 }
