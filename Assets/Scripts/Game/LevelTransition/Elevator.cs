@@ -40,7 +40,9 @@ public class Elevator : MonoBehaviour {
         yield return new WaitForSeconds(1);
         LevelRestarter.instance.ClearCheckpointPosition();  // clear checkpoint location
         ElevatorTransition.levelToLoad = nextLevel;
-        SaveSystem.SetGameDataLevel(nextLevelNum);
+        if (SaveSystem.LoadGameData().GetUnlockedLevel() < nextLevelNum) {
+            SaveSystem.SetGameDataLevel(nextLevelNum);
+        }
         SceneManager.LoadSceneAsync("ElevatorTransition");
     }
 }
