@@ -20,6 +20,7 @@ public class EntangleComponent : MonoBehaviour {
 
     public GameObject EntanglingHelix, EntanglingHelixPrefab, EntangledHelix, EntangledHelixPrefab;
 
+    
     LayerMask entangleMask;
     private bool mousePressedOnActive = false;
 
@@ -125,6 +126,10 @@ public class EntangleComponent : MonoBehaviour {
                             passive.SetEntanglementStates(false, false, true);
                         }
                         if (!passives.Contains(e)) {
+                            string objectName = e.name;
+                            if (objectName.Equals("GroundSatellite") || objectName.Equals("SpaceSatellite")) {
+                                FindObjectOfType<CameraToggle>().TransitionToBottom(2.0f);
+                            }
                             FindObjectOfType<AudioManager>().Play("object_entangled");
                         }
                         e.SetEntanglementStates(false, true, true);

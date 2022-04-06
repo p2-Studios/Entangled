@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Managers/AudioManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Managers/AudioManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ElevatorTransition.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ElevatorTransition.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/LevelTransition/ElevatorTransition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/LevelTransition/ElevatorTransition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushBoth/MovingPlatform_1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushBoth/MovingPlatform_1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushBoth/MovingPlatform_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushBoth/MovingPlatform_2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushBoth/MovingPlatform_3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushBoth/MovingPlatform_3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushLeft/MovingPlatform_1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushLeft/MovingPlatform_1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushLeft/MovingPlatform_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushLeft/MovingPlatform_2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushLeft/MovingPlatform_3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushLeft/MovingPlatform_3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushRight/MovingPlatform_1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushRight/MovingPlatform_1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushRight/MovingPlatform_2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushRight/MovingPlatform_2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushRight/MovingPlatform_3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Environment/Activation/Activatables/MovingPlatforms/PushRight/MovingPlatform_3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/MovingPlatform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/Activatable/MovingPlatform.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,6 +136,7 @@
       <workItem from="1648937003615" duration="21932000" />
       <workItem from="1649007627124" duration="6194000" />
       <workItem from="1649120562237" duration="7770000" />
+      <workItem from="1649174833569" duration="8516000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

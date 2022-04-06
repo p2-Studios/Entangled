@@ -11,6 +11,9 @@ using Activator = Activation_System.Activator;
 public class MovingPlatform : Activatable {
     public Transform posStart, posEnd, startPos;        // positions
     public Light2D indicatorLight;
+
+    public Sprite indicatorLoop, indicatorStop;
+    public SpriteRenderer indicator;
     
     
     public float speed;                                 // speed
@@ -40,6 +43,12 @@ public class MovingPlatform : Activatable {
         if (activateByDefault) {
             Activate();
         } else Deactivate();
+
+        if (stopAtEnd) {
+            indicator.sprite = indicatorStop;
+        } else {
+            indicator.sprite = indicatorLoop;
+        }
     }
 
     public override void Deactivate() {

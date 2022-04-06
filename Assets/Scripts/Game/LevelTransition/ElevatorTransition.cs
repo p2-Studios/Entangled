@@ -29,11 +29,13 @@ public class ElevatorTransition : MonoBehaviour {
         
         if (!atEnd && transform.position == endPos.position) {
             atEnd = true;
-            LoadNextScene();
+            StartCoroutine(LoadNextScene());
         }
     }
 
-    private void LoadNextScene() {
+    private IEnumerator LoadNextScene() {
+        FadeManager.instance.FadeOut();
+        yield return new WaitForSeconds(1f);
         Scene scene = SceneManager.GetSceneByName(levelToLoad);
         SceneManager.LoadSceneAsync(levelToLoad);
         if (!scene.IsValid()) { // check if scene was found

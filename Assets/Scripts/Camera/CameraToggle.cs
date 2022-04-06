@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,19 +10,30 @@ public class CameraToggle : MonoBehaviour
 
     public static CinemachineVirtualCamera activeCamera = null;
 
-    public bool toggleCam = false;
+    public Transform playerTopLoc;
+    public Transform playerBottomLoc;
 
-    // Update is called once per frame
-    void Update()
-    {
+
+    private Player player;
+
+    private void Start() {
+        player = FindObjectOfType<Player>();
+    }
+
+    public void TransitionToTop() {
         activeCamera = CameraSwitcher.ActiveCamera;
-        if (activeCamera != null){
-            if(toggleCam){
-                CameraSwitcher.SwitchCamera(switchCam);
-            }
-            else{
-                CameraSwitcher.SwitchCamera(activeCamera);
-            }
-        }
+        player.transform.position = playerTopLoc.position;
+        CameraSwitcher.SwitchCamera(switchCam);
+    }
+    
+    public void TransitionToBottom(float delay) {
+        StartCoroutine(WaitAndToggle(delay));
+    }
+
+    public IEnumerator WaitAndToggle(float delay) {
+        yield return new WaitForSeconds(delay);
+        player.transform.position = playerBottomLoc.position;
+        CameraSwitcher.SwitchCamera(activeCamera);
+        FindObjectOfType<FinaleScreenManager>().SatelliteEntangled();
     }
 }

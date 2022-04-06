@@ -34,6 +34,8 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     public float maxVelocity = 20.0f;
     protected Boolean velocityUpdate;
 
+    public PhysicsMaterial2D frictionMaterial, noFrictionMaterial;
+    
     // VelocityManager instance
     protected VelocityManager velocityManager;
     #endregion
@@ -100,11 +102,14 @@ public class Entanglable : MonoBehaviour, IDestroyable {
         if (entangled) {
             if (active) {
                 spriteRenderer.material = activeGlow;
+                GetComponent<Collider2D>().sharedMaterial = frictionMaterial;
             } else {
                 spriteRenderer.material = pasiveGlow;
+                GetComponent<Collider2D>().sharedMaterial = noFrictionMaterial;
             }
         }  else if(hover){
             spriteRenderer.material = hoverGlow;
+            GetComponent<Collider2D>().sharedMaterial = frictionMaterial;
         }
         else {
             spriteRenderer.material = defaultMat;

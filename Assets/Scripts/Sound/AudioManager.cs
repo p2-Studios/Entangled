@@ -64,10 +64,14 @@ public class AudioManager : MonoBehaviour {
                 }
                 break;
             
+            case "level9": // level9 music
+                song = "music_level9";
+                break;
+            
             case "credits": // credits music
                 song = "music_main";    // TODO: change to credit music
                 break;
-            
+
             default:
                 song = "music_main";
                 break;
@@ -87,14 +91,20 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void SetMusicType(string sceneName) {
+        if (sceneName.Equals("Options")) {  // don't change music when opening options scene
+            return;
+        }
+        
         if (sceneName.Equals("MainMenu") || sceneName.Equals("LevelSelection")) {
             TestAndChangeMusic("menu");
         } else if (sceneName.Equals("Credits")) {   
             TestAndChangeMusic("credits");
         } else if (sceneName.Equals("ElevatorTransition")) { 
             TestAndChangeMusic("elevator");
-        } else if (!sceneName.Equals("ElevatorTransition") && !sceneName.Equals("LevelSelection")) { // don't play sound in elevator transition
-            TestAndChangeMusic("level");  // only change is not already playing level music
+        } else if (sceneName.Contains("Level9")) { 
+            TestAndChangeMusic("level9");
+        } else { 
+            TestAndChangeMusic("level");
         }
     }
     

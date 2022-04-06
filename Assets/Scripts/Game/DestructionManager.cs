@@ -33,13 +33,13 @@ public class DestructionManager : MonoBehaviour {
 
     private IEnumerator DelayRespawn(IDestroyable destroyable, float delay) {
         yield return new WaitForSeconds(delay);
-        if (!IsDestroyed(destroyable.GetGameObject())) {
+        if (destroyable != null && destroyable.GetGameObject() != null) {
             Respawn(destroyable);
         }
     }
     
     public static bool IsDestroyed(GameObject gameObject) {
-        return gameObject == null && !ReferenceEquals(gameObject, null);
+        return gameObject == null;
     }
 
     public void SetRespawnAnimation(float delay, Transform respawnAnimation, Vector3 respawnLocation, string respawnSound) {

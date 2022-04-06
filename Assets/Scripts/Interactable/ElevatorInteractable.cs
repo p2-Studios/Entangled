@@ -6,7 +6,7 @@ public class ElevatorInteractable : Interactable {
     public Elevator elevator;
     
     protected override void Interact() {
-        base.Interact();
+        base.Interact(); 
         PlayInteractionSound();
         elevator.Player.enabled = false;
         elevator.Exit();

@@ -141,12 +141,17 @@ public class FinaleScreenManager : MonoBehaviour {
         yield return new WaitForSeconds(3.25f);
         uplinkText.color = Color.red;
         uplinkText.text = "TRANSMISSION FAILED: FATAL ERROR";
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         // do camera transition stuff
+        FindObjectOfType<CameraToggle>().TransitionToTop();
+    }
+
+    public void SatelliteEntangled() {
         StartCoroutine(FinishTransmission());
     }
     
     private IEnumerator FinishTransmission() {
+        yield return new WaitForSeconds(3.0f);
         float percent = 0.9833f;
         uplinkText.color = Color.cyan;
         uplinkText.fontSize = 18;
