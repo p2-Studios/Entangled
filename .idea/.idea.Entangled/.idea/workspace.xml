@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="" />
+    <list default="true" id="655a6a77-f33b-4e40-8c50-7976f0574705" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Entangled/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Elevator/Elevator_AC.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Elevator/Elevator_AC.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Elevator/Elevator_EXIT.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Elevator/Elevator_EXIT.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Managers/Managers.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Managers/Managers.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Puzzles/Level1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/DestructionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/DestructionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/LevelTransition/Elevator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/LevelTransition/Elevator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/LevelTransition/ElevatorTransition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/LevelTransition/ElevatorTransition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactable/ElevatorInteractable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactable/ElevatorInteractable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sound/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sound/AudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,7 +136,7 @@
       <workItem from="1648937003615" duration="21932000" />
       <workItem from="1649007627124" duration="6194000" />
       <workItem from="1649120562237" duration="7770000" />
-      <workItem from="1649174833569" duration="4742000" />
+      <workItem from="1649174833569" duration="7829000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

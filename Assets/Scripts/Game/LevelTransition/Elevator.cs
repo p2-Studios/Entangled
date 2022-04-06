@@ -17,23 +17,31 @@ public class Elevator : MonoBehaviour {
 
     // load the defined next level
     public void LoadNextLevel() {
-        LevelRestarter.instance.ClearCheckpointPosition();  // clear checkpoint location
-        ElevatorTransition.levelToLoad = nextLevel;
-        SaveSystem.SetGameDataLevel(nextLevelNum);
-        SceneManager.LoadSceneAsync("ElevatorTransition");
+        StartCoroutine(FadeAndTransition());
     }
 
     // open the elevator
     public void Open() {
+        AudioManager.instance.Play("elevator_open");
         Animator.SetBool("IsOpen", true);
     }
 
     // close the elevator
     public void Close() {
+        AudioManager.instance.Play("elevator_close");
         Animator.SetBool("IsOpen", false);
     }
 
     public void Exit() {
         Animator.SetTrigger("Exit");
+    }
+
+    private IEnumerator FadeAndTransition() {
+        FadeManager.instance.FadeOut();
+        yield return new WaitForSeconds(1);
+        LevelRestarter.instance.ClearCheckpointPosition();  // clear checkpoint location
+        ElevatorTransition.levelToLoad = nextLevel;
+        SaveSystem.SetGameDataLevel(nextLevelNum);
+        SceneManager.LoadSceneAsync("ElevatorTransition");
     }
 }
