@@ -27,7 +27,6 @@ public class AutomaticLights : MonoBehaviour {
             yield return new WaitForSeconds(firstDelay);
         foreach (LightToggle l in lights) {
             l.Activate();
-            print("Activating light at " + l.transform.position);
             yield return new WaitForSeconds(onDelay);
         }
 
