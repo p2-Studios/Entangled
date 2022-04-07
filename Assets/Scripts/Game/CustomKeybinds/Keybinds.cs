@@ -29,6 +29,10 @@ namespace Game.CustomKeybinds
         public string[] keys = {
                 "Space","A", "D",
 									"L-Shift", "R", "F", "Q", "", "", "Esc"};
+
+        // Load toggle
+        public bool hold;
+
     private Keybinds() {   
             
             moveLeft = KeyCode.A;
@@ -60,7 +64,9 @@ namespace Game.CustomKeybinds
             
             keyCodes.Add("Pause", pause);
             keyCodes.Add("Reset", reset);
-            
+
+            hold = true;
+
             UpdateControls(SaveLoadKeybinds.LoadControlScheme());
         }
 
@@ -119,6 +125,7 @@ namespace Game.CustomKeybinds
                 reset = tempControls.reset;
 
                 keys = tempControls.keys;
+                hold = tempControls.hold;
 
                 UpdateDictionaryFromAttributes();
             }

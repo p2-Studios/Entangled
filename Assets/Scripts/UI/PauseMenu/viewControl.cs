@@ -22,14 +22,17 @@ public class viewControl : MonoBehaviour
 	public Sprite mouse_r;
 	public Sprite mouse_l;
 
+	// Grab - text
+	public Text grab_text;
+
 	// For reference, simple check if menu is paused
 	public PauseMenu pause_menu;
 
 	// Controls view
 	public GameObject control;
 
-	// LateStart is called after the first frame update
-	void LateStart()
+	// Start is called before the first frame update
+	void Start()
     {
 		UpdateKeys();
     }
@@ -76,41 +79,47 @@ public class viewControl : MonoBehaviour
 		pause.GetComponentInChildren<Text>().text = Keybinds.GetInstance().keys[9];
 		updateSprite(Keybinds.GetInstance().pause, pause);
 
+		if (Keybinds.GetInstance().hold) {
+			grab_text.text = "Grab \n - Hold";
+        }
+		else {
+			grab_text.text = "Grab \n - Toggle";
+		}
 	}
 
 	void updateSprite(KeyCode key, Image image) {
 		switch (key) {
 			case KeyCode.Mouse0:
 				image.sprite = mouse_l;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(58, 48);
+				image.GetComponent<RectTransform>().sizeDelta = new Vector2(38, 32);
 				break;
 			case KeyCode.Mouse1:
 				image.sprite = mouse_r;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(58, 48);
+				image.GetComponent<RectTransform>().sizeDelta = new Vector2(38, 32);
 				break;
 			case KeyCode.Return:
 				image.sprite = key_long;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 48);
+				image.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 28);
 				break;
 			case KeyCode.RightShift:
 				image.sprite = key_long;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 48);
+				image.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 28);
 				break;
 			case KeyCode.LeftShift:
 				image.sprite = key_long;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 48);
+				image.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 28);
 				break;
 			case KeyCode.Backspace:
 				image.sprite = key_long;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 48);
+				image.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 28);
 				break;
 			case KeyCode.Space:
 				image.sprite = key_long;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(120, 48);
+				image.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 28);
 				break;
 			default:
 				image.sprite = key_short;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(48, 48);
+				image.GetComponent<RectTransform>().sizeDelta = new Vector2(28, 28);
 				break;
 		}
 	}
