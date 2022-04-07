@@ -177,10 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d54f276fa14d28b24c94bfb2937cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activateSound: pressure_pad_activate
-  deactivateSound: pressure_pad_deactivate
   requiredMass: 1
-  stayActivated: 0
   activatables: []
   triggerers:
   - Player
@@ -225,7 +222,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -189938303
   m_SortingLayer: 1
-  m_SortingOrder: -2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -3443884916721498708, guid: 9823e2f99940c984e86f1a8399628c96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

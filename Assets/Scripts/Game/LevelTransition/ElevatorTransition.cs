@@ -20,8 +20,8 @@ public class ElevatorTransition : MonoBehaviour {
     IEnumerator StartSoundWithDelay() {
         yield return new WaitForSeconds(0.5f);
         
-        //AudioManager am = FindObjectOfType<AudioManager>();
-        //if (am != null) am.PlayDelayed("elevator_descend", 3f);
+        AudioManager am = FindObjectOfType<AudioManager>();
+        if (am != null) am.Play("elevator_descend");
     }
 
     void Update() {
@@ -29,15 +29,19 @@ public class ElevatorTransition : MonoBehaviour {
         
         if (!atEnd && transform.position == endPos.position) {
             atEnd = true;
-            Scene scene = SceneManager.GetSceneByName(levelToLoad);
-            SceneManager.LoadSceneAsync(levelToLoad);
-            if (!scene.IsValid()) { // check if scene was found
-                SceneManager.LoadSceneAsync(levelToLoad);
-            } else {
-                Debug.LogWarning("Scene " + levelToLoad + " attempted to load, but wasn't found!");
-                SceneManager.LoadSceneAsync("MainMenu");
-            }
+            LoadNextScene();
         }
     }
-    
+
+    private void LoadNextScene() {
+        Debug.Log(levelToLoad);
+        Scene scene = SceneManager.GetSceneByName(levelToLoad);
+        SceneManager.LoadSceneAsync(levelToLoad);
+        if (!scene.IsValid()) { // check if scene was found
+            SceneManager.LoadSceneAsync(levelToLoad);
+        } else {
+            Debug.LogWarning("Scene " + levelToLoad + " attempted to load, but wasn't found!");
+            SceneManager.LoadSceneAsync("MainMenu");
+        }
+    }
 }

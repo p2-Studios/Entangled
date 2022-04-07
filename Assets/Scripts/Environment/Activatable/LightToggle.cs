@@ -9,18 +9,15 @@ public class LightToggle : Activatable{
 
 
     public Activator[] activators;
-    public Light2D lightComponent;
+    private Light2D lightComponent; 
 
-    void Start() {
-        if (lightComponent == null) lightComponent = GetComponent<Light2D>();
+    void Start(){
+        lightComponent = this.GetComponent<Light2D>();
         foreach (Activator a in activators) {
             AddActivator(a);
         }
 
-        if (activateByDefault) {
-            playSound = false;
-            Activate();
-        } else { Deactivate();}
+        if (activateByDefault) { Activate(); } else { Deactivate();}
     }
 
     public override void Activate(){

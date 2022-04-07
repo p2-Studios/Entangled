@@ -22,21 +22,12 @@ public class JumpState : BaseState {
     
     protected private bool touchingBox;
 
-    public void Initialize(string name, PlayerStateMachine psm, Player player,AudioManager am){
-        this.Name = name;
-        playerSM = psm;
-        Player = player;
-        touchingBox = false;    // checks if player is touching a pushable object
-        feetCollider = Player.GetComponent<CapsuleCollider2D>();
-        this.audioManager = am;
-    }
-
-    /*public JumpState(PlayerStateMachine playerStateMachine,Player player, AudioManager audioManager) : base("Jumping", playerStateMachine,player){
+    public JumpState(PlayerStateMachine playerStateMachine,Player player, AudioManager audioManager) : base("Jumping", playerStateMachine,player){
         playerSM = (PlayerStateMachine)playerStateMachine;
         touchingBox = false;
         this.audioManager = audioManager;
         feetCollider = Player.GetComponent<CapsuleCollider2D>();
-    }*/
+    }
 
     // upon entering state, apply upward velocity to achieve jump
     public override void Enter(){
@@ -44,9 +35,10 @@ public class JumpState : BaseState {
         
         playerSM.player.SetAnimatorState("jumping");
         //audioManager.Play("movement_jump");
+
         horzInput = 0f;
         Vector2 velocity = Player.rigidbody.velocity;
-        velocity.y = Player.jumpForce;
+        velocity.y += Player.jumpForce;
         velocity.x = 0;
         Player.rigidbody.velocity = velocity;
     }
@@ -55,7 +47,6 @@ public class JumpState : BaseState {
     public override void UpdateLogic(){
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
-        
         if(grounded)
             playerSM.ChangeState(playerSM.idleState);
     }

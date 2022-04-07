@@ -9,8 +9,6 @@ namespace Activation_System
         private bool activated;
         private ActivationManager activationManager;
 
-        public string activateSound, deactivateSound;
-        
         public Activator()
         {
             activated = false;
@@ -22,7 +20,6 @@ namespace Activation_System
         {
             activated = true;
             activationManager.OnActivate(this);
-            AudioManager.instance.Play(activateSound);
         }
 
         public virtual void Activate(float timer)
@@ -35,7 +32,6 @@ namespace Activation_System
         {
             activated = false;
             activationManager.OnDeactivate(this);
-            AudioManager.instance.Play(deactivateSound);
         }
 
         public virtual void Deactivate(float timer)

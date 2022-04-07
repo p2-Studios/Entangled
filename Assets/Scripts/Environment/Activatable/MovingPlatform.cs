@@ -11,9 +11,6 @@ using Activator = Activation_System.Activator;
 public class MovingPlatform : Activatable {
     public Transform posStart, posEnd, startPos;        // positions
     public Light2D indicatorLight;
-
-    public Sprite indicatorLoop, indicatorStop;
-    public SpriteRenderer indicator;
     
     
     public float speed;                                 // speed
@@ -22,11 +19,7 @@ public class MovingPlatform : Activatable {
     private Vector2 nextPos;
 
     private bool moving = true;
-    private bool justActivated = false;                 // flag for whether the platform was just activated, to know whether the delay can be skipped
-    public bool moveInstantly = true;
-    public float startDelay = 1.5f;
     public float endDelay = 1.5f;
-    public bool makeObjectChild = true;
     
     
     public Activator[] activators;			// -- array of activators, REQUIRED to set the activators manually! --
@@ -43,12 +36,6 @@ public class MovingPlatform : Activatable {
         if (activateByDefault) {
             Activate();
         } else Deactivate();
-
-        if (stopAtEnd) {
-            indicator.sprite = indicatorStop;
-        } else {
-            indicator.sprite = indicatorLoop;
-        }
     }
 
     public override void Deactivate() {
@@ -62,36 +49,23 @@ public class MovingPlatform : Activatable {
     public override void Activate() {
         base.Activate();
         indicatorLight.color =  Color.green;
-        justActivated = true;
         if (stopAtEnd) { // if stopAtEnd and moving back to posStart, send back to posEnd
             if (nextPos == (Vector2) posStart.position) nextPos = posEnd.position;
         }
     }
 
-    void FixedUpdate() {
+    void Update() {
         // if at one of the end positions, switch next position
         if (activated) {    // only change nextPos while active
             if (transform.position == posStart.position) {
                 nextPos = posEnd.position;                   // start going to posEnd
-                
-                if (justActivated && moveInstantly) {
-                    moving = true;
-                } else {
-                    if (moving) StartCoroutine(WaitAtDestination(startDelay));
-                }
-                
-                //transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
-                
+                if (moving) StartCoroutine(WaitAtDestination(endDelay));
+                transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
             } else if (transform.position == posEnd.position) {
                 if (!stopAtEnd) nextPos = posStart.position; // only go back to posStart if stopAtEnd is false
-                
-                if (justActivated && moveInstantly) {
-                    moving = true;
-                } else {
-                    if (moving) StartCoroutine(WaitAtDestination(endDelay));
-                }
+                if (moving) StartCoroutine(WaitAtDestination(endDelay));
+                transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
             }
-            justActivated = false;
         }
 
         // move towards the next position, only move if activated or moving back to start
@@ -109,10 +83,5 @@ public class MovingPlatform : Activatable {
         moving = false;
         yield return new WaitForSeconds(time);
         moving = true;
-        transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
-    }
-
-    public bool DoesMakeObjectChild() {
-        return makeObjectChild;
     }
 }

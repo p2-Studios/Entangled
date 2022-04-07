@@ -11,8 +11,6 @@ TagManager:
   - Destroyer
   - Orb
   - BehindForeground
-  - TopOfObject
-  - Bouncy
   layers:
   - Default
   - TransparentFX
@@ -25,9 +23,9 @@ TagManager:
   - Walls
   - Objects
   - Player
-  - Fan
-  - Entanglable
-  - Vignette
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -49,9 +47,6 @@ TagManager:
   m_SortingLayers:
   - name: Background - Environment
     uniqueID: 408503995
-    locked: 0
-  - name: Background - Backdrop
-    uniqueID: 3157843379
     locked: 0
   - name: Background - Object
     uniqueID: 532046353
