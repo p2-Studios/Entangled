@@ -12,7 +12,7 @@ public class Intro : MonoBehaviour {
 
     IEnumerator EnablePlayer()
      {         
-         yield return new WaitForSeconds(8.5f);
+         yield return new WaitForSeconds(7f);
   
          player.SetActive(true);
      }
