@@ -112,7 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0e692ddfb310f42ad38c729b958666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followPlayer: 1
 --- !u!1 &3324715220661265902
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,9 +266,9 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 0
-  m_YDamping: 0
-  m_ZDamping: 0
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5

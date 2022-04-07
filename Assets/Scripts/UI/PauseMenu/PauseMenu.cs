@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
+using Game.CustomKeybinds;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,11 +28,16 @@ public class PauseMenu : MonoBehaviour
 	
 	// Timescale for pause
 	private float timescale;
-	
+
+	// Paused?
+	public bool paused = false;
+
 	// Click Timer
 	private DateTime clickTime;
 	private bool buttonClick = false;
 
+	public String[] exemptScenes;
+	
 	public static PauseMenu instance;
 
 	private void Awake() {
@@ -57,20 +62,18 @@ public class PauseMenu : MonoBehaviour
 		yes.onClick.AddListener(btnYes);
 		no.onClick.AddListener(btnNo);
 		
-		back.onClick.AddListener(btnBack);
-		
 		timescale = Time.timeScale;
     }
 
     // Update is called once per frame
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
-	        if (!SceneManager.GetActiveScene().name.Equals("MainMenu")) { // don't allow opening in main menu
+        if(Input.GetKeyDown(Keybinds.GetInstance().pause)) {
+	        if (!exemptScenes.Contains(SceneManager.GetActiveScene().name)) { // don't allow opening in main menu
 		        HintManager hm = HintManager.instance;
 		        if (hm != null) hm.CloseHint();
 		        
-		        DialogueManager dm = DialogueManager.instance;
-		        if (!(dm == null) && !dm.inDialogue) { // don't allow opening while in a dialogue (Escape exits dialogue)
+		        TerminalManager dm = TerminalManager.instance;
+		        if (!(dm == null) && !dm.IsTerminalOpen()) { // don't allow opening while in a dialogue (Escape exits dialogue)
 			        menuState();
 		        }
 	        }
@@ -124,10 +127,7 @@ public class PauseMenu : MonoBehaviour
 	
 	// button reset.onclick function
 	void btnReset() {
-		// Check button is held on for atleast 2 seconds
-		//if (System.DateTime.Now.Subtract(clickTime).TotalSeconds >= 2) {
 		LevelRestarter.instance.RestartLevel();
-		//SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
 		menuState();
 		buttonClick = false;
 		//}
@@ -135,11 +135,7 @@ public class PauseMenu : MonoBehaviour
 	
 	// button options.onclick function
 	void btnOptions() {
-		// Hide Screen 1
-		menu.SetActive(false);
-		
-		// Show Screen 3
-		Options.SetActive(true);
+		SceneManager.LoadSceneAsync("Options", LoadSceneMode.Additive);
 	}
 	
 	void btnFeedback() {
@@ -157,8 +153,8 @@ public class PauseMenu : MonoBehaviour
 	
 	// button yes.onclick function
 	void btnYes() {
-		// TODO : Set Main menu screen here when implemented
 		Time.timeScale = timescale;
+		paused = false;
 		confirm.SetActive(false);
 		menu.SetActive(false);
 
@@ -175,7 +171,7 @@ public class PauseMenu : MonoBehaviour
 	}
 	
 	void resumeState() {
-		if (menu.activeSelf) {
+		if (paused) {
 			// Pause
 			Time.timeScale = 0.0f;
 		}
@@ -185,23 +181,24 @@ public class PauseMenu : MonoBehaviour
 		}
 	}
 	
-	// button back.onclick function
-	void btnBack() {
-		// Show Screen 1
-		menu.SetActive(true);
-		
-		// Hide Screen 3
-		Options.SetActive(false);
-	}
-	
 	void menuState() {
-		menu.SetActive(!menu.activeSelf);
-		
-		confirm.SetActive(false);
-		
+
+		if (paused) {
+			menu.SetActive(false);
+			confirm.SetActive(false);
+		}
+		else {
+			menu.SetActive(true);
+		}
+
+		paused = !paused;
+
 		resumeState();
 	}
-	
 
+
+	public void OpenOptions() {
+		btnOptions();
+	}
 	
 }

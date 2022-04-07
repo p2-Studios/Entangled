@@ -12,10 +12,10 @@ public class Player : MonoBehaviour, IDestroyable {
     public float speed = 6f;
     public float jumpForce = 12f;
     public float grabDistance = 0.5f;
-    public float pushStrength = 1f;
+    public float pushStrength = 20f;
     public SpriteRenderer spriteRenderer;
     public Animator animator;
-    public Transform deathAnimation;
+    public Transform deathAnimation, respawnAnimation;
     public LayerMask pushMask;
     public float rayHeight = 0;
 
@@ -30,7 +30,9 @@ public class Player : MonoBehaviour, IDestroyable {
     PlayerStateMachine stateMachine;
 
     private Vector2 position, previousPosition;
-    public Transform respawnLocation;   // location that the player should respawn at when necessary
+    public Transform respawnTransform;   // location that the player should respawn at when necessary
+    [HideInInspector]
+    public Vector3 respawnLocation;
     public float respawnDelay = 2.0f;
     [HideInInspector]
     public Vector2 worldVelocity;  // worldVelocity information
@@ -57,9 +59,29 @@ public class Player : MonoBehaviour, IDestroyable {
         audioManager = FindObjectOfType<AudioManager>();
         stateMachine.Initialize(this);
         grabbing = false;
+
+
+        // set the player's respawn position
+        if (LevelRestarter.instance.GetCheckpointPosition() != Vector3.zero) {  // if LevelRestarter has a location, use it
+            respawnLocation = LevelRestarter.instance.GetCheckpointPosition();
+        } else {
+            if (respawnTransform != null) {
+                // otherwise, if a respawn transform was manually set, use that
+                respawnLocation = respawnTransform.position;
+            } else {
+                // otherwise, default to using the elevator at the start of the level, if one is found
+                GameObject elevator = GameObject.Find("Elevator_Open");
+                if (elevator != null) {
+                    respawnLocation = elevator.transform.position;
+                } else {
+                    // and finally, if no elevator was found, use the player's starting position
+                    respawnLocation = transform.position;
+                }
+            }
+        }
     }
 
-    private void Update(){
+    private void FixedUpdate(){
         if (gameObject.transform.parent != null) {  // update world velocity while attached to a parent object
             position = transform.position;
             worldVelocity = (position - previousPosition) / Time.deltaTime;
@@ -97,7 +119,7 @@ public class Player : MonoBehaviour, IDestroyable {
     }
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Platform")) {
-            transform.parent = null;
+            if (gameObject.activeInHierarchy) transform.parent = null;
         }
     }
 
@@ -113,13 +135,13 @@ public class Player : MonoBehaviour, IDestroyable {
 
 
     // Sets the animator state (int) of the player's animator, to transition between animations
-    // author: Dakota
     public void SetAnimatorState(String state) {
         // 0 = idle
         // 1 = running
         // 2 = jumping
         // 3 = push/pull
         // 4 = destroyed
+        // 5 = falling
         switch (state) {
             case "idle":
                 animator.SetInteger("State", 0);
@@ -138,6 +160,9 @@ public class Player : MonoBehaviour, IDestroyable {
                 break;
             case "dying":
                 animator.SetInteger("State", 4);
+                break;
+            case "falling":
+                animator.SetInteger("State", 2);
                 break;
             default:
                 Debug.LogWarning("Invalid player state set ('" + state + "')");
@@ -163,11 +188,13 @@ public class Player : MonoBehaviour, IDestroyable {
     public void Destroy() {
         entangleComponent.ClearEntangled();
         Instantiate(deathAnimation, transform.position, quaternion.identity);
+        DestructionManager.instance.SetRespawnAnimation(respawnDelay - 1.01f, respawnAnimation, respawnLocation, "player_respawn");
     }
     
     // do things that need to be done on respawning, right after the game object is set as active again
     public void Respawn() {
-        gameObject.transform.position = respawnLocation.transform.position; // move the object to respawnLocation
+        transform.parent = null;
         ResetPlayer();
+        gameObject.transform.position = respawnLocation; // move the object to respawnTransform
     }
 }

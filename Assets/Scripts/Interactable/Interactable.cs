@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.CustomKeybinds;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
     public string triggerSound = "";    // optional sound to play when interacting
-    
+
+    protected bool interactionEnabled = true;
     private Boolean inRange;
-    private Transform indicator;
+    protected Transform indicator;
     void Start() {
         inRange = false;
         indicator = transform.GetChild(0);
@@ -16,8 +18,8 @@ public class Interactable : MonoBehaviour {
     }
     
     void Update() {
-        if (Input.GetKeyDown(KeyCode.F)) {
-            if (inRange) {
+        if (Input.GetKeyDown(Keybinds.GetInstance().interact)) {
+            if (inRange && interactionEnabled) {
                 Interact();
             }
         }
@@ -37,7 +39,7 @@ public class Interactable : MonoBehaviour {
     }
     
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.CompareTag("Player")) {
+        if (other.gameObject.CompareTag("Player") && interactionEnabled) {
             OnRangeEnter();
         }
     }
@@ -45,6 +47,14 @@ public class Interactable : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
             OnRangeExit();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Player")) {
+            if (interactionEnabled && !inRange) {
+                OnRangeEnter();
+            }
         }
     }
 

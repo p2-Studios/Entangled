@@ -15,9 +15,6 @@ public class Level : MonoBehaviour {
 
     public void Awake() {
         flashDrives = FindObjectsOfType<FlashDrive>();  // find all flashdrives in the scene
-        foreach(FlashDrive flashDrive in flashDrives) {
-            Debug.Log(flashDrive.label);
-        }
         
         LoadLevelData();    // load any possible existing level data
     }
@@ -28,14 +25,23 @@ public class Level : MonoBehaviour {
 
     public void LoadLevelData() {
         LevelData data = SaveSystem.LoadLevel(label);
-        if (data == null) return;
+        if (data == null) { // no level data found, create data
+            flashDrives = (FlashDrive[]) GameObject.FindObjectsOfType(typeof(FlashDrive));
+            orbs = (Orb[]) GameObject.FindObjectsOfType(typeof(Orb));
+            
+            foundFlashDrives = new ArrayList();
+            collectedOrbs = new ArrayList();
+        } else {
+            // load any orbs and flashdrives the player has already found 
+            foundFlashDrives = GetFoundFlashDrivesFromIDs(data.foundFlashDrives);
+            //collectedOrbs = GetCollectedOrbsFromIDS(data.foundOrbs);
 
-        // load any orbs and flashdrives the player has already found 
-        foundFlashDrives = GetFoundFlashDrivesFromIDs(data.foundFlashDrives);
-        collectedOrbs = GetCollectedOrbsFromIDS(data.foundOrbs);
-
-        foreach (FlashDrive f in foundFlashDrives) {
-            if (flashDrives.Contains(f)) f.gameObject.SetActive(false);
+            foreach (FlashDrive f in foundFlashDrives) {    // disable already found flashdrives
+                if (flashDrives.Contains(f)) {
+                    f.gameObject.transform.position = new Vector3(1000, 1000, 1000);   // move far away to make inaccessible
+                    f.SetCollected(true);
+                }
+            }
         }
     }
 
@@ -43,6 +49,14 @@ public class Level : MonoBehaviour {
         SaveSystem.SaveLevel(this);
     }
 
+    public int[] GetFlashDriveCounts() {
+        if (flashDrives != null && foundFlashDrives != null) {
+            return new int[] {flashDrives.Length, foundFlashDrives.Count};
+        } else {
+            return new int[] {0, 0};
+        }
+    }
+    
     public ArrayList GetFoundFlashDrivesFromIDs(string[] ids) {
         ArrayList found = new ArrayList();
         foreach (String s in ids) {
@@ -92,11 +106,11 @@ public class Level : MonoBehaviour {
         o.gameObject.SetActive(false);
     }
 
-    public int GetTotalOrbCount() {
-        return orbs.Length;
+    public int GetTotalFlashDriveCount() {
+        return flashDrives.Length;
     }
 
-    public int GetFoundOrbsCount() {
-        return collectedOrbs.Count;
+    public FlashDrive[] GetFlashDrives() {
+        return flashDrives;
     }
 }

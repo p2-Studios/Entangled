@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menus/Splash.unity
+    guid: ef7be65d103fa8947b6c07177e511748
+  - enabled: 1
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: 571708a76f46f42f3b0cc2e908687d66
   - enabled: 1
@@ -32,4 +35,34 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Puzzles/Level7.unity
     guid: 489fad5bb2fb7074baa920fd741472d1
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level8.unity
+    guid: cd8c26e19ceb7304490cb10905344661
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level9.unity
+    guid: ba4adddcd1394f942ba8046006ba8baf
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level9a.unity
+    guid: 1bc009e7ba0ac5c459454f76a21d60bb
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level9b.unity
+    guid: 60162bb068701ee44aa6d1cd658f1b39
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level9c.unity
+    guid: 118c7c323d2e50641b4115199f818874
+  - enabled: 1
+    path: Assets/Scenes/Puzzles/Level9d.unity
+    guid: 2e2f5ffa314ad7247b228b7074d14ab5
+  - enabled: 1
+    path: Assets/Scenes/Menus/Options.unity
+    guid: 68d0c36354a4b2d418bc5f4f2d4c0e36
+  - enabled: 1
+    path: Assets/Scenes/Menus/LevelSelection.unity
+    guid: fb30219de180e414da15e8498480ab19
+  - enabled: 1
+    path: Assets/Scenes/Menus/Credits.unity
+    guid: a744cc703e1aa44e3afc3d9585a29f35
+  - enabled: 1
+    path: Assets/Scenes/Testing/Testing_Box2.unity
+    guid: f9536eccc42f737448dfd95a60d5c6e3
   m_configObjects: {}

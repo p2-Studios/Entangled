@@ -43,79 +43,234 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57fd885470aa7841a85839b0ee6760e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - name: terminal_boot
-    clip: {fileID: 8300000, guid: 4c257e2d20d02dd498e96922a059cf9b, type: 3}
-    source: {fileID: 0}
-    volume: 0.695
-    pitch: 0.1
-  - name: toggleswitch_toggle
-    clip: {fileID: 8300000, guid: c3a814487bd279d4cb19fbf6d904661d, type: 3}
-    source: {fileID: 0}
-    volume: 0.053
-    pitch: 1
-  - name: text_scroll
-    clip: {fileID: 8300000, guid: 4e0dae3d124e1b747a41201544923f8e, type: 3}
-    source: {fileID: 0}
-    volume: 0.1
-    pitch: 1
-  - name: object_entangled
-    clip: {fileID: 8300000, guid: 62d2028050aef9a4fb79999da74a4087, type: 3}
-    source: {fileID: 0}
-    volume: 0.025
-    pitch: 0.9
-  - name: gate_open
-    clip: {fileID: 8300000, guid: 8d10dce21ad257d488275c8e2db56cbb, type: 3}
-    source: {fileID: 0}
-    volume: 0.05
-    pitch: 1.2
-  - name: gate_close
-    clip: {fileID: 8300000, guid: 8d10dce21ad257d488275c8e2db56cbb, type: 3}
-    source: {fileID: 0}
-    volume: 0.05
-    pitch: 0.8
-  - name: movement_jump
-    clip: {fileID: 8300000, guid: 0ffa3ba7d88e0fd4fb941651f94267d5, type: 3}
-    source: {fileID: 0}
-    volume: 0.2
-    pitch: 1
-  - name: movement_run
-    clip: {fileID: 8300000, guid: 3c0e8755f13ff5f42b12fb9d6ba2f394, type: 3}
-    source: {fileID: 0}
-    volume: 0.05
-    pitch: 1
-  - name: player_death
-    clip: {fileID: 8300000, guid: fa17428a033834b42a0b0099a6b56fa2, type: 3}
-    source: {fileID: 0}
-    volume: 0.05
-    pitch: 1
-  - name: orb_collect
-    clip: {fileID: 8300000, guid: 4be3b6f8b463cb943b8d014294efde5d, type: 3}
-    source: {fileID: 0}
-    volume: 0.3
-    pitch: 1
-  - name: elevator_descend
-    clip: {fileID: 8300000, guid: a873a3239ab66c743a61775d3861220a, type: 3}
-    source: {fileID: 0}
-    volume: 0.1
-    pitch: 1
-  - name: elevator_descend
-    clip: {fileID: 8300000, guid: a873a3239ab66c743a61775d3861220a, type: 3}
-    source: {fileID: 0}
-    volume: 0.1
-    pitch: 1
+  miscSounds: []
+  music:
   - name: music_3
     clip: {fileID: 8300000, guid: 6f36b010469ad46408f1e670748a3b9b, type: 3}
     source: {fileID: 0}
     volume: 0.05
     pitch: 1
+    pitchMin: 1
+    pitchMax: 1
   - name: music_4
     clip: {fileID: 8300000, guid: 98e831882d08b4540b7ad7cbb62d0b35, type: 3}
     source: {fileID: 0}
     volume: 0.05
     pitch: 1
+    pitchMin: 1
+    pitchMax: 1
   - name: music_main
     clip: {fileID: 8300000, guid: 322f0dfdde8ea9640a9d2db2d1cc4a66, type: 3}
     source: {fileID: 0}
     volume: 0.05
     pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: music_elevator
+    clip: {fileID: 8300000, guid: 524f89089eee3634a8d129165007b708, type: 3}
+    source: {fileID: 0}
+    volume: 0.025
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: music_level9
+    clip: {fileID: 8300000, guid: eb1a18e025aeb3d40afef072f3ca5ff8, type: 3}
+    source: {fileID: 0}
+    volume: 0.025
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  uiSounds:
+  - name: terminal_click
+    clip: {fileID: 8300000, guid: 9e4cbc5f047fc324ab99442888939447, type: 3}
+    source: {fileID: 0}
+    volume: 1
+    pitch: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
+  - name: terminal_open_file
+    clip: {fileID: 8300000, guid: 94c81296fab03da4dac21e361c235473, type: 3}
+    source: {fileID: 0}
+    volume: 0.25
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: terminal_close_file
+    clip: {fileID: 8300000, guid: cb093a7ab9f16cd40bab7d3bbaafcf72, type: 3}
+    source: {fileID: 0}
+    volume: 0.25
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: terminal_error
+    clip: {fileID: 8300000, guid: 73afb0d254729ea418cade3561154357, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: terminal_boot
+    clip: {fileID: 8300000, guid: 4c257e2d20d02dd498e96922a059cf9b, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
+  - name: finale_data_transmit
+    clip: {fileID: 8300000, guid: 3e1c0bc78189a4744bcb27e74c5993fd, type: 3}
+    source: {fileID: 0}
+    volume: 0.15
+    pitch: 1
+    pitchMin: 0.95
+    pitchMax: 0.95
+  - name: finale_terminal_start
+    clip: {fileID: 8300000, guid: a27793e9fc74f524e87ce5cefa9160d5, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: finale_terminal_success
+    clip: {fileID: 8300000, guid: 1c3c82fd469f1554493f3850ef0fec96, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  environmentSounds:
+  - name: gate_open
+    clip: {fileID: 8300000, guid: 72a45e57d9336114dbd09310c20b35ce, type: 3}
+    source: {fileID: 0}
+    volume: 0.15
+    pitch: 1.2
+    pitchMin: 1.2
+    pitchMax: 1.3
+  - name: gate_close
+    clip: {fileID: 8300000, guid: 72a45e57d9336114dbd09310c20b35ce, type: 3}
+    source: {fileID: 0}
+    volume: 0.15
+    pitch: 0.8
+    pitchMin: 0.75
+    pitchMax: 0.85
+  - name: toggleswitch_toggle_on
+    clip: {fileID: 8300000, guid: c3a814487bd279d4cb19fbf6d904661d, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1.1
+  - name: toggleswitch_toggle_off
+    clip: {fileID: 8300000, guid: c3a814487bd279d4cb19fbf6d904661d, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 1
+    pitchMin: 0.8
+    pitchMax: 0.9
+  - name: elevator_descend
+    clip: {fileID: 8300000, guid: a873a3239ab66c743a61775d3861220a, type: 3}
+    source: {fileID: 0}
+    volume: 0.025
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: pressure_pad_activate
+    clip: {fileID: 8300000, guid: 201c0ed4baab86b4599372f58d809f2a, type: 3}
+    source: {fileID: 0}
+    volume: 0.025
+    pitch: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
+  - name: pressure_pad_deactivate
+    clip: {fileID: 8300000, guid: 201c0ed4baab86b4599372f58d809f2a, type: 3}
+    source: {fileID: 0}
+    volume: 0.01
+    pitch: 0.7
+    pitchMin: 0.65
+    pitchMax: 0.76
+  - name: light_on
+    clip: {fileID: 8300000, guid: e746665f0dcfaf643b9249664569d1d3, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
+  - name: pedestal_button_down
+    clip: {fileID: 8300000, guid: 40569be66a97b8e43bebc7b976bda248, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1.1
+  - name: pedestal_button_up
+    clip: {fileID: 8300000, guid: 40569be66a97b8e43bebc7b976bda248, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+    pitchMin: 0.8
+    pitchMax: 0.9
+  - name: wall_break
+    clip: {fileID: 8300000, guid: e50616018098dfa4fa16b36be454124e, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+    pitchMin: 0.5
+    pitchMax: 0.9
+  - name: bounce
+    clip: {fileID: 8300000, guid: 5187039fd64bff440ba8c966fd36af0f, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1.3
+  playerSounds:
+  - name: player_respawn
+    clip: {fileID: 8300000, guid: 4519420b266ba8c439556a2729118d5f, type: 3}
+    source: {fileID: 0}
+    volume: 0.15
+    pitch: 1
+    pitchMin: 0.9
+    pitchMax: 1.2
+  - name: player_death_spikes
+    clip: {fileID: 8300000, guid: 8610ad24f52950f45a88e4506edbd140, type: 3}
+    source: {fileID: 0}
+    volume: 0.35
+    pitch: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
+  - name: player_death_laser
+    clip: {fileID: 8300000, guid: 33c999bc9f0ad4b4b9ef9bbf2a948d16, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
+  objectSounds:
+  - name: object_destroyed
+    clip: {fileID: 8300000, guid: 45905507fe185564b9801ee3d9fbb308, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
+    pitch: 0.9
+    pitchMin: 0.85
+    pitchMax: 0.9
+  - name: object_entangled
+    clip: {fileID: 8300000, guid: 62d2028050aef9a4fb79999da74a4087, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: unentangle
+    clip: {fileID: 8300000, guid: 9f23afec8c6bb9e41a29aea964438f17, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 0.9
+    pitchMin: 1
+    pitchMax: 1
+  - name: object_destroyed_laser
+    clip: {fileID: 8300000, guid: 3aa63005f5fa8ae4aaf3db147a84684e, type: 3}
+    source: {fileID: 0}
+    volume: 0.05
+    pitch: 0.9
+    pitchMin: 0.9
+    pitchMax: 1.1
+  sounds: []

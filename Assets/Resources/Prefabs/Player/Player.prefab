@@ -49,13 +49,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 7929462300034805080}
-  speed: 6
+  speed: 5
   jumpForce: 5
   grabDistance: 0.5
-  pushStrength: 0.8
+  pushStrength: 20
   spriteRenderer: {fileID: 7411563505412239111}
   animator: {fileID: 6269613174981301470}
-  deathAnimation: {fileID: 2282829766038112090, guid: d55891c79403af24683d0a1e864d34bb, type: 3}
+  deathAnimation: {fileID: 2282829766038112090, guid: 40cb64ba21cb05641972bddee094e7f7, type: 3}
+  respawnAnimation: {fileID: 2282829766038112090, guid: d55891c79403af24683d0a1e864d34bb, type: 3}
   pushMask:
     serializedVersion: 2
     m_Bits: 630
@@ -65,8 +66,9 @@ MonoBehaviour:
   EntangledHelix: {fileID: 4301194098379100217, guid: 6b752724eae5b3c41bfbecf5a7a9c0bd, type: 3}
   showEntanglingHelix: 1
   showEntangledHelix: 1
-  respawnLocation: {fileID: 0}
-  respawnDelay: 1
+  respawnTransform: {fileID: 0}
+  respawnLocation: {x: 0, y: 0, z: 0}
+  respawnDelay: 3.5
   worldVelocity: {x: 0, y: 0}
   pushedObject: {fileID: 0}
   facingRight: 1
@@ -87,7 +89,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b54e2551c4b738f46a1fbf0b1f0a27bd, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -186,8 +188,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.5}
-  m_EdgeRadius: 0.18
+  m_Size: {x: 0.5, y: 0.72}
+  m_EdgeRadius: 0.1
 --- !u!70 &108507452419385933
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -197,7 +199,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 7929462300034805081}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b54e2551c4b738f46a1fbf0b1f0a27bd, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

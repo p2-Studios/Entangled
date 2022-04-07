@@ -32,4 +32,31 @@ public class ActivationLinker : MonoBehaviour {
         }
     }
 
+    public void GetActivationObjects() {
+        activators = new ArrayList();
+        activatables = new ArrayList();
+        foreach (Transform child in transform) {
+            Activator activator = child.GetComponentInChildren<Activator>();
+            if (activator != null) {
+                activators.Add(activator);
+            } else {
+                Activatable activatable = child.GetComponentInChildren<Activatable>();
+                if (activatable != null) {
+                    activatables.Add(activatable);
+                }
+            }
+        }
+    }
+    
+    // draw lines between activator and its activatables
+    private void OnDrawGizmos() {
+        GetActivationObjects();
+        //print(activators);
+        foreach (Activator av in activators) {
+            foreach (Activatable ac in activatables) {
+                Gizmos.DrawLine(av.transform.position, ac.transform.position);
+            }
+        }
+    }
+
 }

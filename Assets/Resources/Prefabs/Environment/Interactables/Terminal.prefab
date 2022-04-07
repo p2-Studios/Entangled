@@ -1,5 +1,77 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4092368754336716441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4063449007098474934}
+  - component: {fileID: 2860599946055876367}
+  m_Layer: 0
+  m_Name: Point Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4063449007098474934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092368754336716441}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.693, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5880884689359741017}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2860599946055876367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4092368754336716441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.569
+  m_Color: {r: 0, g: 1, b: 0.00427413, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: 0000000081c5adf41162b61f
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 0.4
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &5880884689359741021
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +81,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5880884689359741017}
-  - component: {fileID: 8682474248818682218}
+  - component: {fileID: 2225125406761396580}
   - component: {fileID: 5880884689359741016}
   - component: {fileID: 5880884689359741022}
   - component: {fileID: 5880884689359741018}
@@ -29,14 +101,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5880884689359741021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.01, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
-  - {fileID: 5630156622590848232}
+  - {fileID: 620207027522646023}
+  - {fileID: 4063449007098474934}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8682474248818682218
+--- !u!114 &2225125406761396580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,16 +118,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5880884689359741021}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c23d959f835ecc44badc1ff7160d7012, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e552bd512fe5394dbb06b12daa9cf78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerSound: 
-  dialogue:
-    name: ./initialization.exe
-    sentences:
-    - This is a computer terminal that can display any amount of custom text.
-    - "Simply place this object somewhere and add lines of text to the array in Dialogue.\t\t"
-    - Your lines will show on the screen one at a time.
+  triggerSound: terminal_boot
+  localFiles: []
   animator: {fileID: 429289540591911158}
 --- !u!212 &5880884689359741016
 SpriteRenderer:
@@ -95,8 +163,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 532046353
   m_SortingLayer: -1
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 1152356169552002576, guid: f2e88dcf8cf846c4cb9d57098a16ec9f, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -5063113517504986565, guid: 124d8a7f9cf344e7c94a2504d7e68ad6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +190,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.2
 --- !u!50 &5880884689359741018
 Rigidbody2D:
   serializedVersion: 4
@@ -154,7 +222,7 @@ Animator:
   m_GameObject: {fileID: 5880884689359741021}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1563d50c01317ab4395e2f03de55c8e3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6faef42f003fc411f9908d1bc43c34a2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -163,7 +231,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1001 &393597346093160800
+--- !u!1001 &4886238660175611279
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -175,12 +243,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5427966943254312328, guid: f97852f9d8c240c458d8b3a542cca4af, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427966943254312328, guid: f97852f9d8c240c458d8b3a542cca4af, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427966943254312328, guid: f97852f9d8c240c458d8b3a542cca4af, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5427966943254312328, guid: f97852f9d8c240c458d8b3a542cca4af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.45
+      value: 1.847
       objectReference: {fileID: 0}
     - target: {fileID: 5427966943254312328, guid: f97852f9d8c240c458d8b3a542cca4af, type: 3}
       propertyPath: m_LocalPosition.z
@@ -220,8 +296,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f97852f9d8c240c458d8b3a542cca4af, type: 3}
---- !u!4 &5630156622590848232 stripped
+--- !u!4 &620207027522646023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5427966943254312328, guid: f97852f9d8c240c458d8b3a542cca4af, type: 3}
-  m_PrefabInstance: {fileID: 393597346093160800}
+  m_PrefabInstance: {fileID: 4886238660175611279}
   m_PrefabAsset: {fileID: 0}
