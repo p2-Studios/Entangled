@@ -43,7 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: TEXT_FILE.txt
-  body: This is a test of the new terminal text file system. This text file can be
-    opened, viewed, and closed. Terminals use prefabs of TerminalFiles, so the text
-    that a terminal contains can be edited without having to edit the terminal itself.
+  encrypted: 1
+  fileName: security_team_plan.txt
+  body: 'I know the head of the facility isn''t doing anything about this, but I''ve
+    heard enough reports of the suits causing side effects like aggression that I
+    think we need to have a back-up plan. Beginning now, we need to create a stasis
+    pod that is able to subdue someone in an Entangled Suit. If this plan ever needs
+    to be put into effect, I''ll need some brave volunteers who are willing to risk
+    their lives. '
