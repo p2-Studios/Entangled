@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  encrypted: 0
+  encrypted: 1
   fileName: note_from_manager.txt
   body: 'Please tell your team to stop using the air fans for joyriding. I don''t
     want to have to explain to the insurance company what happened if they end up

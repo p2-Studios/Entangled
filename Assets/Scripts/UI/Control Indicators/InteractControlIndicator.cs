@@ -16,4 +16,13 @@ public class InteractControlIndicator : MonoBehaviour {
         if (controlText.Length == 1) width += 0.25f;
         spriteRenderer.size = new Vector2(width, spriteRenderer.size.y);
     }
+
+    public void updatestring() {
+        string controlText = Keybinds.GetInstance().interact.ToString();
+        text.text = controlText;
+        float width = (controlText.Length * 0.25f);
+        if (controlText.Length == 1) width += 0.25f;
+        spriteRenderer.size = new Vector2(width, spriteRenderer.size.y);
+    }
+
 }
