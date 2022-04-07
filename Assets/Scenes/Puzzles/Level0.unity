@@ -3451,6 +3451,7 @@ GameObject:
   - component: {fileID: 729107811}
   - component: {fileID: 729107812}
   - component: {fileID: 729107813}
+  - component: {fileID: 729107814}
   m_Layer: 0
   m_Name: broken_pod2
   m_TagString: Untagged
@@ -3542,6 +3543,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &729107814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729107810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c26c4a1fc0e41d9840f391c27ed5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 939292499}
 --- !u!1 &750933303
 GameObject:
   m_ObjectHideFlags: 0
@@ -4662,6 +4676,7 @@ GameObject:
   - component: {fileID: 1583367262}
   - component: {fileID: 1583367261}
   - component: {fileID: 1583367263}
+  - component: {fileID: 1583367264}
   m_Layer: 0
   m_Name: pipe
   m_TagString: Untagged
@@ -4753,6 +4768,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1583367264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583367260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c26c4a1fc0e41d9840f391c27ed5b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 939292499}
 --- !u!1001 &1620975169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5793,8 +5821,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999635385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.39, y: -1.14, z: 25.640207}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.56, y: -0.55, z: 25.640207}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1555817495}
   m_RootOrder: 9
@@ -5855,9 +5883,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 532046353
+  m_SortingLayer: -1
+  m_SortingOrder: 6
   m_Sprite: {fileID: 3798558818014387507, guid: 906bd8dc9fc2943b69b04b0422c3b05f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
