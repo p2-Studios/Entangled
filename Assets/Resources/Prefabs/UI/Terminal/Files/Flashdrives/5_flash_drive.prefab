@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5405630737744632837
+--- !u!1 &5438387716646793735
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 974824168841636138}
-  - component: {fileID: 7234493004561744268}
+  - component: {fileID: 3501149506430902348}
+  - component: {fileID: 7419897541711876239}
   m_Layer: 0
-  m_Name: 7_hiring
+  m_Name: 5_flash_drive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &974824168841636138
+--- !u!4 &3501149506430902348
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5405630737744632837}
+  m_GameObject: {fileID: 5438387716646793735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 709.0721, y: 970.3485, z: -146.61713}
+  m_LocalPosition: {x: -0.06170921, y: -1.6869844, z: -1.4697384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7234493004561744268
+--- !u!114 &7419897541711876239
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5405630737744632837}
+  m_GameObject: {fileID: 5438387716646793735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cccd0438ead060649b87af5a2f11e08f, type: 3}
+  m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  encrypted: 1
-  fileName: hiring_notice.png
-  description: 
-  image: {fileID: 21300000, guid: b3065e8d92f728f47825af695273d314, type: 3}
+  encrypted: 0
+  fileName: note_from_manager.txt
+  body: 'Please tell your team to stop using the air fans for joyriding. I don''t
+    want to have to explain to the insurance company what happened if they end up
+    getting hurt. '
