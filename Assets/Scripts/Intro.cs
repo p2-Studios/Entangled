@@ -18,11 +18,10 @@ public class Intro : MonoBehaviour {
      }
 
     public void PlayPipeSound() {
-        
+        AudioManager.instance.Play("glass_break");
     }
 
     public void PlayCrashSound() {
-        
     }
     
 }

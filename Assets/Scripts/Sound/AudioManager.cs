@@ -57,11 +57,18 @@ public class AudioManager : MonoBehaviour {
                 break;
             
             case "level":   // music while in-level
-                if (Random.value > 0.5) {
+                float val = Random.value;
+                if (val < 0.33) {
                     song = "music_3";
-                } else {
+                } else if (val < 0.66) {
                     song = "music_4";
+                } else {
+                    song = "music_1";
                 }
+                break;
+            
+            case "level0": // intro music
+                song = "music_1";
                 break;
             
             case "level9": // level9 music
@@ -101,6 +108,8 @@ public class AudioManager : MonoBehaviour {
             TestAndChangeMusic("credits");
         } else if (sceneName.Equals("ElevatorTransition")) { 
             TestAndChangeMusic("elevator");
+        } else if (sceneName.Contains("Level0")) { 
+            TestAndChangeMusic("level0");
         } else if (sceneName.Contains("Level9")) { 
             TestAndChangeMusic("level9");
         } else { 

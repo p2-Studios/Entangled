@@ -16,6 +16,7 @@ public class Controls : MonoBehaviour
 	public Button walk_left;
 	public Button walk_right;
 	public Button push_pull;
+	public Toggle grab_hold;
 	public Button reset;
 	public Button interact;
 	public Button clear;
@@ -39,7 +40,10 @@ public class Controls : MonoBehaviour
 
 	// The button selected value
 	public int i = -1;
-	
+
+	// prev toggle
+	private bool prev_hold_val;
+
 	// String representation of keys
 	private string[] prev_keys = { "Space", "A", "D",
 									"L-Shift", "R", "F", "Q", "", "", "Esc"};
@@ -64,7 +68,10 @@ public class Controls : MonoBehaviour
 			getSprite(curr_keycodes[x],x);
 			getSelectedButton(x).GetComponentInChildren<Text>().text = curr_keys[x];
 		}
-		
+
+		grab_hold.isOn = Keybinds.GetInstance().hold;
+		prev_hold_val = grab_hold.isOn;
+
 		jump.onClick.AddListener(btnJump);
 		walk_left.onClick.AddListener(btnWalkLeft);
 		walk_right.onClick.AddListener(btnWalkRight);
@@ -272,7 +279,7 @@ public class Controls : MonoBehaviour
 			}
 			else if (Input.GetKeyDown(KeyCode.Backspace)) {
 				int val = findfrom(curr_keycodes, KeyCode.Backspace);
-				curr_keys[i] = "Backspace";
+				curr_keys[i] = "Bkspce";
 				curr_keycodes[i] = KeyCode.Backspace;
 				getSprite(curr_keycodes[i], i);
 				applyText(curr_keys);
@@ -310,7 +317,11 @@ public class Controls : MonoBehaviour
 				return; // Reserved key for viewing controls
             }
 			else if (Input.inputString.Length != 0) {
+				if (Input.inputString[0] == '\n' || Input.inputString[0] == '\r' ||
+					Input.inputString[0] == '\b')
+					return;
 				curr_keys[i] = Input.inputString[0].ToString().ToUpper();
+	
 				int val = findfrom(curr_keycodes, (KeyCode)System.Enum.Parse(typeof(KeyCode), curr_keys[i]));
 				curr_keycodes[i] = (KeyCode)System.Enum.Parse(typeof(KeyCode), curr_keys[i]);
 				applyText(curr_keys);
@@ -328,11 +339,11 @@ public class Controls : MonoBehaviour
 			}
 
 			//change screen automatically if not on page of key
-			if (i >= 0 && i < 7) {
+			if (i >= 0 && i < 6) {
 				if (control2.activeSelf)
 					btnPrev();
 			}
-			else if (i >= 7) {
+			else if (i >= 6) {
 				if (control1.activeSelf)
 					btnNext();
 			}
@@ -533,6 +544,8 @@ public class Controls : MonoBehaviour
 			getSelectedButton(x).GetComponentInChildren<Text>().text = prev_keys[x];
 			getSprite(prev_keycodes[x], x);
 		}
+
+		grab_hold.isOn = prev_hold_val;
 		
 		// Show option_screen
 		option_screen.SetActive(true);
@@ -564,12 +577,24 @@ public class Controls : MonoBehaviour
 			Keybinds.GetInstance().unentangle = curr_keycodes[8];
 			Keybinds.GetInstance().pause = curr_keycodes[9];
 
+			Keybinds.GetInstance().hold = grab_hold.isOn;
+			prev_hold_val = grab_hold.isOn;
+
 			SaveLoadKeybinds.SaveControlScheme();
 
 			viewControl controlView = FindObjectOfType<viewControl>();
 
 			if (controlView != null)
 				controlView.UpdateKeys();
+
+			// notify to update
+			GrabControlIndicator grabindicator = FindObjectOfType<GrabControlIndicator>();
+			InteractControlIndicator interactindicator = FindObjectOfType<InteractControlIndicator>();
+
+			if (grabindicator != null)
+				grabindicator.updatestring();
+			if (interactindicator != null)
+				interactindicator.updatestring();
 
 			// Show option_screen
 			option_screen.SetActive(true);
@@ -621,4 +646,8 @@ public class Controls : MonoBehaviour
 		control1.SetActive(false);
 		control2.SetActive(true);
 	}
+
+	public bool isHold() {
+		return prev_hold_val;
+    }
 }

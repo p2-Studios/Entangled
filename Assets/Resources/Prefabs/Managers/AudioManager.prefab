@@ -76,6 +76,13 @@ MonoBehaviour:
   - name: music_level9
     clip: {fileID: 8300000, guid: eb1a18e025aeb3d40afef072f3ca5ff8, type: 3}
     source: {fileID: 0}
+    volume: 0.05
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: music_1
+    clip: {fileID: 8300000, guid: 8a346b3ed9adf6c4dabcd9b1c1ee37e4, type: 3}
+    source: {fileID: 0}
     volume: 0.025
     pitch: 1
     pitchMin: 1
@@ -222,6 +229,13 @@ MonoBehaviour:
     pitch: 1
     pitchMin: 1
     pitchMax: 1.3
+  - name: glass_break
+    clip: {fileID: 8300000, guid: c7656e28d606e5a409e502dc62a0d63d, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
   playerSounds:
   - name: player_respawn
     clip: {fileID: 8300000, guid: 4519420b266ba8c439556a2729118d5f, type: 3}
