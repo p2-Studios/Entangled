@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Activation_System
@@ -7,9 +8,20 @@ namespace Activation_System
     {
         [SerializeField] private ArrayList activatables;
         private bool activated;
+        public bool silent, muted;
         private ActivationManager activationManager;
 
         public string activateSound, deactivateSound;
+
+        public void Start() {
+            StartCoroutine(Mute(1f));
+        }
+
+        private IEnumerator Mute(float time) {
+            muted = true;
+            yield return new WaitForSeconds(time);
+            muted = false;
+        }
         
         public Activator()
         {
@@ -22,7 +34,9 @@ namespace Activation_System
         {
             activated = true;
             activationManager.OnActivate(this);
-            AudioManager.instance.Play(activateSound);
+            if (!(muted || silent)) {
+                AudioManager.instance.Play(activateSound);
+            }
         }
 
         public virtual void Activate(float timer)
@@ -35,7 +49,9 @@ namespace Activation_System
         {
             activated = false;
             activationManager.OnDeactivate(this);
-            AudioManager.instance.Play(deactivateSound);
+            if (!(muted || silent)) {
+                AudioManager.instance.Play(deactivateSound);
+            }
         }
 
         public virtual void Deactivate(float timer)
