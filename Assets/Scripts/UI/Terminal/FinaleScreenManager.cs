@@ -30,8 +30,7 @@ public class FinaleScreenManager : MonoBehaviour {
     
     [Space(10)]
     public Level level;
-    private bool allKeys;
-    
+
     private void Start() {
         uplinkDisplay.SetActive(false);
         flashDriveCounts = level.GetFlashDriveCounts();
@@ -63,7 +62,6 @@ public class FinaleScreenManager : MonoBehaviour {
             case 4:
                 flashDriveCountText.color = Color.green;
                 uplinkButton.GetComponent<Image>().color = Color.green;
-                allKeys = true;
                 break;
         }
         
