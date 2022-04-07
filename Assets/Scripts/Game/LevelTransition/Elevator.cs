@@ -11,6 +11,8 @@ public class Elevator : MonoBehaviour {
     public Animator animator;   // the animator controlling the open/close animations
     public SpriteRenderer player;
 
+    private bool muted;
+    
     private void Awake() {
         if (player == null) player = GameObject.Find("Player").GetComponent<SpriteRenderer>();
     }
@@ -22,13 +24,17 @@ public class Elevator : MonoBehaviour {
 
     // open the elevator
     public void Open() {
-        AudioManager.instance.Play("elevator_open");
+        if (!muted) {
+            AudioManager.instance.Play("elevator_open");
+            muted = true;
+        }
+
         animator.SetBool("IsOpen", true);
     }
 
     // close the elevator
     public void Close() {
-        AudioManager.instance.Play("elevator_close");
+        muted = false;
         animator.SetBool("IsOpen", false);
     }
 
