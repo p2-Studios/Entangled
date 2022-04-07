@@ -45,25 +45,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   encrypted: 0
   fileName: active_passive.txt
-  body: 'This technology designates an <color=purple>ACTIVE</color> object (selected
-    first) and a <color=green>PASSIVE</color> object (selected second).
+  body: 'This technology designates an <color=green>ACTIVE</color> object (selected
+    first) and a <color=purple>PASSIVE</color> object (selected second).
 
 
     The
-    connection is one-way: the force/velocity of the <color=purple>ACTIVE</color>
-    object is transferred to the <color=green>PASSIVE</color> object. This relationship
+    connection is one-way: the force/velocity of the <color=green>ACTIVE</color>
+    object is transferred to the <color=purple>PASSIVE</color> object. This relationship
     does not hold in the opposite direction.
-
-
-    (Some of the lab members say this
-    is easy to mix up - I think this can easily be solved with the mnemonic of purple
-    = playful (as in a high ACTIVITY level) and green = grass (a notably passive
-    organism). Nonetheless, they continue to disagree.)
-
-
-    TODO: have interaction
-    team design a visual indicator
-
 
 
 '
