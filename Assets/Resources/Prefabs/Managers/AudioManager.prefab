@@ -297,7 +297,7 @@ MonoBehaviour:
   - name: flashdrive_collect
     clip: {fileID: 8300000, guid: 50e945c16e8ab0640867daeec00de5ab, type: 3}
     source: {fileID: 0}
-    volume: 0.05
+    volume: 0.4
     pitch: 0.9
     pitchMin: 0.9
     pitchMax: 1.1
