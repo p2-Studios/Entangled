@@ -45,7 +45,7 @@ public class MainMenu : MonoBehaviour {
 
     public void NewGame() {
         if (GetGameData().GetUnlockedLevel() < 1) {
-            StartAtLevel("Level1");
+            StartAtLevel("Level0");
         } else {
             resetConfirmationPanel.SetActive(true);
         }
@@ -58,6 +58,6 @@ public class MainMenu : MonoBehaviour {
     public void ConfirmReset() {
         SaveSystem.ClearSaveData();
         resetConfirmationPanel.SetActive(false);
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level0");
     }
 }

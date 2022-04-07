@@ -12,7 +12,7 @@ namespace Activation_System
         public float requiredMass = 1.0f;								// required mass to trigger the pressure pad
 
         public bool stayActivated;
-        
+        public bool hidden;
 		Dictionary<Collider2D, float> obj_mass;							// store object and gather masses
 		Dictionary<Collider2D, ArrayList> obj_stacked;					// store the object being stacked
 		
@@ -24,18 +24,27 @@ namespace Activation_System
 		
 		private BoxCollider2D padCollider;
 		
-		private Animator pressurePadAnimator;							// For animations
+		public Animator pressurePadAnimator;							// For animations
+		public RuntimeAnimatorController stayDownAnimator;							// For animations
+		public RuntimeAnimatorController holdDownAnimator;							// For animations
 		private float animationSpeed = 0.0f;							// This has no use currently
 		
 		void Start() {
+			base.Start();			
 			padCollider = GetComponent<BoxCollider2D>();				// fetch collider
 			
 			obj_mass = new Dictionary<Collider2D,float>();
 			
 			obj_stacked = new Dictionary<Collider2D,ArrayList>();
-			
-			pressurePadAnimator = GetComponent<Animator>();
-			
+
+			if (!hidden) {
+				if (stayActivated) {
+					pressurePadAnimator.runtimeAnimatorController = stayDownAnimator;
+				} else {
+					pressurePadAnimator.runtimeAnimatorController = holdDownAnimator;
+				}
+			}
+
 			foreach (Activatable a in activatables) {
 				AddActivatable(a);
 			}
@@ -44,13 +53,17 @@ namespace Activation_System
 
 		public override void Activate() {
 			indicatorLight.color = Color.green;
-			AudioManager.instance.Play(activateSound);
+
 			base.Activate();
 		}
 
 		public override void Deactivate() {
-			indicatorLight.color = Color.red;
-			AudioManager.instance.Play(deactivateSound);
+			if (hidden) {
+				indicatorLight.color = Color.white;
+			} else {
+				indicatorLight.color = Color.red;
+			}
+
 			base.Deactivate();
 		}
 

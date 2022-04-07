@@ -64,8 +64,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: level2
-  Animator: {fileID: 429289540591911158}
-  Player: {fileID: 0}
+  nextLevelNum: 0
+  animator: {fileID: 429289540591911158}
+  player: {fileID: 0}
 --- !u!212 &5880884689359741016
 SpriteRenderer:
   m_ObjectHideFlags: 0
