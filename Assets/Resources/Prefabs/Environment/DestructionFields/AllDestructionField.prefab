@@ -50,17 +50,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireAllActivators: 0
   activateByDefault: 1
-  soundDelay: 0
-  activateSound: 
-  deactivateSound: 
   destroyPlayer: 1
   destroyObjects: 1
-  clearEntanglement: 1
   animator: {fileID: 3526631541760153691}
   activators: []
   glowLight: {fileID: 5130520610627242475}
-  deathSoundPlayer: player_death_laser
-  deathSoundObject: object_destroyed_laser
 --- !u!212 &3526631541760153690
 SpriteRenderer:
   m_ObjectHideFlags: 0

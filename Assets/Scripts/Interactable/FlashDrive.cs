@@ -5,21 +5,15 @@ using UnityEngine;
 
 public class FlashDrive : Interactable {
     public string label;
-    public TerminalFile file;
+    public string[] texts;
     public UniqueId UID;
     private Level level;
-    private bool collected;
 
     private void Awake() {
         level = FindObjectOfType<Level>();
-        if (file == null) {
-            Debug.LogWarning("Flash drive has no file, destroying!");
-            Destroy(gameObject);
-        }
     }
 
     public void Collect() {
-        collected = true;
         level.FlashDriveFound(this); 
     }
 
@@ -30,14 +24,5 @@ public class FlashDrive : Interactable {
     protected override void Interact() {
         base.Interact();
         Collect();
-        TerminalManager.instance.FlashDriveFound();
-    }
-
-    public void SetCollected(bool c) {
-        collected = c;
-    }
-    
-    public bool IsCollected() {
-        return collected;
     }
 }

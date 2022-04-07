@@ -1,4 +1,3 @@
-using Game.CustomKeybinds;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +15,7 @@ public class LevelRestarter : MonoBehaviour {
     private string sceneName = "";   // keep track of the current scene name
     
     private void Awake() {
+
         if (instance == null) {
             instance = this;
         } else {
@@ -28,30 +28,29 @@ public class LevelRestarter : MonoBehaviour {
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        if (!sceneName.Equals("") && !scene.name.Equals(sceneName)) {    // if loading a different scene, reset checkpoint location
+        if (!scene.name.Equals(sceneName)) {    // if loading a different scene, reset checkpoint location
             checkpointPos = Vector3.zero;
         }
         
-        if (checkpointPos != Vector3.zero) {    // checkpointPos 
+        if (checkpointPos != Vector3.zero) {
             Player player = FindObjectOfType<Player>();
             if (player != null) {
                 player.transform.position = checkpointPos;
-                player.respawnLocation = checkpointPos;
             }
         }
 
-        sceneName = scene.name; // save the name of the current scene
+        sceneName = scene.name;
     }
     
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(Keybinds.GetInstance().reset)) {
+        if (Input.GetKeyDown(KeyCode.R)) {
             if (!restarting) {
                 holdingR = true;
                 restarting = true;
                 StartCoroutine(Action());
             }
-        } if (Input.GetKeyUp(Keybinds.GetInstance().reset)) {
+        } if (Input.GetKeyUp(KeyCode.R)) {
             holdingR = false;
         }
     }
@@ -66,6 +65,7 @@ public class LevelRestarter : MonoBehaviour {
     }
 
     public void RestartLevel() {
+        AudioManager.instance.restartSong = false;  // don't restart song when restarting level
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
@@ -79,9 +79,5 @@ public class LevelRestarter : MonoBehaviour {
 
     public void ClearCheckpointPosition() {
         checkpointPos = Vector3.zero;
-    }
-
-    public Vector3 GetCheckpointPosition() {
-        return checkpointPos;
     }
 }

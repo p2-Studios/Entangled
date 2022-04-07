@@ -10,9 +10,7 @@ namespace Activation_System
     public class PressurePad : Activator
     {
         public float requiredMass = 1.0f;								// required mass to trigger the pressure pad
-
-        public bool stayActivated;
-        
+		
 		Dictionary<Collider2D, float> obj_mass;							// store object and gather masses
 		Dictionary<Collider2D, ArrayList> obj_stacked;					// store the object being stacked
 		
@@ -44,13 +42,11 @@ namespace Activation_System
 
 		public override void Activate() {
 			indicatorLight.color = Color.green;
-			AudioManager.instance.Play(activateSound);
 			base.Activate();
 		}
 
 		public override void Deactivate() {
 			indicatorLight.color = Color.red;
-			AudioManager.instance.Play(deactivateSound);
 			base.Deactivate();
 		}
 
@@ -122,7 +118,7 @@ namespace Activation_System
 			}
 			
 			if (IsActivated()) {
-				if (requiredMass > sumOfMass && !stayActivated) {
+				if (requiredMass > sumOfMass) {
 					Deactivate(animationSpeed);
 					pressurePadAnimator.SetBool("active",false);
 				}

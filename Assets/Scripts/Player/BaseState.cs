@@ -6,19 +6,19 @@ using UnityEngine;
 
 // State parent class
 // Used for making individual state classes e.g. Idle, Moving
-public class BaseState : MonoBehaviour {
+public class BaseState {
 
-    public string Name;
+    public string name;
     protected PlayerStateMachine playerStateMachine;
     protected Player Player;
     protected private AudioManager audioManager;
 
     //Constructor, sets name and statemachine
-    /*public BaseState(string name, PlayerStateMachine playerSM, Player player){
-        this.Name = name;
+    public BaseState(string name, PlayerStateMachine playerSM, Player player){
+        this.name = name;
         this.playerStateMachine = playerSM;
         this.Player = player;
-    }*/
+    }
 
     // methods to be used by children state classes
     public virtual void Enter(){}                                // Runs when first entering a state

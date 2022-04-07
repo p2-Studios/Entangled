@@ -5,9 +5,11 @@ using UnityEngine;
 
 namespace Activation_System {
     public class Gate : Activatable {
-	    public bool stayOpen = false;			// whether the gate should stay open after being opened once
 
-	    public Activator[] activators;			// -- array of activators, REQUIRED to set the activators manually! --
+	    public string openSound, closeSound;
+	    public bool stayOpen = false;			// whether the gate should stay open after being opened once
+	    
+        public Activator[] activators;			// -- array of activators, REQUIRED to set the activators manually! --
         
         
 		// Animation variables
@@ -31,11 +33,6 @@ namespace Activation_System {
 			foreach (Activator a in activators) {
 				AddActivator(a);
 			}
-
-			if (activateByDefault) {
-				playSound = false;
-				StartCoroutine(openDelay());
-			}
 		}
 		
 		bool isOpened() {
@@ -49,11 +46,13 @@ namespace Activation_System {
 		void setOpen() {
 			active = true;
 			gate.enabled = false;
+			if (openSound.Length != 0) FindObjectOfType<AudioManager>().Play(openSound); // play opening sound
 		}
 		
 		void setClose() {
 			active = false;
 			gate.enabled = true;
+			if (closeSound.Length != 0) FindObjectOfType<AudioManager>().Play(closeSound); // play closing sound
 		}
 
 		void FixedUpdate() {							// NOTE: OnTrigger event is timed on FixedUpdate
@@ -84,9 +83,5 @@ namespace Activation_System {
 			
 		}
 
-		private IEnumerator openDelay() {
-			yield return new WaitForSeconds(0.1f);
-			activated = true;
-		}
     }
 }

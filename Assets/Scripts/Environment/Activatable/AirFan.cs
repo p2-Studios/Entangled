@@ -58,12 +58,9 @@ namespace Environment {
             airVisual.SetActive(true);  // enable visual effect
 
             // nudge any objects that are on the fan, so they trigger the collider events
-            if (inRange.Count > 0) {
-                foreach (GameObject obj in inRange) {
-                    if (obj == null) continue;
-                    Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-                    if (rb != null) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 0.1f);
-                }
+            foreach (GameObject obj in inRange) {
+                Rigidbody2D rb = obj.GetComponent <Rigidbody2D>();
+                if (!rb.Equals(null)) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 0.1f);
             }
         }
 
@@ -108,11 +105,11 @@ namespace Environment {
         // it leaves the trigger area. This makes it stay at the top of the fan's reach without bouncing a few times 
         // before coming to an equilibrium
         private void OnTriggerExit2D(Collider2D other) {
-            if (inRange.Contains(other.gameObject)) inRange.Remove(other.gameObject);
+            inRange.Remove(other.gameObject);
             if (!IsActivated()) return;
             if (!transform.rotation.Equals(Quaternion.identity)) return;    // only when fan is vertical
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
-            if (rb == null) return;
+            if (rb.Equals(null)) return;
             ApplyFanVelocity(other, rb,transform.up * (rb.velocity.y * -1));
             rb.velocity = new Vector2(rb.velocity.x, 0);
         }
@@ -123,7 +120,7 @@ namespace Environment {
             inRange.Add(other.gameObject);
             if (!IsActivated()) return;
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
-            if (rb == null) return;
+            if (rb.Equals(null)) return;
             ApplyFanVelocity(other, rb,(transform.up * rb.mass));
         }
 
@@ -131,12 +128,11 @@ namespace Environment {
         private void OnTriggerStay2D(Collider2D other) {
             if (!IsActivated()) return;
             Rigidbody2D rb = other.transform.GetComponent<Rigidbody2D>();
-            if (rb == null) return;
+            if (rb.Equals(null)) return;
             ApplyFanVelocity(other, rb,(transform.up * power));
         }
 
         private void ApplyFanVelocity(Collider2D other, Rigidbody2D rb, Vector2 velocity) {
-            if (rb == null) return;
             Entanglable e = other.gameObject.GetComponent<Entanglable>();
             if (e != null) {    // entanglable
                 e.ApplyVelocity(velocity, false);

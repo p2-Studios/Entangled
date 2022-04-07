@@ -16,23 +16,17 @@ public class PlayerStateMachine : MonoBehaviour {
     public MoveState moveState;
     public JumpState jumpState;
     public PushPullState pushpullState;
-    public FallState fallState;
 
     public Player player;
 
     public void Initialize(Player player) {
 
         AudioManager audioManager = FindObjectOfType<AudioManager>();
-        idleState = gameObject.AddComponent(typeof(IdleState)) as IdleState;
-        idleState.Initialize("Idle",this,player,audioManager);
-        moveState = gameObject.AddComponent(typeof(MoveState)) as MoveState;
-        moveState.Initialize("Move",this,player,audioManager);
-        jumpState = gameObject.AddComponent(typeof(JumpState)) as JumpState;
-        jumpState.Initialize("Jump",this,player,audioManager);
-        pushpullState = gameObject.AddComponent(typeof(PushPullState)) as PushPullState;
-        pushpullState.Initialize("push",this,player,audioManager);
-        fallState = gameObject.AddComponent(typeof(FallState)) as FallState;
-        fallState.Initialize("fall",this,player,audioManager);
+
+        idleState = new IdleState(this,player,audioManager);
+        moveState = new MoveState(this,player,audioManager);
+        jumpState = new JumpState(this,player,audioManager);
+        pushpullState = new PushPullState(this,player,audioManager);
 
         this.player = player;
         
@@ -96,17 +90,15 @@ public class PlayerStateMachine : MonoBehaviour {
         currentState.Enter();
     }
 
-    
-    // For testing purposes (displays current state name when running game)
     /*
+    // For testing purposes (displays current state name when running game)
     private void OnGUI(){
         GUILayout.BeginArea(new Rect(10f, 10f, 200f, 100f));
-        string content = currentState != null ? currentState.Name : "(no current state)";
-        GUILayout.Label($"<color='white'><size=40>{content}</size></color>");
+        string content = currentState != null ? currentState.name : "(no current state)";
+        GUILayout.Label($"<color='black'><size=40>{content}</size></color>");
         GUILayout.EndArea();
     }
     */
-    
 
 
 }

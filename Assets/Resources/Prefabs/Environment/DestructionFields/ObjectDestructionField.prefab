@@ -123,12 +123,9 @@ MonoBehaviour:
   activateByDefault: 1
   destroyPlayer: 0
   destroyObjects: 1
-  clearEntanglement: 1
   animator: {fileID: 3526631541760153691}
   activators: []
   glowLight: {fileID: 2266643719627601675}
-  deathSoundPlayer: 
-  deathSoundObject: object_destroyed
 --- !u!212 &3526631541760153690
 SpriteRenderer:
   m_ObjectHideFlags: 0
