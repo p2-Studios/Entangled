@@ -116,6 +116,27 @@ MonoBehaviour:
     pitch: 1
     pitchMin: 0.9
     pitchMax: 1.1
+  - name: finale_data_transmit
+    clip: {fileID: 8300000, guid: 3e1c0bc78189a4744bcb27e74c5993fd, type: 3}
+    source: {fileID: 0}
+    volume: 0.15
+    pitch: 1
+    pitchMin: 0.95
+    pitchMax: 0.95
+  - name: finale_terminal_start
+    clip: {fileID: 8300000, guid: a27793e9fc74f524e87ce5cefa9160d5, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: finale_terminal_success
+    clip: {fileID: 8300000, guid: 1c3c82fd469f1554493f3850ef0fec96, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
   environmentSounds:
   - name: gate_open
     clip: {fileID: 8300000, guid: 72a45e57d9336114dbd09310c20b35ce, type: 3}
@@ -223,6 +244,27 @@ MonoBehaviour:
     pitch: 1
     pitchMin: 0.9
     pitchMax: 1.1
+  - name: player_death_crush
+    clip: {fileID: 8300000, guid: a29a18deb4e31ee47b63a2846f0e27a7, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
+  - name: elevator_open
+    clip: {fileID: 8300000, guid: e38fdfe32300b9d4da0283ff6a1f33a6, type: 3}
+    source: {fileID: 0}
+    volume: 0.04
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: elevator_bell
+    clip: {fileID: 8300000, guid: de3275a5b720d324d848d4dcc5296c41, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
   objectSounds:
   - name: object_destroyed
     clip: {fileID: 8300000, guid: 45905507fe185564b9801ee3d9fbb308, type: 3}
@@ -249,6 +291,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 3aa63005f5fa8ae4aaf3db147a84684e, type: 3}
     source: {fileID: 0}
     volume: 0.05
+    pitch: 0.9
+    pitchMin: 0.9
+    pitchMax: 1.1
+  - name: flashdrive_collect
+    clip: {fileID: 8300000, guid: 50e945c16e8ab0640867daeec00de5ab, type: 3}
+    source: {fileID: 0}
+    volume: 0.4
     pitch: 0.9
     pitchMin: 0.9
     pitchMax: 1.1

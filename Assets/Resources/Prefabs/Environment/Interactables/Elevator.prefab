@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9192fe52898b81345ad2a59b0d2ce452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerSound: 
+  triggerSound: elevator_open
   elevator: {fileID: 6187091650804594609}
 --- !u!114 &6187091650804594609
 MonoBehaviour:
@@ -64,8 +64,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: level2
-  Animator: {fileID: 429289540591911158}
-  Player: {fileID: 0}
+  nextLevelNum: 0
+  animator: {fileID: 429289540591911158}
+  player: {fileID: 0}
 --- !u!212 &5880884689359741016
 SpriteRenderer:
   m_ObjectHideFlags: 0

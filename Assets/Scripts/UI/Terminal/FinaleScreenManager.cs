@@ -78,6 +78,7 @@ public class FinaleScreenManager : MonoBehaviour {
     public void EstablishUplink() {
         countDisplay.SetActive(false);
         uplinkDisplay.SetActive(true);
+        AudioManager.instance.Play("finale_terminal_start");
         StartCoroutine(UplinkBar());
     }
 
@@ -96,6 +97,7 @@ public class FinaleScreenManager : MonoBehaviour {
         uplinkText.fontSize = 20;
         uplinkText.text = "SENDING DATA TO SURFACE STATION...";
         progressBarText.text = "0%";
+        AudioManager.instance.PlayLooping("finale_data_transmit");
         
         float percent = 0;
         Slider bar = progressBar.GetComponent<Slider>();
@@ -111,24 +113,30 @@ public class FinaleScreenManager : MonoBehaviour {
             yield return new WaitForSeconds(0.05f);
         }
         
+        AudioManager.instance.StopLooping("finale_data_transmit");
+        
         if (percent < 1f) { // incomplete - show error
             uplinkText.color = Color.red;
             uplinkText.text = "FILE READ ERROR: FILE(S) ENCRYPTED";
+            AudioManager.instance.Play("terminal_error");
             yield return new WaitForSeconds(5.0f);
             uplinkDisplay.SetActive(false);
             countDisplay.SetActive(true);
         } else {
+            AudioManager.instance.Play("finale_terminal_success");
             yield return new WaitForSeconds(1.0f);
             StartCoroutine(TransmitData());
         }
     }
     
     private IEnumerator TransmitData() {
+        AudioManager.instance.Play("finale_terminal_start");
         float failPercent = 0.9833f;
         float percent = 0;
         uplinkText.color = Color.cyan;
         uplinkText.fontSize = 18;
         uplinkText.text = "TRANSMITTING DATA TO LOW-ORBIT SATELLITE...";
+        AudioManager.instance.PlayLooping("finale_data_transmit");
         Slider bar = progressBar.GetComponent<Slider>();
         bar.value = 0f;
         while (percent < failPercent) {
@@ -138,9 +146,11 @@ public class FinaleScreenManager : MonoBehaviour {
             progressBarText.text = Math.Round(percent*100.0, 2) + "%";
             yield return new WaitForSeconds(0.05f);
         }
+        AudioManager.instance.StopLooping("finale_data_transmit");
         yield return new WaitForSeconds(3.25f);
         uplinkText.color = Color.red;
         uplinkText.text = "TRANSMISSION FAILED: FATAL ERROR";
+        AudioManager.instance.Play("terminal_error");
         yield return new WaitForSeconds(3);
         // do camera transition stuff
         FindObjectOfType<CameraToggle>().TransitionToTop();
@@ -154,6 +164,7 @@ public class FinaleScreenManager : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
         float percent = 0.9833f;
         uplinkText.color = Color.cyan;
+        AudioManager.instance.PlayLooping("finale_data_transmit");
         uplinkText.fontSize = 18;
         uplinkText.text = "TRANSMITTING DATA TO LOW-ORBIT SATELLITE...";
         Slider bar = progressBar.GetComponent<Slider>();
@@ -167,7 +178,9 @@ public class FinaleScreenManager : MonoBehaviour {
             progressBarText.text = Math.Round(percent*100.0, 2) + "%";
             yield return new WaitForSeconds(0.25f);
         }
+        AudioManager.instance.StopLooping("finale_data_transmit");
         yield return new WaitForSeconds(1.0f);
+        AudioManager.instance.Play("finale_terminal_success");
         uplinkText.color = Color.green;
         uplinkText.text = "TRANSMISSION DELIVERED TO EARTH.";
     }

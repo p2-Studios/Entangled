@@ -8,11 +8,11 @@ using UnityEngine.SceneManagement;
 public class Elevator : MonoBehaviour {
     public string nextLevel;    // the level to load upon using this elevator
     public int nextLevelNum = 0;
-    public Animator Animator;   // the animator controlling the open/close animations
-    public SpriteRenderer Player;
+    public Animator animator;   // the animator controlling the open/close animations
+    public SpriteRenderer player;
 
-    private void Start() {
-        Player = GameObject.Find("Player").GetComponent<SpriteRenderer>();
+    private void Awake() {
+        if (player == null) player = GameObject.Find("Player").GetComponent<SpriteRenderer>();
     }
 
     // load the defined next level
@@ -23,24 +23,26 @@ public class Elevator : MonoBehaviour {
     // open the elevator
     public void Open() {
         AudioManager.instance.Play("elevator_open");
-        Animator.SetBool("IsOpen", true);
+        animator.SetBool("IsOpen", true);
     }
 
     // close the elevator
     public void Close() {
         AudioManager.instance.Play("elevator_close");
-        Animator.SetBool("IsOpen", false);
+        animator.SetBool("IsOpen", false);
     }
 
     public void Exit() {
-        Animator.SetTrigger("Exit");
+        animator.SetTrigger("Exit");
     }
 
     private IEnumerator FadeAndTransition() {
         yield return new WaitForSeconds(1);
         LevelRestarter.instance.ClearCheckpointPosition();  // clear checkpoint location
         ElevatorTransition.levelToLoad = nextLevel;
-        SaveSystem.SetGameDataLevel(nextLevelNum);
+        if (SaveSystem.LoadGameData().GetUnlockedLevel() < nextLevelNum) {
+            SaveSystem.SetGameDataLevel(nextLevelNum);
+        }
         SceneManager.LoadSceneAsync("ElevatorTransition");
     }
 }
