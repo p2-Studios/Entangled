@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  encrypted: 0
+  encrypted: 1
   fileName: new_objects.txt
   body: 'Note: how do the inverse blocks work? It seems to me like we''ve completely
     broken the laws of physics. '
