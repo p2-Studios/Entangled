@@ -17,4 +17,12 @@ public class Intro : MonoBehaviour {
          player.SetActive(true);
      }
 
+    public void PlayPipeSound() {
+        
+    }
+
+    public void PlayCrashSound() {
+        
+    }
+    
 }

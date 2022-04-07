@@ -244,6 +244,30 @@ MonoBehaviour:
     pitch: 1
     pitchMin: 0.9
     pitchMax: 1.1
+<<<<<<< HEAD
+  - name: player_death_crush
+    clip: {fileID: 8300000, guid: 9982559c235752044a3f2fc90d852fb2, type: 3}
+    source: {fileID: 0}
+    volume: 0.1
+    pitch: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
+  - name: elevator_open
+    clip: {fileID: 8300000, guid: c42cb4bddc31cf3499fb90de44531f3f, type: 3}
+    source: {fileID: 0}
+    volume: 0.04
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: elevator_bell
+    clip: {fileID: 8300000, guid: 848914b7c13a6644e8184b16cb158489, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+=======
+>>>>>>> parent of ca49e66 (Elevator sounds)
   objectSounds:
   - name: object_destroyed
     clip: {fileID: 8300000, guid: 45905507fe185564b9801ee3d9fbb308, type: 3}
