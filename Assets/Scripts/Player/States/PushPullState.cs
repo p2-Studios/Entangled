@@ -47,13 +47,18 @@ public class PushPullState : BaseState {
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
 
-        // Let go of object
-        if (Input.GetKeyUp(Keybinds.GetInstance().grabRelease)){
-            Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
-            BoxInteractable lastTouchedBox = Player.hit.collider.gameObject.GetComponent<BoxInteractable>();
-            if (lastTouchedBox != null) lastTouchedBox.ToggleGrabbingSprite(false);
-            playerSM.ChangeState(playerSM.idleState);
+        if (Keybinds.GetInstance().hold) {
+            // grab key released when hold is true
+            if (Input.GetKeyUp(Keybinds.GetInstance().grabRelease)) {
+                Release();
+            }
+        } else {
+            // grab key pressed when hold is false
+            if(Input.GetKeyDown(Keybinds.GetInstance().grabRelease)){
+                Release();
+            }
         }
+
         if(Player.hit.collider == null){
             Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
             playerSM.ChangeState(playerSM.idleState);
@@ -65,6 +70,13 @@ public class PushPullState : BaseState {
         else{
             gcheck = false;
         }
+    }
+
+    private void Release() {
+        Player.pushedObject.GetComponent<FixedJoint2D>().enabled = false;
+        BoxInteractable lastTouchedBox = Player.hit.collider.gameObject.GetComponent<BoxInteractable>();
+        if (lastTouchedBox != null) lastTouchedBox.ToggleGrabbingSprite(false);
+        playerSM.ChangeState(playerSM.idleState);
     }
 
     //ground check coroutine
