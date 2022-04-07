@@ -29,6 +29,7 @@ public class FlashDrive : Interactable {
     
     protected override void Interact() {
         base.Interact();
+        AudioManager.instance.Play("flashdrive_collect");
         Collect();
         TerminalManager.instance.FlashDriveFound();
     }
