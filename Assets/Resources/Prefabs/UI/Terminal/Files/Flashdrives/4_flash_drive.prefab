@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3501149506430902348}
   - component: {fileID: 7419897541711876239}
   m_Layer: 0
-  m_Name: TestTextFile
+  m_Name: 4_flash_drive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: TEXT_FILE.txt
-  body: This is a test of the new terminal text file system. This text file can be
-    opened, viewed, and closed. Terminals use prefabs of TerminalFiles, so the text
-    that a terminal contains can be edited without having to edit the terminal itself.
+  encrypted: 1
+  fileName: unfortunate_situation.txt
+  body: 'Note: after that unfortunate accident with one of our participants, is there
+    a way to make the suit able to withstand impacts with the moving platforms? I
+    would hate to lose more participants that way. '
