@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5438387716646793735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3501149506430902348}
+  - component: {fileID: 7419897541711876239}
+  m_Layer: 0
+  m_Name: FINALE FILE 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3501149506430902348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438387716646793735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7419897541711876239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438387716646793735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encrypted: 1
+  fileName: FRAGMENT_1.txt
+  body: "To whoever finds this:\r\n\r\nI didn\u2019t mean for this to happen. \rIt
+    sounded like a great opportunity when I was offered it -- a far-off planet in
+    an unexplored solar system that contained a mysterious energy source. I've always
+    been invested in the advancement of the human species and I can't resist a good
+    research mystery. \"Sure, I'll take it on\", I said. \n\nMy excitement only grew
+    when my head scientist drew up some sketches of a device that might be possible:
+    allowing a human to connect two objects and transfer force between them.  This
+    would be a revolution for remote work, I thought. So many dangerous jobs could
+    be made safer with this technology.\n"

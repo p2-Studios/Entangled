@@ -92,6 +92,7 @@ public class Player : MonoBehaviour, IDestroyable {
         if (other.gameObject.CompareTag("Platform")) {
             transform.parent = other.gameObject.transform;      // set parent of player to platform so player doesn't slide
         } else if (other.gameObject.CompareTag("Destroyer")) {
+            AudioManager.instance.Play("player_death_crush");
             Kill();
         }
     }

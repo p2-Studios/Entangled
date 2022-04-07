@@ -7,31 +7,48 @@ using UnityEngine.SceneManagement;
 // Handles the logic and animation of the elevator
 public class Elevator : MonoBehaviour {
     public string nextLevel;    // the level to load upon using this elevator
-    public Animator Animator;   // the animator controlling the open/close animations
-    public SpriteRenderer Player;
+    public int nextLevelNum = 0;
+    public Animator animator;   // the animator controlling the open/close animations
+    public SpriteRenderer player;
 
-    private void Start() {
-        Player = GameObject.Find("Player").GetComponent<SpriteRenderer>();
+    private bool muted;
+    
+    private void Awake() {
+        if (player == null) player = GameObject.Find("Player").GetComponent<SpriteRenderer>();
     }
 
     // load the defined next level
     public void LoadNextLevel() {
-        LevelRestarter.instance.ClearCheckpointPosition();  // clear checkpoint location
-        ElevatorTransition.levelToLoad = nextLevel;
-        SceneManager.LoadSceneAsync("ElevatorTransition");
+        StartCoroutine(FadeAndTransition());
     }
 
     // open the elevator
     public void Open() {
-        Animator.SetBool("IsOpen", true);
+        if (!muted) {
+            AudioManager.instance.Play("elevator_open");
+            muted = true;
+        }
+
+        animator.SetBool("IsOpen", true);
     }
 
     // close the elevator
     public void Close() {
-        Animator.SetBool("IsOpen", false);
+        muted = false;
+        animator.SetBool("IsOpen", false);
     }
 
     public void Exit() {
-        Animator.SetTrigger("Exit");
+        animator.SetTrigger("Exit");
+    }
+
+    private IEnumerator FadeAndTransition() {
+        yield return new WaitForSeconds(1);
+        LevelRestarter.instance.ClearCheckpointPosition();  // clear checkpoint location
+        ElevatorTransition.levelToLoad = nextLevel;
+        if (SaveSystem.LoadGameData().GetUnlockedLevel() < nextLevelNum) {
+            SaveSystem.SetGameDataLevel(nextLevelNum);
+        }
+        SceneManager.LoadSceneAsync("ElevatorTransition");
     }
 }

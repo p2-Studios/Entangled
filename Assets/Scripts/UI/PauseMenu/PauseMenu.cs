@@ -60,6 +60,8 @@ public class PauseMenu : MonoBehaviour
 		back.onClick.AddListener(btnBack);
 		
 		timescale = Time.timeScale;
+
+		loadSettings();
     }
 
     // Update is called once per frame
@@ -204,4 +206,60 @@ public class PauseMenu : MonoBehaviour
 	
 
 	
+	void loadSettings() {
+		AudioManager sound = null;
+		if (FindObjectsOfType<AudioManager>().Length > 0) {
+			sound = FindObjectsOfType<AudioManager>()[0];
+		}
+		if (PlayerPrefs.HasKey("fxVolume")) {
+			if (sound != null) {
+				foreach (Sound s in sound.miscSounds) {
+					s.source.volume = PlayerPrefs.GetFloat("fxVolume");
+				}
+				foreach (Sound s in sound.uiSounds) {
+					s.source.volume = PlayerPrefs.GetFloat("fxVolume");
+				}
+				foreach (Sound s in sound.environmentSounds) {
+					s.source.volume = PlayerPrefs.GetFloat("fxVolume");
+				}
+				foreach (Sound s in sound.playerSounds) {
+					s.source.volume = PlayerPrefs.GetFloat("fxVolume");
+				}
+				foreach (Sound s in sound.objectSounds) {
+					s.source.volume = PlayerPrefs.GetFloat("fxVolume");
+				}
+			}
+        }
+		if (PlayerPrefs.HasKey("MusicVolume")) {
+			if (sound != null) {
+				foreach (Sound s in sound.music) {
+					s.source.volume = PlayerPrefs.GetFloat("MusicVolume");
+				}
+			}
+		}
+		if (PlayerPrefs.HasKey("Mute")) {
+			bool mute = false;
+			if (PlayerPrefs.GetInt("Mute") == 1)
+				mute = true;
+			if (sound != null) {
+				foreach (Sound s in sound.sounds) {
+					s.source.mute = mute;
+				}
+				foreach (Sound s in sound.music) {
+					s.source.mute = mute;
+				}
+			}
+		}
+		if (PlayerPrefs.HasKey("Balance")) {
+			if (sound != null) {
+				foreach (Sound s in sound.sounds) {
+					s.source.panStereo = PlayerPrefs.GetFloat("Balance");
+				}
+				foreach (Sound s in sound.music) {
+					s.source.panStereo = PlayerPrefs.GetFloat("Balance");
+				}
+			}
+		}
+	}
+
 }

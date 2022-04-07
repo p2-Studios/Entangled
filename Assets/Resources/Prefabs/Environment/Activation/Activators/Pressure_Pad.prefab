@@ -183,6 +183,9 @@ MonoBehaviour:
   - Player
   - Pushable
   indicatorLight: {fileID: 2982526402445669402}
+  pressurePadAnimator: {fileID: 676457359787602008}
+  stayDownAnimator: {fileID: 9100000, guid: 9d8cee939c7804d95add912d20678751, type: 2}
+  holdDownAnimator: {fileID: 9100000, guid: 2a6b1815976d05a4ca8e0d732f8e1bf7, type: 2}
 --- !u!212 &9119957939663652726
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -268,7 +271,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.12}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.15625, y: 0, z: 0.15625, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 0.25}
     newSize: {x: 1, y: 0.25}
