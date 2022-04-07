@@ -76,7 +76,7 @@ public class AudioManager : MonoBehaviour {
                 break;
             
             case "credits": // credits music
-                song = "music_main";    // TODO: change to credit music
+                song = "music_credits";
                 break;
 
             default:

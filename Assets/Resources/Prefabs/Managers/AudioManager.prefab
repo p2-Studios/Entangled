@@ -87,6 +87,13 @@ MonoBehaviour:
     pitch: 1
     pitchMin: 1
     pitchMax: 1
+  - name: music_credits
+    clip: {fileID: 8300000, guid: 05e665f26d6b29544bee3159d58b7a48, type: 3}
+    source: {fileID: 0}
+    volume: 0.025
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
   uiSounds:
   - name: terminal_click
     clip: {fileID: 8300000, guid: 9e4cbc5f047fc324ab99442888939447, type: 3}
@@ -197,7 +204,7 @@ MonoBehaviour:
   - name: light_on
     clip: {fileID: 8300000, guid: e746665f0dcfaf643b9249664569d1d3, type: 3}
     source: {fileID: 0}
-    volume: 0.05
+    volume: 0.03
     pitch: 1
     pitchMin: 0.9
     pitchMax: 1.1
