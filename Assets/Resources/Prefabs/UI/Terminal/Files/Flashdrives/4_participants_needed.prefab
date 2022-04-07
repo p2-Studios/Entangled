@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 974824168841636138}
   - component: {fileID: 7234493004561744268}
   m_Layer: 0
-  m_Name: 4_laser_fields
+  m_Name: 4_participants_needed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encrypted: 1
-  fileName: destruction_fields.png
+  fileName: participants_needed.png
   description: 
-  image: {fileID: 21300000, guid: 8f83f23fb8295d04cbc4b94a194bade0, type: 3}
+  image: {fileID: 21300000, guid: 8e869d9846c46424386306147058fdbe, type: 3}
