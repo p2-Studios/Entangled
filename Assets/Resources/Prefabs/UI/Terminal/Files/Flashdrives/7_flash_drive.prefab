@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: TEXT_FILE.txt
-  body: This is a test of the new terminal text file system. This text file can be
-    opened, viewed, and closed. Terminals use prefabs of TerminalFiles, so the text
-    that a terminal contains can be edited without having to edit the terminal itself.
+  encrypted: 0
+  fileName: research_notes.txt
+  body: 'The repulse gel does appear to have mildly hallucinogenic properties. However,
+    since employees are required to wear safety equipment, I don''t think the risk
+    is high enough to report to the worker safety board. '
