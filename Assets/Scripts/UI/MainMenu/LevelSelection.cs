@@ -34,7 +34,7 @@ public class LevelSelection : MonoBehaviour {
     
     private void Awake() {
         nextCameraPosition = cameraTopPosition.position;
-        unlockedLevel = GetGameData().GetUnlockedLevel();
+        unlockedLevel = 9; //GetGameData().GetUnlockedLevel();
 
         // both scroll indicators disables by default (will be enabled in a moment if needed)
         scrollDownText.SetActive(false);
@@ -49,7 +49,7 @@ public class LevelSelection : MonoBehaviour {
         InitializeFlashDriveTexts();
         
         // unlock the camera if underground level(s) unlocked
-        if (GetGameData().unlockedLevel > 5) camLocked = false;
+        if (unlockedLevel > 5) camLocked = false;
     }
 
     // Get the player's GameData (right now just their latest level unlocked) from the save system
@@ -87,7 +87,7 @@ public class LevelSelection : MonoBehaviour {
             scrollUpText.SetActive(false);
         } else {
             if (cam.transform.position == cameraTopPosition.position) {
-                if (GetGameData().unlockedLevel > 5) scrollDownText.SetActive(true);
+                if (unlockedLevel > 5) scrollDownText.SetActive(true);
             } else {
                 scrollUpText.SetActive(true);
             }
