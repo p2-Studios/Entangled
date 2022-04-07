@@ -30,6 +30,7 @@ namespace Activation_System
 		private float animationSpeed = 0.0f;							// This has no use currently
 		
 		void Start() {
+			base.Start();			
 			padCollider = GetComponent<BoxCollider2D>();				// fetch collider
 			
 			obj_mass = new Dictionary<Collider2D,float>();
@@ -52,7 +53,7 @@ namespace Activation_System
 
 		public override void Activate() {
 			indicatorLight.color = Color.green;
-			AudioManager.instance.Play(activateSound);
+
 			base.Activate();
 		}
 
@@ -62,7 +63,7 @@ namespace Activation_System
 			} else {
 				indicatorLight.color = Color.red;
 			}
-			AudioManager.instance.Play(deactivateSound);
+
 			base.Deactivate();
 		}
 
