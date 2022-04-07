@@ -43,7 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35e7668ad5d40b6406bdba4535c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: TEXT_FILE.txt
-  body: This is a test of the new terminal text file system. This text file can be
-    opened, viewed, and closed. Terminals use prefabs of TerminalFiles, so the text
-    that a terminal contains can be edited without having to edit the terminal itself.
+  encrypted: 0
+  fileName: HR_complaint.txt
+  body: 'Hello,
+
+    I would like to file a complaint about my working environment.
+    Every day I have to risk death by red destruction field which I feel endangers
+    my health in an unacceptable way. Please petition the level managers to remove
+    this as soon as possible. '
