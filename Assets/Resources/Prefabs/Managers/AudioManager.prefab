@@ -76,7 +76,7 @@ MonoBehaviour:
   - name: music_level9
     clip: {fileID: 8300000, guid: eb1a18e025aeb3d40afef072f3ca5ff8, type: 3}
     source: {fileID: 0}
-    volume: 0.05
+    volume: 0.025
     pitch: 1
     pitchMin: 1
     pitchMax: 1
@@ -311,7 +311,7 @@ MonoBehaviour:
   - name: object_entangled
     clip: {fileID: 8300000, guid: 62d2028050aef9a4fb79999da74a4087, type: 3}
     source: {fileID: 0}
-    volume: 0.05
+    volume: 0.04
     pitch: 1
     pitchMin: 1
     pitchMax: 1
