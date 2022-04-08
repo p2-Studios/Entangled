@@ -586,14 +586,11 @@ public class Controls : MonoBehaviour
 
 			if (controlView != null)
 				controlView.UpdateKeys();
-
-			// notify to update
-			GrabControlIndicator grabindicator = FindObjectOfType<GrabControlIndicator>();
-			InteractControlIndicator interactindicator = FindObjectOfType<InteractControlIndicator>();
-
-			if (grabindicator != null)
+			
+			foreach (GrabControlIndicator grabindicator in Resources.FindObjectsOfTypeAll(typeof(GrabControlIndicator)) as GrabControlIndicator[])
 				grabindicator.updatestring();
-			if (interactindicator != null)
+				
+			foreach (InteractControlIndicator interactindicator in Resources.FindObjectsOfTypeAll(typeof(InteractControlIndicator)) as InteractControlIndicator[])
 				interactindicator.updatestring();
 
 			// Show option_screen
