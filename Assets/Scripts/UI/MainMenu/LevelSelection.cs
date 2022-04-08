@@ -34,15 +34,12 @@ public class LevelSelection : MonoBehaviour {
     
     private void Awake() {
         nextCameraPosition = cameraTopPosition.position;
-        unlockedLevel = 9; //GetGameData().GetUnlockedLevel();
+        unlockedLevel = GetGameData().GetUnlockedLevel();
 
         // both scroll indicators disables by default (will be enabled in a moment if needed)
         scrollDownText.SetActive(false);
         scrollUpText.SetActive(false);
-        
-        // set all levels unlocked (for testing/debug/until all levels are ready)
-        //SaveSystem.SetGameDataLevel(10);
-        
+
         // initializes the visuals/interactables based on the user's unlocked levels
         InitializeLevelButtons();
         InitializeBuildingVisuals();
@@ -78,6 +75,12 @@ public class LevelSelection : MonoBehaviour {
                 MoveToBottom();
             }    
         }
+
+        // unlocks all levels
+            if (Input.GetKeyDown(KeyCode.L)) {
+                SaveSystem.SetGameDataLevel(9);
+                SceneManager.LoadSceneAsync("LevelSelection");
+            }
         
         // if the camera isn't where it's supposed to be, move it towards that position
         if (cam.transform.position != nextCameraPosition) {
