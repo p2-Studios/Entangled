@@ -129,6 +129,7 @@ public class EntangleComponent : MonoBehaviour {
                             string objectName = e.name;
                             if (objectName.Equals("GroundSatellite") || objectName.Equals("SpaceSatellite")) {
                                 FindObjectOfType<CameraToggle>().TransitionToBottom(2.0f);
+                                AudioManager.instance.PlayDelayed("camera_move_2", 1f);
                             }
                             FindObjectOfType<AudioManager>().Play("object_entangled");
                         }

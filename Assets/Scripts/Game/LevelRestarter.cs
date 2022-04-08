@@ -14,6 +14,7 @@ public class LevelRestarter : MonoBehaviour {
     public static LevelRestarter instance;
     public Vector3 checkpointPos;
     private string sceneName = "";   // keep track of the current scene name
+    private IEnumerator resetCoroutine;
     
     private void Awake() {
         if (instance == null) {
@@ -32,6 +33,8 @@ public class LevelRestarter : MonoBehaviour {
             checkpointPos = Vector3.zero;
         }
         
+        StopCoroutine(Reset());
+        
         if (checkpointPos != Vector3.zero) {    // checkpointPos 
             Player player = FindObjectOfType<Player>();
             if (player != null) {
@@ -49,20 +52,23 @@ public class LevelRestarter : MonoBehaviour {
             if (!restarting) {
                 holdingR = true;
                 restarting = true;
-                StartCoroutine(Action());
+                if (resetCoroutine != null) StopCoroutine(resetCoroutine);
+                resetCoroutine = Reset();
+                StartCoroutine(resetCoroutine);
             }
         } if (Input.GetKeyUp(Keybinds.GetInstance().reset)) {
             holdingR = false;
+            restarting = false;
+            StopCoroutine(resetCoroutine);
         }
     }
 
-    IEnumerator Action() {
+    IEnumerator Reset() {
         yield return new WaitForSeconds(2);
-        if (holdingR) {
+        if (holdingR && restarting) {
             RestartLevel();
+            restarting = false;
         }
-
-        restarting = false;
     }
 
     public void RestartLevel() {

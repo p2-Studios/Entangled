@@ -20,10 +20,10 @@ public class FadeManager : MonoBehaviour {
         }
     }
     
+    /*
     private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneChange;
     }
-
     private void OnSceneChange(Scene scene, LoadSceneMode arg1) {    // remove fade when loading level
         if (scene.name.Contains("Level")) {
             FadeIn();
@@ -31,6 +31,7 @@ public class FadeManager : MonoBehaviour {
             animator.SetTrigger("NoFade");
         }
     }
+    */
 
     public void FadeOut() {
         animator.SetTrigger("FadeOut");

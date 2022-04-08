@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour {
     public Sound[] sounds;
     public ArrayList allSounds;
     private AudioSource musicPlayer;
+    private bool musicPaused;
     private static string _musicType = "menu";
 
     public static AudioManager instance;
@@ -34,9 +35,8 @@ public class AudioManager : MonoBehaviour {
     
 
     private void Update() {
-        if (musicPlayer != null && !musicPlayer.isPlaying) {    // start new song if last song has ended
+        if (musicPlayer != null && !musicPlayer.isPlaying && !musicPaused) {    // start new song if last song has ended
             ChangeMusic();
-            
         }
     }
 
@@ -122,6 +122,16 @@ public class AudioManager : MonoBehaviour {
             _musicType = type;
             ChangeMusic();
         }
+    }
+
+    public void StopMusic() {
+        musicPlayer.Stop();
+        musicPaused = true;
+    }
+    
+    public void ResumeMusic() {
+        musicPaused = false;
+        musicPlayer.Play();
     }
 
     public void Play(string soundName) {

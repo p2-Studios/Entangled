@@ -243,6 +243,20 @@ MonoBehaviour:
     pitch: 1
     pitchMin: 1
     pitchMax: 1
+  - name: camera_move
+    clip: {fileID: 8300000, guid: eef12534980013d49a76abf4a313b21f, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
+  - name: camera_move_2
+    clip: {fileID: 8300000, guid: e21b6e2b024a18c499c30d62d0725a6f, type: 3}
+    source: {fileID: 0}
+    volume: 0.2
+    pitch: 1
+    pitchMin: 1
+    pitchMax: 1
   playerSounds:
   - name: player_respawn
     clip: {fileID: 8300000, guid: 4519420b266ba8c439556a2729118d5f, type: 3}
