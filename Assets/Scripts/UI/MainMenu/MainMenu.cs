@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadSceneAsync(levelName);
     }
 
-	void Options() {
+	public void Options() {
 		SceneManager.LoadSceneAsync("Options", LoadSceneMode.Additive);
 	}
 	

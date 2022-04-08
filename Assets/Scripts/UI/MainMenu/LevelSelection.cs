@@ -77,10 +77,14 @@ public class LevelSelection : MonoBehaviour {
         }
 
         // unlocks all levels
-            if (Input.GetKeyDown(KeyCode.L)) {
-                SaveSystem.SetGameDataLevel(9);
-                SceneManager.LoadSceneAsync("LevelSelection");
-            }
+        if (Input.GetKeyDown(KeyCode.L)) {
+            SaveSystem.SetGameDataLevel(9);
+            SceneManager.LoadSceneAsync("LevelSelection");
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            SceneManager.LoadSceneAsync("MainMenu");
+        }
         
         // if the camera isn't where it's supposed to be, move it towards that position
         if (cam.transform.position != nextCameraPosition) {
