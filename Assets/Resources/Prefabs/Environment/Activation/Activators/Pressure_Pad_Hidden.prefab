@@ -41,11 +41,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2982526402445669402, guid: 1df1fd292a9d1fa41a98701e223578d2, type: 3}
       propertyPath: m_Intensity
-      value: 0.6
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2982526402445669402, guid: 1df1fd292a9d1fa41a98701e223578d2, type: 3}
       propertyPath: m_PointLightOuterRadius
-      value: 0.25
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7857249653893768226, guid: 1df1fd292a9d1fa41a98701e223578d2, type: 3}
       propertyPath: m_RootOrder
