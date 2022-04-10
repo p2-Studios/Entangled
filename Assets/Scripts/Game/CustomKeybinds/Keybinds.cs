@@ -146,5 +146,9 @@ namespace Game.CustomKeybinds
             }
             return _instance;
         }
+
+        public void Refresh() {
+            _instance = new Keybinds();
+        }
     }
 }

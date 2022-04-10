@@ -38,5 +38,9 @@ namespace Game.CustomKeybinds
 
             return data;
         }
+
+        public static void ClearKeyBinds() {
+            File.Delete(Application.persistentDataPath + "/keybinds.config");
+        }
     }
 }
