@@ -32,11 +32,16 @@ public class FinaleManager : MonoBehaviour {
         Player player = FindObjectOfType<Player>();
         if (player != null && playerPosition != Vector3.zero) {
             player.rigidbody.position = playerPosition;
+            ResetPlayerPosition();
         }
     }
 
     public void SetPlayerPosition(Vector3 pos) {
         playerPosition = pos;
+    }
+
+    public void ResetPlayerPosition() {
+        playerPosition = Vector3.zero;
     }
     
 }
