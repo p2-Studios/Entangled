@@ -9,17 +9,32 @@ public class DestructiblePanel : MonoBehaviour
 	private Collider2D panel_col;
 
 	private Animator anim;
+	bool check = true;
 
 	List <GameObject> currentCollisions = new List <GameObject> ();
 	float totalMass = 0;
 	public void Start() {
+		check = true;
+		StartCoroutine(LoadCheck());
 		anim = GetComponent<Animator>();
         panel_col = GetComponent<Collider2D>();
     }
 
+	IEnumerator LoadCheck()
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1.5f);
+		check = false;
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+    }
 	
 	private void OnCollisionEnter2D(Collision2D collision) {
-		if (panel_col.isActiveAndEnabled){
+
+		if(!check){
 			//check collision for mass
 			if(collision.gameObject.tag == "Pushable" || collision.gameObject.tag == "Player"){
 				currentCollisions.Add(collision.gameObject);
@@ -38,7 +53,7 @@ public class DestructiblePanel : MonoBehaviour
 	}
 
 	private void OnCollisionStay2D(Collision2D collision) {
-		if (panel_col.isActiveAndEnabled){
+		if(!check){
 			//if total mass is currently greater than break force for mass 
 			if(totalMass >= required_mass){
 				panel_col.enabled = false;
@@ -60,6 +75,7 @@ public class DestructiblePanel : MonoBehaviour
 				}
 			}
 		}
+		
 	}
 
 	private void OnCollisionExit2D(Collision2D collision){
