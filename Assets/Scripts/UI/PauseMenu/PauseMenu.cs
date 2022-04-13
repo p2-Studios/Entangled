@@ -26,6 +26,9 @@ public class PauseMenu : MonoBehaviour
 	public GameObject Options;
 	public Button back;
 	
+	// control indicator screen
+	public GameObject controlIndicator;
+	
 	// Timescale for pause
 	private float timescale;
 
@@ -257,6 +260,11 @@ public class PauseMenu : MonoBehaviour
 				}
 			}
 		}
+		
+	}
+
+	public void ToggleControlIndicator(bool t) {
+		controlIndicator.SetActive(t);
 	}
 
 }

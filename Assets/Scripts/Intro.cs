@@ -10,11 +10,11 @@ public class Intro : MonoBehaviour {
         StartCoroutine(EnablePlayer());
     }
 
-    IEnumerator EnablePlayer()
-     {         
+    IEnumerator EnablePlayer() {         
          yield return new WaitForSeconds(5.95f);
-  
          player.SetActive(true);
+         yield return new WaitForSeconds(3f);
+         PauseMenu.instance.ToggleControlIndicator(true);
      }
 
     public void PlayPipeSound() {

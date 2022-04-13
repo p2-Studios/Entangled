@@ -18,6 +18,7 @@ public class ElevatorTransition : MonoBehaviour {
     [SerializeField] Sprite sprLevel1, sprLevel2, sprLevel3, sprLevel4, sprLevel5, sprLevel6, sprLevel7, sprLevel8, sprLevel9;
     private GameObject sign;
     void Start(){
+        PauseMenu.instance.ToggleControlIndicator(false);
         // change transition sign based on upcoming level
         sign = GameObject.Find("Level_Sign");
         neonSign = sign.GetComponent<SpriteRenderer>();
@@ -63,17 +64,6 @@ public class ElevatorTransition : MonoBehaviour {
                 neonSign.enabled = false;
                 break;
         }
-    }
-
-    private void Awake() {
-        StartCoroutine(StartSoundWithDelay());
-    }
-    
-    IEnumerator StartSoundWithDelay() {
-        yield return new WaitForSeconds(0.5f);
-        
-        //AudioManager am = FindObjectOfType<AudioManager>();
-        //if (am != null) am.PlayDelayed("elevator_descend", 3f);
     }
 
     void Update() {

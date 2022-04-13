@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour {
         if (GetGameData().GetUnlockedLevel() < 1) {
             levelsButton.interactable = false;
         }
+        PauseMenu.instance.ToggleControlIndicator(false);   // control indicator off in main menu
     }
 
     private void Update() {

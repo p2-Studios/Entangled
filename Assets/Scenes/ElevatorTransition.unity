@@ -28143,6 +28143,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 323450841092137156, guid: 7fba02124601186439f6f3a4544e2571, type: 3}
+      propertyPath: orthographic size
+      value: 5.35
+      objectReference: {fileID: 0}
     - target: {fileID: 323450841092137157, guid: 7fba02124601186439f6f3a4544e2571, type: 3}
       propertyPath: m_RootOrder
       value: 1
