@@ -19,42 +19,45 @@ public class DestructiblePanel : MonoBehaviour
 
 	
 	private void OnCollisionEnter2D(Collision2D collision) {
-		
-		//check collision for mass
-		if(collision.gameObject.tag == "Pushable" || collision.gameObject.tag == "Player"){
-			currentCollisions.Add(collision.gameObject);
-			totalMass += collision.gameObject.GetComponent<Rigidbody2D>().mass;
-		}
-		// check collision for the impulse
-		foreach (ContactPoint2D contact in collision.contacts) {
-			if (contact.normalImpulse >= required_impulse) {
-				panel_col.enabled = false;
-				anim.SetBool("Destroyed", true);
-				AudioManager.instance.Play("wall_break");
-				return;
+		if (panel_col.isActiveAndEnabled){
+			//check collision for mass
+			if(collision.gameObject.tag == "Pushable" || collision.gameObject.tag == "Player"){
+				currentCollisions.Add(collision.gameObject);
+				totalMass += collision.gameObject.GetComponent<Rigidbody2D>().mass;
+			}
+			// check collision for the impulse
+			foreach (ContactPoint2D contact in collision.contacts) {
+				if (contact.normalImpulse >= required_impulse) {
+					panel_col.enabled = false;
+					anim.SetBool("Destroyed", true);
+					AudioManager.instance.Play("wall_break");
+					return;
+				}
 			}
 		}
 	}
 
 	private void OnCollisionStay2D(Collision2D collision) {
-		//if total mass is currently greater than break force for mass 
-		if(totalMass >= required_mass){
-			panel_col.enabled = false;
-			anim.SetBool("Destroyed", true);
-			AudioManager.instance.Play("wall_break");
-			return;
-		}
-
-		// check other incoming impulse of collision hitting panel
-		ContactPoint2D[] cps = new ContactPoint2D[25];
-
-		panel_col.GetContacts(cps);
-		foreach (ContactPoint2D contact in cps) {
-			if (contact.normalImpulse >= required_impulse ) {
+		if (panel_col.isActiveAndEnabled){
+			//if total mass is currently greater than break force for mass 
+			if(totalMass >= required_mass){
 				panel_col.enabled = false;
 				anim.SetBool("Destroyed", true);
 				AudioManager.instance.Play("wall_break");
 				return;
+			}
+
+			// check other incoming impulse of collision hitting panel
+			ContactPoint2D[] cps = new ContactPoint2D[25];
+
+			panel_col.GetContacts(cps);
+			foreach (ContactPoint2D contact in cps) {
+				if (contact.normalImpulse >= required_impulse ) {
+					panel_col.enabled = false;
+					anim.SetBool("Destroyed", true);
+					AudioManager.instance.Play("wall_break");
+					return;
+				}
 			}
 		}
 	}
