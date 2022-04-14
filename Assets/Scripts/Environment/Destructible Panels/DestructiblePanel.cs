@@ -22,14 +22,8 @@ public class DestructiblePanel : MonoBehaviour
 
 	IEnumerator LoadCheck()
     {
-        //Print the time of when the function is first called.
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-        //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(1.5f);
 		check = false;
-        //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
     }
 	
 	private void OnCollisionEnter2D(Collision2D collision) {
@@ -41,14 +35,14 @@ public class DestructiblePanel : MonoBehaviour
 				totalMass += collision.gameObject.GetComponent<Rigidbody2D>().mass;
 			}
 			// check collision for the impulse
-			foreach (ContactPoint2D contact in collision.contacts) {
+			/*foreach (ContactPoint2D contact in collision.contacts) {
 				if (contact.normalImpulse >= required_impulse) {
 					panel_col.enabled = false;
 					anim.SetBool("Destroyed", true);
 					AudioManager.instance.Play("wall_break");
 					return;
 				}
-			}
+			}*/
 		}
 	}
 
