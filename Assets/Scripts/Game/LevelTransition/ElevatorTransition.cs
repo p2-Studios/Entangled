@@ -68,17 +68,25 @@ public class ElevatorTransition : MonoBehaviour {
 
     void Update() {
         transform.position = Vector2.MoveTowards(transform.position, endPos.position, speed * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Space)) {
+            LoadNextScene();
+        }
         
         if (!atEnd && transform.position == endPos.position) {
-            atEnd = true;
-            Scene scene = SceneManager.GetSceneByName(levelToLoad);
+            LoadNextScene();
+        }
+    }
+
+    public void LoadNextScene() {
+        atEnd = true;
+        Scene scene = SceneManager.GetSceneByName(levelToLoad);
+        SceneManager.LoadSceneAsync(levelToLoad);
+        if (!scene.IsValid()) { // check if scene was found
             SceneManager.LoadSceneAsync(levelToLoad);
-            if (!scene.IsValid()) { // check if scene was found
-                SceneManager.LoadSceneAsync(levelToLoad);
-            } else {
-                Debug.LogWarning("Scene " + levelToLoad + " attempted to load, but wasn't found!");
-                SceneManager.LoadSceneAsync("MainMenu");
-            }
+        } else {
+            Debug.LogWarning("Scene " + levelToLoad + " attempted to load, but wasn't found!");
+            SceneManager.LoadSceneAsync("MainMenu");
         }
     }
     
