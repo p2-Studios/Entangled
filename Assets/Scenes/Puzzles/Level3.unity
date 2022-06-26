@@ -1635,6 +1635,10 @@ PrefabInstance:
       propertyPath: label
       value: Level3
       objectReference: {fileID: 0}
+    - target: {fileID: 843716431566204975, guid: 4d05ad6d6b1652c449001d47037bc23e, type: 3}
+      propertyPath: description
+      value: 'Level Three: Physics Manipulation'
+      objectReference: {fileID: 0}
     - target: {fileID: 6821340570740266497, guid: 4d05ad6d6b1652c449001d47037bc23e, type: 3}
       propertyPath: m_RootOrder
       value: 0

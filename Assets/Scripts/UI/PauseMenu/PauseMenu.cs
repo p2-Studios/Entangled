@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Game.CustomKeybinds;
+using TMPro;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ public class PauseMenu : MonoBehaviour
 {
 	// Screen 1: Main pause menu
 	public GameObject menu;
+	public TextMeshProUGUI levelDescription;
 	public Button resume;
 	public Button reset;
 	public Button options;
@@ -194,6 +196,10 @@ public class PauseMenu : MonoBehaviour
 		}
 		else {
 			menu.SetActive(true);
+			Level l = FindObjectOfType<Level>();
+			if (l != null) {
+				levelDescription.SetText(l.GetDescription());
+			}
 		}
 
 		paused = !paused;

@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour {
     public string label;
+    public string description;
     [HideInInspector] public FlashDrive[] flashDrives;
     public ArrayList foundFlashDrives;
 
@@ -112,5 +113,9 @@ public class Level : MonoBehaviour {
 
     public FlashDrive[] GetFlashDrives() {
         return flashDrives;
+    }
+
+    public String GetDescription() {
+        return description;
     }
 }
