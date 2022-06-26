@@ -177,9 +177,16 @@ public class Entanglable : MonoBehaviour, IDestroyable {
                 if (mp != null && mp.makeObjectChild) transform.parent = col.gameObject.transform;      // set parent to platform so object doesn't slide
         } else if (col.gameObject.CompareTag("Destroyer") && !(col is CircleCollider2D)) {
             Kill();
-        } 
+        }
     }
-    
+
+    public void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.CompareTag("Terrain")) {
+            if (rb.velocity.magnitude > 1.0)
+                AudioManager.instance.PlayDelayed("ground_impact", 0.0f);
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D col) {
         if (col.gameObject.CompareTag("Platform") || col.gameObject.CompareTag("TopOfObject")) {    // object leaving platform
             if (gameObject.activeSelf) {

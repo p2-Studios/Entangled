@@ -2972,6 +2972,34 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6896583114416698834, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
+      propertyPath: environmentSounds.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896583114416698834, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
+      propertyPath: environmentSounds.Array.data[15].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: bede4f1c631dcc94590566c410b5950d, type: 3}
+    - target: {fileID: 6896583114416698834, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
+      propertyPath: environmentSounds.Array.data[15].name
+      value: ground_impact
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896583114416698834, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
+      propertyPath: environmentSounds.Array.data[15].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896583114416698834, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
+      propertyPath: environmentSounds.Array.data[15].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896583114416698834, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
+      propertyPath: environmentSounds.Array.data[15].pitchMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896583114416698834, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
+      propertyPath: environmentSounds.Array.data[15].pitchMin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7474581829690460204, guid: 610a492e23b6ca64dba9dd6c29f71525, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5663,7 +5691,7 @@ GameObject:
   - component: {fileID: 4777928526740524080}
   m_Layer: 0
   m_Name: Tilemap_Walls
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5698,7 +5726,7 @@ GameObject:
   - component: {fileID: 4302813486953393150}
   m_Layer: 6
   m_Name: Tilemap_Ground
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
