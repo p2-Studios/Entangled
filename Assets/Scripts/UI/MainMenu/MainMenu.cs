@@ -41,6 +41,14 @@ public class MainMenu : MonoBehaviour {
         Application.Quit();
     }
 
+    public void OpenTwitterLink() {
+        Application.OpenURL("https://twitter.com/p2__studios");
+    }
+
+    public void OpenDiscordLink() {
+        Application.OpenURL("https://discord.gg/bC9xzeRxzS");
+    }
+
     public void OpenFeedbackLink() {
         Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSduizPyNvgwBKM6RKQIJBMhdP-MfVxOmvlQN4bWaZeT_3VL7Q/viewform");
     }
