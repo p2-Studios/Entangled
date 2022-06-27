@@ -20,7 +20,6 @@ public class Controls : MonoBehaviour {
     public Button interact;
     public Button clear;
     public Button entangle;
-    public Button unentangle;
     public Button swap;
     public Button pause;
 
@@ -45,20 +44,20 @@ public class Controls : MonoBehaviour {
     // String representation of keys
     private string[] prev_keys = {
         "Space", "A", "D",
-        "L-Shift", "R", "F", "Q", "Mouse 1", "Mouse 2", "Mouse 3", "Esc"
+        "L-Shift", "R", "F", "Q", "Mouse 1", "Mouse 2", "Esc"
     };
     private string[] curr_keys = {
         "Space", "A", "D",
-        "L-Shift", "R", "F", "Q", "Mouse 1", "Mouse 2", "Mouse 3", "Esc"
+        "L-Shift", "R", "F", "Q", "Mouse 1", "Mouse 2", "Esc"
     };
     // keycodes
     private KeyCode[] prev_keycodes = {
         KeyCode.Space, KeyCode.A, KeyCode.D,
-        KeyCode.LeftShift, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.Mouse2, KeyCode.Escape
+        KeyCode.LeftShift, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.Escape
     };
     private KeyCode[] curr_keycodes = {
         KeyCode.Space, KeyCode.A, KeyCode.D,
-        KeyCode.LeftShift, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.Mouse2, KeyCode.Escape
+        KeyCode.LeftShift, KeyCode.R, KeyCode.F, KeyCode.Q, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.Escape
     };
 
     // Awake is called before Start
@@ -85,7 +84,6 @@ public class Controls : MonoBehaviour {
         interact.onClick.AddListener(btnInteract);
         clear.onClick.AddListener(btnClear);
         entangle.onClick.AddListener(btnEntangle);
-        unentangle.onClick.AddListener(btnUnEntangle);
         swap.onClick.AddListener(btnSwap);
         pause.onClick.AddListener(btnPause);
 
@@ -110,6 +108,7 @@ public class Controls : MonoBehaviour {
                 int val = findfrom(curr_keycodes, KeyCode.Mouse0);
                 curr_keys[i] = "Mouse 1";
                 curr_keycodes[i] = KeyCode.Mouse0;
+                getSprite(curr_keycodes[i], i);
                 applyText(curr_keys);
 
                 if (val == -1) {
@@ -125,6 +124,7 @@ public class Controls : MonoBehaviour {
                 int val = findfrom(curr_keycodes, KeyCode.Mouse1);
                 curr_keys[i] = "Mouse 2";
                 curr_keycodes[i] = KeyCode.Mouse1;
+                getSprite(curr_keycodes[i], i);
                 applyText(curr_keys);
 
                 if (val == -1) {
@@ -140,6 +140,7 @@ public class Controls : MonoBehaviour {
                 int val = findfrom(curr_keycodes, KeyCode.Mouse2);
                 curr_keys[i] = "Mouse 3";
                 curr_keycodes[i] = KeyCode.Mouse2;
+                getSprite(curr_keycodes[i], i);
                 applyText(curr_keys);
 
                 if (val == -1) {
@@ -339,6 +340,19 @@ public class Controls : MonoBehaviour {
             }
 
         } else {
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f) { // scroll up
+                if (control2.active) {
+                    control2.SetActive(false);
+                    control1.SetActive(true);
+                }    
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f) { // scroll down
+                if (control1.activeInHierarchy) {
+                    control1.SetActive(false);
+                    control2.SetActive(true);
+                }     
+            }
+
             if (Input.GetKeyDown(Keybinds.GetInstance().pause))
                 btnCancel();
         }
@@ -433,7 +447,7 @@ public class Controls : MonoBehaviour {
         }
     }
 
-    void btnUnEntangle() {
+    void btnSwap() {
         if (i != -1) {
             resetButton();
         }
@@ -444,7 +458,7 @@ public class Controls : MonoBehaviour {
         }
     }
 
-    void btnSwap() {
+    void btnPause() {
         if (i != -1) {
             resetButton();
         }
@@ -455,21 +469,8 @@ public class Controls : MonoBehaviour {
         }
     }
 
-    void btnPause() {
-        if (i != -1) {
-            resetButton();
-        }
-        i = 10;
-        for (int x = 0; x < prev_keycodes.Length; x++) {
-            if (i != x)
-                getSelectedButton(x).interactable = false;
-        }
-    }
-
-    void applyText(string[] chosen_keys) {
-
-        getSelectedButton(i).GetComponentInChildren<Text>().text = chosen_keys[i];
-
+    void applyText(string[] chosenKeys) {
+        getSelectedButton(i).GetComponentInChildren<Text>().text = chosenKeys[i];
     }
 
     void getSprite(KeyCode key, int button) {
@@ -493,7 +494,6 @@ public class Controls : MonoBehaviour {
     }
 
     Button getSelectedButton(int number) {
-
         switch (number) {
             case 0: return jump;
             case 1: return walk_left;
@@ -503,9 +503,8 @@ public class Controls : MonoBehaviour {
             case 5: return interact;
             case 6: return clear;
             case 7: return entangle;
-            case 8: return unentangle;
-            case 9: return swap;
-            case 10: return pause;
+            case 8: return swap;
+            case 9: return pause;
             default: return null;
         }
 
@@ -558,9 +557,8 @@ public class Controls : MonoBehaviour {
             Keybinds.GetInstance().interact = curr_keycodes[5];
             Keybinds.GetInstance().clearAllEntangled = curr_keycodes[6];
             Keybinds.GetInstance().entangle = curr_keycodes[7];
-            Keybinds.GetInstance().unentangle = curr_keycodes[8];
-            Keybinds.GetInstance().swapEntangle = curr_keycodes[0];
-            Keybinds.GetInstance().pause = curr_keycodes[10];
+            Keybinds.GetInstance().swapEntangle = curr_keycodes[8];
+            Keybinds.GetInstance().pause = curr_keycodes[9];
 
             Keybinds.GetInstance().hold = grab_hold.isOn;
             prev_hold_val = grab_hold.isOn;
@@ -605,9 +603,8 @@ public class Controls : MonoBehaviour {
             case 5: return Keybinds.GetInstance().interact;
             case 6: return Keybinds.GetInstance().clearAllEntangled;
             case 7: return Keybinds.GetInstance().entangle;
-            case 8: return Keybinds.GetInstance().unentangle;
-            case 9: return Keybinds.GetInstance().swapEntangle;
-            case 10: return Keybinds.GetInstance().pause;
+            case 8: return Keybinds.GetInstance().swapEntangle;
+            case 9: return Keybinds.GetInstance().pause;
             default: return KeyCode.None;
         }
     }

@@ -156,20 +156,6 @@ public class EntangleComponent : MonoBehaviour {
             }
         }
 
-        // Right click pressed
-        if (Input.GetKeyDown(keybindInstance.unentangle)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
-            if (hit.collider != null) {
-                // If one object is clicked, all objects get the click input. This is to prevent multiple selection
-                Entanglable e = hit.collider.gameObject.GetComponentInParent<Entanglable>();
-                if (e == null) return;
-                if (active == e || passives.Contains(e)) {
-                    ClearEntangled();
-                }
-            }
-        }
-
         if (active != null && passives.Count == 0) {
             foreach (GameObject obj in allEntanglableObjects) {
                 Entanglable e = obj.GetComponent<Entanglable>();
