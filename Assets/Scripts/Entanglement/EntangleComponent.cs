@@ -56,6 +56,14 @@ public class EntangleComponent : MonoBehaviour {
             }
         }
         
+        if (Input.GetKeyDown(keybindInstance.swapEntangle)) {
+            if (active != null && passives.Count != 0) {
+                active.SetEntanglementStates(false, true, true);
+                passives[0].SetEntanglementStates(true, false, true);
+                (active, passives[0]) = (passives[0], active);
+            } 
+        }
+        
         // Mouse Controls for Entangling Objects
         // (Hit detector- https://stackoverflow.com/a/61659152. I have modified this a bit to suit our needs)
         // mouse button held, draw line if there is an active

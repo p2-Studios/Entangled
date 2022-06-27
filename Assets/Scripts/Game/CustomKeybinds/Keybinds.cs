@@ -19,6 +19,7 @@ namespace Game.CustomKeybinds
         public KeyCode clearAllEntangled;
         public KeyCode entangle;
         public KeyCode unentangle;
+        public KeyCode swapEntangle;
 
         public KeyCode pause;
         public KeyCode reset; // <- Added a variable here for reset key
@@ -28,7 +29,7 @@ namespace Game.CustomKeybinds
         // -- This is added to easily fetch keycodes by string! --
         public string[] keys = {
                 "Space","A", "D",
-									"L-Shift", "R", "F", "Q", "", "", "Esc"};
+									"L-Shift", "R", "F", "Q", "Mouse 1", "Mouse 2", "Mouse 3", "Esc"};
 
         // Load toggle
         public bool hold;
@@ -45,6 +46,7 @@ namespace Game.CustomKeybinds
             clearAllEntangled = KeyCode.Q;
             entangle = KeyCode.Mouse0;
             unentangle = KeyCode.Mouse1;
+            swapEntangle = KeyCode.Mouse2;
             
             pause = KeyCode.Escape;
             reset = KeyCode.R;
@@ -61,6 +63,7 @@ namespace Game.CustomKeybinds
             keyCodes.Add("Unentangle all", clearAllEntangled);
             keyCodes.Add("Entangle", entangle);
             keyCodes.Add("Unentangle", unentangle);
+            keyCodes.Add("Swap Entangle", swapEntangle);
             
             keyCodes.Add("Pause", pause);
             keyCodes.Add("Reset", reset);
@@ -82,6 +85,7 @@ namespace Game.CustomKeybinds
             keyCodes["Unentangle all"] = clearAllEntangled;
             keyCodes["Entangle"] = entangle;
             keyCodes["Unentangle"] = unentangle;
+            keyCodes["Swap Entangle"] = swapEntangle;
             
             keyCodes["Pause"] = pause;
             keyCodes["Reset"] = reset;
@@ -100,6 +104,7 @@ namespace Game.CustomKeybinds
             clearAllEntangled = keyCodes["Unentangle all"];
             entangle = keyCodes["Entangle"];
             unentangle = keyCodes["Unentangle"];
+            swapEntangle = keyCodes["Swap Entangle"];
 
             pause = keyCodes["Pause"];
             reset = keyCodes["Reset"];
@@ -120,6 +125,7 @@ namespace Game.CustomKeybinds
                 clearAllEntangled = tempControls.clearAllEntangled;
                 entangle = tempControls.entangle;
                 unentangle = tempControls.unentangle;
+                swapEntangle = tempControls.swapEntangle;
 
                 pause = tempControls.pause;
                 reset = tempControls.reset;
