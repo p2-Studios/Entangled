@@ -11,6 +11,7 @@ public class Interactable : MonoBehaviour {
     protected bool interactionEnabled = true;
     private Boolean inRange;
     protected Transform indicator;
+    public bool showIndicator = true;
     void Start() {
         inRange = false;
         indicator = transform.GetChild(0);
@@ -30,12 +31,12 @@ public class Interactable : MonoBehaviour {
 
     protected virtual void OnRangeEnter() {
         inRange = true;
-        indicator.gameObject.SetActive(true);
+        if (showIndicator) indicator.gameObject.SetActive(true);
     }
 
     protected virtual void OnRangeExit() {
         inRange = false;
-        indicator.gameObject.SetActive(false);
+        if (showIndicator) indicator.gameObject.SetActive(false);
     }
     
     private void OnTriggerEnter2D(Collider2D other) {

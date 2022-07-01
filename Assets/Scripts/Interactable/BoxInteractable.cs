@@ -7,6 +7,7 @@ public class BoxInteractable : MonoBehaviour {
     private GameObject grabIndicator;
     public GameObject indicators;
     private bool toggle;
+    public bool showIndicator = true;
     Quaternion iniRot;
     float iniY;
     // Start is called before the first frame update
@@ -15,8 +16,8 @@ public class BoxInteractable : MonoBehaviour {
         
         controlIndicator = indicators.transform.GetChild(0).gameObject;
         grabIndicator = indicators.transform.GetChild(1).gameObject;
-        controlIndicator.SetActive(false);
-        grabIndicator.SetActive(false);
+        if (showIndicator) controlIndicator.SetActive(false);
+        if (showIndicator) grabIndicator.SetActive(false);
         
         indicators.gameObject.SetActive(toggle);
         
@@ -25,14 +26,14 @@ public class BoxInteractable : MonoBehaviour {
     }
 
     public void ToggleControlSprite(bool state) {
-        indicators.SetActive(state);
-        controlIndicator.SetActive(state);
+        if (showIndicator) indicators.SetActive(state);
+        if (showIndicator) controlIndicator.SetActive(state);
     }
 
     public void ToggleGrabbingSprite(bool state) {
-        indicators.SetActive(state);
-        grabIndicator.SetActive(state);
-        controlIndicator.SetActive(!state);
+        if (showIndicator) indicators.SetActive(state);
+        if (showIndicator) grabIndicator.SetActive(state);
+        if (showIndicator) controlIndicator.SetActive(!state);
     }
 
 

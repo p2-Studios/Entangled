@@ -68,6 +68,7 @@ public class AudioManager : MonoBehaviour {
                 break;
             
             case "level0": // intro music
+            case "trailer":
                 song = "music_1";
                 break;
             
@@ -110,7 +111,10 @@ public class AudioManager : MonoBehaviour {
             TestAndChangeMusic("elevator");
         } else if (sceneName.Contains("Level0")) { 
             TestAndChangeMusic("level0");
-        } else if (sceneName.Contains("Level9")) { 
+        } else if (sceneName.Contains("Trailer")) { 
+            TestAndChangeMusic("trailer");
+        }
+        else if (sceneName.Contains("Level9")) { 
             TestAndChangeMusic("level9");
         } else { 
             TestAndChangeMusic("level");

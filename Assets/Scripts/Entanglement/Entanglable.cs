@@ -19,6 +19,7 @@ public class Entanglable : MonoBehaviour, IDestroyable {
     // sprite stuff
     protected SpriteRenderer spriteRenderer;
     public Transform deathAnimation;
+    public bool glow = true;
     [SerializeField] Material defaultMat, activeGlow, pasiveGlow, hoverGlow;
 
     // object states
@@ -107,11 +108,11 @@ public class Entanglable : MonoBehaviour, IDestroyable {
                 spriteRenderer.material = pasiveGlow;
                 GetComponent<Collider2D>().sharedMaterial = noFrictionMaterial;
             }
-        }  else if(hover){
+        }  else if(hover && glow){
             spriteRenderer.material = hoverGlow;
             GetComponent<Collider2D>().sharedMaterial = frictionMaterial;
         }
-        else {
+        else if (glow) {
             spriteRenderer.material = defaultMat;
         }
     }

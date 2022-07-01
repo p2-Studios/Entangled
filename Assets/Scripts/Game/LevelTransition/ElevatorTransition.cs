@@ -14,8 +14,8 @@ public class ElevatorTransition : MonoBehaviour {
     private bool atEnd = false;
 
     protected SpriteRenderer neonSign;
-    [SerializeField] Material Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8, Level9;
-    [SerializeField] Sprite sprLevel1, sprLevel2, sprLevel3, sprLevel4, sprLevel5, sprLevel6, sprLevel7, sprLevel8, sprLevel9;
+    [SerializeField] Material Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8, Level9, Trailer;
+    [SerializeField] Sprite sprLevel1, sprLevel2, sprLevel3, sprLevel4, sprLevel5, sprLevel6, sprLevel7, sprLevel8, sprLevel9, sprTrailer;
     private GameObject sign;
     void Start(){
         PauseMenu.instance.ToggleControlIndicator(false);
@@ -59,6 +59,10 @@ public class ElevatorTransition : MonoBehaviour {
             case "Level9":
                 neonSign.sprite = sprLevel9;
                 neonSign.material = Level9;
+                break;
+            case "Trailer":
+                neonSign.sprite = sprTrailer;
+                neonSign.material = Trailer;
                 break;
             default:
                 neonSign.enabled = false;
