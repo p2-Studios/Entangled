@@ -22,9 +22,13 @@ public class MainMenu : MonoBehaviour {
 
     private void Update() {
         // unlocks all levels
-        if (Input.GetKeyDown(KeyCode.L)) {
-                    SaveSystem.SetGameDataLevel(9);
-                    SceneManager.LoadSceneAsync("MainMenu");
+        if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.L)) {
+            SaveSystem.SetGameDataLevel(9);
+            SceneManager.LoadSceneAsync("MainMenu");
+        }
+        
+        if (Input.GetKeyDown(KeyCode.T)) {
+            StartAtLevel("TrailerScene");
         }
     }
 
