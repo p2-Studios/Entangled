@@ -44,19 +44,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encrypted: 0
-  fileName: entanglement_basics.txt
-  body: 'Our current project uses a combination of cutting edge technology and a
-    brain-computer interface to connect two objects together and transfer force/velocity
-    from the first to the second.
+  fileName: active_passive.txt
+  body: 'This technology designates an <color=green>ACTIVE</color> object (selected
+    first) and a <color=purple>PASSIVE</color> object (selected second).
 
 
-    The user controls are extremely simple: first,
-    focus intensely on one object and then shift your attention to the other.
+    The
+    connection is one-way: the force/velocity of the <color=green>ACTIVE</color>
+    object is transferred to the <color=purple>PASSIVE</color> object. This relationship
+    does not hold in the opposite direction.
 
 
-    This
-    mimics the way that a user might have clicked on a box and then held the mouse
-    button down as they moved the cursor to another box in the primitive computer
-    software systems of previous centuries.
+    (Some of the lab members say this
+    is easy to mix up - I think this can easily be solved with the mnemonic of green
+    = GO (as in a high ACTIVITY level) and purple = PASSIVE. Nonetheless, they continue
+    to disagree.)
 
-'
+
+    TODO: have interaction team design a visual indicator'

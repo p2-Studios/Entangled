@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3501149506430902348}
   - component: {fileID: 7419897541711876239}
   m_Layer: 0
-  m_Name: file_1_2
+  m_Name: file_0_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,19 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encrypted: 0
-  fileName: entanglement_basics.txt
-  body: 'Our current project uses a combination of cutting edge technology and a
-    brain-computer interface to connect two objects together and transfer force/velocity
-    from the first to the second.
-
-
-    The user controls are extremely simple: first,
-    focus intensely on one object and then shift your attention to the other.
-
-
-    This
-    mimics the way that a user might have clicked on a box and then held the mouse
-    button down as they moved the cursor to another box in the primitive computer
-    software systems of previous centuries.
-
-'
+  fileName: login.exe
+  body: Hello, it has been 523 days since this terminal was last accessed.

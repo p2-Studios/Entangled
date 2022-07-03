@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3501149506430902348}
   - component: {fileID: 7419897541711876239}
   m_Layer: 0
-  m_Name: file_1_6
+  m_Name: file_0_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5438387716646793735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06170921, y: -1.6869844, z: -1.4697384}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encrypted: 0
-  fileName: output_log_2322-09-18.txt
-  body: "*** EVACUATION ALERT *** \nAll personnel please secure your work stations
-    and report to the nearest emergency exit.\nRepeat, this is a code red al-"
+  fileName: welcome.txt
+  body: "Welcome to [REDACTED] Industries!\n\nIt is an honour to welcome you as a
+    new member of our team. At this thriving facility we're working on a number of
+    exciting and innovative new projects that will be sure to help people across
+    the galaxy. Don't let the distance from Earth get you down\u2014our state-of-the-art
+    accommodations and warm, people-focused environment will soon help you feel right
+    at home! Let us know if there is anything we can do to help increase your personal
+    comfort or productivity. "
