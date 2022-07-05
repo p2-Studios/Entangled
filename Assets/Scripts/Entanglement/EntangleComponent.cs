@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Entanglement;
+using Game.CustomKeybinds;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Experimental.Rendering.LWRP;
@@ -19,6 +20,7 @@ public class EntangleComponent : MonoBehaviour {
 
     public GameObject EntanglingHelix, EntanglingHelixPrefab, EntangledHelix, EntangledHelixPrefab;
 
+    
     LayerMask entangleMask;
     private bool mousePressedOnActive = false;
 
@@ -33,6 +35,18 @@ public class EntangleComponent : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (PauseMenu.instance.paused || TerminalManager.instance.IsTerminalOpen()) {   // if paused or in a terminal, don't allow entanglement, and remove entangling helix
+            if (EntanglingHelix != null) {
+                Destroy(EntanglingHelix);
+                if (active != null && passives.Count == 0) { // prevents active with no passive
+                    ClearEntangled();
+                }
+            }
+            return;
+        }
+        
+        Keybinds keybindInstance = Keybinds.GetInstance();
+        
         // draw helixes from active to passive(s)
         if (showEntangledHelix) {
             if (passives.Count != 0) {
@@ -42,28 +56,46 @@ public class EntangleComponent : MonoBehaviour {
             }
         }
         
+        if (Input.GetKeyDown(keybindInstance.swapEntangle)) {
+            if (active != null && passives.Count != 0) {
+                active.SetEntanglementStates(false, true, true);
+                passives[0].SetEntanglementStates(true, false, true);
+                (active, passives[0]) = (passives[0], active);
+            } 
+        }
+        
         // Mouse Controls for Entangling Objects
         // (Hit detector- https://stackoverflow.com/a/61659152. I have modified this a bit to suit our needs)
         // mouse button held, draw line if there is an active
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetKey(keybindInstance.entangle)) {
             if (active != null) {
                 // active, but no passives. Draw Entangling line
                 Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 cursorPos.z = 0;
-                DrawEntanglingHelix(active.transform.position, cursorPos);
+                
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
+                if (hit.collider != null) {
+                    Entanglable e = hit.collider.gameObject.GetComponentInParent<Entanglable>();
+                    if (e != null && e != active) {
+                        DrawEntanglingHelix(active.transform.position, e.transform.position);
+                    }
+                } else {
+                    DrawEntanglingHelix(active.transform.position, cursorPos);
+                }
             }
         } else {
             if (EntanglingHelix != null) Destroy(EntanglingHelix);
         }
         
-        if (Input.GetMouseButtonDown(0)) { ;
+        if (Input.GetKeyDown(keybindInstance.entangle)) {
             
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
             if (hit.collider != null) {
                 // If one object is clicked, all objects get the click input. This is to prevent multiple selection
                 //Debug.Log(hit.collider.gameObject.name);
-                Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
+                Entanglable e = hit.collider.gameObject.GetComponentInParent<Entanglable>();
                 if (e == null) return;
                 
                 if (e == active) {  // e is already the active
@@ -86,14 +118,14 @@ public class EntangleComponent : MonoBehaviour {
             }
         }
 
-        if (Input.GetMouseButtonUp(0)) {
+        if (Input.GetKeyUp(keybindInstance.entangle)) {
             // When mouse click is released
             if (active != null) {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
                 if (hit.collider != null) {
                     // If one object is clicked, all objects get the click input. This is to prevent multiple selection
-                    Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
+                    Entanglable e = hit.collider.gameObject.GetComponentInParent<Entanglable>();
                     if (e == null) return;
                     if (!active.Equals(e) && mousePressedOnActive) {
                         mousePressedOnActive = false;
@@ -102,6 +134,11 @@ public class EntangleComponent : MonoBehaviour {
                             passive.SetEntanglementStates(false, false, true);
                         }
                         if (!passives.Contains(e)) {
+                            string objectName = e.name;
+                            if (objectName.Equals("GroundSatellite") || objectName.Equals("SpaceSatellite")) {
+                                FindObjectOfType<CameraToggle>().TransitionToBottom(2.0f);
+                                AudioManager.instance.PlayDelayed("camera_move_2", 1f);
+                            }
                             FindObjectOfType<AudioManager>().Play("object_entangled");
                         }
                         e.SetEntanglementStates(false, true, true);
@@ -119,26 +156,6 @@ public class EntangleComponent : MonoBehaviour {
             }
         }
 
-        // Right click pressed
-        if (Input.GetMouseButtonDown(1)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, entangleMask);
-            if (hit.collider != null) {
-                // If one object is clicked, all objects get the click input. This is to prevent multiple selection
-                Entanglable e = hit.collider.gameObject.GetComponent<Entanglable>();
-                if (e == null) return;
-                if (active == e) {
-                    ClearEntangled();
-                }
-
-                if (passives.Contains(e)) {
-                    //Debug.Log("Removed the object from the list of passives");
-                    e.SetEntanglementStates(false, false, true);
-                    passives.Remove(e);
-                }
-            }
-        }
-
         if (active != null && passives.Count == 0) {
             foreach (GameObject obj in allEntanglableObjects) {
                 Entanglable e = obj.GetComponent<Entanglable>();
@@ -150,7 +167,7 @@ public class EntangleComponent : MonoBehaviour {
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Q)) { // Q to quick clear entangleds
+        if (Input.GetKeyDown(keybindInstance.clearAllEntangled)) { // quick clear entangled objects
             ClearEntangled();
         }
         
@@ -158,6 +175,7 @@ public class EntangleComponent : MonoBehaviour {
 
     public void ClearEntangled() {
         if (active != null) {
+            AudioManager.instance.Play("unentangle");
             active.SetEntanglementStates(false, false, true);
             UnsetActive();
             ClearPassives();
@@ -225,6 +243,7 @@ public class EntangleComponent : MonoBehaviour {
     }
 
     public void Unentangle(Entanglable e) {
+        if (e == null) return;
         RemoveActive(e);
         RemovePassive(e);
     }
@@ -234,6 +253,7 @@ public class EntangleComponent : MonoBehaviour {
     /// </summary>
     /// <param name="removed">A currently existing Entanglable object to remove from list.</param>
     public void RemovePassive(Entanglable e) {
+        if (e == null) return;
         if (passives.Contains(e)) {
             passives.Remove(e);
             Destroy(EntangledHelix);
@@ -246,6 +266,7 @@ public class EntangleComponent : MonoBehaviour {
     /// Loops through passive objects and applies force (if force is applied to current active object).
     /// </summary>
     private void OnActiveMoved(Entanglable e, Vector2 force) {
+        if (e == null) return;
         if (e == active) {
             foreach (Entanglable passive in passives) {
                 // Loop through passive objects and apply force

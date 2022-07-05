@@ -14,10 +14,11 @@ public class ElevatorTransition : MonoBehaviour {
     private bool atEnd = false;
 
     protected SpriteRenderer neonSign;
-    [SerializeField] Material Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8, Level9;
-    [SerializeField] Sprite sprLevel1, sprLevel2, sprLevel3, sprLevel4, sprLevel5, sprLevel6, sprLevel7, sprLevel8, sprLevel9;
+    [SerializeField] Material Level1, Level2, Level3, Level4, Level5, Level6, Level7, Level8, Level9, Trailer;
+    [SerializeField] Sprite sprLevel1, sprLevel2, sprLevel3, sprLevel4, sprLevel5, sprLevel6, sprLevel7, sprLevel8, sprLevel9, sprTrailer;
     private GameObject sign;
     void Start(){
+        PauseMenu.instance.ToggleControlIndicator(false);
         // change transition sign based on upcoming level
         sign = GameObject.Find("Level_Sign");
         neonSign = sign.GetComponent<SpriteRenderer>();
@@ -59,34 +60,30 @@ public class ElevatorTransition : MonoBehaviour {
                 neonSign.sprite = sprLevel9;
                 neonSign.material = Level9;
                 break;
+            case "Trailer":
+                neonSign.sprite = sprTrailer;
+                neonSign.material = Trailer;
+                break;
             default:
                 neonSign.enabled = false;
                 break;
         }
     }
 
-    private void Awake() {
-        StartCoroutine(StartSoundWithDelay());
-    }
-    
-    IEnumerator StartSoundWithDelay() {
-        yield return new WaitForSeconds(0.5f);
-        
-        AudioManager am = FindObjectOfType<AudioManager>();
-        if (am != null) am.Play("elevator_descend");
-    }
-
     void Update() {
         transform.position = Vector2.MoveTowards(transform.position, endPos.position, speed * Time.deltaTime);
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Space)) {
+            LoadNextScene();
+        }
         
         if (!atEnd && transform.position == endPos.position) {
-            atEnd = true;
             LoadNextScene();
         }
     }
 
-    private void LoadNextScene() {
-        Debug.Log(levelToLoad);
+    public void LoadNextScene() {
+        atEnd = true;
         Scene scene = SceneManager.GetSceneByName(levelToLoad);
         SceneManager.LoadSceneAsync(levelToLoad);
         if (!scene.IsValid()) { // check if scene was found
@@ -96,4 +93,5 @@ public class ElevatorTransition : MonoBehaviour {
             SceneManager.LoadSceneAsync("MainMenu");
         }
     }
+    
 }

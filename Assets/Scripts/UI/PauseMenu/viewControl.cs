@@ -13,7 +13,7 @@ public class viewControl : MonoBehaviour
 	public Image interact;
 	public Image clear;
 	public Image entangle;
-	public Image unentangle;
+	public Image swap;
 	public Image pause;
 
 	// Sprites
@@ -73,8 +73,8 @@ public class viewControl : MonoBehaviour
 		entangle.GetComponentInChildren<Text>().text = Keybinds.GetInstance().keys[7];
 		updateSprite(Keybinds.GetInstance().entangle, entangle);
 
-		unentangle.GetComponentInChildren<Text>().text = Keybinds.GetInstance().keys[8];
-		updateSprite(Keybinds.GetInstance().unentangle, unentangle);
+		swap.GetComponentInChildren<Text>().text = Keybinds.GetInstance().keys[8];
+		updateSprite(Keybinds.GetInstance().swapEntangle, swap);
 
 		pause.GetComponentInChildren<Text>().text = Keybinds.GetInstance().keys[9];
 		updateSprite(Keybinds.GetInstance().pause, pause);
@@ -90,29 +90,11 @@ public class viewControl : MonoBehaviour
 	void updateSprite(KeyCode key, Image image) {
 		switch (key) {
 			case KeyCode.Mouse0:
-				image.sprite = mouse_l;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(38, 32);
-				break;
 			case KeyCode.Mouse1:
-				image.sprite = mouse_r;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(38, 32);
-				break;
 			case KeyCode.Return:
-				image.sprite = key_long;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 28);
-				break;
 			case KeyCode.RightShift:
-				image.sprite = key_long;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 28);
-				break;
 			case KeyCode.LeftShift:
-				image.sprite = key_long;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 28);
-				break;
 			case KeyCode.Backspace:
-				image.sprite = key_long;
-				image.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 28);
-				break;
 			case KeyCode.Space:
 				image.sprite = key_long;
 				image.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 28);

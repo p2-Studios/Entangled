@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour {
     public string label;
+    public string description;
     [HideInInspector] public FlashDrive[] flashDrives;
     public ArrayList foundFlashDrives;
 
@@ -98,5 +99,9 @@ public class Level : MonoBehaviour {
 
     public int GetFoundOrbsCount() {
         return collectedOrbs.Count;
+    }
+
+    public String GetDescription() {
+        return description;
     }
 }

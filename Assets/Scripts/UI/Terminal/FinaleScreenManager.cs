@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -138,20 +139,22 @@ public class FinaleScreenManager : MonoBehaviour {
         Slider bar = progressBar.GetComponent<Slider>();
         bar.value = 0f;
         while (percent < failPercent) {
+            yield return new WaitForSeconds(0.05f);
             percent += Random.Range(0.001f, 0.01f);
             if (percent > failPercent) percent = failPercent;
             bar.value = percent;
             progressBarText.text = Math.Round(percent*100.0, 2) + "%";
-            yield return new WaitForSeconds(0.05f);
         }
         AudioManager.instance.StopLooping("finale_data_transmit");
         yield return new WaitForSeconds(3.25f);
         uplinkText.color = Color.red;
         uplinkText.text = "TRANSMISSION FAILED: FATAL ERROR";
+        AudioManager.instance.StopMusic();
         AudioManager.instance.Play("terminal_error");
         yield return new WaitForSeconds(3);
         // do camera transition stuff
         FindObjectOfType<CameraToggle>().TransitionToTop();
+        AudioManager.instance.Play("camera_move");
     }
 
     public void SatelliteEntangled() {
@@ -168,18 +171,22 @@ public class FinaleScreenManager : MonoBehaviour {
         Slider bar = progressBar.GetComponent<Slider>();
         bar.value = 0f;
         while (percent < 1) {
+            yield return new WaitForSeconds(0.25f);
             percent += Random.Range(0.0001f, 0.001f);
             if (percent > 1f) {
                 percent = 1f;
             }
             bar.value = percent;
             progressBarText.text = Math.Round(percent*100.0, 2) + "%";
-            yield return new WaitForSeconds(0.25f);
         }
         AudioManager.instance.StopLooping("finale_data_transmit");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         AudioManager.instance.Play("finale_terminal_success");
         uplinkText.color = Color.green;
         uplinkText.text = "TRANSMISSION DELIVERED TO EARTH.";
+        yield return new WaitForSeconds(3.0f);
+        FadeManager.instance.FadeOut();
+        yield return new WaitForSeconds(10.0f);
+        SceneManager.LoadSceneAsync("Credits");
     }
 }

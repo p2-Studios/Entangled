@@ -96,10 +96,12 @@ namespace Activation_System
         }
         
         // draw lines between activator and its activatables
+        /*
         private void OnDrawGizmos() {
             foreach (Activatable a in activatables) {
                 Gizmos.DrawLine(transform.position, a.transform.position);
             }
         }
+        */
     }
 }

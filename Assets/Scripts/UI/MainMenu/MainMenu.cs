@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,13 +16,41 @@ public class MainMenu : MonoBehaviour {
         }
     }
 
+    private void Start() {
+        PauseMenu.instance.ToggleControlIndicator(false);   // control indicator off in main menu
+    }
+
+    private void Update() {
+        // unlocks all levels
+        if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.L)) {
+            SaveSystem.SetGameDataLevel(9);
+            SceneManager.LoadSceneAsync("MainMenu");
+        }
+        
+        if (Input.GetKeyDown(KeyCode.T)) {
+            StartAtLevel("TrailerScene");
+        }
+    }
+
     public void StartAtLevel(string levelName) {
         SceneManager.LoadSceneAsync(levelName);
     }
 
+	public void Options() {
+		SceneManager.LoadSceneAsync("Options", LoadSceneMode.Additive);
+	}
+	
     public void QuitGame() {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+    public void OpenTwitterLink() {
+        Application.OpenURL("https://twitter.com/p2__studios");
+    }
+
+    public void OpenDiscordLink() {
+        Application.OpenURL("https://discord.gg/bC9xzeRxzS");
     }
 
     public void OpenFeedbackLink() {

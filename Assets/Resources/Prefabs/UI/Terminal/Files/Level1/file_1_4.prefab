@@ -44,21 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   encrypted: 0
-  fileName: active_passive.txt
-  body: 'This technology designates an <color=green>ACTIVE</color> object (selected
-    first) and a <color=purple>PASSIVE</color> object (selected second).
+  fileName: Security Reminder
+  body: 'Please note that due to security protocols, the transference of objects
+    from one room to another is occasionally prohibited. Any non-organic object entering
+    a glowing blue field will be disintegrated. We can legally assure that this technology
+    is entirely safe for human interaction.
 
-
-    The
-    connection is one-way: the force/velocity of the <color=green>ACTIVE</color>
-    object is transferred to the <color=purple>PASSIVE</color> object. This relationship
-    does not hold in the opposite direction.
-
-
-    (Some of the lab members say this
-    is easy to mix up - I think this can easily be solved with the mnemonic of green
-    = GO (as in a high ACTIVITY level) and purple = PASSIVE. Nonetheless, they continue
-    to disagree.)
-
-
-    TODO: have interaction team design a visual indicator'
+'

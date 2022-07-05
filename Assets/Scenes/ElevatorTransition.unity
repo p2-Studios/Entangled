@@ -229,6 +229,7 @@ MonoBehaviour:
   Level7: {fileID: 2100000, guid: 5a581bf37faaf604d8fba2e5e902d715, type: 2}
   Level8: {fileID: 2100000, guid: fa9fda42143a26745b5db3e4222b4b30, type: 2}
   Level9: {fileID: 2100000, guid: c247173412baf9d4a88bd35c0e6ff6f7, type: 2}
+  Trailer: {fileID: 2100000, guid: b2c09a615db549748ba7a4f8000528f2, type: 2}
   sprLevel1: {fileID: 21300000, guid: 092191a1dbafa5a4c949c1586695e54d, type: 3}
   sprLevel2: {fileID: 21300000, guid: e662b4effdddfb04d95c7844ca668046, type: 3}
   sprLevel3: {fileID: 21300000, guid: 94c507b53e4d4354cbe4c91dc575e7f0, type: 3}
@@ -238,6 +239,7 @@ MonoBehaviour:
   sprLevel7: {fileID: 21300000, guid: 4299154e4fc18a148ba4b8cb9e75df30, type: 3}
   sprLevel8: {fileID: 21300000, guid: b81c5e57b9edbda4ba5deeb6edf60660, type: 3}
   sprLevel9: {fileID: 21300000, guid: ac6300293bdc8894f805a9359b16a048, type: 3}
+  sprTrailer: {fileID: 21300000, guid: 7f4c6c97e785d61468b2faf0ead6143e, type: 3}
 --- !u!1 &514132717
 GameObject:
   m_ObjectHideFlags: 0
@@ -28143,6 +28145,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 323450841092137156, guid: 7fba02124601186439f6f3a4544e2571, type: 3}
+      propertyPath: orthographic size
+      value: 5.35
+      objectReference: {fileID: 0}
     - target: {fileID: 323450841092137157, guid: 7fba02124601186439f6f3a4544e2571, type: 3}
       propertyPath: m_RootOrder
       value: 1
