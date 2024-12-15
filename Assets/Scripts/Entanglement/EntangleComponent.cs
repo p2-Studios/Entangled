@@ -4,7 +4,7 @@ using Entanglement;
 using Game.CustomKeybinds;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Experimental.Rendering.LWRP;
+using UnityEngine.Experimental.Rendering;
 
 /// <summary>
 /// EntangleComponent - Keeps track of the Entanglable objects that a player currently has entangled.

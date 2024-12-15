@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 namespace Activation_System
 {
@@ -20,7 +20,7 @@ namespace Activation_System
 		
 		public String[] triggerers;
 
-		public Light2D indicatorLight;
+		public UnityEngine.Rendering.Universal.Light2D indicatorLight;
 		
 		private BoxCollider2D padCollider;
 		

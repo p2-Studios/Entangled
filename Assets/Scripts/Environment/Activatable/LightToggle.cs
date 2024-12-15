@@ -4,21 +4,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Activation_System;
 using Activator = Activation_System.Activator;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using Random = UnityEngine.Random;
 
 public class LightToggle : Activatable{
 
 
     public Activator[] activators;
-    public Light2D lightComponent;
+    public UnityEngine.Rendering.Universal.Light2D lightComponent;
     private bool flickering = false;
     public bool flicker = false;
     private float flickerModifier = 1.25f;
     private float flickerMin = 0.05f;
     private float flickerMax = 0.2f;
     void Start() {
-        if (lightComponent == null) lightComponent = GetComponent<Light2D>();
+        if (lightComponent == null) lightComponent = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
         foreach (Activator a in activators) {
             AddActivator(a);
         }

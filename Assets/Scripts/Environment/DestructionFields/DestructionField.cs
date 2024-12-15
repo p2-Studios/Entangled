@@ -1,6 +1,6 @@
 using Activation_System;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using Activator = Activation_System.Activator;
 
 public class DestructionField : Activatable {
@@ -10,8 +10,9 @@ public class DestructionField : Activatable {
 
     public Animator animator;
     public Activator[] activators;
-    public Light2D glowLight;
-
+    public UnityEngine.Rendering.Universal.Light2D glowLight;
+    public AudioSource audioSource;
+    
     private AudioManager audioManager;
 
     public string deathSoundPlayer, deathSoundObject;
@@ -30,16 +31,20 @@ public class DestructionField : Activatable {
         audioManager = FindObjectOfType<AudioManager>();
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public override void Activate() {
         base.Activate();
         if (glowLight != null) glowLight.enabled = true;
         if (animator != null) animator.SetBool("isActive", true);
+        if (audioSource != null) audioSource.mute = false;
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public override void Deactivate() {
         base.Deactivate();
         if (glowLight != null) glowLight.enabled = false;
         if (animator != null) animator.SetBool("isActive", false);
+        if (audioSource != null) audioSource.mute = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

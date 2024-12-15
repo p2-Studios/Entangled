@@ -13,13 +13,15 @@ public class Grounded : BaseState {
     protected private PlayerStateMachine playerSM;
     protected private float horzInput;
     protected private bool touchingBox;
+    protected private bool onClimable = false;
     protected private bool haltMovement;
     private CapsuleCollider2D feetCollider;
 
     protected private BoxInteractable lastTouchedBox;
 
     private int groundLayer = 1 << 6;   // Bitwise shift for ground layer number (should be 6)
-    private int objectsLayer = 1 << 9; 
+    private int objectsLayer = 1 << 9;
+    private int climableLayer = 1 << 14;
 
     public void Initialize(string name, PlayerStateMachine psm, Player player,AudioManager am){
         this.Name = name;
@@ -30,15 +32,6 @@ public class Grounded : BaseState {
         feetCollider = Player.GetComponent<CapsuleCollider2D>();
         this.audioManager = am;
     }
-
-    // Constructor, sets sm to active stateMachine
-    /*public Grounded(string name, PlayerStateMachine playerStateMachine, Player player) : base(name, playerStateMachine, player){
-        playerSM = (PlayerStateMachine)playerStateMachine;
-        Player = player;
-        touchingBox = false;    // checks if player is touching a pushable object
-        haltMovement = false;   // checks if player should be allowed to move
-        feetCollider = Player.GetComponent<CapsuleCollider2D>();
-    }*/
 
     // Update Logic changes (key pressses)
     public override void UpdateLogic(){
@@ -70,6 +63,12 @@ public class Grounded : BaseState {
             }
         }
 
+        if (onClimable) {
+            if (Input.GetKeyDown(Keybinds.GetInstance().moveUp) || Input.GetKeyDown(Keybinds.GetInstance().moveDown)) {
+                playerSM.ChangeState(playerSM.climbState);
+            }
+        }
+
         // jump
         if (!haltMovement && Input.GetKeyDown(Keybinds.GetInstance().jump))
             playerSM.ChangeState(playerSM.jumpState);
@@ -93,8 +92,11 @@ public class Grounded : BaseState {
     // Checks when player enters trigger collider
     public override void EnterTrigger(Collider2D collider){
         base.EnterTrigger(collider);
-        if(collider.gameObject.tag == "Pushable"){
+        if (collider.gameObject.tag == "Pushable"){
             touchingBox = true;
+        }
+        if (collider.gameObject.tag == "Climable"){
+            onClimable = true;
         }
     }
 
@@ -104,10 +106,13 @@ public class Grounded : BaseState {
     }
 
     // Checks when player exits trigger collider
-    public override void ExitTrigger(Collider2D collider){
+    public override void ExitTrigger(Collider2D collider) {
         base.ExitTrigger(collider);
-        if(collider.gameObject.tag == "Pushable"){
+        if (collider.gameObject.tag == "Pushable") {
             touchingBox = false;
+        }
+        if (collider.gameObject.tag == "Climable"){
+            onClimable = false;
         }
     }
 

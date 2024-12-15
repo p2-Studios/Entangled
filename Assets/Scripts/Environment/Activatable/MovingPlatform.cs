@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Threading;
 using Activation_System;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using UnityEngine.UI;
 using Activator = Activation_System.Activator;
 
 public class MovingPlatform : Activatable {
     public Transform posStart, posEnd, startPos;        // positions
-    public Light2D indicatorLight;
+    public UnityEngine.Rendering.Universal.Light2D indicatorLight;
 
     public Sprite indicatorLoop, indicatorStop;
     public SpriteRenderer indicator;

@@ -29,8 +29,8 @@ public class AudioManager : MonoBehaviour {
         InitializeSounds();
 
         String sceneName = SceneManager.GetActiveScene().name;
-        SetMusicType(sceneName);
-        ChangeMusic();
+        //SetMusicType(sceneName);
+        //ChangeMusic();
     }
     
 
@@ -99,6 +99,7 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void SetMusicType(string sceneName) {
+        return;
         if (sceneName.Equals("Options")) {  // don't change music when opening options scene
             return;
         }

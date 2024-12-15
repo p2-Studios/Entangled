@@ -24,6 +24,8 @@ namespace Game.CustomKeybinds
         {
             string path = Application.persistentDataPath + "/keybinds.config";
 
+            Debug.Log(path);
+
             if (!File.Exists(path))
             {
                 return null;

@@ -17,6 +17,7 @@ public class PlayerStateMachine : MonoBehaviour {
     public JumpState jumpState;
     public PushPullState pushpullState;
     public FallState fallState;
+    public ClimbState climbState;
 
     public Player player;
 
@@ -33,6 +34,8 @@ public class PlayerStateMachine : MonoBehaviour {
         pushpullState.Initialize("push",this,player,audioManager);
         fallState = gameObject.AddComponent(typeof(FallState)) as FallState;
         fallState.Initialize("fall",this,player,audioManager);
+        climbState = gameObject.AddComponent(typeof(ClimbState)) as ClimbState;
+        climbState.Initialize("climb", this, player, audioManager);
 
         this.player = player;
         
@@ -43,14 +46,16 @@ public class PlayerStateMachine : MonoBehaviour {
 
     // Calculate transition logic for states
     void Update(){
-        if(currentState != null)
+        if (currentState != null) {
             currentState.UpdateLogic();
+        }
     }
 
     // Calculate Physics logic (movement)
     void LateUpdate(){
-        if(currentState != null)
+        if (currentState != null) {
             currentState.UpdatePhysics();
+        }
     }
 
     // Detect start of collider collisions with objects

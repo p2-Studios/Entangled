@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.CustomKeybinds;
 using UnityEngine;
 
 // tutorials used: https://youtu.be/OtUKsjPWzO8
@@ -21,12 +22,14 @@ public class JumpState : BaseState {
     private CapsuleCollider2D feetCollider;
     
     protected private bool touchingBox;
+    protected private bool onClimable;
 
-    public void Initialize(string name, PlayerStateMachine psm, Player player,AudioManager am){
+    public void Initialize(string name, PlayerStateMachine psm, Player player,AudioManager am) {
         this.Name = name;
         playerSM = psm;
         Player = player;
-        touchingBox = false;    // checks if player is touching a pushable object
+        touchingBox = false;
+        onClimable = false;
         feetCollider = Player.GetComponent<CapsuleCollider2D>();
         this.audioManager = am;
     }
@@ -39,7 +42,7 @@ public class JumpState : BaseState {
     }*/
 
     // upon entering state, apply upward velocity to achieve jump
-    public override void Enter(){
+    public override void Enter() {
         base.Enter();
         
         playerSM.player.SetAnimatorState("jumping");
@@ -56,8 +59,15 @@ public class JumpState : BaseState {
         base.UpdateLogic();
         horzInput = Input.GetAxis("Horizontal");
         
-        if(grounded)
+        if (grounded) {
             playerSM.ChangeState(playerSM.idleState);
+        }
+
+        if (onClimable) {
+            if (Input.GetKeyDown(Keybinds.GetInstance().moveUp)) {
+                playerSM.ChangeState(playerSM.climbState);
+            }
+        }
     }
 
     // Check if player velocity is less than epsilon and rigidbody is touching a ground layer
@@ -65,18 +75,23 @@ public class JumpState : BaseState {
         base.UpdatePhysics();
         
         grounded = Player.rigidbody.velocity.y < Mathf.Epsilon && (feetCollider.IsTouchingLayers(groundLayer) || feetCollider.IsTouchingLayers(objectsLayer));
-        if(!touchingBox){
+        if (!touchingBox) {
             Vector2 velocity = Player.rigidbody.velocity;
             velocity.x = horzInput * Player.speed / 1.5f;
             Player.rigidbody.velocity = velocity;
         }
+
+        
     }
 
     public override void EnterTrigger(Collider2D collider)
     {
         base.EnterTrigger(collider);
-        if(collider.gameObject.tag == "Pushable"){
+        if (collider.gameObject.tag == "Pushable") {
             touchingBox = true;
+        }
+        if (collider.gameObject.tag == "Climable") {
+            onClimable = false;
         }
     }
 

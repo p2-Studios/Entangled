@@ -18,6 +18,8 @@ public class FallState : BaseState {
     private int objectsLayer = 1 << 9;   // Bitwise shift for ground layer number (should be 6)
     bool jcheck = false;
 
+    bool onClimable = false;
+
 
     private float horzInput;
 
@@ -79,6 +81,13 @@ public class FallState : BaseState {
         horzInput = Input.GetAxis("Horizontal");
         if(grounded)
             playerSM.ChangeState(playerSM.idleState);
+
+        if (onClimable) {
+            if (Input.GetKeyDown(Keybinds.GetInstance().moveUp)) {
+                playerSM.ChangeState(playerSM.climbState);
+            }
+        }
+
     }
 
     // Check if player velocity is less than epsilon and rigidbody is touching a ground layer
@@ -99,8 +108,20 @@ public class FallState : BaseState {
         if(collider.gameObject.tag == "Pushable"){
             touchingBox = true;
         }
+        if (collider.gameObject.tag == "Climable") {
+            onClimable = true;
+        }
     }
 
+    public override void ExitTrigger(Collider2D collider) {
+        base.ExitTrigger(collider);
+        if (collider.gameObject.tag == "Pushable") {
+            touchingBox = false;
+        }
+        if (collider.gameObject.tag == "Climable") {
+            onClimable = false;
+        }
+    }
 
     public override void Exit()
     {

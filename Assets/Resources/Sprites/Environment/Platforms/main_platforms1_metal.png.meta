@@ -375,7 +375,7 @@ TextureImporter:
       213: -8706076853300152465
     second: main_platforms1_metal_123
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -392,10 +392,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -434,6 +436,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -445,6 +449,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -457,6 +462,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -2572,9 +2591,109 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      main_platforms1_metal_0: 673940862623153099
+      main_platforms1_metal_1: -6506703233326423097
+      main_platforms1_metal_10: 7904063836015808298
+      main_platforms1_metal_11: 1651831160493266900
+      main_platforms1_metal_12: -674493111007398742
+      main_platforms1_metal_13: -6207016135002856121
+      main_platforms1_metal_14: 983152438269175210
+      main_platforms1_metal_15: -8214458737207003804
+      main_platforms1_metal_16: 4234040243381481045
+      main_platforms1_metal_17: 7360167479179585396
+      main_platforms1_metal_18: -3907701117037053161
+      main_platforms1_metal_19: 6165653092683666550
+      main_platforms1_metal_2: 2144990111976804986
+      main_platforms1_metal_20: 7851314429811967753
+      main_platforms1_metal_21: 5421708715122943927
+      main_platforms1_metal_22: -3453176262285503751
+      main_platforms1_metal_23: 4822016449328523086
+      main_platforms1_metal_24: -7877084861665074312
+      main_platforms1_metal_25: -3393583440956605210
+      main_platforms1_metal_26: 4563085336546855546
+      main_platforms1_metal_27: 7105351156333734325
+      main_platforms1_metal_28: 686668360709887690
+      main_platforms1_metal_29: -5978491914091233558
+      main_platforms1_metal_3: -6620743281131684254
+      main_platforms1_metal_30: -7058518336983869630
+      main_platforms1_metal_31: -2038413220482595778
+      main_platforms1_metal_32: -6859419275269222774
+      main_platforms1_metal_33: -4906201171258790914
+      main_platforms1_metal_34: 6595488460266030826
+      main_platforms1_metal_35: 2358073135933456513
+      main_platforms1_metal_36: -366571624189934595
+      main_platforms1_metal_37: -8024955724770585841
+      main_platforms1_metal_38: 1799152944411478392
+      main_platforms1_metal_39: -2359758561931596965
+      main_platforms1_metal_4: -2827687416654728182
+      main_platforms1_metal_40: 125517847581645064
+      main_platforms1_metal_41: -936833446888960915
+      main_platforms1_metal_42: 416607694343987382
+      main_platforms1_metal_43: 1410295601449258130
+      main_platforms1_metal_44: -4454371802299702128
+      main_platforms1_metal_45: 5641784120962273525
+      main_platforms1_metal_46: 4245979818945075012
+      main_platforms1_metal_47: -3192010083387183188
+      main_platforms1_metal_48: -6043361611234290473
+      main_platforms1_metal_49: 5526653017828621094
+      main_platforms1_metal_5: 5518912124130801201
+      main_platforms1_metal_50: -3715293206558295864
+      main_platforms1_metal_51: 2107090945605812325
+      main_platforms1_metal_52: 1840608765823212089
+      main_platforms1_metal_53: -7902456094785480104
+      main_platforms1_metal_54: 1046411701743321111
+      main_platforms1_metal_55: -3108103456839358258
+      main_platforms1_metal_56: -9005190466344879836
+      main_platforms1_metal_57: -7598862688014981954
+      main_platforms1_metal_58: 5277888482767097955
+      main_platforms1_metal_59: -6335563636887433498
+      main_platforms1_metal_6: 2374326170272767177
+      main_platforms1_metal_60: 4024502579668319682
+      main_platforms1_metal_61: -4130270524103383403
+      main_platforms1_metal_62: -2611187321500892266
+      main_platforms1_metal_63: 4646498869796421566
+      main_platforms1_metal_64: -3717785935160562427
+      main_platforms1_metal_65: 451261173233340607
+      main_platforms1_metal_66: -7394702279550784211
+      main_platforms1_metal_67: 1959363451355112962
+      main_platforms1_metal_68: -5718376865249666177
+      main_platforms1_metal_69: 2602542140830692775
+      main_platforms1_metal_7: -7673005450874172608
+      main_platforms1_metal_70: -2812582008471583841
+      main_platforms1_metal_71: -2795141185402653307
+      main_platforms1_metal_72: -5863179638444139223
+      main_platforms1_metal_73: -2376281060273202252
+      main_platforms1_metal_74: -4281335719420585831
+      main_platforms1_metal_75: 7559126911863976155
+      main_platforms1_metal_76: -1138785563011417501
+      main_platforms1_metal_77: -6520111861452963868
+      main_platforms1_metal_78: 3815225720207997978
+      main_platforms1_metal_79: 2691084094304144639
+      main_platforms1_metal_8: -7026139425162609321
+      main_platforms1_metal_80: 8521246389129724881
+      main_platforms1_metal_81: -1610441407918428338
+      main_platforms1_metal_82: -208034876651655728
+      main_platforms1_metal_83: 1540407977852396087
+      main_platforms1_metal_84: 1770932956363952104
+      main_platforms1_metal_85: -4471193608537004199
+      main_platforms1_metal_86: 6736792276260364198
+      main_platforms1_metal_87: 7115307539228524527
+      main_platforms1_metal_88: 8152426929212652605
+      main_platforms1_metal_89: -8055142869411314589
+      main_platforms1_metal_9: -1651216885917063023
+      main_platforms1_metal_90: -5261266565961790408
+      main_platforms1_metal_91: -8965116212087247119
+      main_platforms1_metal_92: -3707767537449958603
+      main_platforms1_metal_93: 4495385470052653302
+      main_platforms1_metal_94: -6032207311356376693
+      main_platforms1_metal_95: -8721113256163191673
+      main_platforms1_metal_96: -5158283864176622453
+      main_platforms1_metal_97: -4089200073443305511
+      main_platforms1_metal_98: -5264174213864650232
+      main_platforms1_metal_99: 5895132618599711769
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -11,7 +11,7 @@ public class Intro : MonoBehaviour {
     }
 
     IEnumerator EnablePlayer() {         
-         yield return new WaitForSeconds(5.95f);
+         yield return new WaitForSeconds(7f);
          player.SetActive(true);
          yield return new WaitForSeconds(3f);
          PauseMenu.instance.ToggleControlIndicator(true);

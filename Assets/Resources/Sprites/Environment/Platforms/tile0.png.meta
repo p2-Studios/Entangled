@@ -141,7 +141,7 @@ TextureImporter:
       213: -1573270588062499825
     second: tile0_45
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -158,10 +158,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -200,6 +202,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -211,6 +215,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -223,6 +228,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -235,6 +241,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1216,9 +1236,55 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      tile0_0: 5402170310369721054
+      tile0_1: 3695364212361246006
+      tile0_10: -4509792318559738967
+      tile0_11: 4340772657294091361
+      tile0_12: -1815053269498294160
+      tile0_13: -5473299348394639305
+      tile0_14: 4013377831733778024
+      tile0_15: -6773872568536325093
+      tile0_16: -4520363846491617777
+      tile0_17: 6932567803040616219
+      tile0_18: 4940702871642428769
+      tile0_19: -8406072593458552692
+      tile0_2: -5231846253784867963
+      tile0_20: 1527548846765598265
+      tile0_21: -521185608497805606
+      tile0_22: -9211339739646213293
+      tile0_23: -4512394001784825768
+      tile0_24: -7055171511770698786
+      tile0_25: -4377838529936225033
+      tile0_26: -1206691471347569353
+      tile0_27: -666506352045106288
+      tile0_28: -1534931007577528303
+      tile0_29: 814973112731202616
+      tile0_3: 5096622345973565461
+      tile0_30: 7121213242336980892
+      tile0_31: 8312910103052372532
+      tile0_32: -4353451966601196802
+      tile0_33: 8992092753741134648
+      tile0_34: -2300196134518242227
+      tile0_35: -4889485935638992407
+      tile0_36: 8868606991213498885
+      tile0_37: -3051752972791657011
+      tile0_38: 7239546914798065517
+      tile0_39: -9212891008011846083
+      tile0_4: 6632240213671319704
+      tile0_40: -7214142910942649367
+      tile0_41: 8829020756823973259
+      tile0_42: -1405473406527364980
+      tile0_43: -6246678855513622223
+      tile0_44: -5400870786857730198
+      tile0_45: -1573270588062499825
+      tile0_5: -852132129524945736
+      tile0_6: 4333715621248677072
+      tile0_7: -3228122766152433183
+      tile0_8: -8296814596489431184
+      tile0_9: 4298849466411615827
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

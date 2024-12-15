@@ -311,14 +311,14 @@ MonoBehaviour:
   - name: object_entangled
     clip: {fileID: 8300000, guid: 62d2028050aef9a4fb79999da74a4087, type: 3}
     source: {fileID: 0}
-    volume: 0.04
+    volume: 0.01
     pitch: 1
     pitchMin: 1
     pitchMax: 1
   - name: unentangle
-    clip: {fileID: 8300000, guid: 9f23afec8c6bb9e41a29aea964438f17, type: 3}
+    clip: {fileID: 8300000, guid: 52cef09096aa79741ba2b24fadaee5d2, type: 3}
     source: {fileID: 0}
-    volume: 0.05
+    volume: 0.02
     pitch: 0.9
     pitchMin: 1
     pitchMax: 1

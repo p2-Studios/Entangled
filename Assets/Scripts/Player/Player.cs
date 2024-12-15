@@ -26,7 +26,7 @@ public class Player : MonoBehaviour, IDestroyable {
     public bool showEntanglingHelix = true;
     public bool showEntangledHelix = true;
     
-    private AudioManager audioManager;
+    // private AudioManager audioManager;
     PlayerStateMachine stateMachine;
 
     private Vector2 position, previousPosition;
@@ -56,7 +56,7 @@ public class Player : MonoBehaviour, IDestroyable {
         entangleComponent.showEntangledHelix = showEntangledHelix;
         // Add and initialize PlayerStateMachine
         stateMachine = gameObject.AddComponent<PlayerStateMachine>() as PlayerStateMachine;
-        audioManager = FindObjectOfType<AudioManager>();
+        // audioManager = FindObjectOfType<AudioManager>();
         stateMachine.Initialize(this);
         grabbing = false;
 
@@ -114,7 +114,7 @@ public class Player : MonoBehaviour, IDestroyable {
         if (other.gameObject.CompareTag("Platform")) {
             transform.parent = other.gameObject.transform;      // set parent of player to platform so player doesn't slide
         } else if (other.gameObject.CompareTag("Destroyer")) {
-            AudioManager.instance.Play("player_death_crush");
+            // AudioManager.instance.Play("player_death_crush");
             Kill();
         }
     }

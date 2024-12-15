@@ -7,6 +7,8 @@ namespace Activation_System {
     public class Gate : Activatable {
 	    public bool stayOpen = false;			// whether the gate should stay open after being opened once
 
+		public bool reverseOpen = false;
+
 	    public Activator[] activators;			// -- array of activators, REQUIRED to set the activators manually! --
         
         
@@ -33,8 +35,7 @@ namespace Activation_System {
 			}
 
 			if (activateByDefault) {
-				playSound = false;
-				StartCoroutine(openDelay());
+				Open();
 			}
 		}
 		
@@ -46,47 +47,29 @@ namespace Activation_System {
 			return !active;
 		}
 		
-		void setOpen() {
+		public override void Activate() {
+			base.Activate();
+			Open();
+		}
+
+        public override void Deactivate()
+        {
+            base.Deactivate();
+			Close();
+        }
+
+        void Open() {
 			active = true;
-			gate.enabled = false;
+			// gate.enabled = false;
+			gateAnimator.SetBool("reverse", reverseOpen);
+			gateAnimator.SetBool("open", true);
 		}
 		
-		void setClose() {
+		void Close() {
 			active = false;
-			gate.enabled = true;
-		}
-
-		void FixedUpdate() {							// NOTE: OnTrigger event is timed on FixedUpdate
-			if (!active && IsActivated()) {
-				setOpen();
-			}
-			else if (active && !IsActivated()) {
-				if (!stayOpen) setClose();
-			}
-			
-			// Play's animation
-			if (isOpened() && state != 11) {
-				timer -= Time.deltaTime;
-				if (timer <= 0) {
-					state += 1;
-					gateAnimator.SetInteger("state",state);
-					timer = 0.1f;
-				}
-			}
-			else if (isClosed() && state != 1) {
-				timer -= Time.deltaTime;
-				if (timer <= 0) {
-					state -= 1;
-					gateAnimator.SetInteger("state",state);
-					timer = 0.1f;
-				}
-			}
-			
-		}
-
-		private IEnumerator openDelay() {
-			yield return new WaitForSeconds(0.1f);
-			activated = true;
+			// gate.enabled = true;
+			gateAnimator.SetBool("reverse", reverseOpen);
+			gateAnimator.SetBool("open", false);
 		}
     }
 }

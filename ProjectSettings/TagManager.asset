@@ -13,6 +13,7 @@ TagManager:
   - BehindForeground
   - TopOfObject
   - Bouncy
+  - Climable
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - Fan
   - Entanglable
   - Vignette
-  - 
+  - Climable
   - 
   - 
   - 

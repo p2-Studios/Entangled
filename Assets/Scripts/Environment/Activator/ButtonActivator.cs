@@ -2,14 +2,14 @@ using System;
 using System.Collections;
 using Activation_System;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using Activator = Activation_System.Activator;
 
 public class ButtonActivator : Activator {
     
     public Activatable[] activatables;								// -- array of activatables, REQUIRED to set the activatables manually! --
 
-    public Light2D indicatorLight;
+    public UnityEngine.Rendering.Universal.Light2D indicatorLight;
 
     [HideInInspector]
     public bool down;

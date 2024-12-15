@@ -147,7 +147,7 @@ TextureImporter:
       213: -4706503905832017388
     second: neon_indicators_47
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -164,10 +164,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -206,6 +208,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -217,6 +221,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -229,6 +234,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -241,6 +247,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1264,9 +1284,57 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      neon_indicators_0: 5697469118263353412
+      neon_indicators_1: -1224251842821889072
+      neon_indicators_10: 2906665500621567502
+      neon_indicators_11: -4990293588839290897
+      neon_indicators_12: 233192140056837365
+      neon_indicators_13: -5721695352119529358
+      neon_indicators_14: 4472972954281912557
+      neon_indicators_15: 8255291225659989686
+      neon_indicators_16: 9085745891789269956
+      neon_indicators_17: -717982547926648675
+      neon_indicators_18: 2226568645054138477
+      neon_indicators_19: 7772730616642390788
+      neon_indicators_2: -5477302481927212833
+      neon_indicators_20: 466159508560282723
+      neon_indicators_21: 2315371653513735165
+      neon_indicators_22: 5544767887583172655
+      neon_indicators_23: 3064798589273540610
+      neon_indicators_24: -3917999726299872295
+      neon_indicators_25: 7906583641587222310
+      neon_indicators_26: 6156815664600948240
+      neon_indicators_27: -5464164785428994130
+      neon_indicators_28: -7349571284870116129
+      neon_indicators_29: 2929903319972131290
+      neon_indicators_3: -1473168165856734381
+      neon_indicators_30: 3674778473609886216
+      neon_indicators_31: -3609916286668749193
+      neon_indicators_32: -90921872969859781
+      neon_indicators_33: 3514962154467323144
+      neon_indicators_34: -8610033543412641070
+      neon_indicators_35: 5238676922260071698
+      neon_indicators_36: -6066596045307691196
+      neon_indicators_37: -6078194691679024543
+      neon_indicators_38: -8961266005661550659
+      neon_indicators_39: -889414191925931433
+      neon_indicators_4: -5402802138689462947
+      neon_indicators_40: -8819405766300667436
+      neon_indicators_41: -2164153362393653319
+      neon_indicators_42: -9125773313739264990
+      neon_indicators_43: -8560531801866272224
+      neon_indicators_44: 915721108892561535
+      neon_indicators_45: 2997677059277145641
+      neon_indicators_46: 6804594077586155351
+      neon_indicators_47: -4706503905832017388
+      neon_indicators_5: -1078641932699310252
+      neon_indicators_6: -148759796174823317
+      neon_indicators_7: -8513223758719865353
+      neon_indicators_8: -4548191053648627726
+      neon_indicators_9: 4769966760081916440
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

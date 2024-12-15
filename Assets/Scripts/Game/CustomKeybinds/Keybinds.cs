@@ -9,6 +9,8 @@ namespace Game.CustomKeybinds
         private static Keybinds _instance;
 
         public KeyCode moveLeft;
+        public KeyCode moveUp;
+        public KeyCode moveDown;
         public KeyCode moveRight;
 
         public KeyCode jump;
@@ -21,14 +23,13 @@ namespace Game.CustomKeybinds
         public KeyCode swapEntangle;
 
         public KeyCode pause;
-        public KeyCode reset; // <- Added a variable here for reset key
+        public KeyCode reset;
 
         public Dictionary<String, KeyCode> keyCodes;
 
         // -- This is added to easily fetch keycodes by string! --
         public string[] keys = {
-                "Space","A", "D",
-									"L-Shift", "R", "F", "Q", "Mouse 1", "Mouse 2", "Esc"};
+                "Space", "W", "A", "S", "D", "L-Shift", "R", "F", "Q", "Mouse 1", "Mouse 2", "Esc"};
 
         // Load toggle
         public bool hold;
@@ -36,6 +37,8 @@ namespace Game.CustomKeybinds
     private Keybinds() {   
             
             moveLeft = KeyCode.A;
+            moveUp = KeyCode.W;
+            moveDown = KeyCode.S;
             moveRight = KeyCode.D;
             jump = KeyCode.Space;
             
@@ -53,6 +56,8 @@ namespace Game.CustomKeybinds
             
             keyCodes.Add("Move Left", moveLeft);
             keyCodes.Add("Move Right", moveRight);
+            keyCodes.Add("Move Up", moveUp);
+            keyCodes.Add("Move Down", moveDown);
             keyCodes.Add("Jump", jump);
 
             keyCodes.Add("Grab/Release", grabRelease);
@@ -74,6 +79,8 @@ namespace Game.CustomKeybinds
         {
             keyCodes["Move Left"] = moveLeft;
             keyCodes["Move Right"] = moveRight;
+            keyCodes["Move Up"] = moveUp;
+            keyCodes["Move Down"] = moveDown;
             keyCodes["Jump"] = jump;
 
             keyCodes["Grab/Release"] = grabRelease;
@@ -92,6 +99,8 @@ namespace Game.CustomKeybinds
         {
             moveLeft = keyCodes["Move Left"];
             moveRight = keyCodes["Move Right"];
+            moveUp = keyCodes["Move Up"];
+            moveDown = keyCodes["Move Down"];
             jump = keyCodes["Jump"];
 
             grabRelease = keyCodes["Grab/Release"];
@@ -112,6 +121,8 @@ namespace Game.CustomKeybinds
             {
                 moveLeft = tempControls.moveLeft;
                 moveRight = tempControls.moveRight;
+                moveUp = tempControls.moveUp;
+                moveDown = tempControls.moveDown;
                 jump = tempControls.jump;
 
                 grabRelease = tempControls.grabRelease;

@@ -498,7 +498,7 @@ TextureImporter:
       213: -8362530199051866303
     second: main_platforms2_dirt_164
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -515,10 +515,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -557,6 +559,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -568,6 +572,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -580,6 +585,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -1519,9 +1538,53 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      main_platforms2_dirt_0: -2865602853479095408
+      main_platforms2_dirt_1: 8937928772605961056
+      main_platforms2_dirt_10: 4762254724201536123
+      main_platforms2_dirt_11: -3899411564645778941
+      main_platforms2_dirt_12: -7062427647035049319
+      main_platforms2_dirt_13: -8044840283976746114
+      main_platforms2_dirt_14: 7536028619336832918
+      main_platforms2_dirt_15: -5360657386070065624
+      main_platforms2_dirt_16: 715068099234548300
+      main_platforms2_dirt_17: -3792531910874531675
+      main_platforms2_dirt_18: -7215020353604502056
+      main_platforms2_dirt_19: 8221233616141543718
+      main_platforms2_dirt_2: -4063537538984711064
+      main_platforms2_dirt_20: 4025646341710404956
+      main_platforms2_dirt_21: 7817328056145573581
+      main_platforms2_dirt_22: 2794533201647710474
+      main_platforms2_dirt_23: 7302910558777949293
+      main_platforms2_dirt_24: -2919702666792461373
+      main_platforms2_dirt_25: -2684914533810693350
+      main_platforms2_dirt_26: 8424897111865083856
+      main_platforms2_dirt_27: -6225428937726810221
+      main_platforms2_dirt_28: 2808385112700398094
+      main_platforms2_dirt_29: -228030684542872412
+      main_platforms2_dirt_3: 598743309501317576
+      main_platforms2_dirt_30: -2346351129698925434
+      main_platforms2_dirt_31: 2495351666454494593
+      main_platforms2_dirt_32: -1300646881557646154
+      main_platforms2_dirt_33: -8428227165947991853
+      main_platforms2_dirt_34: 9221704760715607666
+      main_platforms2_dirt_35: -8968400647500664506
+      main_platforms2_dirt_36: -1808441744279334951
+      main_platforms2_dirt_37: 280073036162885986
+      main_platforms2_dirt_38: 2354577610687198871
+      main_platforms2_dirt_39: -999659186400919198
+      main_platforms2_dirt_4: -6697347929449696885
+      main_platforms2_dirt_40: 2726968022534791654
+      main_platforms2_dirt_41: 111209074156370820
+      main_platforms2_dirt_42: 1917218544239956663
+      main_platforms2_dirt_43: 2283881057508770498
+      main_platforms2_dirt_5: 1435448682483530762
+      main_platforms2_dirt_6: -1886918707568251531
+      main_platforms2_dirt_7: 5978333839056962979
+      main_platforms2_dirt_8: -8122919319314436226
+      main_platforms2_dirt_9: -3128390672816772066
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
